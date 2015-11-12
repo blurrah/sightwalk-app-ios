@@ -15,8 +15,7 @@ class GenericTextField: UITextField {
         let bottomBorder = CALayer()
         
         
-        
-        bottomBorder.frame = CGRectMake(0.0, self.frame.size.height + 10, 360, 2.0)
+        bottomBorder.frame = CGRectMake(0.0, self.frame.size.height + 29, 400, 1.0)
         bottomBorder.backgroundColor = UIColor.grayColor().CGColor
         self.layer.addSublayer(bottomBorder)
     }
@@ -32,11 +31,11 @@ class GenericTextField: UITextField {
     */
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 10)
+        return CGRectInset(bounds, 20, 10)
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 10)
+        return CGRectInset(bounds, 20, 10)
     }
 
 }

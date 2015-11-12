@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */; };
 		2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */; };
 		2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */; };
 		2FFA3D511BF34EFE00B758D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4F1BF34EFE00B758D5 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = ../../RegistrationViewController.swift; sourceTree = "<group>"; };
 		2FFA3D481BF34EFE00B758D5 /* Sightwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sightwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		2FFA3D861BF49C7600B758D5 /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
 		2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTextField.swift; path = ../GenericTextField.swift; sourceTree = "<group>"; };
 		2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericNavigationBar.swift; sourceTree = "<group>"; };
-		2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sightwalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A482CD35DF74AD2BA9E6E0 /* Pods-Sightwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BD346EAFAE86D397454D56 /* Pods-Sightwalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +128,6 @@
 				2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */,
 				2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */,
 				2FFA3D4F1BF34EFE00B758D5 /* Main.storyboard */,
-				2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */,
 				2FFA3D551BF34EFE00B758D5 /* Assets.xcassets */,
 				2FFA3D571BF34EFE00B758D5 /* LaunchScreen.storyboard */,
 				2FFA3D5A1BF34EFE00B758D5 /* Info.plist */,
@@ -170,6 +171,8 @@
 		2FFA3D7F1BF352C600B758D5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */,
+				2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */,
 				2FFA3D821BF4968900B758D5 /* IntroViewController.swift */,
 			);
 			path = Controllers;
@@ -396,6 +399,7 @@
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
+				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
 				2FFA3D871BF49C7600B758D5 /* FacebookButton.swift in Sources */,
 				2FFA3D851BF4970F00B758D5 /* GenericViewButton.swift in Sources */,
 				2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */,
