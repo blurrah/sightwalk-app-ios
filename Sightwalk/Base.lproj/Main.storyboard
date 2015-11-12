@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rFB-CN-WIr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Intro View Controller-->
+        <!--SightWalk-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,7 +39,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="4bD-Ht-cTd" kind="show" id="nap-rn-Tfm"/>
+                                    <segue destination="4bD-Ht-cTd" kind="show" id="GmN-Bw-xnr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STu-WN-BTc" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
@@ -162,15 +162,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="SightWalk" id="kha-L8-Sas"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472.5" y="508.5"/>
+            <point key="canvasLocation" x="1390.5" y="508.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="u8C-So-WqE">
             <objects>
-                <viewController id="4bD-Ht-cTd" sceneMemberID="viewController">
+                <viewController id="4bD-Ht-cTd" customClass="LoginViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8E-IQ-RdB"/>
                         <viewControllerLayoutGuide type="bottom" id="6P8-LT-bqj"/>
@@ -178,45 +179,6 @@
                     <view key="view" contentMode="scaleToFill" id="2Ac-tQ-58F">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inloggen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfI-3K-D3A">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Tmz-4V-mG6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Tmz-4V-mG6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Tmz-4V-mG6"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam / E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="AjI-CK-sL3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="AjI-CK-sL3"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="AjI-CK-sL3"/>
-                                    </mask>
-                                </variation>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNY-IW-Drt" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
@@ -239,31 +201,75 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam / E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="AjI-CK-sL3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AjI-CK-sL3"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="AjI-CK-sL3"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-nC-sNL" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="lP6-VG-gBd"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lP6-VG-gBd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="lP6-VG-gBd"/>
+                                    </mask>
+                                </variation>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="rNY-IW-Drt" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" id="Dbx-nD-GIs"/>
-                            <constraint firstItem="CfI-3K-D3A" firstAttribute="centerX" secondItem="2Ac-tQ-58F" secondAttribute="centerX" id="FMD-4z-vAS"/>
                             <constraint firstItem="6P8-LT-bqj" firstAttribute="top" secondItem="rNY-IW-Drt" secondAttribute="bottom" constant="20" id="INk-Ew-60O"/>
-                            <constraint firstItem="CfI-3K-D3A" firstAttribute="top" secondItem="d8E-IQ-RdB" secondAttribute="bottom" constant="8" id="Kzz-Wl-8Rn"/>
+                            <constraint firstItem="IHU-nC-sNL" firstAttribute="top" secondItem="ZG2-xU-SfR" secondAttribute="bottom" constant="26" id="Jhw-IY-BcF"/>
                             <constraint firstItem="ZG2-xU-SfR" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="Yvq-gl-zFX"/>
-                            <constraint firstItem="ZG2-xU-SfR" firstAttribute="top" secondItem="CfI-3K-D3A" secondAttribute="bottom" constant="73" id="h66-hi-ZZq"/>
+                            <constraint firstItem="IHU-nC-sNL" firstAttribute="top" secondItem="ZG2-xU-SfR" secondAttribute="bottom" constant="26" id="abJ-ND-lMp"/>
+                            <constraint firstItem="IHU-nC-sNL" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="kg3-tu-LCy"/>
+                            <constraint firstItem="ZG2-xU-SfR" firstAttribute="top" secondItem="d8E-IQ-RdB" secondAttribute="bottom" constant="106" id="oiY-vg-I1x"/>
+                            <constraint firstItem="IHU-nC-sNL" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" id="stT-rk-5lf"/>
                             <constraint firstItem="rNY-IW-Drt" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="uIA-ML-1Nv"/>
                             <constraint firstItem="ZG2-xU-SfR" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" id="xe2-87-KSt"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="CfI-3K-D3A"/>
-                                <exclude reference="ZG2-xU-SfR"/>
                                 <exclude reference="rNY-IW-Drt"/>
+                                <exclude reference="ZG2-xU-SfR"/>
+                                <exclude reference="IHU-nC-sNL"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Yvq-gl-zFX"/>
-                                <exclude reference="h66-hi-ZZq"/>
+                                <exclude reference="oiY-vg-I1x"/>
                                 <exclude reference="xe2-87-KSt"/>
-                                <exclude reference="FMD-4z-vAS"/>
-                                <exclude reference="Kzz-Wl-8Rn"/>
+                                <exclude reference="Jhw-IY-BcF"/>
+                                <exclude reference="abJ-ND-lMp"/>
+                                <exclude reference="kg3-tu-LCy"/>
+                                <exclude reference="stT-rk-5lf"/>
                                 <exclude reference="Dbx-nD-GIs"/>
                                 <exclude reference="uIA-ML-1Nv"/>
                                 <exclude reference="INk-Ew-60O"/>
@@ -271,26 +277,59 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="CfI-3K-D3A"/>
-                                <include reference="ZG2-xU-SfR"/>
                                 <include reference="rNY-IW-Drt"/>
+                                <include reference="ZG2-xU-SfR"/>
+                                <include reference="IHU-nC-sNL"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Yvq-gl-zFX"/>
-                                <include reference="h66-hi-ZZq"/>
+                                <include reference="oiY-vg-I1x"/>
                                 <include reference="xe2-87-KSt"/>
-                                <include reference="FMD-4z-vAS"/>
-                                <include reference="Kzz-Wl-8Rn"/>
+                                <include reference="Jhw-IY-BcF"/>
+                                <include reference="abJ-ND-lMp"/>
+                                <include reference="kg3-tu-LCy"/>
+                                <include reference="stT-rk-5lf"/>
                                 <include reference="Dbx-nD-GIs"/>
                                 <include reference="uIA-ML-1Nv"/>
                                 <include reference="INk-Ew-60O"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Pv1-fM-eJD" appends="YES" id="MH8-aE-Hot"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="passwordInputOutlet" destination="IHU-nC-sNL" id="AfG-tb-JuM"/>
+                        <outlet property="usernameInputOutlet" destination="ZG2-xU-SfR" id="7E0-5R-kL3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Viq-gO-8J2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Pv1-fM-eJD">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="4bD-Ht-cTd" id="i3Z-a9-x2Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1333.5" y="508.5"/>
+            <point key="canvasLocation" x="2251.5" y="508.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TRv-PE-COc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rFB-CN-WIr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l8L-b0-dBj" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qe1-4i-HN1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIU-yN-FSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472.5" y="508.5"/>
         </scene>
     </scenes>
 </document>
