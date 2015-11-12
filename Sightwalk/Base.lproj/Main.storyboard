@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,12 +17,280 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-q0-mNG" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BWG-iE-Nzk">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="43"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Inloggen"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BWG-iE-Nzk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="BWG-iE-Nzk"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="4bD-Ht-cTd" kind="show" id="nap-rn-Tfm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STu-WN-BTc" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="yE5-UK-ggz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Registreer"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yE5-UK-ggz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="yE5-UK-ggz"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IK-Gd-eFj" customClass="FacebookButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GGu-zO-4SF">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="43"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Inloggen met Facebook"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GGu-zO-4SF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="GGu-zO-4SF"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-BB-boO">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ImW-3v-fqv"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ImW-3v-fqv"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ImW-3v-fqv"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="STu-WN-BTc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GEh-yS-rio"/>
+                            <constraint firstItem="IWU-q0-mNG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KZf-lD-1HI"/>
+                            <constraint firstItem="h6B-BB-boO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="PbC-hw-6Ra"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="STu-WN-BTc" secondAttribute="bottom" constant="20" id="RuB-df-ZEv"/>
+                            <constraint firstItem="2IK-Gd-eFj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="S7x-bu-pn4"/>
+                            <constraint firstItem="STu-WN-BTc" firstAttribute="top" secondItem="h6B-BB-boO" secondAttribute="bottom" constant="20" id="cPU-DX-YSh"/>
+                            <constraint firstItem="STu-WN-BTc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="e2W-0d-kdA"/>
+                            <constraint firstItem="IWU-q0-mNG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fFI-ZD-4go"/>
+                            <constraint firstItem="2IK-Gd-eFj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nho-Su-147"/>
+                            <constraint firstItem="h6B-BB-boO" firstAttribute="top" secondItem="IWU-q0-mNG" secondAttribute="bottom" constant="20" id="oT0-N0-ceC"/>
+                            <constraint firstItem="IWU-q0-mNG" firstAttribute="top" secondItem="2IK-Gd-eFj" secondAttribute="bottom" constant="20" id="weI-6E-Ldp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h6B-BB-boO" secondAttribute="trailing" constant="-20" id="y5O-95-vGa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="IWU-q0-mNG"/>
+                                <exclude reference="STu-WN-BTc"/>
+                                <exclude reference="2IK-Gd-eFj"/>
+                                <exclude reference="h6B-BB-boO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="S7x-bu-pn4"/>
+                                <exclude reference="nho-Su-147"/>
+                                <exclude reference="KZf-lD-1HI"/>
+                                <exclude reference="fFI-ZD-4go"/>
+                                <exclude reference="weI-6E-Ldp"/>
+                                <exclude reference="PbC-hw-6Ra"/>
+                                <exclude reference="oT0-N0-ceC"/>
+                                <exclude reference="y5O-95-vGa"/>
+                                <exclude reference="GEh-yS-rio"/>
+                                <exclude reference="cPU-DX-YSh"/>
+                                <exclude reference="e2W-0d-kdA"/>
+                                <exclude reference="RuB-df-ZEv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="IWU-q0-mNG"/>
+                                <include reference="STu-WN-BTc"/>
+                                <include reference="2IK-Gd-eFj"/>
+                                <include reference="h6B-BB-boO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="S7x-bu-pn4"/>
+                                <include reference="nho-Su-147"/>
+                                <include reference="KZf-lD-1HI"/>
+                                <include reference="fFI-ZD-4go"/>
+                                <include reference="weI-6E-Ldp"/>
+                                <include reference="PbC-hw-6Ra"/>
+                                <include reference="oT0-N0-ceC"/>
+                                <include reference="y5O-95-vGa"/>
+                                <include reference="GEh-yS-rio"/>
+                                <include reference="cPU-DX-YSh"/>
+                                <include reference="e2W-0d-kdA"/>
+                                <include reference="RuB-df-ZEv"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="472.5" y="508.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="u8C-So-WqE">
+            <objects>
+                <viewController id="4bD-Ht-cTd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d8E-IQ-RdB"/>
+                        <viewControllerLayoutGuide type="bottom" id="6P8-LT-bqj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Ac-tQ-58F">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inloggen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfI-3K-D3A">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Tmz-4V-mG6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tmz-4V-mG6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Tmz-4V-mG6"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam / E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="AjI-CK-sL3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AjI-CK-sL3"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="AjI-CK-sL3"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNY-IW-Drt" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="mIa-zL-XTB"/>
+                                    <constraint firstAttribute="height" constant="43" id="whb-73-5zn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Inloggen"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mIa-zL-XTB"/>
+                                        <exclude reference="whb-73-5zn"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="mIa-zL-XTB"/>
+                                        <include reference="whb-73-5zn"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rNY-IW-Drt" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" id="Dbx-nD-GIs"/>
+                            <constraint firstItem="CfI-3K-D3A" firstAttribute="centerX" secondItem="2Ac-tQ-58F" secondAttribute="centerX" id="FMD-4z-vAS"/>
+                            <constraint firstItem="6P8-LT-bqj" firstAttribute="top" secondItem="rNY-IW-Drt" secondAttribute="bottom" constant="20" id="INk-Ew-60O"/>
+                            <constraint firstItem="CfI-3K-D3A" firstAttribute="top" secondItem="d8E-IQ-RdB" secondAttribute="bottom" constant="8" id="Kzz-Wl-8Rn"/>
+                            <constraint firstItem="ZG2-xU-SfR" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="Yvq-gl-zFX"/>
+                            <constraint firstItem="ZG2-xU-SfR" firstAttribute="top" secondItem="CfI-3K-D3A" secondAttribute="bottom" constant="73" id="h66-hi-ZZq"/>
+                            <constraint firstItem="rNY-IW-Drt" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="uIA-ML-1Nv"/>
+                            <constraint firstItem="ZG2-xU-SfR" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" id="xe2-87-KSt"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="CfI-3K-D3A"/>
+                                <exclude reference="ZG2-xU-SfR"/>
+                                <exclude reference="rNY-IW-Drt"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Yvq-gl-zFX"/>
+                                <exclude reference="h66-hi-ZZq"/>
+                                <exclude reference="xe2-87-KSt"/>
+                                <exclude reference="FMD-4z-vAS"/>
+                                <exclude reference="Kzz-Wl-8Rn"/>
+                                <exclude reference="Dbx-nD-GIs"/>
+                                <exclude reference="uIA-ML-1Nv"/>
+                                <exclude reference="INk-Ew-60O"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="CfI-3K-D3A"/>
+                                <include reference="ZG2-xU-SfR"/>
+                                <include reference="rNY-IW-Drt"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Yvq-gl-zFX"/>
+                                <include reference="h66-hi-ZZq"/>
+                                <include reference="xe2-87-KSt"/>
+                                <include reference="FMD-4z-vAS"/>
+                                <include reference="Kzz-Wl-8Rn"/>
+                                <include reference="Dbx-nD-GIs"/>
+                                <include reference="uIA-ML-1Nv"/>
+                                <include reference="INk-Ew-60O"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Viq-gO-8J2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1333.5" y="508.5"/>
         </scene>
     </scenes>
 </document>
