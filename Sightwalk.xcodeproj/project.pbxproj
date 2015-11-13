@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */; };
 		2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */; };
 		2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */; };
 		2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = ../../RegistrationViewController.swift; sourceTree = "<group>"; };
 		2FFA3D481BF34EFE00B758D5 /* Sightwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sightwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		2FFA3D801BF352C600B758D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */,
 				2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */,
 				2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */,
 				2FFA3D861BF49C7600B758D5 /* FacebookButton.swift */,
@@ -397,6 +400,7 @@
 			files = (
 				2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */,
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
+				2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,

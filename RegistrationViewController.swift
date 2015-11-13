@@ -15,7 +15,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var ageInputOutlet: GenericTextField!
     @IBOutlet var lengthInputOutlet: GenericTextField!
     @IBOutlet var weightInputOutlet: GenericTextField!
-    
+    @IBOutlet var bottomViewConstraintOutlet: NSLayoutConstraint!
     
     @IBAction func tapGestureAction(sender: AnyObject) {
         emailInputOutlet.resignFirstResponder()
@@ -28,8 +28,6 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,7 +40,6 @@ class RegistrationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
