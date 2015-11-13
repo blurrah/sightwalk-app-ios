@@ -573,6 +573,9 @@
                                         <include reference="Vzn-ki-3TW"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="registrationButtonAction:" destination="Mql-4Z-w7B" eventType="touchUpInside" id="YRu-ND-Z4y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

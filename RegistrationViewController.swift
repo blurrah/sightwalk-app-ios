@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JLToast
 
 class RegistrationViewController: UIViewController {
     @IBOutlet var emailInputOutlet: GenericTextField!
@@ -16,6 +17,10 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var lengthInputOutlet: GenericTextField!
     @IBOutlet var weightInputOutlet: GenericTextField!
     @IBOutlet var bottomViewConstraintOutlet: NSLayoutConstraint!
+    
+    @IBAction func registrationButtonAction(sender: AnyObject) {
+        JLToast.makeText("Gegevens kloppen niet, probeer opnieuw", delay: 0, duration: 2).show()
+    }
     
     @IBAction func tapGestureAction(sender: AnyObject) {
         emailInputOutlet.resignFirstResponder()
@@ -28,6 +33,9 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
+        JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
     }
     
     override func viewWillAppear(animated: Bool) {
