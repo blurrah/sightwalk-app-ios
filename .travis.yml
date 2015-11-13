@@ -8,5 +8,5 @@ script:
 
 branches:
     only:
-	    - master
-	    - develop
+        - master
+        - develop
