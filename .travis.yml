@@ -5,3 +5,8 @@ podfile: Podfile
 script:
     - xctool -workspace Sightwalk.xcworkspace -scheme Sightwalk -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     - xctool test -workspace Sightwalk.xcworkspace -scheme SightwalkTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
+branches:
+    only:
+	    - master
+	    - develop
