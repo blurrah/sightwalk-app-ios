@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
         
-        var initialViewControler = storyboard.instantiateInitialViewController()
+        var initialViewController = storyboard.instantiateInitialViewController()
         self.window?.rootViewController = initialViewControler
         self.window?.makeKeyAndVisible()
         
