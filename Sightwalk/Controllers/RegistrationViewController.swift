@@ -7,20 +7,47 @@
 //
 
 import UIKit
+import JLToast
 
 class RegistrationViewController: UIViewController {
-
+    @IBOutlet var emailInputOutlet: GenericTextField!
+    @IBOutlet var usernameInputOutlet: GenericTextField!
+    @IBOutlet var passwordInputOutlet: GenericTextField!
+    @IBOutlet var ageInputOutlet: GenericTextField!
+    @IBOutlet var lengthInputOutlet: GenericTextField!
+    @IBOutlet var weightInputOutlet: GenericTextField!
+    @IBOutlet var bottomViewConstraintOutlet: NSLayoutConstraint!
+    
+    @IBAction func registrationButtonAction(sender: AnyObject) {
+        JLToast.makeText("Gegevens kloppen niet, probeer opnieuw", delay: 0, duration: 2).show()
+    }
+    
+    @IBAction func tapGestureAction(sender: AnyObject) {
+        emailInputOutlet.resignFirstResponder()
+        usernameInputOutlet.resignFirstResponder()
+        passwordInputOutlet.resignFirstResponder()
+        ageInputOutlet.resignFirstResponder()
+        lengthInputOutlet.resignFirstResponder()
+        weightInputOutlet.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
+        JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.title = "Registreren"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
