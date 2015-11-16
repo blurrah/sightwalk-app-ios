@@ -14,7 +14,6 @@ class GenericTextField: UITextField {
         super.init(coder: aDecoder)
         let bottomBorder = CALayer()
         
-        
         bottomBorder.frame = CGRectMake(0.0, self.frame.size.height + 29, 400, 1.0)
         bottomBorder.backgroundColor = UIColor.grayColor().CGColor
         self.layer.addSublayer(bottomBorder)

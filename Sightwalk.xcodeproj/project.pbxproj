@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = ../../RegistrationViewController.swift; sourceTree = "<group>"; };
+		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		2FFA3D481BF34EFE00B758D5 /* Sightwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sightwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		2FFA3D821BF4968900B758D5 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		2FFA3D841BF4970F00B758D5 /* GenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericViewButton.swift; sourceTree = "<group>"; };
 		2FFA3D861BF49C7600B758D5 /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
-		2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTextField.swift; path = ../GenericTextField.swift; sourceTree = "<group>"; };
+		2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTextField.swift; sourceTree = "<group>"; };
 		2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericNavigationBar.swift; sourceTree = "<group>"; };
 		2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sightwalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
