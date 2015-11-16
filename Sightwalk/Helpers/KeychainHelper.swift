@@ -20,7 +20,7 @@ class LoginPersistenceHelper {
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    func saveToken(username: String, token: String, onCompletion: Void -> Void) {
+    func saveToken(username: String, token: String) {
         userDefaults.setObject(username, forKey: "userNameKey")
         
         do {
@@ -28,8 +28,6 @@ class LoginPersistenceHelper {
         } catch let error as NSError {
             print(error)
         }
-        
-        onCompletion() // Send this to a store
     }
     
     func accessToken(onCompletion: Void -> Void) {

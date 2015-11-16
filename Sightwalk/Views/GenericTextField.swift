@@ -36,5 +36,4 @@ class GenericTextField: UITextField {
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 20, 10)
     }
-
 }

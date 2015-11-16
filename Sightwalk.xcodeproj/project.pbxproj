@@ -10,6 +10,7 @@
 		2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */; };
 		2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */; };
 		2FF4DAD11BF9E0A3004E1440 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD01BF9E0A3004E1440 /* KeychainHelper.swift */; };
+		2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */; };
 		2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */; };
 		2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */; };
 		2FFA3D511BF34EFE00B758D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA3D4F1BF34EFE00B758D5 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		2FFA3D481BF34EFE00B758D5 /* Sightwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sightwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		2FFA3D7E1BF352C600B758D5 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */,
 				2FFA3D831BF4968900B758D5 /* IntroViewController.swift in Sources */,
 				2FFA3D8B1BF4AF5600B758D5 /* GenericNavigationBar.swift in Sources */,
+				2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
