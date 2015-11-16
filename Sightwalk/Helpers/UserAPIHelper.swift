@@ -19,15 +19,13 @@ class UserAPIHelper {
         return Singleton.instance
     }
     
-    let serverConstants = ServerConstants()
-    
     func loginUser(username: String, password: String, onCompletion: (JSON) -> Void) {
         let parameters = [
             "username": username,
             "password": password
         ]
         
-        Alamofire.request(.POST, serverConstants.address + serverConstants.login, parameters: parameters)
+        Alamofire.request(.POST, ServerConstants.address + ServerConstants.User.login, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData({ response in
