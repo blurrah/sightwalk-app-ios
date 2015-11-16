@@ -9,6 +9,7 @@
 import Foundation
 
 class UserDataStore {
+    // Singleton instancing
     class var sharedInstance: UserDataStore {
         struct Singleton {
             static let instance = UserDataStore()
@@ -20,7 +21,6 @@ class UserDataStore {
     var token: String?
     
     func getNewToken(username: String, password: String) {
-        
         // Send data to API
         
         // Get token back
