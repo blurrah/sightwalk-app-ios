@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGD-NC-abh">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Dashboard View Controller-->
         <scene sceneID="x84-qg-CY9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-Oo-naW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Rb4-0v-lXR" customClass="DashboardViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YmP-5v-0W8"/>
@@ -67,13 +65,13 @@
                         <outlet property="statisticViewOutlet" destination="ER1-Ta-qQ3" id="fnT-N8-PhX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-Oo-naW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-659" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fvo-Vf-Iu6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3p3-xt-ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WGD-NC-abh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4wA-oF-Mg3">
@@ -86,6 +84,7 @@
                         <segue destination="Rb4-0v-lXR" kind="relationship" relationship="rootViewController" id="krN-C9-jSc"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3p3-xt-ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1471" y="402"/>
         </scene>
@@ -93,6 +92,10 @@
         <scene sceneID="DrC-4K-qat">
             <objects>
                 <viewController title="Statistic View Controller" id="DsL-aV-rrF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hjg-RM-Zti"/>
+                        <viewControllerLayoutGuide type="bottom" id="NVi-eh-Hol"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dMe-I7-M4h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="472"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,6 +120,10 @@
         <scene sceneID="eyp-9A-YCC">
             <objects>
                 <viewController title="Activity View Controller" id="C44-54-0Po" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l7f-Qz-rwt"/>
+                        <viewControllerLayoutGuide type="bottom" id="rXN-N5-EmA"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wyJ-Mw-fiP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="472"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,6 +148,10 @@
         <scene sceneID="w0z-s3-nQQ">
             <objects>
                 <viewController title="Favorite View Controller" id="XiL-1O-gTc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="884-dn-hj5"/>
+                        <viewControllerLayoutGuide type="bottom" id="uPH-RF-mcj"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntz-8a-2WD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="472"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
