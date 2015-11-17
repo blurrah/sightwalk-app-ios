@@ -27,6 +27,9 @@
 		2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */; };
 		2FFA3D8B1BF4AF5600B758D5 /* GenericNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */; };
 		2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */; };
+		F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */; };
+		F33DC9271BFB3D8F003C69F6 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */; };
+		F33DC9291BFB42BE003C69F6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
 		F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7A9161BFA231600420352 /* DashboardViewController.swift */; };
 		F6518919914CA5E2CADB278D /* Pods_Sightwalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */; };
@@ -79,6 +82,9 @@
 		548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sightwalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A482CD35DF74AD2BA9E6E0 /* Pods-Sightwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.debug.xcconfig"; sourceTree = "<group>"; };
 		B7BD346EAFAE86D397454D56 /* Pods-Sightwalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.release.xcconfig"; sourceTree = "<group>"; };
+		F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +200,9 @@
 				2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */,
 				2FFA3D821BF4968900B758D5 /* IntroViewController.swift */,
 				F3B7A9161BFA231600420352 /* DashboardViewController.swift */,
+				F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */,
+				F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */,
+				F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +430,7 @@
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
 				2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
+				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				2FF4DAD71BFA269B004E1440 /* ServerConstants.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
@@ -430,7 +440,9 @@
 				F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */,
 				2FFA3D851BF4970F00B758D5 /* GenericViewButton.swift in Sources */,
 				2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */,
+				F33DC9291BFB42BE003C69F6 /* FavoriteViewController.swift in Sources */,
 				2FFA3D831BF4968900B758D5 /* IntroViewController.swift in Sources */,
+				F33DC9271BFB3D8F003C69F6 /* StatisticViewController.swift in Sources */,
 				2FFA3D8B1BF4AF5600B758D5 /* GenericNavigationBar.swift in Sources */,
 				2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */,
 			);

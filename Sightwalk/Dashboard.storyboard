@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGD-NC-abh">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
@@ -63,6 +64,7 @@
                         <outlet property="favoriteViewOutlet" destination="rMZ-Mt-Az2" id="x5y-TD-lnA"/>
                         <outlet property="segmentedControlOutlet" destination="cPd-Ij-Q1E" id="1YL-Gh-26D"/>
                         <outlet property="statisticViewOutlet" destination="ER1-Ta-qQ3" id="fnT-N8-PhX"/>
+                        <outlet property="totalViewOutlet" destination="1x3-Yc-Ecc" id="he0-hZ-852"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-Oo-naW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,6 +74,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Fvo-Vf-Iu6">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3p3-xt-ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WGD-NC-abh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4wA-oF-Mg3">
@@ -84,14 +87,13 @@
                         <segue destination="Rb4-0v-lXR" kind="relationship" relationship="rootViewController" id="krN-C9-jSc"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3p3-xt-ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1471" y="402"/>
         </scene>
         <!--Statistic View Controller-->
         <scene sceneID="DrC-4K-qat">
             <objects>
-                <viewController title="Statistic View Controller" id="DsL-aV-rrF" sceneMemberID="viewController">
+                <viewController title="Statistic View Controller" id="DsL-aV-rrF" customClass="StatisticViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hjg-RM-Zti"/>
                         <viewControllerLayoutGuide type="bottom" id="NVi-eh-Hol"/>
@@ -104,7 +106,7 @@
                                 <rect key="frame" x="270" y="217" width="147" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -119,7 +121,7 @@
         <!--Activity View Controller-->
         <scene sceneID="eyp-9A-YCC">
             <objects>
-                <viewController title="Activity View Controller" id="C44-54-0Po" sceneMemberID="viewController">
+                <viewController title="Activity View Controller" id="C44-54-0Po" customClass="ActivityViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l7f-Qz-rwt"/>
                         <viewControllerLayoutGuide type="bottom" id="rXN-N5-EmA"/>
@@ -132,7 +134,7 @@
                                 <rect key="frame" x="267" y="165" width="135" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -147,7 +149,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="w0z-s3-nQQ">
             <objects>
-                <viewController title="Favorite View Controller" id="XiL-1O-gTc" sceneMemberID="viewController">
+                <viewController title="Favorite View Controller" id="XiL-1O-gTc" customClass="FavoriteViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="884-dn-hj5"/>
                         <viewControllerLayoutGuide type="bottom" id="uPH-RF-mcj"/>
@@ -160,7 +162,7 @@
                                 <rect key="frame" x="242" y="217" width="187" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
