@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Temp code om Dashboard storyboard als main storyboard te setten.
-        self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
+        //self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
         
-        var storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        //var storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
         
-        var initialViewController = storyboard.instantiateInitialViewController()
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+        //var initialViewController = storyboard.instantiateInitialViewController()
+        //self.window?.rootViewController = initialViewController
+        //self.window?.makeKeyAndVisible()
         
         return true
     }
