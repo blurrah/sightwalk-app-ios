@@ -8,6 +8,7 @@ target 'Sightwalk' do
 	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 	pod 'JLToast', '~> 1.3'
 	pod 'Locksmith', '~> 2.0'
+	pod 'SwiftCop'
 end
 
 target 'SightwalkTests' do

@@ -10,9 +10,10 @@ import UIKit
 
 class GenericTextField: UITextField {
     
+    let bottomBorder = CALayer()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        let bottomBorder = CALayer()
         
         bottomBorder.frame = CGRectMake(0.0, self.frame.size.height + 29, 400, 1.0)
         bottomBorder.backgroundColor = UIColor.grayColor().CGColor
@@ -35,5 +36,13 @@ class GenericTextField: UITextField {
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 20, 10)
+    }
+    
+    func activateWarning() {
+        bottomBorder.backgroundColor = UIColor.redColor().CGColor
+    }
+    
+    func deactivateWarning() {
+        bottomBorder.backgroundColor = UIColor.grayColor().CGColor
     }
 }
