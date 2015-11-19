@@ -10,10 +10,11 @@ import UIKit
 
 class IntroViewController: UIViewController {
     
+    @IBOutlet var imageViewOutlet: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        imageViewOutlet.image = UIImage(named: "intro_background")
     }
 
     override func didReceiveMemoryWarning() {
