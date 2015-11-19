@@ -19,6 +19,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var weightInputOutlet: GenericTextField!
     @IBOutlet var bottomViewConstraintOutlet: NSLayoutConstraint!
     
+    @IBOutlet var emailErrorMessageOutlet: UILabel!
     @IBOutlet weak var emailMessageOutlet: UILabel!
     let swiftCop = SwiftCop()
     
@@ -57,7 +58,7 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func validateEmail(sender: GenericTextField) {
-        self.emailMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        self.emailErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
         if (swiftCop.isGuilty(sender)?.verdict() != nil) {
                 self.emailInputOutlet.activateWarning()
             } else {

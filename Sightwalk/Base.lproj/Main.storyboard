@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rFB-CN-WIr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rFB-CN-WIr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -252,6 +252,26 @@
                                                     <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="701-L7-wwM">
+                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="Azb-jX-fIG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="1" green="0.1670541012" blue="0.22080980610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Azb-jX-fIG"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="Azb-jX-fIG"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lengte" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-yp-8E4" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                 <animations/>
@@ -275,8 +295,7 @@
                                                         <exclude reference="jrg-x0-nzH"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="297" width="400" height="60"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <exclude reference="7RM-mc-M08"/>
                                                         <include reference="HES-12-XKK"/>
@@ -363,8 +382,7 @@
                                                         <exclude reference="rzz-2h-Sz5"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="150" width="400" height="60"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="XRF-n5-wyP"/>
                                                         <include reference="fAc-Wf-DnG"/>
@@ -411,11 +429,8 @@
                                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="46" y="624" width="308" height="21"/>
-                                                </variation>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leeftijd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2w-17-FRK" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -457,8 +472,11 @@
                                         <constraints>
                                             <constraint firstItem="wsu-bO-dXi" firstAttribute="top" secondItem="FAf-Dy-MqP" secondAttribute="bottom" id="34k-9x-THd"/>
                                             <constraint firstItem="FAf-Dy-MqP" firstAttribute="leading" secondItem="UKm-m1-3hd" secondAttribute="leading" id="3Ah-tx-fkz"/>
+                                            <constraint firstItem="701-L7-wwM" firstAttribute="top" secondItem="bbd-Jw-bKa" secondAttribute="bottom" id="47A-G4-BJL"/>
                                             <constraint firstItem="bbd-Jw-bKa" firstAttribute="leading" secondItem="UKm-m1-3hd" secondAttribute="leading" constant="20" id="6Wb-Cq-pH8"/>
+                                            <constraint firstAttribute="trailing" secondItem="701-L7-wwM" secondAttribute="trailing" constant="20" id="7E9-tX-WiJ"/>
                                             <constraint firstItem="AVN-YH-Bym" firstAttribute="top" secondItem="bbd-Jw-bKa" secondAttribute="bottom" id="AJP-il-3pg"/>
+                                            <constraint firstItem="701-L7-wwM" firstAttribute="leading" secondItem="UKm-m1-3hd" secondAttribute="leading" constant="20" id="CGa-94-Wem"/>
                                             <constraint firstItem="bbd-Jw-bKa" firstAttribute="top" secondItem="UKm-m1-3hd" secondAttribute="top" constant="8" id="EYz-uW-cac"/>
                                             <constraint firstItem="s1d-yp-8E4" firstAttribute="top" secondItem="E2w-17-FRK" secondAttribute="bottom" id="Euq-OW-VH4"/>
                                             <constraint firstItem="uYJ-RM-wly" firstAttribute="leading" secondItem="UKm-m1-3hd" secondAttribute="leading" constant="46" id="FTJ-g1-AWg"/>
@@ -479,6 +497,7 @@
                                             <mask key="subviews">
                                                 <exclude reference="bbd-Jw-bKa"/>
                                                 <exclude reference="AVN-YH-Bym"/>
+                                                <exclude reference="701-L7-wwM"/>
                                                 <exclude reference="s1d-yp-8E4"/>
                                                 <exclude reference="FAf-Dy-MqP"/>
                                                 <exclude reference="m6Y-yM-1Se"/>
@@ -492,6 +511,9 @@
                                                 <exclude reference="EYz-uW-cac"/>
                                                 <exclude reference="AJP-il-3pg"/>
                                                 <exclude reference="iUB-6D-wkE"/>
+                                                <exclude reference="47A-G4-BJL"/>
+                                                <exclude reference="7E9-tX-WiJ"/>
+                                                <exclude reference="CGa-94-Wem"/>
                                                 <exclude reference="3Ah-tx-fkz"/>
                                                 <exclude reference="sA6-jd-53y"/>
                                                 <exclude reference="34k-9x-THd"/>
@@ -513,6 +535,7 @@
                                             <mask key="subviews">
                                                 <include reference="bbd-Jw-bKa"/>
                                                 <include reference="AVN-YH-Bym"/>
+                                                <include reference="701-L7-wwM"/>
                                                 <include reference="s1d-yp-8E4"/>
                                                 <include reference="FAf-Dy-MqP"/>
                                                 <include reference="m6Y-yM-1Se"/>
@@ -526,6 +549,9 @@
                                                 <include reference="EYz-uW-cac"/>
                                                 <include reference="AJP-il-3pg"/>
                                                 <include reference="iUB-6D-wkE"/>
+                                                <include reference="47A-G4-BJL"/>
+                                                <include reference="7E9-tX-WiJ"/>
+                                                <include reference="CGa-94-Wem"/>
                                                 <include reference="3Ah-tx-fkz"/>
                                                 <include reference="sA6-jd-53y"/>
                                                 <include reference="34k-9x-THd"/>
@@ -674,6 +700,7 @@
                     <size key="freeformSize" width="400" height="800"/>
                     <connections>
                         <outlet property="ageInputOutlet" destination="E2w-17-FRK" id="qpI-8e-Jhi"/>
+                        <outlet property="emailErrorMessageOutlet" destination="701-L7-wwM" id="Zho-MV-wdE"/>
                         <outlet property="emailInputOutlet" destination="AVN-YH-Bym" id="R6q-fn-xnc"/>
                         <outlet property="emailMessageOutlet" destination="uYJ-RM-wly" id="Szn-IC-aJz"/>
                         <outlet property="lengthInputOutlet" destination="s1d-yp-8E4" id="hxa-KN-jpR"/>
