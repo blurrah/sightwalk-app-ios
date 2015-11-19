@@ -20,11 +20,16 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var bottomViewConstraintOutlet: NSLayoutConstraint!
     
     @IBOutlet var emailErrorMessageOutlet: UILabel!
-    @IBOutlet weak var emailMessageOutlet: UILabel!
+    @IBOutlet var usernameErrorMessageOutlet: UILabel!
+    @IBOutlet var passwordErrorMessageOutlet: UILabel!
+    @IBOutlet var ageErrorMessageOutlet: UILabel!
+    @IBOutlet var lengthErrorMessageOutlet: UILabel!
+    @IBOutlet var weightErrorMessageOutlet: UILabel!
+    
     let swiftCop = SwiftCop()
     
     @IBAction func registrationButtonAction(sender: AnyObject) {
-        if (swiftCop.anyGuilty()) {
+        if ((swiftCop.anyGuilty()) && (self.lengthInputOutlet.text != "" || self.weightInputOutlet.text != "" || self.ageInputOutlet.text != "")) {
             JLToast.makeText("Gegevens kloppen niet, probeer opnieuw", delay: 0, duration: 2).show()
         }
     }
@@ -45,16 +50,19 @@ class RegistrationViewController: UIViewController {
         JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         
         swiftCop.addSuspect(Suspect(view:self.emailInputOutlet, sentence: "Ongeldige email", trial: Trial.Email))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Minimum 1 karakter", trial: Trial.Length(.Minimum, 1)))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Maximum 3 karakters", trial: Trial.Length(.Maximum, 3)))
-        swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Minimum 2 karakters", trial: Trial.Length(.Minimum, 2)))
-        swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Maximum 3 karakters", trial: Trial.Length(.Maximum, 3)))
-        swiftCop.addSuspect(Suspect(view:self.weightInputOutlet, sentence: "Minimum 2 karakters", trial: Trial.Length(.Minimum, 2)))
-        swiftCop.addSuspect(Suspect(view:self.weightInputOutlet, sentence: "Maximum 3 karakters", trial: Trial.Length(.Maximum, 3)))
-        swiftCop.addSuspect(Suspect(view:self.usernameInputOutlet, sentence: "Minimum 3 karakters", trial: Trial.Length(.Minimum, 3)))
-        swiftCop.addSuspect(Suspect(view:self.usernameInputOutlet, sentence: "Maximum 10 karakters", trial: Trial.Length(.Maximum, 10)))
+        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
+        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Minimaal 1 cijfer", trial: Trial.Length(.Minimum, 1)))
+        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
+        swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
+        swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Minimaal 2 cijfers", trial: Trial.Length(.Minimum, 2)))
+        swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
+        swiftCop.addSuspect(Suspect(view:self.weightInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
+        swiftCop.addSuspect(Suspect(view:self.weightInputOutlet, sentence: "Minimaal 2 cijfers", trial: Trial.Length(.Minimum, 2)))
+        swiftCop.addSuspect(Suspect(view:self.weightInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
+        swiftCop.addSuspect(Suspect(view:self.usernameInputOutlet, sentence: "Minimaal 3 karakters", trial: Trial.Length(.Minimum, 3)))
+        swiftCop.addSuspect(Suspect(view:self.usernameInputOutlet, sentence: "Maximaal 10 karakters", trial: Trial.Length(.Maximum, 10)))
         swiftCop.addSuspect(Suspect(view:self.passwordInputOutlet, sentence: "Minimaal 5 karakters", trial: Trial.Length(.Minimum, 5)))
-        swiftCop.addSuspect(Suspect(view:self.passwordInputOutlet, sentence: "Maximum 20 karakters", trial: Trial.Length(.Maximum, 20)))
+        swiftCop.addSuspect(Suspect(view:self.passwordInputOutlet, sentence: "Maximaal 20 karakters", trial: Trial.Length(.Maximum, 20)))
     }
     
     @IBAction func validateEmail(sender: GenericTextField) {
@@ -67,18 +75,48 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func validateUsername(sender: GenericTextField) {
+        self.usernameErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
+            self.usernameInputOutlet.activateWarning()
+        } else {
+            self.usernameInputOutlet.deactivateWarning()
+        }
     }
     
     @IBAction func validatePassword(sender: GenericTextField) {
+        self.passwordErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
+            self.passwordInputOutlet.activateWarning()
+        } else {
+            self.passwordInputOutlet.deactivateWarning()
+        }
     }
     
     @IBAction func validateAge(sender: GenericTextField) {
+        self.ageErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
+            self.ageInputOutlet.activateWarning()
+        } else {
+            self.ageInputOutlet.deactivateWarning()
+        }
     }
     
     @IBAction func validateLength(sender: GenericTextField) {
+        self.lengthErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
+            self.lengthInputOutlet.activateWarning()
+        } else {
+            self.lengthInputOutlet.deactivateWarning()
+        }
     }
     
     @IBAction func validateWeight(sender: GenericTextField) {
+        self.weightErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
+        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
+            self.weightInputOutlet.activateWarning()
+        } else {
+            self.weightInputOutlet.deactivateWarning()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
