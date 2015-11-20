@@ -14,7 +14,6 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageViewOutlet.image = UIImage(named: "intro_background")
     }
 
     override func didReceiveMemoryWarning() {
