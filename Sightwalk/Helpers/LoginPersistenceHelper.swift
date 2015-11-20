@@ -21,7 +21,7 @@ class LoginPersistenceHelper {
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
     func saveToken(username: String, token: String) {
-        userDefaults.setObject(username, forKey: "userNameKey")
+        userDefaults.setObject(username, forKey: "usernameKey")
         
         do {
             try Locksmith.saveData(["token": token], forUserAccount: username)
@@ -31,7 +31,7 @@ class LoginPersistenceHelper {
     }
     
     func accessToken(onCompletion: Void -> Void) {
-        guard let name = userDefaults.stringForKey("userNameKey") else {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
@@ -42,8 +42,8 @@ class LoginPersistenceHelper {
         print(dictionary)
     }
     
-    func updateToken(token: String, onCompletion: Void -> Void) {
-        guard let name = userDefaults.stringForKey("userNameKey") else {
+    func updateToken(token: String) {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
@@ -54,6 +54,18 @@ class LoginPersistenceHelper {
             print(error)
         }
         
-        onCompletion() // Send this to a store
+    }
+    
+    func deleteToken(token: String) {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
+            print("Could not get user key")
+            return
+        }
+        
+        do {
+            try Locksmith.deleteDataForUserAccount(name)
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }
