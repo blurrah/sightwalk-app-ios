@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = initialViewController
         //self.window?.makeKeyAndVisible()
         
+        LoginPersistenceHelper.SharedInstance.accessToken({ result in
+            print("login persistence met token: \(result)")
+        })
+        
         return true
     }
 

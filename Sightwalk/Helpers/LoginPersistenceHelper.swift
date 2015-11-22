@@ -21,7 +21,12 @@ class LoginPersistenceHelper {
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
     func saveToken(username: String, token: String) {
-        userDefaults.setObject(username, forKey: "userNameKey")
+        userDefaults.setObject(username, forKey: "usernameKey")
+        
+        if let _ = Locksmith.loadDataForUserAccount(username) {
+            self.updateToken(token)
+            return
+        }
         
         do {
             try Locksmith.saveData(["token": token], forUserAccount: username)
@@ -30,20 +35,20 @@ class LoginPersistenceHelper {
         }
     }
     
-    func accessToken(onCompletion: Void -> Void) {
-        guard let name = userDefaults.stringForKey("userNameKey") else {
+    func accessToken(onCompletion: String -> Void) {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
         
-        let dictionary = Locksmith.loadDataForUserAccount(name)
+        let dictionary = Locksmith.loadDataForUserAccount(name)!
         
         // Do something with the data here
-        print(dictionary)
+        onCompletion(dictionary["token"]! as! String)
     }
     
-    func updateToken(token: String, onCompletion: Void -> Void) {
-        guard let name = userDefaults.stringForKey("userNameKey") else {
+    func updateToken(token: String) {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
@@ -53,7 +58,18 @@ class LoginPersistenceHelper {
         } catch let error as NSError {
             print(error)
         }
+    }
+    
+    func deleteToken(token: String) {
+        guard let name = userDefaults.stringForKey("usernameKey") else {
+            print("Could not get user key")
+            return
+        }
         
-        onCompletion() // Send this to a store
+        do {
+            try Locksmith.deleteDataForUserAccount(name)
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }

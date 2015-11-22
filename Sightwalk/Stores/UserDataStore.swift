@@ -20,18 +20,43 @@ class UserDataStore {
     var username: String?
     var token: String?
     
-    func getNewToken(username: String, password: String) {
-        // Send data to API
-        
-        // Get token back
-        let token = "testtokenplsdontkillme"
-        
-        self.token = token
-        
-        // When correct: Store username in variable
-        self.username = username
-        
-        // When correct: Store data in keychain and user defaults
-        LoginPersistenceHelper.SharedInstance.saveToken(username, token: token)
+    let userAPIHelper = UserAPIHelper.sharedInstance
+    let loginPersistenceHelper = LoginPersistenceHelper.SharedInstance
+    
+    func getNewToken(username: String, password: String, onCompletion: (success: Bool, message: String?) -> ()) {
+        self.userAPIHelper.loginUser(username, password: password, onCompletion: { token, error in
+            guard error == nil else {
+                onCompletion(success: false, message: "API Request errored: \(error)")
+                return
+            }
+            
+            self.token = token!
+            self.username = username
+            
+            self.loginPersistenceHelper.saveToken(username, token: token!)
+            
+            onCompletion(success: true, message: nil)
+        })
+    }
+    
+    func registerToken(username: String, password: String, email: String, onCompletion: (success: Bool, message: String?) -> ()) {
+        self.userAPIHelper.registerUser(username, password: password, email: email, onCompletion: { token, error in
+            guard error != nil else {
+                onCompletion(success: false, message: "API Request errored: \(error)")
+                return
+            }
+            
+            self.token = token!
+            self.username = username
+            
+            self.loginPersistenceHelper.saveToken(username, token: token!)
+            
+            onCompletion(success: true, message: nil)
+        })
+    }
+    
+    func deleteToken() {
+        self.loginPersistenceHelper.deleteToken(self.username!)
+        self.token = nil
     }
 }

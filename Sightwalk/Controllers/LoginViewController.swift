@@ -18,6 +18,15 @@ class LoginViewController: UIViewController {
         passwordInputOutlet.resignFirstResponder()
     }
     
+    let userDataStore = UserDataStore.sharedInstance
+    
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        userDataStore.getNewToken(self.usernameInputOutlet.text!, password: self.passwordInputOutlet.text!, onCompletion: { success, message in
+            print("success is: \(success)")
+            print("message is: \(message)")
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
