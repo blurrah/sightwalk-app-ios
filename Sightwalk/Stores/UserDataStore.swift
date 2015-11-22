@@ -25,7 +25,7 @@ class UserDataStore {
     
     func getNewToken(username: String, password: String, onCompletion: (success: Bool, message: String?) -> ()) {
         self.userAPIHelper.loginUser(username, password: password, onCompletion: { token, error in
-            guard error != nil else {
+            guard error == nil else {
                 onCompletion(success: false, message: "API Request errored: \(error)")
                 return
             }
@@ -34,6 +34,8 @@ class UserDataStore {
             self.username = username
             
             self.loginPersistenceHelper.saveToken(username, token: token!)
+            
+            onCompletion(success: true, message: nil)
         })
     }
     

@@ -23,6 +23,11 @@ class LoginPersistenceHelper {
     func saveToken(username: String, token: String) {
         userDefaults.setObject(username, forKey: "usernameKey")
         
+        if let _ = Locksmith.loadDataForUserAccount(username) {
+            self.updateToken(token)
+            return
+        }
+        
         do {
             try Locksmith.saveData(["token": token], forUserAccount: username)
         } catch let error as NSError {
@@ -30,16 +35,16 @@ class LoginPersistenceHelper {
         }
     }
     
-    func accessToken(onCompletion: Void -> Void) {
+    func accessToken(onCompletion: String -> Void) {
         guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
         
-        let dictionary = Locksmith.loadDataForUserAccount(name)
+        let dictionary = Locksmith.loadDataForUserAccount(name)!
         
         // Do something with the data here
-        print(dictionary)
+        onCompletion(dictionary["token"]! as! String)
     }
     
     func updateToken(token: String) {
@@ -53,7 +58,6 @@ class LoginPersistenceHelper {
         } catch let error as NSError {
             print(error)
         }
-        
     }
     
     func deleteToken(token: String) {

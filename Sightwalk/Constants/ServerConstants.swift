@@ -9,11 +9,11 @@
 import Foundation
 
 struct ServerConstants {
-    static let address = "https://sightwalk.net/api/"
+    static let address = "http://sightwalk.net/"
     
     struct User {
-        static let login = "login/"
-        static let logout = "logout/"
-        static let register = "register/"
+        static let login = "auth/login/"
+        static let logout = "auth/logout/"
+        static let register = "auth/register/"
     }
 }

@@ -31,12 +31,12 @@ class UserAPIHelper {
         Alamofire.request(.POST, "\(ServerConstants.address)\(ServerConstants.User.login)", parameters: parameters, encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            .responseData({ response in
+            .responseJSON(completionHandler: { response in
                 switch response.result {
                 case .Success:
                     let jsonResponse = JSON(response.result.value!)
                     
-                    let token = jsonResponse["token"].string
+                    let token = jsonResponse["token"].string!
                     
                     onCompletion(token: token, error: nil)
                 case .Failure(let error):
