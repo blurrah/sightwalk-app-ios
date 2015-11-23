@@ -10,10 +10,10 @@ import UIKit
 
 class IntroViewController: UIViewController {
     
+    @IBOutlet var imageViewOutlet: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
