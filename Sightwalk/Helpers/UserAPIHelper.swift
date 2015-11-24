@@ -36,6 +36,15 @@ class UserAPIHelper {
                 case .Success:
                     let jsonResponse = JSON(response.result.value!)
                     
+                    let success = jsonResponse["success"].bool!
+                    
+                    guard success == true else {
+                        let errorObject = self.createErrorObject(jsonResponse["error"].int!)
+                        
+                        onCompletion(token: nil, error: errorObject)
+                        return
+                    }
+                    
                     let token = jsonResponse["token"].string!
                     
                     onCompletion(token: token, error: nil)
@@ -69,5 +78,21 @@ class UserAPIHelper {
                     onCompletion(token: nil, error: error)
                 }
             })
+    }
+    
+    private func createErrorObject(code: Int) -> NSError {
+        let errorDetail:NSMutableDictionary = NSMutableDictionary()
+        
+        switch code {
+        case -1:
+            errorDetail.setValue("Onbekende fout opgetreden.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: -1, userInfo: errorDetail as [NSObject : AnyObject])
+        case 1:
+            errorDetail.setValue("Inloggegevens kloppen niet.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 1, userInfo: errorDetail as [NSObject : AnyObject])
+        default:
+            errorDetail.setValue("Onbekende fout opgetreden.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: -1, userInfo: errorDetail as [NSObject : AnyObject])
+        }
     }
 }

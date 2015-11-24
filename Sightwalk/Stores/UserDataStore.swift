@@ -26,7 +26,7 @@ class UserDataStore {
     func getNewToken(username: String, password: String, onCompletion: (success: Bool, message: String?) -> ()) {
         self.userAPIHelper.loginUser(username, password: password, onCompletion: { token, error in
             guard error == nil else {
-                onCompletion(success: false, message: "API Request errored: \(error)")
+                onCompletion(success: false, message: "Er gaat iets fout: \(error!.localizedDescription)")
                 return
             }
             
