@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */; };
 		2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */; };
+		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */; };
 		2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		2F385FED1BF4B7FA0036DCCC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPersistenceHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		2FFA3D801BF352C600B758D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */,
 				2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */,
 				2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */,
 				2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */,
@@ -454,6 +457,7 @@
 				2FFA3D871BF49C7600B758D5 /* FacebookButton.swift in Sources */,
 				2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */,
 				F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */,
+				2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */,
 				2FFA3D851BF4970F00B758D5 /* GenericViewButton.swift in Sources */,
 				2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */,
 				F33DC9291BFB42BE003C69F6 /* FavoriteViewController.swift in Sources */,
