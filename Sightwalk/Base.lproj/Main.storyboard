@@ -1195,14 +1195,18 @@
                         <constraints>
                             <constraint firstItem="hXX-YQ-zOc" firstAttribute="top" secondItem="DIX-a7-9HB" secondAttribute="bottom" constant="157" id="DDX-Dj-Ucm"/>
                             <constraint firstItem="DIX-a7-9HB" firstAttribute="centerX" secondItem="Etu-Uh-eKW" secondAttribute="centerX" id="gLS-8D-fSd"/>
+                            <constraint firstItem="hXX-YQ-zOc" firstAttribute="top" secondItem="DIX-a7-9HB" secondAttribute="bottom" constant="63" id="xdE-ce-dpS">
+                                <variation key="heightClass=regular-widthClass=compact" constant="83"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="DIX-a7-9HB"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DDX-Dj-Ucm"/>
                                 <exclude reference="gLS-8D-fSd"/>
+                                <exclude reference="DDX-Dj-Ucm"/>
+                                <exclude reference="xdE-ce-dpS"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1210,8 +1214,9 @@
                                 <include reference="DIX-a7-9HB"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DDX-Dj-Ucm"/>
                                 <include reference="gLS-8D-fSd"/>
+                                <exclude reference="DDX-Dj-Ucm"/>
+                                <include reference="xdE-ce-dpS"/>
                             </mask>
                         </variation>
                     </view>
