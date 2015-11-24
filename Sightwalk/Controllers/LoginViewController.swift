@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JLToast
 
 class LoginViewController: UIViewController {
 
@@ -21,9 +22,13 @@ class LoginViewController: UIViewController {
     let userDataStore = UserDataStore.sharedInstance
     
     @IBAction func loginButtonAction(sender: AnyObject) {
+        LoadingOverlayView.sharedInstance.showOverlayView(navigationController?.view)
         userDataStore.getNewToken(self.usernameInputOutlet.text!, password: self.passwordInputOutlet.text!, onCompletion: { success, message in
-            print("success is: \(success)")
-            print("message is: \(message)")
+            LoadingOverlayView.sharedInstance.hideOverlayView()
+            
+            if message != nil {
+                JLToast.makeText(message!, delay: 0, duration: 2).show()
+            }
         })
     }
     
@@ -31,6 +36,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
+        JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
     }
     
     override func viewWillAppear(animated: Bool) {
