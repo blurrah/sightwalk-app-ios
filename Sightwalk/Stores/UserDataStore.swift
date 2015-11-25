@@ -9,7 +9,7 @@
 import Foundation
 
 class UserDataStore {
-    // Singleton instancing
+    // Singleton instance
     class var sharedInstance: UserDataStore {
         struct Singleton {
             static let instance = UserDataStore()

@@ -43,13 +43,23 @@ class RegistrationViewController: UIViewController {
         LoadingOverlayView.sharedInstance.showOverlayView(self.navigationController?.view)
         userDataStore.registerUser(self.usernameInputOutlet.text!, password: self.passwordInputOutlet.text!, email: self.emailInputOutlet.text!, weight: Int(self.weightInputOutlet.text!)!, length: Int(self.lengthInputOutlet.text!)!, birthdate: birthdate, onCompletion: { success, message in
             
-            LoadingOverlayView.sharedInstance.hideOverlayView()
             guard message == nil else {
+                LoadingOverlayView.sharedInstance.hideOverlayView()
                 JLToast.makeText(message!, delay: 0, duration: 2).show()
                 return
             }
             
-            JLToast.makeText("Registratie is voltooid!", delay: 0, duration: 2).show()
+            self.userDataStore.getNewToken(self.usernameInputOutlet.text!, password: self.passwordInputOutlet.text!, onCompletion: { success, message in
+                LoadingOverlayView.sharedInstance.hideOverlayView()
+                
+                if message != nil {
+                    JLToast.makeText(message!, delay: 0, duration: 2).show()
+                    return
+                }
+                
+                self.goToDashboard()
+                
+            })
         })
     }
     
@@ -152,6 +162,12 @@ class RegistrationViewController: UIViewController {
         
         let dateString = dateFormatter.stringFromDate((sender?.date)!)
         self.ageInputOutlet.text = dateString
+    }
+    
+    func goToDashboard() {
+        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        presentViewController(vc, animated: true, completion: nil)
     }
 
     /*

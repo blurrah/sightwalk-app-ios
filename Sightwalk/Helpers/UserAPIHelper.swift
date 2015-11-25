@@ -103,6 +103,24 @@ class UserAPIHelper {
         case 1:
             errorDetail.setValue("Inloggegevens kloppen niet.", forKey: NSLocalizedDescriptionKey)
             return NSError(domain: "net.sightwalk.error", code: 1, userInfo: errorDetail as [NSObject : AnyObject])
+        case 3:
+            errorDetail.setValue("E-mailadres klopt niet (is deze al in gebruik?).", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 3, userInfo: errorDetail as [NSObject : AnyObject])
+        case 4:
+            errorDetail.setValue("Wachtwoord klopt niet.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 4, userInfo: errorDetail as [NSObject : AnyObject])
+        case 5:
+            errorDetail.setValue("Gebruikersnaam is al in gebruik.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 5, userInfo: errorDetail as [NSObject : AnyObject])
+        case 6:
+            errorDetail.setValue("Gewicht klopt niet.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 6, userInfo: errorDetail as [NSObject : AnyObject])
+        case 7:
+            errorDetail.setValue("Lengte klopt niet.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 7, userInfo: errorDetail as [NSObject : AnyObject])
+        case 8:
+            errorDetail.setValue("Geboortedatum klopt niet.", forKey: NSLocalizedDescriptionKey)
+            return NSError(domain: "net.sightwalk.error", code: 8, userInfo: errorDetail as [NSObject : AnyObject])
         default:
             errorDetail.setValue("Onbekende fout opgetreden.", forKey: NSLocalizedDescriptionKey)
             return NSError(domain: "net.sightwalk.error", code: -1, userInfo: errorDetail as [NSObject : AnyObject])
