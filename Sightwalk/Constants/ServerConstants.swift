@@ -14,6 +14,6 @@ struct ServerConstants {
     struct User {
         static let login = "auth/login/"
         static let logout = "auth/logout/"
-        static let register = "auth/register/"
+        static let register = "user/"
     }
 }

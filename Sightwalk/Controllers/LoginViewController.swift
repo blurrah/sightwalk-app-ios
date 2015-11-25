@@ -28,7 +28,10 @@ class LoginViewController: UIViewController {
             
             if message != nil {
                 JLToast.makeText(message!, delay: 0, duration: 2).show()
+                return
             }
+            
+            self.goToDashboard()
         })
     }
     
@@ -49,6 +52,12 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func goToDashboard() {
+        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        presentViewController(vc, animated: true, completion: nil)
     }
     
 
