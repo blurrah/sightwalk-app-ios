@@ -285,7 +285,7 @@
                                                     </constraint>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="7RM-mc-M08"/>
@@ -487,7 +487,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="IQ7-F6-eGm"/>
@@ -548,7 +548,27 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leeftijd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2w-17-FRK" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbG-u7-cSz">
+                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="n2q-re-Khr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="n2q-re-Khr"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="n2q-re-Khr"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Geboortedatum" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2w-17-FRK" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                 <animations/>
                                                 <constraints>
@@ -582,26 +602,6 @@
                                                     <action selector="validateAge:" destination="Mql-4Z-w7B" eventType="editingChanged" id="wYU-lH-ej5"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbG-u7-cSz">
-                                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="n2q-re-Khr"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="n2q-re-Khr"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="n2q-re-Khr"/>
-                                                    </mask>
-                                                </variation>
-                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -669,8 +669,8 @@
                                                 <exclude reference="QvD-6j-em8"/>
                                                 <exclude reference="xOs-Hv-GKv"/>
                                                 <exclude reference="gAV-dy-4jW"/>
-                                                <exclude reference="E2w-17-FRK"/>
                                                 <exclude reference="KbG-u7-cSz"/>
+                                                <exclude reference="E2w-17-FRK"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="AJP-il-3pg"/>
@@ -731,8 +731,8 @@
                                                 <include reference="QvD-6j-em8"/>
                                                 <include reference="xOs-Hv-GKv"/>
                                                 <include reference="gAV-dy-4jW"/>
-                                                <include reference="E2w-17-FRK"/>
                                                 <include reference="KbG-u7-cSz"/>
+                                                <include reference="E2w-17-FRK"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="AJP-il-3pg"/>
@@ -1204,9 +1204,9 @@
                                 <exclude reference="DIX-a7-9HB"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="gLS-8D-fSd"/>
                                 <exclude reference="DDX-Dj-Ucm"/>
                                 <exclude reference="xdE-ce-dpS"/>
+                                <exclude reference="gLS-8D-fSd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1214,9 +1214,9 @@
                                 <include reference="DIX-a7-9HB"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="gLS-8D-fSd"/>
                                 <exclude reference="DDX-Dj-Ucm"/>
                                 <include reference="xdE-ce-dpS"/>
+                                <include reference="gLS-8D-fSd"/>
                             </mask>
                         </variation>
                     </view>
@@ -1304,13 +1304,13 @@ om de boel op te vullen.</string>
                                         <exclude reference="7Ja-Fl-sm8"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="3h6-UX-rBM"/>
+                                        <exclude reference="O7O-qL-x4d"/>
+                                        <exclude reference="WZF-mx-nhk"/>
                                         <exclude reference="IGk-Uj-0A2"/>
                                         <exclude reference="LWc-co-Rpm"/>
                                         <exclude reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
-                                        <exclude reference="3h6-UX-rBM"/>
-                                        <exclude reference="O7O-qL-x4d"/>
-                                        <exclude reference="WZF-mx-nhk"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1319,13 +1319,13 @@ om de boel op te vullen.</string>
                                         <include reference="7Ja-Fl-sm8"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="3h6-UX-rBM"/>
+                                        <include reference="O7O-qL-x4d"/>
+                                        <include reference="WZF-mx-nhk"/>
                                         <include reference="IGk-Uj-0A2"/>
                                         <include reference="LWc-co-Rpm"/>
                                         <include reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
-                                        <include reference="3h6-UX-rBM"/>
-                                        <include reference="O7O-qL-x4d"/>
-                                        <include reference="WZF-mx-nhk"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1343,10 +1343,10 @@ om de boel op te vullen.</string>
                                 <exclude reference="IoI-y5-Vem"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="tbZ-Db-VHz"/>
                                 <exclude reference="Vxh-zc-nlR"/>
                                 <exclude reference="o97-LU-hJC"/>
                                 <exclude reference="yqQ-we-v4B"/>
-                                <exclude reference="tbZ-Db-VHz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1354,10 +1354,10 @@ om de boel op te vullen.</string>
                                 <include reference="IoI-y5-Vem"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="tbZ-Db-VHz"/>
                                 <include reference="Vxh-zc-nlR"/>
                                 <include reference="o97-LU-hJC"/>
                                 <include reference="yqQ-we-v4B"/>
-                                <include reference="tbZ-Db-VHz"/>
                             </mask>
                         </variation>
                     </view>
@@ -1448,13 +1448,13 @@ om de boel op te vullen.</string>
                                         <exclude reference="myF-tv-QXe"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="5pf-6n-hLE"/>
-                                        <exclude reference="BqA-AU-Mru"/>
-                                        <exclude reference="WDZ-AH-9wN"/>
                                         <exclude reference="0g4-qS-nI6"/>
                                         <exclude reference="fBQ-kf-2zx"/>
                                         <exclude reference="pmQ-ON-O8R"/>
                                         <exclude reference="qV7-V7-YIA"/>
+                                        <exclude reference="5pf-6n-hLE"/>
+                                        <exclude reference="BqA-AU-Mru"/>
+                                        <exclude reference="WDZ-AH-9wN"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1463,13 +1463,13 @@ om de boel op te vullen.</string>
                                         <include reference="myF-tv-QXe"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="5pf-6n-hLE"/>
-                                        <include reference="BqA-AU-Mru"/>
-                                        <include reference="WDZ-AH-9wN"/>
                                         <include reference="0g4-qS-nI6"/>
                                         <include reference="fBQ-kf-2zx"/>
                                         <include reference="pmQ-ON-O8R"/>
                                         <include reference="qV7-V7-YIA"/>
+                                        <include reference="5pf-6n-hLE"/>
+                                        <include reference="BqA-AU-Mru"/>
+                                        <include reference="WDZ-AH-9wN"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1487,10 +1487,10 @@ om de boel op te vullen.</string>
                                 <exclude reference="2pV-Zk-MU4"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="d6K-Sb-uw5"/>
                                 <exclude reference="2n5-qd-sdt"/>
                                 <exclude reference="4dq-5Z-HPN"/>
                                 <exclude reference="qX3-xm-MCW"/>
-                                <exclude reference="d6K-Sb-uw5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1498,10 +1498,10 @@ om de boel op te vullen.</string>
                                 <include reference="2pV-Zk-MU4"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="d6K-Sb-uw5"/>
                                 <include reference="2n5-qd-sdt"/>
                                 <include reference="4dq-5Z-HPN"/>
                                 <include reference="qX3-xm-MCW"/>
-                                <include reference="d6K-Sb-uw5"/>
                             </mask>
                         </variation>
                     </view>
@@ -1585,14 +1585,14 @@ om de boel op te vullen.</string>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="xSY-hQ-nZh"/>
                                                 <exclude reference="ePo-JJ-Ur5"/>
+                                                <exclude reference="xSY-hQ-nZh"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="xSY-hQ-nZh"/>
                                                 <include reference="ePo-JJ-Ur5"/>
+                                                <include reference="xSY-hQ-nZh"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -1659,13 +1659,13 @@ om de boel op te vullen.</string>
                                 <exclude reference="UuG-lF-ZTA"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5iR-Y4-8yP"/>
-                                <exclude reference="Im1-iP-rp8"/>
-                                <exclude reference="LM3-4g-TGD"/>
+                                <exclude reference="XQj-gW-E04"/>
                                 <exclude reference="1CZ-td-zbn"/>
                                 <exclude reference="EHS-KM-day"/>
                                 <exclude reference="z6B-8F-qWD"/>
-                                <exclude reference="XQj-gW-E04"/>
+                                <exclude reference="5iR-Y4-8yP"/>
+                                <exclude reference="Im1-iP-rp8"/>
+                                <exclude reference="LM3-4g-TGD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1674,13 +1674,13 @@ om de boel op te vullen.</string>
                                 <include reference="UuG-lF-ZTA"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5iR-Y4-8yP"/>
-                                <include reference="Im1-iP-rp8"/>
-                                <include reference="LM3-4g-TGD"/>
+                                <include reference="XQj-gW-E04"/>
                                 <include reference="1CZ-td-zbn"/>
                                 <include reference="EHS-KM-day"/>
                                 <include reference="z6B-8F-qWD"/>
-                                <include reference="XQj-gW-E04"/>
+                                <include reference="5iR-Y4-8yP"/>
+                                <include reference="Im1-iP-rp8"/>
+                                <include reference="LM3-4g-TGD"/>
                             </mask>
                         </variation>
                     </view>

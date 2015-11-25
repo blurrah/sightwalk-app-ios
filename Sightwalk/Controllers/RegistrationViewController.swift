@@ -50,9 +50,8 @@ class RegistrationViewController: UIViewController {
         JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         
         swiftCop.addSuspect(Suspect(view:self.emailInputOutlet, sentence: "Ongeldige email", trial: Trial.Email))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Minimaal 1 cijfer", trial: Trial.Length(.Minimum, 1)))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
+        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Ongeldige geboortedatum", trial: Trial.Format("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)")))
+        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Gebruik '/' voor de scheiding", trial: Trial.Exclusion([".", "-"])))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Minimaal 2 cijfers", trial: Trial.Length(.Minimum, 2)))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
