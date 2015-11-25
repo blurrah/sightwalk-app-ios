@@ -1101,22 +1101,22 @@
                                 <exclude reference="ZG2-xU-SfR"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DwV-Mm-uLn"/>
-                                <exclude reference="hQV-Hu-7xF"/>
-                                <exclude reference="UGn-fP-CJK"/>
-                                <exclude reference="tSW-BS-YLY"/>
-                                <exclude reference="6yW-zq-tqh"/>
-                                <exclude reference="YdQ-9U-SKU"/>
-                                <exclude reference="8o4-RZ-roX"/>
-                                <exclude reference="ccJ-oJ-pmb"/>
-                                <exclude reference="vYP-65-d4t"/>
+                                <exclude reference="INk-Ew-60O"/>
                                 <exclude reference="abJ-ND-lMp"/>
                                 <exclude reference="d3h-py-am2"/>
                                 <exclude reference="iaF-MZ-Jef"/>
                                 <exclude reference="lr2-JM-qxe"/>
+                                <exclude reference="8o4-RZ-roX"/>
+                                <exclude reference="ccJ-oJ-pmb"/>
+                                <exclude reference="vYP-65-d4t"/>
                                 <exclude reference="Dbx-nD-GIs"/>
                                 <exclude reference="uIA-ML-1Nv"/>
-                                <exclude reference="INk-Ew-60O"/>
+                                <exclude reference="6yW-zq-tqh"/>
+                                <exclude reference="YdQ-9U-SKU"/>
+                                <exclude reference="UGn-fP-CJK"/>
+                                <exclude reference="tSW-BS-YLY"/>
+                                <exclude reference="DwV-Mm-uLn"/>
+                                <exclude reference="hQV-Hu-7xF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1129,22 +1129,22 @@
                                 <include reference="ZG2-xU-SfR"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DwV-Mm-uLn"/>
-                                <include reference="hQV-Hu-7xF"/>
-                                <include reference="UGn-fP-CJK"/>
-                                <include reference="tSW-BS-YLY"/>
-                                <include reference="6yW-zq-tqh"/>
-                                <include reference="YdQ-9U-SKU"/>
-                                <include reference="8o4-RZ-roX"/>
-                                <include reference="ccJ-oJ-pmb"/>
-                                <include reference="vYP-65-d4t"/>
+                                <include reference="INk-Ew-60O"/>
                                 <exclude reference="abJ-ND-lMp"/>
                                 <include reference="d3h-py-am2"/>
                                 <include reference="iaF-MZ-Jef"/>
                                 <include reference="lr2-JM-qxe"/>
+                                <include reference="8o4-RZ-roX"/>
+                                <include reference="ccJ-oJ-pmb"/>
+                                <include reference="vYP-65-d4t"/>
                                 <include reference="Dbx-nD-GIs"/>
                                 <include reference="uIA-ML-1Nv"/>
-                                <include reference="INk-Ew-60O"/>
+                                <include reference="6yW-zq-tqh"/>
+                                <include reference="YdQ-9U-SKU"/>
+                                <include reference="UGn-fP-CJK"/>
+                                <include reference="tSW-BS-YLY"/>
+                                <include reference="DwV-Mm-uLn"/>
+                                <include reference="hQV-Hu-7xF"/>
                             </mask>
                         </variation>
                         <connections>
@@ -1195,57 +1195,8 @@
                     <view key="view" contentMode="scaleToFill" id="8zQ-1s-PBi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVt-yI-1Bm" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="Hit-3w-7dH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Start"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Hit-3w-7dH"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Hit-3w-7dH"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="showWalktroughButtonPressed" destination="t3q-fP-BJI" eventType="touchUpInside" id="Osc-zD-0ur"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ulf-Kk-F09" firstAttribute="top" secondItem="kVt-yI-1Bm" secondAttribute="bottom" constant="20" id="Bmx-2Z-eSY"/>
-                            <constraint firstItem="kVt-yI-1Bm" firstAttribute="leading" secondItem="8zQ-1s-PBi" secondAttribute="leadingMargin" id="WUK-71-nEj"/>
-                            <constraint firstItem="kVt-yI-1Bm" firstAttribute="trailing" secondItem="8zQ-1s-PBi" secondAttribute="trailingMargin" id="ab3-VQ-B50"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="kVt-yI-1Bm"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Bmx-2Z-eSY"/>
-                                <exclude reference="WUK-71-nEj"/>
-                                <exclude reference="ab3-VQ-B50"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="kVt-yI-1Bm"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Bmx-2Z-eSY"/>
-                                <include reference="WUK-71-nEj"/>
-                                <include reference="ab3-VQ-B50"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2L-cC-ckA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1601,28 +1552,6 @@ om de boel op te vullen.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99N-bh-r5y" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="XHp-Bf-8NF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Ik ben er klaar voor!"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="XHp-Bf-8NF"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="XHp-Bf-8NF"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="closeButtonPressed:" destination="hTH-nf-Qcl" eventType="touchUpInside" id="3qQ-nJ-J7T"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuG-lF-ZTA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
@@ -1720,6 +1649,28 @@ om de boel op te vullen.</string>
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99N-bh-r5y" customClass="InvertedGenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="XHp-Bf-8NF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Ik ben er klaar voor!"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XHp-Bf-8NF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="XHp-Bf-8NF"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="hTH-nf-Qcl" eventType="touchUpInside" id="3qQ-nJ-J7T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1730,12 +1681,14 @@ om de boel op te vullen.</string>
                             <constraint firstAttribute="trailingMargin" secondItem="UuG-lF-ZTA" secondAttribute="trailing" constant="-20" id="Im1-iP-rp8"/>
                             <constraint firstItem="UuG-lF-ZTA" firstAttribute="leading" secondItem="EVP-Mg-rfj" secondAttribute="leadingMargin" constant="-20" id="LM3-4g-TGD"/>
                             <constraint firstItem="KVR-fM-zMH" firstAttribute="top" secondItem="99N-bh-r5y" secondAttribute="bottom" constant="20" id="XQj-gW-E04"/>
-                            <constraint firstItem="99N-bh-r5y" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="bottom" constant="20" id="z6B-8F-qWD"/>
+                            <constraint firstItem="99N-bh-r5y" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="bottom" constant="20" id="z6B-8F-qWD">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-63"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="99N-bh-r5y"/>
                                 <exclude reference="UuG-lF-ZTA"/>
+                                <exclude reference="99N-bh-r5y"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="XQj-gW-E04"/>
@@ -1749,8 +1702,8 @@ om de boel op te vullen.</string>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="99N-bh-r5y"/>
                                 <include reference="UuG-lF-ZTA"/>
+                                <include reference="99N-bh-r5y"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="XQj-gW-E04"/>
