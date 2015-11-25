@@ -36,6 +36,7 @@
 		F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
 		F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7A9161BFA231600420352 /* DashboardViewController.swift */; };
+		F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */; };
 		F6518919914CA5E2CADB278D /* Pods_Sightwalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */,
 				2FFA3D861BF49C7600B758D5 /* FacebookButton.swift */,
 				2FFA3D841BF4970F00B758D5 /* GenericViewButton.swift */,
+				F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
 				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
+				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
