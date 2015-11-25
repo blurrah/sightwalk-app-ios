@@ -27,11 +27,30 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var weightErrorMessageOutlet: UILabel!
     
     let swiftCop = SwiftCop()
+    let datepicker: UIDatePicker = UIDatePicker()
+    let userDataStore = UserDataStore.sharedInstance
     
     @IBAction func registrationButtonAction(sender: AnyObject) {
         if ((swiftCop.anyGuilty()) && (self.lengthInputOutlet.text != "" || self.weightInputOutlet.text != "" || self.ageInputOutlet.text != "")) {
             JLToast.makeText("Gegevens kloppen niet, probeer opnieuw", delay: 0, duration: 2).show()
+            return
         }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let birthdate = dateFormatter.stringFromDate(self.datepicker.date)
+        
+        LoadingOverlayView.sharedInstance.showOverlayView(self.navigationController?.view)
+        userDataStore.registerUser(self.usernameInputOutlet.text!, password: self.passwordInputOutlet.text!, email: self.emailInputOutlet.text!, weight: Int(self.weightInputOutlet.text!)!, length: Int(self.lengthInputOutlet.text!)!, birthdate: birthdate, onCompletion: { success, message in
+            
+            LoadingOverlayView.sharedInstance.hideOverlayView()
+            guard message == nil else {
+                JLToast.makeText(message!, delay: 0, duration: 2).show()
+                return
+            }
+            
+            JLToast.makeText("Registratie is voltooid!", delay: 0, duration: 2).show()
+        })
     }
     
     @IBAction func tapGestureAction(sender: AnyObject) {
@@ -50,8 +69,6 @@ class RegistrationViewController: UIViewController {
         JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         
         swiftCop.addSuspect(Suspect(view:self.emailInputOutlet, sentence: "Ongeldige email", trial: Trial.Email))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Ongeldige geboortedatum", trial: Trial.Format("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)")))
-        swiftCop.addSuspect(Suspect(view:self.ageInputOutlet, sentence: "Gebruik '/' voor de scheiding", trial: Trial.Exclusion([".", "-"])))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Alleen cijfers toegestaan", trial: Trial.Format("^[0-9]*$")))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Minimaal 2 cijfers", trial: Trial.Length(.Minimum, 2)))
         swiftCop.addSuspect(Suspect(view:self.lengthInputOutlet, sentence: "Maximaal 3 cijfers", trial: Trial.Length(.Maximum, 3)))
@@ -91,15 +108,6 @@ class RegistrationViewController: UIViewController {
         }
     }
     
-    @IBAction func validateAge(sender: GenericTextField) {
-        self.ageErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
-        if (swiftCop.isGuilty(sender)?.verdict() != nil) {
-            self.ageInputOutlet.activateWarning()
-        } else {
-            self.ageInputOutlet.deactivateWarning()
-        }
-    }
-    
     @IBAction func validateLength(sender: GenericTextField) {
         self.lengthErrorMessageOutlet.text = swiftCop.isGuilty(sender)?.verdict()
         if (swiftCop.isGuilty(sender)?.verdict() != nil) {
@@ -118,15 +126,32 @@ class RegistrationViewController: UIViewController {
         }
     }
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         self.title = "Registreren"
+        
+        // add Datepicker
+        
+        self.datepicker.datePickerMode = UIDatePickerMode.Date
+        self.datepicker.addTarget(self, action: Selector("onUpdateDatepicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.ageInputOutlet.inputView = datepicker
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func onUpdateDatepicker(sender: AnyObject?) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        let dateString = dateFormatter.stringFromDate((sender?.date)!)
+        self.ageInputOutlet.text = dateString
     }
 
     /*

@@ -39,17 +39,12 @@ class UserDataStore {
         })
     }
     
-    func registerToken(username: String, password: String, email: String, onCompletion: (success: Bool, message: String?) -> ()) {
-        self.userAPIHelper.registerUser(username, password: password, email: email, onCompletion: { token, error in
-            guard error != nil else {
-                onCompletion(success: false, message: "API Request errored: \(error)")
+    func registerUser(username: String, password: String, email: String, weight: Int, length: Int, birthdate: String, onCompletion: (success: Bool, message: String?) -> ()) {
+        self.userAPIHelper.registerUser(username, password: password, email: email, weight: weight, length: length, birthdate: birthdate, onCompletion: { success, error in
+            guard error == nil else {
+                onCompletion(success: false, message: "Er gaat iets fout: \(error!.localizedDescription)")
                 return
             }
-            
-            self.token = token!
-            self.username = username
-            
-            self.loginPersistenceHelper.saveToken(username, token: token!)
             
             onCompletion(success: true, message: nil)
         })

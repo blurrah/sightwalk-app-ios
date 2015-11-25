@@ -55,27 +55,40 @@ class UserAPIHelper {
     }
     
     // TODO: Refactor parameters to use tuple/dictionary
-    func registerUser(username: String, password: String, email: String, onCompletion: (token: String?, error: NSError?) -> ()) {
-        let parameters = [
+    func registerUser(username: String, password: String, email: String, weight: Int, length: Int, birthdate: String, onCompletion: (success: Bool, error: NSError?) -> ()) {
+        let parameters: [String: AnyObject] = [
             "username": username,
             "password": password,
             "email": email,
-            "instance_id": self.userIdentifier
+            "firstname": "Jeroen",
+            "lastname": "van GHBDoorn",
+            "weight": weight,
+            "length": length,
+            "birthdate": birthdate
         ]
         
         Alamofire.request(.POST, "\(ServerConstants.address)\(ServerConstants.User.register)", parameters: parameters, encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            .responseData({ response in
+            .responseJSON(completionHandler: { response in
                 switch response.result {
                 case .Success:
                     let jsonResponse = JSON(response.result.value!)
                     
-                    let token = jsonResponse["token"].string
+                    let success = jsonResponse["success"].bool!
                     
-                    onCompletion(token: token, error: nil)
+                    guard success == true else {
+                        let error = jsonResponse["error"].int!
+                        let errorObject = self.createErrorObject(error)
+                        
+                        onCompletion(success: false, error: errorObject)
+                        return
+                    }
+                    
+                    onCompletion(success: true, error: nil)
                 case .Failure(let error):
-                    onCompletion(token: nil, error: error)
+                    print("hij is gefaald! met \(error.localizedDescription)")
+                    onCompletion(success: false, error: error)
                 }
             })
     }
