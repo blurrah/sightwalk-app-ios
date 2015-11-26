@@ -16,7 +16,7 @@ class InvertedGenericViewButton: UIButton {
         
         self.layer.cornerRadius = 2.0;
         self.backgroundColor = UIColor.whiteColor()
-        self.tintColor = UIColor(colorLiteralRed: 0.15, green: 0.72, blue: 0.39, alpha: 1)
+        self.tintColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
         self.titleEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
     }
     

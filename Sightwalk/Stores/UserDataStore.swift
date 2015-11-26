@@ -50,6 +50,17 @@ class UserDataStore {
         })
     }
     
+    func resetPassword(email: String, onCompletion: (succes: Bool, message: String?) ->()) {
+        self.userAPIHelper.resetPassword(email, onCompletion: { success, error in
+            guard error == nil else {
+                onCompletion(succes: false, message: "Er gaat iets fout: \(error!.localizedDescription)")
+                return
+            }
+            
+            onCompletion(succes: true, message: nil)
+        })
+    }
+    
     func deleteToken() {
         self.loginPersistenceHelper.deleteToken(self.username!)
         self.token = nil

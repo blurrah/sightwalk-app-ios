@@ -8,6 +8,7 @@
 
 import UIKit
 import JLToast
+import SwiftCop
 
 class LoginViewController: UIViewController {
 
@@ -20,6 +21,48 @@ class LoginViewController: UIViewController {
     }
     
     let userDataStore = UserDataStore.sharedInstance
+    
+    @IBAction func forgotPasswordButtonAction(sender: AnyObject) {
+        let alert : UIAlertController = UIAlertController(title: "Wachtwoord resetten", message: "Vul hieronder uw e-mailadres in om uw wachtwoord te resetten.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "E-mailadres"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Verzend", style: UIAlertActionStyle.Default)  {alertAction in
+            let textField = alert.textFields![0] as UITextField
+            LoadingOverlayView.sharedInstance.showOverlayView(alert.view)
+            self.userDataStore.resetPassword(textField.text!, onCompletion: { success, message in
+                LoadingOverlayView.sharedInstance.hideOverlayView()
+                
+                if (self.isValidEmail(textField.text!) == false) {
+                    JLToastView.setDefaultValue(UIColor.redColor(),
+                        forAttributeName: JLToastViewBackgroundColorAttributeName,
+                        userInterfaceIdiom: .Phone)
+                    JLToast.makeText("De ingevoerde e-mail is niet geldig", delay: 0, duration: 2).show()
+                    return
+                }
+                
+                if message != nil {
+                    JLToastView.setDefaultValue(UIColor.redColor(),
+                    forAttributeName: JLToastViewBackgroundColorAttributeName,
+                    userInterfaceIdiom: .Phone)
+                    JLToast.makeText(message!, delay: 0, duration: 2).show()
+                    return
+                }
+                
+                JLToastView.setDefaultValue(UIColor.greenColor(),
+                    forAttributeName: JLToastViewBackgroundColorAttributeName,
+                    userInterfaceIdiom: .Phone)
+                JLToast.makeText("Check uw e-mail om uw wachtwoord te resetten!", delay: 0, duration: 2).show()
+            })
+        })
+        
+        alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Cancel) {alertAction in
+        })
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     @IBAction func loginButtonAction(sender: AnyObject) {
         LoadingOverlayView.sharedInstance.showOverlayView(navigationController?.view)
@@ -58,6 +101,13 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as UIViewController!
         presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
     }
     
 
