@@ -60,7 +60,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YBS-Vj-AB2" firstAttribute="top" secondItem="Ou0-Yn-MRQ" secondAttribute="bottom" constant="20" id="128-6H-HDl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ER1-Ta-qQ3" secondAttribute="trailing" constant="-20" id="1zU-kd-UYj"/>
