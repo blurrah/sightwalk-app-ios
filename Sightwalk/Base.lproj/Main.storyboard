@@ -1221,7 +1221,7 @@
                             </pageControl>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hXX-YQ-zOc" firstAttribute="top" secondItem="DIX-a7-9HB" secondAttribute="bottom" constant="157" id="DDX-Dj-Ucm"/>
                             <constraint firstItem="DIX-a7-9HB" firstAttribute="centerX" secondItem="Etu-Uh-eKW" secondAttribute="centerX" id="gLS-8D-fSd"/>
