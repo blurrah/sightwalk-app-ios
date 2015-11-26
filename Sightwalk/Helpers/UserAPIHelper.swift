@@ -54,6 +54,39 @@ class UserAPIHelper {
             })
     }
     
+    func resetPassword(email: String, onCompletion: (success: Bool, error: NSError?) -> ()) {
+        let parameters: [String: AnyObject] = [
+            "email": email
+        ]
+        
+        Alamofire.request(.POST, "\(ServerConstants.address)\(ServerConstants.User.passwordreset)", parameters: parameters, encoding: .JSON)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON(completionHandler: { response in
+                switch response.result {
+                case .Success:
+                    let jsonResponse = JSON(response.result.value!)
+                    
+                    let success = jsonResponse["success"].bool!
+                    
+                    guard success == true else {
+                        let error = jsonResponse["error"].int!
+                        let errorObject = self.createErrorObject(error)
+                        
+                        onCompletion(success: false, error: errorObject)
+                        return
+                    }
+                    
+                    onCompletion(success: true, error: nil)
+                case .Failure(let error):
+                    print("hij is gefaald! met \(error.localizedDescription)")
+                    onCompletion(success: false, error: error)
+                }
+            })
+
+        
+    }
+    
     // TODO: Refactor parameters to use tuple/dictionary
     func registerUser(username: String, password: String, email: String, weight: Int, length: Int, birthdate: String, onCompletion: (success: Bool, error: NSError?) -> ()) {
         let parameters: [String: AnyObject] = [

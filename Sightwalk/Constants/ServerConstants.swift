@@ -15,5 +15,6 @@ struct ServerConstants {
         static let login = "auth/login/"
         static let logout = "auth/logout/"
         static let register = "user/"
+        static let passwordreset = "auth/password-reset"
     }
 }

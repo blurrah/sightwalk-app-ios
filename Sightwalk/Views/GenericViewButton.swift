@@ -15,7 +15,7 @@ class GenericViewButton: UIButton {
         super.init(coder: aDecoder)!
         
         self.layer.cornerRadius = 2.0;
-        self.backgroundColor = UIColor(colorLiteralRed: 0.15, green: 0.72, blue: 0.39, alpha: 1)
+        self.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
         self.tintColor = UIColor.whiteColor()
         self.titleEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
     }

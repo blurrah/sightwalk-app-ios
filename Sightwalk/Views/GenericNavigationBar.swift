@@ -13,7 +13,7 @@ class GenericNavigationBar: UINavigationBar {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.barTintColor = UIColor(red:0.18, green:0.8, blue:0.44, alpha:1)
+        self.barTintColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
         
         self.tintColor = UIColor.whiteColor()
         

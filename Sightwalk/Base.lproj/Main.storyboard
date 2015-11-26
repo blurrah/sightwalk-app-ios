@@ -1069,6 +1069,27 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mi6-KM-Gnl">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="bMW-ff-ROZ"/>
+                                </constraints>
+                                <state key="normal" title="Wachtwoord vergeten?"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bMW-ff-ROZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="bMW-ff-ROZ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="forgotPasswordButtonAction:" destination="4bD-Ht-cTd" eventType="touchUpInside" id="NLO-Ld-K8Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1084,10 +1105,12 @@
                             <constraint firstItem="IHU-nC-sNL" firstAttribute="top" secondItem="ZG2-xU-SfR" secondAttribute="bottom" constant="26" id="abJ-ND-lMp"/>
                             <constraint firstItem="ZG2-xU-SfR" firstAttribute="top" secondItem="DA4-y5-dkE" secondAttribute="bottom" id="ccJ-oJ-pmb"/>
                             <constraint firstItem="IHU-nC-sNL" firstAttribute="top" secondItem="ZG2-xU-SfR" secondAttribute="bottom" id="d3h-py-am2"/>
+                            <constraint firstItem="rNY-IW-Drt" firstAttribute="top" secondItem="mi6-KM-Gnl" secondAttribute="bottom" constant="8" id="fme-1y-xP1"/>
                             <constraint firstItem="H3Y-Zr-rvR" firstAttribute="top" secondItem="d8E-IQ-RdB" secondAttribute="bottom" constant="22" id="hQV-Hu-7xF"/>
                             <constraint firstItem="IHU-nC-sNL" firstAttribute="leading" secondItem="2Ac-tQ-58F" secondAttribute="leadingMargin" constant="-20" id="iaF-MZ-Jef"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IHU-nC-sNL" secondAttribute="trailing" constant="-20" id="lr2-JM-qxe"/>
                             <constraint firstItem="Lwg-eC-wsJ" firstAttribute="centerX" secondItem="2Ac-tQ-58F" secondAttribute="centerX" id="tSW-BS-YLY"/>
+                            <constraint firstItem="mi6-KM-Gnl" firstAttribute="centerX" secondItem="2Ac-tQ-58F" secondAttribute="centerX" id="tto-Of-xTO"/>
                             <constraint firstItem="rNY-IW-Drt" firstAttribute="trailing" secondItem="2Ac-tQ-58F" secondAttribute="trailingMargin" id="uIA-ML-1Nv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZG2-xU-SfR" secondAttribute="trailing" constant="-20" id="vYP-65-d4t"/>
                         </constraints>
@@ -1099,6 +1122,7 @@
                                 <exclude reference="Lwg-eC-wsJ"/>
                                 <exclude reference="H3Y-Zr-rvR"/>
                                 <exclude reference="ZG2-xU-SfR"/>
+                                <exclude reference="mi6-KM-Gnl"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="INk-Ew-60O"/>
@@ -1109,7 +1133,9 @@
                                 <exclude reference="8o4-RZ-roX"/>
                                 <exclude reference="ccJ-oJ-pmb"/>
                                 <exclude reference="vYP-65-d4t"/>
+                                <exclude reference="tto-Of-xTO"/>
                                 <exclude reference="Dbx-nD-GIs"/>
+                                <exclude reference="fme-1y-xP1"/>
                                 <exclude reference="uIA-ML-1Nv"/>
                                 <exclude reference="6yW-zq-tqh"/>
                                 <exclude reference="YdQ-9U-SKU"/>
@@ -1127,6 +1153,7 @@
                                 <include reference="Lwg-eC-wsJ"/>
                                 <include reference="H3Y-Zr-rvR"/>
                                 <include reference="ZG2-xU-SfR"/>
+                                <include reference="mi6-KM-Gnl"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="INk-Ew-60O"/>
@@ -1137,7 +1164,9 @@
                                 <include reference="8o4-RZ-roX"/>
                                 <include reference="ccJ-oJ-pmb"/>
                                 <include reference="vYP-65-d4t"/>
+                                <include reference="tto-Of-xTO"/>
                                 <include reference="Dbx-nD-GIs"/>
+                                <include reference="fme-1y-xP1"/>
                                 <include reference="uIA-ML-1Nv"/>
                                 <include reference="6yW-zq-tqh"/>
                                 <include reference="YdQ-9U-SKU"/>
@@ -1221,7 +1250,7 @@
                             </pageControl>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hXX-YQ-zOc" firstAttribute="top" secondItem="DIX-a7-9HB" secondAttribute="bottom" constant="157" id="DDX-Dj-Ucm"/>
                             <constraint firstItem="DIX-a7-9HB" firstAttribute="centerX" secondItem="Etu-Uh-eKW" secondAttribute="centerX" id="gLS-8D-fSd"/>
@@ -1318,7 +1347,7 @@ om de boel op te vullen.</string>
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7Ja-Fl-sm8" secondAttribute="trailing" constant="8" id="3h6-UX-rBM"/>
                                     <constraint firstAttribute="trailing" secondItem="UvW-Ss-qJ5" secondAttribute="trailing" constant="8" id="IGk-Uj-0A2"/>
@@ -1462,7 +1491,7 @@ om de boel op te vullen.</string>
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="L45-5X-rdM" secondAttribute="trailing" constant="8" id="0g4-qS-nI6"/>
                                     <constraint firstAttribute="trailing" secondItem="myF-tv-QXe" secondAttribute="trailing" constant="8" id="5pf-6n-hLE"/>
@@ -1606,7 +1635,7 @@ om de boel op te vullen.</string>
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="2jX-VN-Okr" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="top" constant="158" id="21g-Pm-PtT">
                                         <variation key="heightClass=regular-widthClass=compact" constant="160"/>
