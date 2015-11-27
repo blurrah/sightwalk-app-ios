@@ -21,17 +21,23 @@ class DashboardViewController: UIViewController {
     @IBAction func indexChangedAction(sender: UISegmentedControl) {
         switch segmentedControlOutlet.selectedSegmentIndex {
         case 0:
-            activityViewOutlet.hidden = false;
-            statisticViewOutlet.hidden = true;
-            favoriteViewOutlet.hidden = true;
+            UIView.animateWithDuration(0.5, animations: {
+                self.activityViewOutlet.alpha = 1
+                self.statisticViewOutlet.alpha = 0
+                self.favoriteViewOutlet.alpha = 0
+            })
         case 1:
-            activityViewOutlet.hidden = true;
-            statisticViewOutlet.hidden = false;
-            favoriteViewOutlet.hidden = true;
+            UIView.animateWithDuration(0.5, animations: {
+                self.activityViewOutlet.alpha = 0
+                self.statisticViewOutlet.alpha = 1
+                self.favoriteViewOutlet.alpha = 0
+            })
         case 2:
-            activityViewOutlet.hidden = true;
-            statisticViewOutlet.hidden = true;
-            favoriteViewOutlet.hidden = false;
+            UIView.animateWithDuration(0.5, animations: {
+                self.activityViewOutlet.alpha = 0
+                self.statisticViewOutlet.alpha = 0
+                self.favoriteViewOutlet.alpha = 1
+            })
         default:
             break;
         }
@@ -48,9 +54,9 @@ class DashboardViewController: UIViewController {
         swipeRight.direction = .Right
         self.view.addGestureRecognizer(swipeRight)
         
-        activityViewOutlet.hidden = false;
-        statisticViewOutlet.hidden = true;
-        favoriteViewOutlet.hidden = true;
+        activityViewOutlet.alpha = 1
+        statisticViewOutlet.alpha = 0
+        favoriteViewOutlet.alpha = 0
 
         // Do any additional setup after loading the view.
     }
