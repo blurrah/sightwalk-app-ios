@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = initialViewController
         //self.window?.makeKeyAndVisible()
         
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
         // TODO: Auth saved token and go to dashboard on cold boot with persistence
         LoginPersistenceHelper.SharedInstance.accessToken({ result in
             print("login persistence met token: \(result)")
