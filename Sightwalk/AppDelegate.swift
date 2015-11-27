@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
+            // Temp code om Dashboard storyboard als main storyboard te setten.
+            self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
+        
+            let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+            let initialViewController = storyboard.instantiateInitialViewController()
+        
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        
         // TODO: Auth saved token and go to dashboard on cold boot with persistence
         LoginPersistenceHelper.SharedInstance.accessToken({ result in
             print("login persistence met token: \(result)")

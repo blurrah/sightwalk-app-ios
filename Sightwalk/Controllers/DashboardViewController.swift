@@ -43,6 +43,12 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    @IBAction func tapCreateRouteAction(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "CreateRoute", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

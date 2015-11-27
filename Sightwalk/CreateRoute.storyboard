@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YgS-nc-OzR">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Route starten-->
+        <scene sceneID="fgW-SJ-OFw">
+            <objects>
+                <viewController id="oNl-G7-xol" customClass="CreateRouteViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fg1-B2-uUh"/>
+                        <viewControllerLayoutGuide type="bottom" id="VKC-eg-xnO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pdb-If-b1E">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEKKEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niJ-2C-Bqb">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zGE-NB-Vse"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zGE-NB-Vse"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="zGE-NB-Vse"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaA-KF-YSc">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEr-5L-KaN" customClass="StateDependantButton" customModule="Sightwalk" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="D0l-2F-rxd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Nieuwe route starten"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="D0l-2F-rxd"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="D0l-2F-rxd"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rEr-5L-KaN" secondAttribute="trailing" constant="20" id="ORB-hq-Q75"/>
+                                    <constraint firstItem="rEr-5L-KaN" firstAttribute="leading" secondItem="qaA-KF-YSc" secondAttribute="leading" constant="20" id="RGj-Wy-Lve"/>
+                                    <constraint firstAttribute="height" constant="63" id="Uaw-qE-zcs"/>
+                                    <constraint firstItem="rEr-5L-KaN" firstAttribute="top" secondItem="qaA-KF-YSc" secondAttribute="top" constant="10" id="kec-b3-atg"/>
+                                    <constraint firstAttribute="bottom" secondItem="rEr-5L-KaN" secondAttribute="bottom" constant="10" id="yjd-6L-fvq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="rEr-5L-KaN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Uaw-qE-zcs"/>
+                                        <exclude reference="ORB-hq-Q75"/>
+                                        <exclude reference="RGj-Wy-Lve"/>
+                                        <exclude reference="kec-b3-atg"/>
+                                        <exclude reference="yjd-6L-fvq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="rEr-5L-KaN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Uaw-qE-zcs"/>
+                                        <include reference="ORB-hq-Q75"/>
+                                        <include reference="RGj-Wy-Lve"/>
+                                        <include reference="kec-b3-atg"/>
+                                        <include reference="yjd-6L-fvq"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="niJ-2C-Bqb" firstAttribute="centerX" secondItem="Pdb-If-b1E" secondAttribute="centerX" id="0Fp-OQ-0SY"/>
+                            <constraint firstItem="qaA-KF-YSc" firstAttribute="leading" secondItem="Pdb-If-b1E" secondAttribute="leadingMargin" constant="-20" id="IF5-l2-MOX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qaA-KF-YSc" secondAttribute="trailing" constant="-20" id="jNn-4n-f7C"/>
+                            <constraint firstItem="VKC-eg-xnO" firstAttribute="top" secondItem="qaA-KF-YSc" secondAttribute="bottom" id="nZT-LT-9rt"/>
+                            <constraint firstItem="niJ-2C-Bqb" firstAttribute="top" secondItem="Fg1-B2-uUh" secondAttribute="bottom" constant="18" id="wIE-Eh-WYN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="niJ-2C-Bqb"/>
+                                <exclude reference="qaA-KF-YSc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0Fp-OQ-0SY"/>
+                                <exclude reference="wIE-Eh-WYN"/>
+                                <exclude reference="IF5-l2-MOX"/>
+                                <exclude reference="jNn-4n-f7C"/>
+                                <exclude reference="nZT-LT-9rt"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="niJ-2C-Bqb"/>
+                                <include reference="qaA-KF-YSc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0Fp-OQ-0SY"/>
+                                <include reference="wIE-Eh-WYN"/>
+                                <include reference="IF5-l2-MOX"/>
+                                <include reference="jNn-4n-f7C"/>
+                                <include reference="nZT-LT-9rt"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Route starten" id="OXu-gA-mmn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cPb-YQ-y2f">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="oNl-G7-xol" id="HCb-OI-xzZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="startRouteButtonOutlet" destination="rEr-5L-KaN" id="UXp-SR-wWa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqq-2f-Sqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1378.5" y="402"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ePL-QW-wb1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YgS-nc-OzR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vKY-hY-uCm" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oNl-G7-xol" kind="relationship" relationship="rootViewController" id="WL2-PU-FwK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8YL-Jc-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="460.5" y="402"/>
+        </scene>
+    </scenes>
+</document>
