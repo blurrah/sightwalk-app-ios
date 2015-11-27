@@ -19,7 +19,7 @@ class GenericNavigationBar: UINavigationBar {
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        self.titleTextAttributes = titleDict as! [String : AnyObject]
+        self.titleTextAttributes = titleDict as? [String : AnyObject]
     }
 
     /*

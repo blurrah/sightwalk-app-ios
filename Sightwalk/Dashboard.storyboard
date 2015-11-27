@@ -217,10 +217,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CN8-iF-oFt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityPrototypeCell" id="CN8-iF-oFt">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CN8-iF-oFt" id="5Qs-WW-PBR">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -242,10 +243,10 @@
                                 <exclude reference="2ti-2g-kRZ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="B20-QQ-jHT"/>
                                 <exclude reference="1CX-2p-GWH"/>
                                 <exclude reference="ooQ-To-qXI"/>
                                 <exclude reference="qLy-Qu-IIG"/>
-                                <exclude reference="B20-QQ-jHT"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -253,10 +254,10 @@
                                 <include reference="2ti-2g-kRZ"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="B20-QQ-jHT"/>
                                 <include reference="1CX-2p-GWH"/>
                                 <include reference="ooQ-To-qXI"/>
                                 <include reference="qLy-Qu-IIG"/>
-                                <include reference="B20-QQ-jHT"/>
                             </mask>
                         </variation>
                     </view>
@@ -282,10 +283,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dr5-CZ-xeo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritePrototypeCell" id="dr5-CZ-xeo">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dr5-CZ-xeo" id="mVf-gr-fob">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -307,10 +309,10 @@
                                 <exclude reference="hSQ-v6-QIR"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="T44-hB-ett"/>
                                 <exclude reference="3bH-Qd-rId"/>
                                 <exclude reference="Bpk-pl-5rg"/>
                                 <exclude reference="Vh4-2D-vf7"/>
-                                <exclude reference="T44-hB-ett"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -318,10 +320,10 @@
                                 <include reference="hSQ-v6-QIR"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="T44-hB-ett"/>
                                 <include reference="3bH-Qd-rId"/>
                                 <include reference="Bpk-pl-5rg"/>
                                 <include reference="Vh4-2D-vf7"/>
-                                <include reference="T44-hB-ett"/>
                             </mask>
                         </variation>
                     </view>
