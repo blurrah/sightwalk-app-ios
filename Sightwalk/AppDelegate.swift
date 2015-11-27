@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let googleMapsApiKey = "Key here!"
-
+    let googleMapsApiKey = "AIzaSyC3coo4P05aqogBOw9ocwoxXVRktR0_Abg"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Temp code om Dashboard storyboard als main storyboard te setten.
