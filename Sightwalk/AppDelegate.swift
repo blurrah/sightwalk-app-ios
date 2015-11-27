@@ -17,15 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let googleMapsApiKey = "AIzaSyC3coo4P05aqogBOw9ocwoxXVRktR0_Abg"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //Temp code om Dashboard storyboard als main storyboard te setten.
-        //self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
-        
-        //var storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
-        
-        //var initialViewController = storyboard.instantiateInitialViewController()
-        //self.window?.rootViewController = initialViewController
-        //self.window?.makeKeyAndVisible()
-        
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         // TODO: Auth saved token and go to dashboard on cold boot with persistence
