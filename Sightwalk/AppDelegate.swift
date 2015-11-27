@@ -13,6 +13,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let googleMapsApiKey = "Key here!"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,9 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = initialViewController
         //self.window?.makeKeyAndVisible()
         
+        // TODO: Auth saved token and go to dashboard on cold boot with persistence
         LoginPersistenceHelper.SharedInstance.accessToken({ result in
             print("login persistence met token: \(result)")
         })
+        
+        GMSServices.provideAPIKey(googleMapsApiKey)
         
         return true
     }
