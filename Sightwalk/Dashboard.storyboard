@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dashboard View Controller-->
@@ -38,9 +39,89 @@
                                     <segue destination="XiL-1O-gTc" kind="embed" id="UkA-mX-Wd5"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou0-Yn-MRQ" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Qsc-wr-L8P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Nieuwe route starten"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Qsc-wr-L8P"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Qsc-wr-L8P"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YBS-Vj-AB2" firstAttribute="top" secondItem="Ou0-Yn-MRQ" secondAttribute="bottom" constant="20" id="128-6H-HDl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ER1-Ta-qQ3" secondAttribute="trailing" constant="-20" id="1zU-kd-UYj"/>
+                            <constraint firstItem="Ou0-Yn-MRQ" firstAttribute="trailing" secondItem="1x3-Yc-Ecc" secondAttribute="trailingMargin" id="4Mt-Ar-PND"/>
+                            <constraint firstItem="ER1-Ta-qQ3" firstAttribute="top" secondItem="YmP-5v-0W8" secondAttribute="bottom" id="6Ij-V2-BGC"/>
+                            <constraint firstItem="Ou0-Yn-MRQ" firstAttribute="top" secondItem="LVe-oR-eEA" secondAttribute="bottom" constant="20" id="AMf-CU-t9L"/>
+                            <constraint firstItem="rMZ-Mt-Az2" firstAttribute="leading" secondItem="1x3-Yc-Ecc" secondAttribute="leadingMargin" constant="-20" id="CzP-h8-Xy2"/>
+                            <constraint firstItem="Ou0-Yn-MRQ" firstAttribute="leading" secondItem="1x3-Yc-Ecc" secondAttribute="leadingMargin" id="N5G-oq-Tia"/>
+                            <constraint firstItem="ER1-Ta-qQ3" firstAttribute="leading" secondItem="1x3-Yc-Ecc" secondAttribute="leadingMargin" constant="-20" id="T2X-bm-apv"/>
+                            <constraint firstItem="LVe-oR-eEA" firstAttribute="leading" secondItem="1x3-Yc-Ecc" secondAttribute="leadingMargin" constant="-20" id="Ve7-9S-A7e"/>
+                            <constraint firstItem="Ou0-Yn-MRQ" firstAttribute="top" secondItem="ER1-Ta-qQ3" secondAttribute="bottom" constant="20" id="a3z-kl-N5g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LVe-oR-eEA" secondAttribute="trailing" constant="-20" id="dbj-CY-a4q"/>
+                            <constraint firstItem="LVe-oR-eEA" firstAttribute="top" secondItem="YmP-5v-0W8" secondAttribute="bottom" id="gha-px-AkB"/>
+                            <constraint firstItem="rMZ-Mt-Az2" firstAttribute="top" secondItem="YmP-5v-0W8" secondAttribute="bottom" id="imP-QZ-eSR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rMZ-Mt-Az2" secondAttribute="trailing" constant="-20" id="qu4-ac-V9K"/>
+                            <constraint firstItem="Ou0-Yn-MRQ" firstAttribute="top" secondItem="rMZ-Mt-Az2" secondAttribute="bottom" constant="20" id="uIm-dy-0vO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ou0-Yn-MRQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1zU-kd-UYj"/>
+                                <exclude reference="6Ij-V2-BGC"/>
+                                <exclude reference="T2X-bm-apv"/>
+                                <exclude reference="Ve7-9S-A7e"/>
+                                <exclude reference="dbj-CY-a4q"/>
+                                <exclude reference="gha-px-AkB"/>
+                                <exclude reference="CzP-h8-Xy2"/>
+                                <exclude reference="imP-QZ-eSR"/>
+                                <exclude reference="qu4-ac-V9K"/>
+                                <exclude reference="4Mt-Ar-PND"/>
+                                <exclude reference="AMf-CU-t9L"/>
+                                <exclude reference="N5G-oq-Tia"/>
+                                <exclude reference="a3z-kl-N5g"/>
+                                <exclude reference="uIm-dy-0vO"/>
+                                <exclude reference="128-6H-HDl"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ou0-Yn-MRQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1zU-kd-UYj"/>
+                                <include reference="6Ij-V2-BGC"/>
+                                <include reference="T2X-bm-apv"/>
+                                <include reference="Ve7-9S-A7e"/>
+                                <include reference="dbj-CY-a4q"/>
+                                <include reference="gha-px-AkB"/>
+                                <include reference="CzP-h8-Xy2"/>
+                                <include reference="imP-QZ-eSR"/>
+                                <include reference="qu4-ac-V9K"/>
+                                <include reference="4Mt-Ar-PND"/>
+                                <include reference="AMf-CU-t9L"/>
+                                <include reference="N5G-oq-Tia"/>
+                                <include reference="a3z-kl-N5g"/>
+                                <include reference="uIm-dy-0vO"/>
+                                <include reference="128-6H-HDl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="NwM-mG-bMh">
                         <nil key="title"/>
@@ -69,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yH3-Oo-naW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-659" y="402"/>
+            <point key="canvasLocation" x="-669" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fvo-Vf-Iu6">
@@ -116,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1b-2c-xSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="430"/>
+            <point key="canvasLocation" x="52.5" y="346.875"/>
         </scene>
         <!--Activity View Controller-->
         <scene sceneID="eyp-9A-YCC">
@@ -172,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtY-XT-x2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="1118"/>
+            <point key="canvasLocation" x="52.5" y="901.875"/>
         </scene>
     </scenes>
 </document>
