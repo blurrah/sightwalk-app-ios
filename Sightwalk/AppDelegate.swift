@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let googleMapsApiKey = "AIzaSyC3coo4P05aqogBOw9ocwoxXVRktR0_Abg"
+    let googleMapsApiKey = GoogleConstants.key
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent

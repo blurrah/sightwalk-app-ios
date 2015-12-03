@@ -18,3 +18,11 @@ struct ServerConstants {
         static let passwordreset = "auth/password-reset"
     }
 }
+
+struct GoogleConstants {
+    static let key = "AIzaSyC3coo4P05aqogBOw9ocwoxXVRktR0_Abg"
+    
+    struct Directions {
+        static let url = "https://maps.googlemaps.com/maps/api/directions/json"
+    }
+}
