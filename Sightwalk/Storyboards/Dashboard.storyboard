@@ -58,6 +58,9 @@
                                         <include reference="Qsc-wr-L8P"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="tapCreateRouteAction:" destination="Rb4-0v-lXR" eventType="touchUpInside" id="AUD-Ru-XWk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
