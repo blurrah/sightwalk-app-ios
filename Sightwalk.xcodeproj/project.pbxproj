@@ -16,6 +16,8 @@
 		2F54714A1C05CD6700C292F9 /* DatepickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5471491C05CD6700C292F9 /* DatepickerTextField.swift */; };
 		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
+		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
+		2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */; };
 		2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */; };
 		2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */; };
 		2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */; };
@@ -72,6 +74,8 @@
 		2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Sightwalk-Bridging-Header.h"; path = "Sightwalk/Sightwalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
+		2FDE68011C0F04F000287286 /* PickItemButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItemButtonView.swift; sourceTree = "<group>"; };
+		2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickSpotsViewController.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPersistenceHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIHelper.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */,
 				F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */,
 				F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */,
+				2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				2FFA3D841BF4970F00B758D5 /* GenericViewButton.swift */,
 				2F25B9081C08B49D001B9037 /* StateDependantButton.swift */,
 				F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */,
+				2FDE68011C0F04F000287286 /* PickItemButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
+				2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */,
 				F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */,
 				2FFA3D871BF49C7600B758D5 /* FacebookButton.swift in Sources */,
 				2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */,
@@ -490,6 +497,7 @@
 				2FFA3D831BF4968900B758D5 /* IntroViewController.swift in Sources */,
 				F33DC9271BFB3D8F003C69F6 /* StatisticViewController.swift in Sources */,
 				2FFA3D8B1BF4AF5600B758D5 /* GenericNavigationBar.swift in Sources */,
+				2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */,
 				2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

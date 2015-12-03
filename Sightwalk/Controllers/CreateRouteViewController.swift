@@ -12,6 +12,10 @@ class CreateRouteViewController: UIViewController {
 
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     
+    @IBAction func tapPickSpotsTempButton(sender: AnyObject) {
+        self.performSegueWithIdentifier("displayPickSpots", sender: sender)
+    }
+
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
