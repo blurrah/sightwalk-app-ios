@@ -51,12 +51,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         }
     }
     
-    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
-        let infoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindowView
-        infoWindow.titleLabelOutlet.text = "\(marker.title)"
-        infoWindow.infoLabelOutlet.text = "\(marker.userData)"
-        return infoWindow
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        view.addSubview(NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindowView)
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
