@@ -65,7 +65,7 @@
 
 /* Begin PBXFileReference section */
 		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateRoute.storyboard; path = Sightwalk/CreateRoute.storyboard; sourceTree = SOURCE_ROOT; };
+		2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateRoute.storyboard; path = Sightwalk/Storyboards/CreateRoute.storyboard; sourceTree = SOURCE_ROOT; };
 		2F25B9041C08AEB6001B9037 /* CreateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRouteViewController.swift; sourceTree = "<group>"; };
 		2F25B9061C08B0BB001B9037 /* PickItemButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickItemButtonView.xib; path = Views/PickItemButtonView.xib; sourceTree = "<group>"; };
 		2F25B9081C08B49D001B9037 /* StateDependantButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateDependantButton.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
-		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +172,7 @@
 		2FFA3D4A1BF34EFE00B758D5 /* Sightwalk */ = {
 			isa = PBXGroup;
 			children = (
-				2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */,
+				2FFD437B1C104A22004AC4DE /* Storyboards */,
 				2F25B9061C08B0BB001B9037 /* PickItemButtonView.xib */,
 				2FDA70691BFF55DF00649C08 /* Constants */,
 				2FFA3D7D1BF352C600B758D5 /* Helpers */,
@@ -181,12 +181,10 @@
 				2FFA3D801BF352C600B758D5 /* Views */,
 				2FFA3D811BF352C600B758D5 /* Models */,
 				2FFA3D4B1BF34EFE00B758D5 /* AppDelegate.swift */,
-				2FFA3D4F1BF34EFE00B758D5 /* Main.storyboard */,
 				2FFA3D551BF34EFE00B758D5 /* Assets.xcassets */,
 				2FFA3D571BF34EFE00B758D5 /* LaunchScreen.storyboard */,
 				2FFA3D5A1BF34EFE00B758D5 /* Info.plist */,
 				2FFA3D521BF34EFE00B758D5 /* Sightwalk.xcdatamodeld */,
-				F3B7A9101BFA19B300420352 /* Dashboard.storyboard */,
 			);
 			path = Sightwalk;
 			sourceTree = "<group>";
@@ -267,6 +265,16 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2FFD437B1C104A22004AC4DE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */,
+				2FFA3D4F1BF34EFE00B758D5 /* Main.storyboard */,
+				F3B7A9101BFA19B300420352 /* Dashboard.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		350F688EADF726750F1A9608 /* Frameworks */ = {

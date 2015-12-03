@@ -9,9 +9,7 @@
 import UIKit
 
 class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate {
-
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
-    
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
 
     @IBAction func tapPickSpotsTemp(sender: AnyObject) {
@@ -39,7 +37,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func handlePickSpotsTap(sender: UITapGestureRecognizer? = nil) {
-        print("werkt deze?")
         self.performSegueWithIdentifier("displayPickSpots", sender: nil)
     }
 
