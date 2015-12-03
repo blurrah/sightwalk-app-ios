@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PickSpotsViewController: UIViewController, CLLocationManagerDelegate {
+class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+    
+    var sights = [Sight]();
     
     @IBOutlet var mapView: GMSMapView!
     let locationManager: CLLocationManager = CLLocationManager()
@@ -25,10 +27,21 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate {
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
+            let sqlh = SQLiteHelper.sharedInstance
+            sights = sqlh.getSights()!
+            
+            for sight in sights {
+                let marker = GMSMarker(position: sight.location!)
+                marker.title = sight.title
+                marker.userData = sight.text
+                marker.map = mapView
+            }
+            
+            mapView.delegate = self
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
         }
-    }
+    }	
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -36,6 +49,13 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate {
             
             locationManager.stopUpdatingLocation()
         }
+    }
+    
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        let infoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindowView
+        infoWindow.titleLabelOutlet.text = "\(marker.title)"
+        infoWindow.infoLabelOutlet.text = "\(marker.userData)"
+        return infoWindow
     }
 
     override func didReceiveMemoryWarning() {

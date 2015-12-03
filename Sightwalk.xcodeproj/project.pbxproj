@@ -43,6 +43,13 @@
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
 		F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7A9161BFA231600420352 /* DashboardViewController.swift */; };
 		F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */; };
+		F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E711C1055BA0017F1DD /* Sight.swift */; };
+		F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E731C1056530017F1DD /* SQLiteHelper.swift */; };
+		F3E44E771C105C700017F1DD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E44E751C105C700017F1DD /* libsqlite3.0.tbd */; };
+		F3E44E781C105C700017F1DD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E44E761C105C700017F1DD /* libsqlite3.tbd */; };
+		F3E44E7D1C105EC00017F1DD /* sights.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F3E44E7C1C105EC00017F1DD /* sights.sqlite */; };
+		F3E44E8A1C107D1F0017F1DD /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3E44E881C107D1F0017F1DD /* CustomInfoWindow.xib */; };
+		F3E44E8B1C107D1F0017F1DD /* CustomInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E891C107D1F0017F1DD /* CustomInfoWindowView.swift */; };
 		F6518919914CA5E2CADB278D /* Pods_Sightwalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +117,13 @@
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
+		F3E44E711C1055BA0017F1DD /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
+		F3E44E731C1056530017F1DD /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
+		F3E44E751C105C700017F1DD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F3E44E761C105C700017F1DD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F3E44E7C1C105EC00017F1DD /* sights.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sights.sqlite; sourceTree = "<group>"; };
+		F3E44E881C107D1F0017F1DD /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
+		F3E44E891C107D1F0017F1DD /* CustomInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +131,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E44E771C105C700017F1DD /* libsqlite3.0.tbd in Frameworks */,
+				F3E44E781C105C700017F1DD /* libsqlite3.tbd in Frameworks */,
 				F6518919914CA5E2CADB278D /* Pods_Sightwalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +165,7 @@
 		2FFA3D3F1BF34EFE00B758D5 = {
 			isa = PBXGroup;
 			children = (
+				F3E44E7C1C105EC00017F1DD /* sights.sqlite */,
 				2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */,
 				2FFA3D4A1BF34EFE00B758D5 /* Sightwalk */,
 				2FFA3D621BF34EFF00B758D5 /* SightwalkTests */,
@@ -212,6 +229,7 @@
 			children = (
 				2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */,
 				2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */,
+				F3E44E731C1056530017F1DD /* SQLiteHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -220,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */,
+				F3E44E711C1055BA0017F1DD /* Sight.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -246,6 +265,8 @@
 		2FFA3D801BF352C600B758D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F3E44E881C107D1F0017F1DD /* CustomInfoWindow.xib */,
+				F3E44E891C107D1F0017F1DD /* CustomInfoWindowView.swift */,
 				2F5471491C05CD6700C292F9 /* DatepickerTextField.swift */,
 				2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */,
 				2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */,
@@ -280,6 +301,8 @@
 		350F688EADF726750F1A9608 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3E44E751C105C700017F1DD /* libsqlite3.0.tbd */,
+				F3E44E761C105C700017F1DD /* libsqlite3.tbd */,
 				548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */,
 			);
 			name = Frameworks;
@@ -404,6 +427,8 @@
 				2FFA3D591BF34EFE00B758D5 /* LaunchScreen.storyboard in Resources */,
 				2FFA3D561BF34EFE00B758D5 /* Assets.xcassets in Resources */,
 				2F25B9071C08B0BB001B9037 /* PickItemButtonView.xib in Resources */,
+				F3E44E7D1C105EC00017F1DD /* sights.sqlite in Resources */,
+				F3E44E8A1C107D1F0017F1DD /* CustomInfoWindow.xib in Resources */,
 				2F25B9031C08AB56001B9037 /* CreateRoute.storyboard in Resources */,
 				2FFA3D511BF34EFE00B758D5 /* Main.storyboard in Resources */,
 				F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */,
@@ -484,10 +509,13 @@
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
 				2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
+				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
 				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
+				F3E44E8B1C107D1F0017F1DD /* CustomInfoWindowView.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
+				F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
 				2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */,
@@ -649,6 +677,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Sightwalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -708,6 +740,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Sightwalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
