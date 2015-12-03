@@ -76,35 +76,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sn-WU-C0y" customClass="PickItemButtonView" customModule="Sightwalk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES"/>
-                                </accessibility>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="NKX-Up-oEi"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="hmi-BN-PNF"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="NKX-Up-oEi"/>
-                                        <exclude reference="hmi-BN-PNF"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="NKX-Up-oEi"/>
-                                        <include reference="hmi-BN-PNF"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="3q8-KH-Nxr" appends="YES" id="lua-PN-ED3"/>
-                                    <outletCollection property="gestureRecognizers" destination="3q8-KH-Nxr" appends="YES" id="WQn-RW-4Mh"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEKKEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niJ-2C-Bqb">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
@@ -143,9 +114,34 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="tapPickSpotsTempButton:" destination="oNl-G7-xol" eventType="touchUpInside" id="jQa-jS-XLX"/>
+                                    <action selector="tapPickSpotsTemp:" destination="oNl-G7-xol" eventType="touchUpInside" id="r8U-sC-tWh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sn-WU-C0y" customClass="PickItemButtonView" customModule="Sightwalk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="NKX-Up-oEi"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="hmi-BN-PNF"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NKX-Up-oEi"/>
+                                        <exclude reference="hmi-BN-PNF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="NKX-Up-oEi"/>
+                                        <include reference="hmi-BN-PNF"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,9 +163,9 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="qaA-KF-YSc"/>
-                                <exclude reference="8sn-WU-C0y"/>
                                 <exclude reference="niJ-2C-Bqb"/>
                                 <exclude reference="CiB-Ez-bqQ"/>
+                                <exclude reference="8sn-WU-C0y"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="nZT-LT-9rt"/>
@@ -190,9 +186,9 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="qaA-KF-YSc"/>
-                                <include reference="8sn-WU-C0y"/>
                                 <include reference="niJ-2C-Bqb"/>
                                 <include reference="CiB-Ez-bqQ"/>
+                                <include reference="8sn-WU-C0y"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="nZT-LT-9rt"/>
@@ -219,12 +215,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="pickItemButtonOutlet" destination="8sn-WU-C0y" id="dDE-GH-JBD"/>
                         <outlet property="startRouteButtonOutlet" destination="rEr-5L-KaN" id="UXp-SR-wWa"/>
                         <segue destination="kqk-r8-Ub5" kind="show" identifier="displayPickSpots" id="53r-Wc-znn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqq-2f-Sqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3q8-KH-Nxr"/>
             </objects>
             <point key="canvasLocation" x="1378.5" y="402"/>
         </scene>

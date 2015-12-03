@@ -8,14 +8,15 @@
 
 import UIKit
 
-class CreateRouteViewController: UIViewController {
+class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     
-    @IBAction func tapPickSpotsTempButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("displayPickSpots", sender: sender)
-    }
+    @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
 
+    @IBAction func tapPickSpotsTemp(sender: AnyObject) {
+        self.handlePickSpotsTap()
+    }
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -24,6 +25,12 @@ class CreateRouteViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.enableButton()
+        
+        self.view.userInteractionEnabled = true
+        
+        let touchGesture = UITapGestureRecognizer(target: self, action: Selector("handlePickSpotsTap:"))
+        touchGesture.delegate = self
+        self.pickItemButtonOutlet.addGestureRecognizer(touchGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +38,10 @@ class CreateRouteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func handlePickSpotsTap(sender: UITapGestureRecognizer? = nil) {
+        print("werkt deze?")
+        self.performSegueWithIdentifier("displayPickSpots", sender: nil)
+    }
 
     /*
     // MARK: - Navigation

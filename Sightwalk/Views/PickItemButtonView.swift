@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickItemButtonView: UIControl {
+class PickItemButtonView: UIView {
 
     /*
     // Only override drawRect: if you perform custom drawing.

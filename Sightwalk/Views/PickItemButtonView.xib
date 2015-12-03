@@ -42,9 +42,6 @@
                         <constraint firstItem="Ktk-PU-u4c" firstAttribute="leading" secondItem="wJG-du-eWJ" secondAttribute="leading" constant="40" id="kQp-qP-wd3"/>
                         <constraint firstItem="Ktk-PU-u4c" firstAttribute="top" secondItem="wJG-du-eWJ" secondAttribute="top" constant="19" id="naq-jG-tVd"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="7cy-Fe-bJf" appends="YES" id="rHh-pn-I63"/>
-                    </connections>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvv-zF-PUh">
                     <rect key="frame" x="0.0" y="59" width="600" height="1"/>
@@ -63,6 +60,5 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="415" y="177"/>
         </view>
-        <tapGestureRecognizer id="7cy-Fe-bJf"/>
     </objects>
 </document>
