@@ -10,26 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class Marker {
-    let name: String!
-    let lat: Double!
-    let lon: Double!
-    let userPrio: Int!
-    
-    init(name: String, lat: Double, lon: Double, userPrio: Int) {
-        self.name = name
-        self.lat = lat
-        self.lon = lon
-        self.userPrio = userPrio
-    }
-}
-
-
-struct Directions {
-    let name = "directions"
-}
-
-
 class GoogleDirectionsAPIHelper {
     class var sharedInstance: GoogleDirectionsAPIHelper {
         struct Singleton {
@@ -40,8 +20,8 @@ class GoogleDirectionsAPIHelper {
     
     let key = GoogleConstants.key
     
-    func getDirections(origin: String, markers: [Marker], onCompletion: JSON -> ()) {
-        let waypointsString = self.generateMarkerParameters(markers)
+    func getDirections(origin: String, sights: [Sight], onCompletion: JSON -> ()) {
+        let waypointsString = self.generateSightParameters(sights)
         
         let urlParameters = [
             "origin": origin,
@@ -69,11 +49,11 @@ class GoogleDirectionsAPIHelper {
         })
     }
     
-    private func generateMarkerParameters(markers: [Marker]) -> String {
+    private func generateSightParameters(sights: [Sight]) -> String {
         let joinCharacter = "|"
         var markerStrings = [String]()
         
-        for item in markers {
+        for item in sights {
             let lon = "\(item.lon)"
             let lat = "\(item.lat)"
             markerStrings.append("\(lon),\(lat)")

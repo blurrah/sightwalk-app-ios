@@ -10,13 +10,22 @@ import Foundation
 
 class Sight: Comparable {
     let name: String
-    var userPriority: Int?
     let description: String
+    let lat: Double
+    let lon: Double
     
+    var enabled: Bool?
+    var userPriority: Int?
     
-    init(name: String, description: String) {
+    init(name: String, description: String, lat: Double, lon: Double) {
         self.name = name
         self.description = description
+        self.lat = lat
+        self.lon = lon
+    }
+    
+    func changeState(state: Bool) {
+        self.enabled = state
     }
     
     func changePrio(priority: Int) {
@@ -24,7 +33,6 @@ class Sight: Comparable {
     }
     
 }
-
 
 // Comparable & Equatable protocol functions
 func >(lhs: Sight, rhs: Sight) -> Bool {
@@ -38,3 +46,4 @@ func <(lhs: Sight, rhs: Sight) -> Bool {
 func ==(lhs: Sight, rhs: Sight) -> Bool {
     return lhs.name == rhs.name
 }
+
