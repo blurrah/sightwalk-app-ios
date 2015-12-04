@@ -43,6 +43,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
                 let marker = GMSMarker(position: sight.location!)
                 marker.title = sight.title
                 marker.userData = sight.text
+                marker.snippet = sight.id
                 marker.map = mapView
             }
             
@@ -62,7 +63,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         infoButton.setTitle("Toevoegen", forState: .Normal)
         infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
-        if ((userChosen.filter() { $0.title != marker.title }.count) != userChosen.count) {
+        if ((userChosen.filter() { $0.id != marker.snippet }.count) != userChosen.count) {
             infoButton.setTitle("Verwijderen", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         }
@@ -83,8 +84,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }
     
     @IBAction func addSight(sender: AnyObject) {
-        if ((userChosen.filter() { $0.title != chosenMarker.title }.count) != userChosen.count) {
-            userChosen = userChosen.filter() { $0.title != chosenMarker.title }
+        if ((userChosen.filter() { $0.id != chosenMarker.snippet }.count) != userChosen.count) {
+            userChosen = userChosen.filter() { $0.id != chosenMarker.snippet }
             chosenMarker.icon = nil
             UIView.animateWithDuration(0.5, animations: {
                 self.infoView.alpha = 0
@@ -94,6 +95,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sight.title = chosenMarker.title
             sight.name = chosenMarker.title
             sight.location = chosenMarker.position
+            sight.id = chosenMarker.snippet
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
             userChosen.append(sight)
             UIView.animateWithDuration(0.5, animations: {

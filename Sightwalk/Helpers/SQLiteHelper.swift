@@ -35,16 +35,17 @@ class SQLiteHelper: NSObject {
         while sqlite3_step(statement) == SQLITE_ROW {
             let sight = Sight();
             
-            sight.type = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 0)))
+            sight.id = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 0)))
+            sight.type = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 1)))
             
-            let longitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 1))
-            let latitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 2))
+            let longitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 2))
+            let latitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 3))
             sight.location = CLLocationCoordinate2DMake(latitude, longitude)
             
-            sight.name = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 3)))
-            sight.title = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 4)))
-            sight.text = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 5)))
-            sight.imgurl = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 6)))
+            sight.name = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 4)))
+            sight.title = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 5)))
+            sight.text = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 6)))
+            sight.imgurl = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 7)))
 
             sights.append(sight)
         }

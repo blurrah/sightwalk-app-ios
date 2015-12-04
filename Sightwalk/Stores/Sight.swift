@@ -9,6 +9,7 @@
 import Foundation
 
 class Sight {
+    var id : String?
     var type : String?
     var location : CLLocationCoordinate2D?
     var name : String?
