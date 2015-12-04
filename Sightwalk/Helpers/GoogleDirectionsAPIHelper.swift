@@ -40,9 +40,7 @@ class GoogleDirectionsAPIHelper {
     
     let key = GoogleConstants.key
     
-    
     func getDirections(origin: String, markers: [Marker], onCompletion: JSON -> ()) {
-        
         let waypointsString = self.generateMarkerParameters(markers)
         
         let urlParameters = [
@@ -53,7 +51,6 @@ class GoogleDirectionsAPIHelper {
             "language": "nl-NL",
             "key": key
         ]
-        
         
         Alamofire.request(.GET, GoogleConstants.Directions.url, encoding: .JSON, headers: urlParameters)
         .validate(statusCode: 200..<300)

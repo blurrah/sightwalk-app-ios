@@ -16,6 +16,7 @@
 		2F489E9E1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F489E9D1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift */; };
 		2F54714A1C05CD6700C292F9 /* DatepickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5471491C05CD6700C292F9 /* DatepickerTextField.swift */; };
 		2F71D02B1C1966A8009D6193 /* SightStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F71D02A1C1966A8009D6193 /* SightStore.swift */; };
+		2F88C4661C11B49100888E54 /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88C4651C11B49100888E54 /* Sight.swift */; };
 		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
@@ -81,6 +82,7 @@
 		2F489E9D1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadHelper.swift; sourceTree = "<group>"; };
 		2F5471491C05CD6700C292F9 /* DatepickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatepickerTextField.swift; sourceTree = "<group>"; };
 		2F71D02A1C1966A8009D6193 /* SightStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightStore.swift; sourceTree = "<group>"; };
+		2F88C4651C11B49100888E54 /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 		2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Sightwalk-Bridging-Header.h"; path = "Sightwalk/Sightwalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E44E711C1055BA0017F1DD /* Sight.swift */,
+				2F88C4651C11B49100888E54 /* Sight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */,
 				2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */,
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
+				2F88C4661C11B49100888E54 /* Sight.swift in Sources */,
 				2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
 				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
