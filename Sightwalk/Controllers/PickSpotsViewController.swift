@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import Alamofire
 
 class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     var sights = [Sight]();
+    var userChosen = [Sight]();
     
+    @IBOutlet var infoButton: GenericViewButton!
+    @IBOutlet var infoText: UILabel!
+    @IBOutlet var infoImage: UIImageView!
+    @IBOutlet var infoName: UILabel!
+    @IBOutlet var infoView: UIView!
     @IBOutlet var mapView: GMSMapView!
+    var chosenMarker: GMSMarker!
     let locationManager: CLLocationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        infoView.hidden = true
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
@@ -50,11 +59,42 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             locationManager.stopUpdatingLocation()
         }
     }
-    
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        view.addSubview(NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindowView)
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        infoButton.setTitle("Toevoegen", forState: .Normal)
+        infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
+        if ((userChosen.filter() { $0.title != marker.title }.count) != userChosen.count) {
+            infoButton.setTitle("Verwijderen", forState: .Normal)
+            infoButton.backgroundColor = UIColor.redColor()
+        }
+        chosenMarker = marker
+        Alamofire.request(.GET, marker.imageurl!).response {
+            (req, res, data, error) in
+            if error == nil {
+                let image = UIImage(data: data!)
+                infoImage.image = image
+            }
+        }
+        infoName.text = marker.title
+        infoText.text = marker.userData.string
+        infoView.hidden = false
+        return true
     }
     
+    @IBAction func addSight(sender: AnyObject) {
+        if ((userChosen.filter() { $0.title != chosenMarker.title }.count) != userChosen.count) {
+            userChosen = userChosen.filter() { $0.title != chosenMarker.title }
+            chosenMarker.icon = nil
+            infoView.hidden = true
+        } else {
+            let sight = Sight();
+            sight.title = chosenMarker.title
+            sight.name = chosenMarker.title
+            sight.location = chosenMarker.position
+            chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
+            userChosen.append(sight)
+            infoView.hidden = true
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
