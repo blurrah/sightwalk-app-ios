@@ -25,7 +25,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoView.hidden = true
+        infoView.alpha = 0
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
@@ -67,24 +67,28 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             infoButton.backgroundColor = UIColor.redColor()
         }
         chosenMarker = marker
-        Alamofire.request(.GET, marker.imageurl!).response {
-            (req, res, data, error) in
-            if error == nil {
-                let image = UIImage(data: data!)
-                infoImage.image = image
-            }
-        }
+       
         infoName.text = marker.title
         infoText.text = marker.userData.string
-        infoView.hidden = false
+        UIView.animateWithDuration(0.5, animations: {
+            self.infoView.alpha = 1
+        })
         return true
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        UIView.animateWithDuration(0.5, animations: {
+            self.infoView.alpha = 0
+        })
     }
     
     @IBAction func addSight(sender: AnyObject) {
         if ((userChosen.filter() { $0.title != chosenMarker.title }.count) != userChosen.count) {
             userChosen = userChosen.filter() { $0.title != chosenMarker.title }
             chosenMarker.icon = nil
-            infoView.hidden = true
+            UIView.animateWithDuration(0.5, animations: {
+                self.infoView.alpha = 0
+            })
         } else {
             let sight = Sight();
             sight.title = chosenMarker.title
@@ -92,7 +96,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sight.location = chosenMarker.position
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
             userChosen.append(sight)
-            infoView.hidden = true
+            UIView.animateWithDuration(0.5, animations: {
+                self.infoView.alpha = 0
+            })
         }
     }
 
