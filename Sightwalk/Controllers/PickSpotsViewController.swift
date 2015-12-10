@@ -11,8 +11,9 @@ import Alamofire
 
 class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
-    var sights = [Sight]();
-    var userChosen = [Sight]();
+    let sightStore = SightStore.sharedInstance
+    
+    var sights = SightStore.sharedInstance.sights
     
     @IBOutlet var infoButton: GenericViewButton!
     @IBOutlet var infoText: UILabel!
@@ -40,16 +41,17 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sights = sqlh.getSights()!
             
             for sight in sights {
-                let marker = GMSMarker(position: sight.location!)
+                let marker = GMSMarker(position: sight.location)
                 marker.title = sight.title
+                marker.snippet = String(sight.id)
                 marker.userData = sight.text
-                marker.snippet = sight.id
                 marker.map = mapView
             }
             
             mapView.delegate = self
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
+            mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2DMake(51.571915, 4.768323), zoom: 10, bearing: 0, viewingAngle: 0)
         }
     }	
     
@@ -61,9 +63,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         }
     }
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        let sightId = sights.indexOf() { $0.id == Int(marker.snippet) }
+        
         infoButton.setTitle("Toevoegen", forState: .Normal)
         infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
-        if ((userChosen.filter() { $0.id != marker.snippet }.count) != userChosen.count) {
+        if sights[sightId!].chosen {
             infoButton.setTitle("Verwijderen", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         }
@@ -84,20 +88,22 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }
     
     @IBAction func addSight(sender: AnyObject) {
-        if ((userChosen.filter() { $0.id != chosenMarker.snippet }.count) != userChosen.count) {
-            userChosen = userChosen.filter() { $0.id != chosenMarker.snippet }
+        
+        let sightId = sights.indexOf() { $0.id == Int(chosenMarker.snippet) }
+        
+        if sights[sightId!].chosen {
+            sights[sightId!].changeState()
+            
             chosenMarker.icon = nil
             UIView.animateWithDuration(0.5, animations: {
                 self.infoView.alpha = 0
             })
         } else {
-            let sight = Sight();
-            sight.title = chosenMarker.title
-            sight.name = chosenMarker.title
-            sight.location = chosenMarker.position
-            sight.id = chosenMarker.snippet
+            sights[sightId!].changePriority(sightStore.userPriority)
+            sightStore.userPriority++
+            sights[sightId!].changeState()
+            
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
-            userChosen.append(sight)
             UIView.animateWithDuration(0.5, animations: {
                 self.infoView.alpha = 0
             })

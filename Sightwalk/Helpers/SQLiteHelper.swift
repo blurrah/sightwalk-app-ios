@@ -30,22 +30,23 @@ class SQLiteHelper: NSObject {
             print("Error in query: \(errmsg)!")
             return .None
         }
-        var sights = [Sight]()
+        var sights = SightStore.sharedInstance.sights
+        
         // Convert results to objects
         while sqlite3_step(statement) == SQLITE_ROW {
-            let sight = Sight();
-            
-            sight.id = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 0)))
-            sight.type = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 1)))
-            
             let longitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 2))
             let latitude : CLLocationDegrees = sqlite3_value_double(sqlite3_column_value(statement, 3))
-            sight.location = CLLocationCoordinate2DMake(latitude, longitude)
             
-            sight.name = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 4)))
-            sight.title = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 5)))
-            sight.text = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 6)))
-            sight.imgurl = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 7)))
+            let location = CLLocationCoordinate2DMake(latitude, longitude)
+            
+            let id = Int(sqlite3_value_int(sqlite3_column_value(statement, 0)))
+            let type = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 1)))
+            let name = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 4)))
+            let title = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 5)))
+            let text = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 6)))
+            let imgurl = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 7)))
+            
+            let sight = Sight(id: id, type: type!, location: location, name: name!, title: title!, text: text!, imgurl: imgurl!)
 
             sights.append(sight)
         }
