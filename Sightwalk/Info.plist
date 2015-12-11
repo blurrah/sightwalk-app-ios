@@ -12,6 +12,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>i.imgur.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>kuipers.solutions</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>

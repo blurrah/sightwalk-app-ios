@@ -10,5 +10,6 @@
 #define Sightwalk_Bridging_Header_h
 
 #import <GoogleMaps/GoogleMaps.h>
+#import <sqlite3.h>
 
 #endif /* Sightwalk_Bridging_Header_h */
