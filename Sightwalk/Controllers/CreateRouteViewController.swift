@@ -47,9 +47,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
         
-        var locationInView = longPress.locationInView(tableView)
+        let locationInView = longPress.locationInView(tableView)
         
-        var indexPath = tableView.indexPathForRowAtPoint(locationInView)
+        let indexPath = tableView.indexPathForRowAtPoint(locationInView)
         
         struct My {
             static var cellSnapshot : UIView? = nil
