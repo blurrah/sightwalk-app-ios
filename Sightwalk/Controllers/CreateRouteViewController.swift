@@ -51,8 +51,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         var indexPath = tableView.indexPathForRowAtPoint(locationInView)
         
-        print(locationInView)
-        print(indexPath)
         struct My {
             static var cellSnapshot : UIView? = nil
         }
