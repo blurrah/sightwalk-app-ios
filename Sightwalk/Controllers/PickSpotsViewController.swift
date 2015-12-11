@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
-    
+    let imageDownloader = ImageDownloadHelper()
     let sightStore = SightStore.sharedInstance
     
     var sights = SightStore.sharedInstance.sights
@@ -56,9 +56,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }	
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-            
+        if let _ = locations.first {
             locationManager.stopUpdatingLocation()
         }
     }
@@ -67,22 +65,31 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         
         infoButton.setTitle("Toevoegen", forState: .Normal)
         infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
+        
         if sights[sightId!].chosen {
             infoButton.setTitle("Verwijderen", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         }
+        
         chosenMarker = marker
        
         infoName.text = marker.title
         infoText.text = marker.userData.string
-        UIView.animateWithDuration(0.5, animations: {
+        
+        
+        imageDownloader.downloadImage(sights[sightId!].imgurl, onCompletion: { response in
+            self.infoImage.image = UIImage(data: response)
+        })
+        
+        UIView.animateWithDuration(0.2, animations: {
             self.infoView.alpha = 1
         })
+        
         return true
     }
     
     func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animateWithDuration(0.2, animations: {
             self.infoView.alpha = 0
         })
     }
@@ -104,7 +111,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sights[sightId!].changeState()
             
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animateWithDuration(0.2, animations: {
                 self.infoView.alpha = 0
             })
         }
@@ -125,11 +132,5 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Pass the selected object to the new view controller.
     }
     */
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
 
 }

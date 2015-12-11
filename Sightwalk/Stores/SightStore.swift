@@ -19,11 +19,4 @@ class SightStore {
     
     var sights = [Sight]()
     var userPriority = 0
-    
-    func getImage(id: Int, onCompletion: (NSData) -> ()) {
-        Alamofire.request(.GET, sights[id].imgurl)
-        .responseData({ request in
-            onCompletion(request.data!)
-        })
-    }
 }
