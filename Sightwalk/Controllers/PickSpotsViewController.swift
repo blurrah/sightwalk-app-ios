@@ -37,8 +37,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
-            let sqlh = SQLiteHelper.sharedInstance
-            sights = sqlh.getSights()!
+            
             
             for sight in sights {
                 let marker = GMSMarker(position: sight.location)
@@ -64,7 +63,6 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sightId = sights.indexOf() { $0.id == Int(marker.snippet) }
         
         infoButton.setTitle("Toevoegen", forState: .Normal)
-        infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
         
         if sights[sightId!].chosen {
             infoButton.setTitle("Verwijderen", forState: .Normal)
@@ -74,8 +72,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         chosenMarker = marker
        
         infoName.text = marker.title
-        infoText.text = marker.userData.string
+        print(marker.userData)
         
+        infoText.text = sights[sightId!].text
+
+        mapView.camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
         
         imageDownloader.downloadImage(sights[sightId!].imgurl, onCompletion: { response in
             self.infoImage.image = UIImage(data: response)
@@ -109,6 +110,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sights[sightId!].changePriority(sightStore.userPriority)
             sightStore.userPriority++
             sights[sightId!].changeState()
+            
+            let chosenTest = sights.filter() { $0.chosen == true }
+            
+            print(chosenTest.count)
             
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
             UIView.animateWithDuration(0.2, animations: {

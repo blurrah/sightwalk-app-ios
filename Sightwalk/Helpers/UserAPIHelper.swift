@@ -93,8 +93,6 @@ class UserAPIHelper {
             "username": username,
             "password": password,
             "email": email,
-            "firstname": "Jeroen",
-            "lastname": "van GHBDoorn",
             "weight": weight,
             "length": length,
             "birthdate": birthdate
