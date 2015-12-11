@@ -13,6 +13,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
+    @IBOutlet var totalsTextOutlet: UILabel!
     
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -37,6 +38,22 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let touchGesture = UITapGestureRecognizer(target: self, action: Selector("handlePickSpotsTap:"))
         touchGesture.delegate = self
         self.pickItemButtonOutlet.addGestureRecognizer(touchGesture)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressSights:"))
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    func handleLongPressSights(gestureRecognizer: UIGestureRecognizer) {
+        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+        let state = longPress.state
+        
+        var locationInView = longPress.locationInView(tableView)
+        
+        var indexPath = tableView.indexPathForRowAtPoint(locationInView)
+        
+        print(locationInView)
+        print(indexPath)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +72,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sights = SightStore.sharedInstance.sights
         let chosen = sights.filter() { $0.chosen == true }
-        print(sights.count)
 
         return chosen.count
     }
@@ -79,6 +95,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let chosen = sights.filter() { $0.chosen == true }
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(chosen.count) * 44
+        
+        self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / 0 km afstand"
     }
 
     /*
