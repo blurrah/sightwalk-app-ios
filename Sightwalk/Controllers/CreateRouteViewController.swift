@@ -158,7 +158,16 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(chosen.count) * 44
         
-        self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / 0 km afstand"
+        if chosen.count > 0 {
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: chosen, onCompletion: { results in
+                
+                let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
+                
+                self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / \(distance!) afstand"
+            })
+        }
+        
+        
     }
 
     /*

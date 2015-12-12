@@ -18,31 +18,33 @@ class GoogleDirectionsAPIHelper {
         return Singleton.instance
     }
     
-    let key = GoogleConstants.key
+    let key = GoogleConstants.webKey
     
     func getDirections(origin: String, sights: [Sight], onCompletion: JSON -> ()) {
         let waypointsString = self.generateSightParameters(sights)
         
         let urlParameters = [
             "origin": origin,
-            "destination": origin,
             "waypoints": waypointsString,
+            "destination": origin,
             "mode": "walking",
             "language": "nl-NL",
             "key": key
         ]
         
-        Alamofire.request(.GET, GoogleConstants.Directions.url, encoding: .JSON, headers: urlParameters)
+        Alamofire.request(.GET, GoogleConstants.Directions.url, parameters: urlParameters)
         .validate(statusCode: 200..<300)
         .validate(contentType: ["application/json"])
         .responseJSON(completionHandler: { response in
             switch response.result {
             case .Success:
+                print("GoogleDirections API Request: success!")
                 let jsonResponse = JSON(response.result.value!)
                 
                 onCompletion(jsonResponse)
                 break
             case .Failure:
+                print(response.request)
                 print("gefaald!")
                 break
             }
@@ -54,9 +56,10 @@ class GoogleDirectionsAPIHelper {
         var markerStrings = [String]()
         
         for item in sights {
-            let lon = "\(item.lon)"
-            let lat = "\(item.lat)"
-            markerStrings.append("\(lon),\(lat)")
+            let position = item.location
+            let lat = "\(position.latitude)"
+            let lon = "\(position.longitude)"
+            markerStrings.append("\(lat),\(lon)")
         }
         
         let result = markerStrings.joinWithSeparator(joinCharacter)
