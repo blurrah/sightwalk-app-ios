@@ -139,10 +139,14 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
         let sights = SightStore.sharedInstance.sights.filter() { $0.chosen == true }
         
         let row = indexPath.row
+        cell.contentView.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1)
+        cell.textLabel?.textColor = UIColor(red:0.12, green:0.81, blue:0.43, alpha:1)
         cell.textLabel?.text = sights[row].name
         
         return cell
@@ -160,7 +164,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         if chosen.count > 0 {
             GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: chosen, onCompletion: { results in
-                
                 let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
                 
                 self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / \(distance!) afstand"
