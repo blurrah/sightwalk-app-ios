@@ -18,5 +18,6 @@ class SightStore {
     }
     
     var sights = [Sight]()
+    var userChosen = [Sight]()
     var userPriority = 0
 }

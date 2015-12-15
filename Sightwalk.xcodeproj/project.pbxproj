@@ -42,6 +42,8 @@
 		F33DC9271BFB3D8F003C69F6 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */; };
 		F33DC9291BFB42BE003C69F6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */; };
 		F3436C251C201D9E00D121FA /* sights.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F3436C241C201D9000D121FA /* sights.sqlite */; };
+		F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3436C261C203B0B00D121FA /* AddSightButton.swift */; };
+		F3436C291C203BA500D121FA /* RemoveSightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3436C281C203BA500D121FA /* RemoveSightButton.swift */; };
 		F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */; };
 		F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
@@ -117,6 +119,8 @@
 		F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F3436C241C201D9000D121FA /* sights.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sights.sqlite; sourceTree = "<group>"; };
+		F3436C261C203B0B00D121FA /* AddSightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSightButton.swift; sourceTree = "<group>"; };
+		F3436C281C203BA500D121FA /* RemoveSightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveSightButton.swift; sourceTree = "<group>"; };
 		F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				2F25B9081C08B49D001B9037 /* StateDependantButton.swift */,
 				F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */,
 				2FDE68011C0F04F000287286 /* PickItemButtonView.swift */,
+				F3436C261C203B0B00D121FA /* AddSightButton.swift */,
+				F3436C281C203BA500D121FA /* RemoveSightButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,7 +520,9 @@
 				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
 				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
+				F3436C291C203BA500D121FA /* RemoveSightButton.swift in Sources */,
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
+				F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,

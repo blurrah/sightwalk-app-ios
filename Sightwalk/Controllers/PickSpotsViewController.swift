@@ -37,14 +37,15 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
-            
-            
             for sight in sights {
                 let marker = GMSMarker(position: sight.location)
                 marker.title = sight.title
                 marker.snippet = String(sight.id)
                 marker.userData = sight.shortdesc
                 marker.map = mapView
+                if sight.chosen {
+                    marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
+                }
             }
             
             mapView.delegate = self
@@ -66,14 +67,12 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         
         if sights[sightId!].chosen {
             infoButton.setTitle("Verwijderen", forState: .Normal)
-            infoButton.backgroundColor = UIColor.redColor()
+            infoButton.tintColor = UIColor.redColor()
         }
         
         chosenMarker = marker
        
-        infoName.text = marker.title
-        print(marker.userData)
-        
+        infoName.text = marker.title        
         infoText.text = sights[sightId!].shortdesc
 
         mapView.camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
@@ -111,9 +110,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sightStore.userPriority++
             sights[sightId!].changeState()
             
-            let chosenTest = sights.filter() { $0.chosen == true }
-            
-            print(chosenTest.count)
+            SightStore.sharedInstance.userChosen.append(sights[sightId!])
             
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
             UIView.animateWithDuration(0.2, animations: {
