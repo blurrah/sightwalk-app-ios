@@ -43,7 +43,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
                 let marker = GMSMarker(position: sight.location)
                 marker.title = sight.title
                 marker.snippet = String(sight.id)
-                marker.userData = sight.text
+                marker.userData = sight.shortdesc
                 marker.map = mapView
             }
             
@@ -74,7 +74,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         infoName.text = marker.title
         print(marker.userData)
         
-        infoText.text = sights[sightId!].text
+        infoText.text = sights[sightId!].shortdesc
 
         mapView.camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
         
