@@ -106,7 +106,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sights[sightId!].changeState()
             
             chosenMarker.icon = nil
-            UIView.animateWithDuration(0.5, animations: {
+            SightStore.sharedInstance.userChosen = SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }
+            UIView.animateWithDuration(0.2, animations: {
                 self.infoView.alpha = 0
             })
         } else {
