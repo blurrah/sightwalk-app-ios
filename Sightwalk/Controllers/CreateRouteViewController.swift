@@ -18,8 +18,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    var userChosen = SightStore.sharedInstance.userChosen
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,7 +92,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                swap(&userChosen[indexPath!.row], &userChosen[Path.initialIndexPath!.row])
+                swap(&SightStore.sharedInstance.userChosen[indexPath!.row], &SightStore.sharedInstance.userChosen[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
             }
@@ -132,13 +130,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userChosen.count
+        return SightStore.sharedInstance.userChosen.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
-        let sights = userChosen
-        
+        let sights = SightStore.sharedInstance.userChosen
+
         let row = indexPath.row
         cell.contentView.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1)
         cell.textLabel?.textColor = UIColor(red:0.12, green:0.81, blue:0.43, alpha:1)
@@ -149,21 +147,19 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        userChosen = SightStore.sharedInstance.userChosen
-        
         self.tableView.reloadData()
         
-        self.bottomTableViewConstraintOutlet.constant = CGFloat(userChosen.count) * 44
+        self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
         updateDistance()
     }
     
     func updateDistance() {
-        if userChosen.count > 0 {
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: userChosen, onCompletion: { results in
+        if SightStore.sharedInstance.userChosen.count > 0 {
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(self.userChosen.count) sights / \(distance!) afstand"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(distance!) afstand"
             })
         }
     }

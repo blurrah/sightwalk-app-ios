@@ -387,22 +387,26 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baq-0k-dx2">
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baq-0k-dx2" customClass="AddSightButton" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="7JU-Rl-QKz"/>
+                                                    <constraint firstAttribute="height" constant="22" id="vqp-U0-HbP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="+"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="7JU-Rl-QKz"/>
+                                                        <exclude reference="vqp-U0-HbP"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="358" y="39" width="22" height="22"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <mask key="constraints">
                                                         <include reference="7JU-Rl-QKz"/>
+                                                        <include reference="vqp-U0-HbP"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
