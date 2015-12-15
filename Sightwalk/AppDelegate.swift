@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Temp code om Dashboard storyboard als main storyboard te setten.
             self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
         
-            let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+            let storyboard = UIStoryboard(name: "Route", bundle: nil)
             let initialViewController = storyboard.instantiateInitialViewController()
         
             self.window?.rootViewController = initialViewController
