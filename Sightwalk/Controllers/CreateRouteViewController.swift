@@ -14,10 +14,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
     @IBOutlet var totalsTextOutlet: UILabel!
-    
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             let sights = sqlh.getSights()
             SightStore.sharedInstance.sights = sights!
         }
-
+        
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.enableButton()
         
@@ -84,7 +84,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 }, completion: { (finished) -> Void in
                     if finished {
                         cell.hidden = true
-                        self.updateDistance()
                     }
                 })
             }
@@ -93,11 +92,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                var chosenSights = SightStore.sharedInstance.sights.filter() { $0.chosen == true }
-                swap(&chosenSights[indexPath!.row], &chosenSights[Path.initialIndexPath!.row])
+                swap(&SightStore.sharedInstance.userChosen[indexPath!.row], &SightStore.sharedInstance.userChosen[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
-                updateDistance()
             }
         default:
             let cell = tableView.cellForRowAtIndexPath(Path.initialIndexPath!) as UITableViewCell!
@@ -133,16 +130,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sights = SightStore.sharedInstance.sights
-        let chosen = sights.filter() { $0.chosen == true }
-
-        return chosen.count
+        return SightStore.sharedInstance.userChosen.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
-        let sights = SightStore.sharedInstance.sights.filter() { $0.chosen == true }
-        
+        let sights = SightStore.sharedInstance.userChosen
+
         let row = indexPath.row
         cell.contentView.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1)
         cell.textLabel?.textColor = UIColor(red:0.12, green:0.81, blue:0.43, alpha:1)
@@ -153,25 +147,19 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.tableView.reloadData()
         
-        let sights = SightStore.sharedInstance.sights
-        let chosen = sights.filter() { $0.chosen == true }
-        
-        self.bottomTableViewConstraintOutlet.constant = CGFloat(chosen.count) * 44
+        self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
         updateDistance()
     }
     
     func updateDistance() {
-        let sights = SightStore.sharedInstance.sights
-        let chosen = sights.filter() { $0.chosen == true }
-        if chosen.count > 0 {
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: chosen, onCompletion: { results in
+        if SightStore.sharedInstance.userChosen.count > 0 {
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / \(distance!) afstand"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(distance!) afstand"
             })
         }
     }

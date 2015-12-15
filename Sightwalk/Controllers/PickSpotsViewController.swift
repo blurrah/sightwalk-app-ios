@@ -37,20 +37,21 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
-            
-            
             for sight in sights {
                 let marker = GMSMarker(position: sight.location)
                 marker.title = sight.title
                 marker.snippet = String(sight.id)
                 marker.userData = sight.shortdesc
                 marker.map = mapView
+                if sight.chosen {
+                    marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
+                }
             }
             
             mapView.delegate = self
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
-            mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2DMake(51.571915, 4.768323), zoom: 10, bearing: 0, viewingAngle: 0)
+            mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2DMake(51.571915, 4.768323), zoom: 11.5, bearing: 0, viewingAngle: 0)
         }
     }	
     
@@ -61,22 +62,24 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         let sightId = sights.indexOf() { $0.id == Int(marker.snippet) }
-        
-        infoButton.setTitle("Toevoegen", forState: .Normal)
-        
+
         if sights[sightId!].chosen {
-            infoButton.setTitle("Verwijderen", forState: .Normal)
+            infoButton.setTitle("-", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
+        } else {
+            infoButton.setTitle("+", forState: .Normal)
+            infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
         }
+        
+        infoButton.layer.borderColor = infoButton.backgroundColor!.CGColor
         
         chosenMarker = marker
        
         infoName.text = marker.title
-        print(marker.userData)
-        
         infoText.text = sights[sightId!].shortdesc
 
-        mapView.camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
+        let camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView.animateToCameraPosition(camera)
         
         imageDownloader.downloadImage(sights[sightId!].imgurl, onCompletion: { response in
             self.infoImage.image = UIImage(data: response)
@@ -103,7 +106,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sights[sightId!].changeState()
             
             chosenMarker.icon = nil
-            UIView.animateWithDuration(0.5, animations: {
+            SightStore.sharedInstance.userChosen = SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }
+            UIView.animateWithDuration(0.2, animations: {
                 self.infoView.alpha = 0
             })
         } else {
@@ -111,9 +115,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             sightStore.userPriority++
             sights[sightId!].changeState()
             
-            let chosenTest = sights.filter() { $0.chosen == true }
-            
-            print(chosenTest.count)
+            SightStore.sharedInstance.userChosen.append(sights[sightId!])
             
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
             UIView.animateWithDuration(0.2, animations: {
