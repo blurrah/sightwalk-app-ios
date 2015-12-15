@@ -45,8 +45,9 @@ class SQLiteHelper: NSObject {
             let title = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 5)))
             let text = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 6)))
             let imgurl = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 7)))
+            let shortdesc = String.fromCString(UnsafePointer<Int8>(sqlite3_column_text(statement, 8)))
             
-            let sight = Sight(id: id, type: type!, location: location, name: name!, title: title!, text: text!, imgurl: imgurl!)
+            let sight = Sight(id: id, type: type!, location: location, name: name!, title: title!, text: text!, imgurl: imgurl!, shortdesc: shortdesc!)
 
             sights.append(sight)
         }

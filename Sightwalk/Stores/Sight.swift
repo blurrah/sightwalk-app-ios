@@ -18,11 +18,12 @@ class Sight: Comparable {
     let title:String
     let text: String
     let imgurl: String
+    let shortdesc: String
     
     var chosen: Bool = false
     var userPriority: Int?
     
-    init(id: Int, type: String, location: CLLocationCoordinate2D, name: String, title: String, text: String, imgurl: String) {
+    init(id: Int, type: String, location: CLLocationCoordinate2D, name: String, title: String, text: String, imgurl: String, shortdesc: String) {
         self.id = id
         self.type = type
         self.location = location
@@ -30,6 +31,7 @@ class Sight: Comparable {
         self.title = title
         self.text = text
         self.imgurl = imgurl
+        self.shortdesc = shortdesc
     }
     
     func changeState() {
