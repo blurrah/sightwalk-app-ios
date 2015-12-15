@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RouteMapViewController: UIViewController {
+class RouteMapViewController: UIViewController, GMSMapViewDelegate {
 
+    @IBOutlet var mapView: GMSMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +32,24 @@ class RouteMapViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        print(RouteStore.sharedInstance.chosenRoute!)
+        let path = GMSPath(fromEncodedPath: RouteStore.sharedInstance.chosenRoute!)
+        print(path)
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = UIColor.redColor()
+        polyline.strokeWidth = 5.0
+        print(polyline)
+        
+        polyline.map = mapView
+        
+        path.coordinateAtIndex(0)
+        
+        mapView.camera = GMSCameraPosition(target: path.coordinateAtIndex(0), zoom: 15, bearing: 0, viewingAngle: 0)
+
+    }
 
 }

@@ -59,6 +59,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="500"/>
+                    <connections>
+                        <outlet property="mapView" destination="gq4-uD-Ioa" id="HZY-ED-SvH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyI-bo-cjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

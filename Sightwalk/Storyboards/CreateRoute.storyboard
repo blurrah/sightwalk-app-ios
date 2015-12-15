@@ -40,6 +40,9 @@
                                                 <include reference="D0l-2F-rxd"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="tapStartButton:" destination="oNl-G7-xol" eventType="touchUpInside" id="46J-Fj-l8A"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
