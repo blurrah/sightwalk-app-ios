@@ -84,6 +84,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 }, completion: { (finished) -> Void in
                     if finished {
                         cell.hidden = true
+                        self.updateDistance()
                     }
                 })
             }
@@ -96,6 +97,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 swap(&chosenSights[indexPath!.row], &chosenSights[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
+                updateDistance()
             }
         default:
             let cell = tableView.cellForRowAtIndexPath(Path.initialIndexPath!) as UITableViewCell!
@@ -111,11 +113,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                         Path.initialIndexPath = nil
                         My.cellSnapshot!.removeFromSuperview()
                         My.cellSnapshot = nil
+                        self.updateDistance()
                     }
             })
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,8 +140,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
         let sights = SightStore.sharedInstance.sights.filter() { $0.chosen == true }
         
@@ -162,6 +161,12 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(chosen.count) * 44
         
+        updateDistance()
+    }
+    
+    func updateDistance() {
+        let sights = SightStore.sharedInstance.sights
+        let chosen = sights.filter() { $0.chosen == true }
         if chosen.count > 0 {
             GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: chosen, onCompletion: { results in
                 let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
@@ -169,8 +174,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 self.totalsTextOutlet.text = "Totaal \(chosen.count) sights / \(distance!) afstand"
             })
         }
-        
-        
     }
 
     /*
