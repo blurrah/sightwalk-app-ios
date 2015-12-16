@@ -34,6 +34,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         self.view.userInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.scrollEnabled = false
         
         let touchGesture = UITapGestureRecognizer(target: self, action: Selector("handlePickSpotsTap:"))
         touchGesture.delegate = self
@@ -145,6 +146,20 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            SightStore.sharedInstance.userChosen.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
+            tableView.reloadData()
+            updateDistance()
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Verwijderen"
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
@@ -161,6 +176,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 
                 self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(distance!) afstand"
             })
+        } else {
+            self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / 0 km afstand"
         }
     }
 

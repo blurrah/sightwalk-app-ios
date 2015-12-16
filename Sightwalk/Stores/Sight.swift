@@ -20,7 +20,6 @@ class Sight: Comparable {
     let imgurl: String
     let shortdesc: String
     
-    var chosen: Bool = false
     var userPriority: Int?
     
     init(id: Int, type: String, location: CLLocationCoordinate2D, name: String, title: String, text: String, imgurl: String, shortdesc: String) {
@@ -32,10 +31,6 @@ class Sight: Comparable {
         self.text = text
         self.imgurl = imgurl
         self.shortdesc = shortdesc
-    }
-    
-    func changeState() {
-        self.chosen = !self.chosen
     }
     
     func changePriority(newPriority: Int) {

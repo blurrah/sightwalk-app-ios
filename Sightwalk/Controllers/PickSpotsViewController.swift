@@ -43,7 +43,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
                 marker.snippet = String(sight.id)
                 marker.userData = sight.shortdesc
                 marker.map = mapView
-                if sight.chosen {
+                if SightStore.sharedInstance.userChosen.contains(sight) {
                     marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
                 }
             }
@@ -63,7 +63,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         let sightId = sights.indexOf() { $0.id == Int(marker.snippet) }
 
-        if sights[sightId!].chosen {
+        if ((SightStore.sharedInstance.userChosen.filter() { $0.id != Int(marker.snippet) }.count) != SightStore.sharedInstance.userChosen.count) {
             infoButton.setTitle("-", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         } else {
@@ -102,19 +102,13 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         
         let sightId = sights.indexOf() { $0.id == Int(chosenMarker.snippet) }
         
-        if sights[sightId!].chosen {
-            sights[sightId!].changeState()
-            
+        if ((SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }.count) != SightStore.sharedInstance.userChosen.count) {
             chosenMarker.icon = nil
             SightStore.sharedInstance.userChosen = SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }
             UIView.animateWithDuration(0.2, animations: {
                 self.infoView.alpha = 0
             })
         } else {
-            sights[sightId!].changePriority(sightStore.userPriority)
-            sightStore.userPriority++
-            sights[sightId!].changeState()
-            
             SightStore.sharedInstance.userChosen.append(sights[sightId!])
             
             chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
