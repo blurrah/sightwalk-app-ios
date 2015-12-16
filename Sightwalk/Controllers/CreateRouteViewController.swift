@@ -34,6 +34,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         self.view.userInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.scrollEnabled = false
         
         let touchGesture = UITapGestureRecognizer(target: self, action: Selector("handlePickSpotsTap:"))
         touchGesture.delegate = self
@@ -153,6 +154,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             tableView.reloadData()
             updateDistance()
         }
+    }
+    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Verwijderen"
     }
     
     override func viewDidAppear(animated: Bool) {
