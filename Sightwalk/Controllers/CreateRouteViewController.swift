@@ -149,10 +149,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         if editingStyle == UITableViewCellEditingStyle.Delete {
             SightStore.sharedInstance.userChosen.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
+            tableView.reloadData()
+            updateDistance()
         }
-        self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
-        tableView.reloadData()
-        updateDistance()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -171,6 +171,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 
                 self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(distance!) afstand"
             })
+        } else {
+            self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / 0 km afstand"
         }
     }
 
