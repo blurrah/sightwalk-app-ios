@@ -150,6 +150,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             SightStore.sharedInstance.userChosen.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
+        self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         tableView.reloadData()
         updateDistance()
     }
