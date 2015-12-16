@@ -43,7 +43,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
                 marker.snippet = String(sight.id)
                 marker.userData = sight.shortdesc
                 marker.map = mapView
-                if sight.chosen {
+                if SightStore.sharedInstance.userChosen.contains(sight) {
                     marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
                 }
             }
