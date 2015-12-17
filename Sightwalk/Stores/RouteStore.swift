@@ -34,30 +34,15 @@ class RouteStore {
         return String(format: "%.1f", distance)
     }
     
-    func calculateTotalDuration() -> String {
-        var duration: Int = 0
+    func calculateTotalTime() -> (Int, Int, Int) {
+        var time: Int = 0
+        
         for (_, subJson) in apiResponse!["routes"][0]["legs"] {
-            if let currentDuration = subJson["duration"]["value"].int {
-                duration = duration + currentDuration
+            if let currentTime = subJson["duration"]["value"].int {
+                time = time + currentTime
             }
         }
         
-        let mins = duration / 60
-        let hours = mins / 60
-        let days = hours / 24
-        let remainingHours = hours % 24
-        let remainingMins = mins % 60
-        let remainingSecs = duration % 60
-        
-        if (days != 0) {
-            let totalDuration = "\(days)d \(remainingHours)u \(remainingMins)m \(remainingSecs)s"
-            return String(totalDuration)
-        } else if (remainingHours != 0) {
-            let totalDuration = "\(remainingHours)u \(remainingMins)m \(remainingSecs)s"
-            return String(totalDuration)
-        } else {
-            let totalDuration = "\(remainingMins)m \(remainingSecs)s"
-            return String(totalDuration)
-        }
+        return (time / 3600, (time % 3600) / 60, (time % 3600) % 60)
     }
 }

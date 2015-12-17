@@ -227,12 +227,12 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         if SightStore.sharedInstance.userChosen.count > 0 {
             GoogleDirectionsAPIHelper.sharedInstance.getDirections(SightStore.sharedInstance.origin, destination: SightStore.sharedInstance.endPoint, sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-                let totalDuration = RouteStore.sharedInstance.calculateTotalDuration()
+                let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r" +
-                                                "\(totalDuration)"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
+                
                 self.endPointSegmentedOutlet.enabled = true
                 self.startRouteButtonOutlet.enableButton()
 
@@ -262,7 +262,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         let lat = String(locValue.latitude)
         let lon = String(locValue.longitude)
         currentLocation = "\(lat), \(lon)"

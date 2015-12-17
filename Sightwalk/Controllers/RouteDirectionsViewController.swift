@@ -15,14 +15,31 @@ protocol RouteDirectionsViewControllerDelegate {
 class RouteDirectionsViewController: UIViewController {
     
     var delegate: RouteDirectionsViewControllerDelegate?
+    
+    let sights = SightStore.sharedInstance.userChosen
 
+    @IBOutlet var sightTitleOutlet: UILabel!
+    @IBOutlet var sightDescriptionOutlet: UILabel!
+    @IBOutlet var timeOutlet: UILabel!
+    @IBOutlet var distanceOutlet: UILabel!
+    
     @IBAction func tapButton(sender: AnyObject) {
         delegate!.routeDirectionsViewControllerButtonPressed(self, info: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let sightStore = SightStore.sharedInstance
+        let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+        let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
+        
+        self.sightTitleOutlet.text = sightStore.userChosen[0].title
+        self.sightDescriptionOutlet.text = sightStore.userChosen[0].shortdesc
+        self.timeOutlet.text = "\(h) uur, \(m) min"
+        self.distanceOutlet.text = "\(totalDistance) km"
     }
 
     override func didReceiveMemoryWarning() {
