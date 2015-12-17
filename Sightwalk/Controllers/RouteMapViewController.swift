@@ -8,14 +8,17 @@
 
 import UIKit
 
-class RouteMapViewController: UIViewController, GMSMapViewDelegate {
+class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var mapView: GMSMapView!
     let chosenSights = SightStore.sharedInstance.userChosen
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +39,8 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
+        mapView.delegate = self
+        
         for sight in chosenSights {
             let marker = GMSMarker(position: sight.location)
             marker.title = sight.title
@@ -48,8 +53,12 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate {
         let path = GMSPath(fromEncodedPath: RouteStore.sharedInstance.chosenRoute!)
         
         let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
         polyline.strokeWidth = 4.0
+        let startGreen = UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
+        let redYellow = GMSStrokeStyle.gradientFromColor(startGreen, toColor:UIColor.redColor())
+        polyline.spans = [GMSStyleSpan(style: GMSStrokeStyle.solidColor(startGreen)),
+            GMSStyleSpan(style: GMSStrokeStyle.solidColor(UIColor.yellowColor())),
+            GMSStyleSpan(style: redYellow)]
         
         polyline.map = mapView
         
@@ -57,8 +66,16 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate {
 
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+            locationManager.startUpdatingLocation()
+            mapView.myLocationEnabled = true
+            mapView.settings.myLocationButton = true
+        }
+    }
+    
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        return false
+        return true
     }
 
 }

@@ -17,7 +17,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         let alertView = UIAlertController(title: "Stoppen", message: "Weet u zeker dat u wilt stoppen?", preferredStyle: UIAlertControllerStyle.Alert)
         
         alertView.addAction(UIAlertAction(title: "Stoppen", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Stop pushed")
+            self.dismissViewControllerAnimated(true, completion: {})
         }))
         
         alertView.addAction(UIAlertAction(title: "Doorgaan", style: .Default, handler: { (action: UIAlertAction!) in
