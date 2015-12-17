@@ -9,6 +9,7 @@
 import UIKit
 
 class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var endPointSegmentedOutlet: UISegmentedControl!
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
     @IBOutlet var tableView: UITableView!
@@ -36,6 +37,16 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.disableButton()
+        
+        SightStore.sharedInstance.origin = "Breda"
+        
+        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
+            if (SightStore.sharedInstance.endPoint == SightStore.sharedInstance.origin) {
+                endPointSegmentedOutlet.selectedSegmentIndex = 1
+            } else {
+                endPointSegmentedOutlet.selectedSegmentIndex = 0
+            }
+        }
         
         self.view.userInteractionEnabled = true
         tableView.delegate = self
@@ -172,12 +183,20 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
-        updateDistance()
+        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
+            updateDistance()
+        }
     }
     
     func updateDistance() {
+        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+            SightStore.sharedInstance.endPoint = getEndPoint()
+        } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
+            SightStore.sharedInstance.endPoint = SightStore.sharedInstance.origin
+        }
+
         if SightStore.sharedInstance.userChosen.count > 0 {
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections(SightStore.sharedInstance.origin, destination: SightStore.sharedInstance.endPoint, sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
                 let totalDuration = RouteStore.sharedInstance.calculateTotalDuration()
 
@@ -191,6 +210,25 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         } else {
             self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
         }
+    }
+    
+    @IBAction func endPointSegmentedAction(sender: AnyObject) {
+        switch endPointSegmentedOutlet.selectedSegmentIndex {
+        case 0:
+            updateDistance()
+        case 1:
+            updateDistance()
+        default:
+            break;
+        }
+    }
+    
+    func getEndPoint() -> String {
+        let location = SightStore.sharedInstance.userChosen.last!.location
+        let lon = String(location.longitude)
+        let lat = String(location.latitude)
+    
+        return "\(lat), \(lon)"
     }
 
     /*

@@ -19,4 +19,6 @@ class SightStore {
     
     var sights = [Sight]()
     var userChosen = [Sight]()
+    var endPoint = String()
+    var origin = String()
 }

@@ -142,6 +142,37 @@
                                     </mask>
                                 </variation>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totaal 0 sights / 0 km afstand" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-ls-b96">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="99" y="247" width="203" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EINDBESTEMMING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz5-il-JWe">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wdM-os-bIb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="wdM-os-bIb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="123" y="288" width="155" height="21"/>
+                                    <mask key="constraints">
+                                        <include reference="wdM-os-bIb"/>
+                                    </mask>
+                                </variation>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f2k-VM-se9">
                                 <rect key="frame" x="-60" y="-14" width="121" height="29"/>
                                 <animations/>
@@ -164,38 +195,10 @@
                                         <include reference="DW8-4F-xaQ"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="endPointSegmentedAction:" destination="oNl-G7-xol" eventType="valueChanged" id="NTs-aK-kuh"/>
+                                </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EINDBESTEMMING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz5-il-JWe">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="wdM-os-bIb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="wdM-os-bIb"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="123" y="288" width="155" height="21"/>
-                                    <mask key="constraints">
-                                        <include reference="wdM-os-bIb"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totaal 0 sights / 0 km afstand" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-ls-b96">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="99" y="247" width="203" height="21"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -233,9 +236,9 @@
                                 <exclude reference="niJ-2C-Bqb"/>
                                 <exclude reference="8sn-WU-C0y"/>
                                 <exclude reference="AJF-IZ-1MI"/>
-                                <exclude reference="f2k-VM-se9"/>
-                                <exclude reference="hz5-il-JWe"/>
                                 <exclude reference="MG5-ls-b96"/>
+                                <exclude reference="hz5-il-JWe"/>
+                                <exclude reference="f2k-VM-se9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="nZT-LT-9rt"/>
@@ -268,9 +271,9 @@
                                 <include reference="niJ-2C-Bqb"/>
                                 <include reference="8sn-WU-C0y"/>
                                 <include reference="AJF-IZ-1MI"/>
-                                <include reference="f2k-VM-se9"/>
-                                <include reference="hz5-il-JWe"/>
                                 <include reference="MG5-ls-b96"/>
+                                <include reference="hz5-il-JWe"/>
+                                <include reference="f2k-VM-se9"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="nZT-LT-9rt"/>
@@ -307,6 +310,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTableViewConstraintOutlet" destination="Nm6-MB-d7X" id="AYO-6I-tqn"/>
+                        <outlet property="endPointSegmentedOutlet" destination="f2k-VM-se9" id="kTa-fz-2Oi"/>
                         <outlet property="pickItemButtonOutlet" destination="8sn-WU-C0y" id="dDE-GH-JBD"/>
                         <outlet property="startRouteButtonOutlet" destination="rEr-5L-KaN" id="UXp-SR-wWa"/>
                         <outlet property="tableView" destination="AJF-IZ-1MI" id="phH-c4-Mya"/>
