@@ -21,7 +21,6 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -36,17 +35,13 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        print(RouteStore.sharedInstance.chosenRoute!)
         let path = GMSPath(fromEncodedPath: RouteStore.sharedInstance.chosenRoute!)
-        print(path)
+        
         let polyline = GMSPolyline(path: path)
         polyline.strokeColor = UIColor.redColor()
         polyline.strokeWidth = 5.0
-        print(polyline)
         
         polyline.map = mapView
-        
-        path.coordinateAtIndex(0)
         
         mapView.camera = GMSCameraPosition(target: path.coordinateAtIndex(0), zoom: 15, bearing: 0, viewingAngle: 0)
 

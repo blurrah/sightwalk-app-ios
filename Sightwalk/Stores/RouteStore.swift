@@ -17,5 +17,22 @@ class RouteStore {
         return Singleton.instance
     }
     
+    var apiResponse: JSON?
+    
     var chosenRoute: String?
+    
+    func calculateTotalDistance() -> String {
+        var distance: Double = 0
+        for (_, subJson) in apiResponse!["routes"][0]["legs"] {
+            if let currentDistance = subJson["distance"]["value"].double {
+                distance = distance + currentDistance
+            }
+        }
+        
+        distance = distance / 1000
+        
+        print(distance)
+        
+        return String(format: "%.1f", distance)
+    }
 }

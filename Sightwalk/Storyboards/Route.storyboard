@@ -148,7 +148,7 @@ Even testen of dit wel goed werkt</string>
                                             <constraint firstAttribute="height" constant="34" id="nF9-VT-yAr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
-                                        <state key="normal" title="FUCKJOUGVD">
+                                        <state key="normal" title="MEER INFO">
                                             <color key="titleColor" red="1" green="0.1670541012" blue="0.22080980610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <variation key="default">
