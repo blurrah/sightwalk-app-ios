@@ -13,6 +13,20 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     var mapView: RouteMapViewController?
     var directionsView: RouteDirectionsViewController?
     
+    @IBAction func tapStopRoute(sender: AnyObject) {
+        let alertView = UIAlertController(title: "Stoppen", message: "Weet u zeker dat u wilt stoppen?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: "Stoppen", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Stop pushed")
+        }))
+        
+        alertView.addAction(UIAlertAction(title: "Doorgaan", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Continue pushed")
+        }))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
     var state = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +63,11 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
             UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseInOut, animations: {
                 self.mapView!.view.frame = CGRectMake(0, 0-offset, width, height);
                 self.directionsView!.view.frame = CGRectMake(0, height/1.5-offset, width, height);
-                self.mapView!.view.alpha = 0
                 }, completion: nil )
         } else {
             UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseInOut, animations: {
                 self.mapView!.view.frame = CGRectMake(0, 0, width, height/1.66667);
                 self.directionsView!.view.frame = CGRectMake(0, height/1.5, width, height);
-                self.mapView!.view.alpha = 1
                 }, completion: nil )
         }
         
