@@ -84,6 +84,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ndJ-EZ-vh3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Ox-IB-Qr0">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startlocatie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seO-TY-v7p">
@@ -179,14 +180,14 @@
                                 <exclude reference="h5O-No-VJs"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="N5l-8f-grQ"/>
+                                <exclude reference="m85-lH-hVH"/>
+                                <exclude reference="x8O-UY-fks"/>
+                                <exclude reference="zmv-kF-S1o"/>
                                 <exclude reference="5Fz-em-xP7"/>
                                 <exclude reference="RyI-SJ-8AW"/>
                                 <exclude reference="gOe-xI-NfD"/>
                                 <exclude reference="gYo-s6-qgp"/>
-                                <exclude reference="x8O-UY-fks"/>
-                                <exclude reference="zmv-kF-S1o"/>
-                                <exclude reference="N5l-8f-grQ"/>
-                                <exclude reference="m85-lH-hVH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -196,14 +197,14 @@
                                 <include reference="h5O-No-VJs"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="N5l-8f-grQ"/>
+                                <include reference="m85-lH-hVH"/>
+                                <include reference="x8O-UY-fks"/>
+                                <include reference="zmv-kF-S1o"/>
                                 <include reference="5Fz-em-xP7"/>
                                 <exclude reference="RyI-SJ-8AW"/>
                                 <include reference="gOe-xI-NfD"/>
                                 <include reference="gYo-s6-qgp"/>
-                                <include reference="x8O-UY-fks"/>
-                                <include reference="zmv-kF-S1o"/>
-                                <include reference="N5l-8f-grQ"/>
-                                <include reference="m85-lH-hVH"/>
                             </mask>
                         </variation>
                     </view>
