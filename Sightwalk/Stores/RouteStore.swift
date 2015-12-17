@@ -31,8 +31,6 @@ class RouteStore {
         
         distance = distance / 1000
         
-        print(distance)
-        
         return String(format: "%.1f", distance)
     }
 }

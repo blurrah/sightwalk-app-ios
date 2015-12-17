@@ -18,7 +18,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var sb = UIStoryboard.init(name: "Route", bundle: nil)
+        let sb = UIStoryboard.init(name: "Route", bundle: nil)
         mapView = sb.instantiateViewControllerWithIdentifier("mapViewController") as? RouteMapViewController
         directionsView = sb.instantiateViewControllerWithIdentifier("directionsViewController") as? RouteDirectionsViewController
         
