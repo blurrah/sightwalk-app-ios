@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     @IBOutlet var endPointSegmentedOutlet: UISegmentedControl!
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
@@ -24,9 +24,22 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let vc = storyboard.instantiateInitialViewController() as UIViewController!
         presentViewController(vc, animated: true, completion: nil)
     }
+    
+    let locationManager = CLLocationManager()
+    var currentLocation = "Breda"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
         
         let sqlh = SQLiteHelper.sharedInstance
         
@@ -37,8 +50,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.disableButton()
+        endPointSegmentedOutlet.enabled = false
         
-        SightStore.sharedInstance.origin = "Breda"
+        SightStore.sharedInstance.origin = currentLocation
         
         if (SightStore.sharedInstance.userChosen.isEmpty == false) {
             if (SightStore.sharedInstance.endPoint == SightStore.sharedInstance.origin) {
@@ -183,6 +197,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
+        SightStore.sharedInstance.origin = currentLocation
+        
         if (SightStore.sharedInstance.userChosen.isEmpty == false) {
             updateDistance()
         }
@@ -204,6 +220,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 
                 self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r" +
                                                 "\(totalDuration)"
+                self.endPointSegmentedOutlet.enabled = true
                 self.startRouteButtonOutlet.enableButton()
 
             })
@@ -229,6 +246,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let lat = String(location.latitude)
     
         return "\(lat), \(lon)"
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let lat = String(locValue.latitude)
+        let lon = String(locValue.longitude)
+        currentLocation = "\(lat), \(lon)"
     }
 
     /*
