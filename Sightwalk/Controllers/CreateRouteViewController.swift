@@ -37,7 +37,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.disableButton()
         
-        
         self.view.userInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
@@ -180,10 +179,12 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         if SightStore.sharedInstance.userChosen.count > 0 {
             GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+                let totalDuration = RouteStore.sharedInstance.calculateTotalDuration()
 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r" +
+                                                "\(totalDuration)"
                 self.startRouteButtonOutlet.enableButton()
 
             })
