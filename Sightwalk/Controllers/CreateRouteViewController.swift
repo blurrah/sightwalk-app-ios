@@ -17,7 +17,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
+    @IBAction func tapStartButton(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Route", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        presentViewController(vc, animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +35,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }
         
         // Do any additional setup after loading the view.
-        startRouteButtonOutlet.enableButton()
+        startRouteButtonOutlet.disableButton()
+        
         
         self.view.userInteractionEnabled = true
         tableView.delegate = self
@@ -172,12 +179,16 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     func updateDistance() {
         if SightStore.sharedInstance.userChosen.count > 0 {
             GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
-                let distance = results["routes"][0]["legs"][0]["distance"]["text"].string
+                let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+
+                RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(distance!) afstand"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand"
+                self.startRouteButtonOutlet.enableButton()
+
             })
         } else {
-            self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / 0 km afstand"
+            self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
         }
     }
 
