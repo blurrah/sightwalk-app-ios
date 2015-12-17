@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4y0-WN-zFu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4y0-WN-zFu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,6 +18,7 @@
                     <view key="view" contentMode="scaleToFill" id="3Mg-YE-eBR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Route" id="zD6-T4-uo4"/>
@@ -39,12 +41,14 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gq4-uD-Ioa" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                                 </variation>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
@@ -76,7 +80,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pMd-f1-1FC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kJA-ZF-gB5">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKf-af-sax">
@@ -84,6 +88,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOLGENDE SIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNM-7V-sR7">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="lKv-t5-5Rw"/>
                                         </constraints>
@@ -103,6 +108,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oorlogsmonument Breskens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLj-Na-cHl">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XOB-7w-Xce"/>
                                         </constraints>
@@ -122,13 +128,14 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-9K-c2W">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="86" id="l6X-FH-8Mo"/>
                                         </constraints>
                                         <string key="text">Hier komt even een hele poeplading aan tekst.
 Even testen of dit wel goed werkt</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -143,6 +150,7 @@ Even testen of dit wel goed werkt</string>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-QE-EEQ">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="QHH-4i-G9r"/>
                                             <constraint firstAttribute="height" constant="34" id="nF9-VT-yAr"/>
@@ -168,6 +176,7 @@ Even testen of dit wel goed werkt</string>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hNM-7V-sR7" firstAttribute="top" secondItem="gKf-af-sax" secondAttribute="top" constant="23" id="3Nq-8M-60v">
@@ -199,16 +208,16 @@ Even testen of dit wel goed werkt</string>
                                         <exclude reference="McP-QE-EEQ"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="KcQ-en-f4y"/>
-                                        <exclude reference="UtK-cE-Hnb"/>
-                                        <exclude reference="ZZm-ok-In7"/>
+                                        <exclude reference="9ru-w5-Kwh"/>
+                                        <exclude reference="bQZ-F5-bO3"/>
                                         <exclude reference="G7P-WW-7rF"/>
                                         <exclude reference="aOp-Wk-MMQ"/>
                                         <exclude reference="fsw-oY-CSG"/>
                                         <exclude reference="3Nq-8M-60v"/>
                                         <exclude reference="WVQ-ZP-BA7"/>
-                                        <exclude reference="9ru-w5-Kwh"/>
-                                        <exclude reference="bQZ-F5-bO3"/>
+                                        <exclude reference="KcQ-en-f4y"/>
+                                        <exclude reference="UtK-cE-Hnb"/>
+                                        <exclude reference="ZZm-ok-In7"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -219,20 +228,21 @@ Even testen of dit wel goed werkt</string>
                                         <include reference="McP-QE-EEQ"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="KcQ-en-f4y"/>
-                                        <include reference="UtK-cE-Hnb"/>
-                                        <include reference="ZZm-ok-In7"/>
+                                        <include reference="9ru-w5-Kwh"/>
+                                        <include reference="bQZ-F5-bO3"/>
                                         <include reference="G7P-WW-7rF"/>
                                         <include reference="aOp-Wk-MMQ"/>
                                         <include reference="fsw-oY-CSG"/>
                                         <include reference="3Nq-8M-60v"/>
                                         <include reference="WVQ-ZP-BA7"/>
-                                        <include reference="9ru-w5-Kwh"/>
-                                        <include reference="bQZ-F5-bO3"/>
+                                        <include reference="KcQ-en-f4y"/>
+                                        <include reference="UtK-cE-Hnb"/>
+                                        <include reference="ZZm-ok-In7"/>
                                     </mask>
                                 </variation>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gKf-af-sax" firstAttribute="top" secondItem="kJA-ZF-gB5" secondAttribute="topMargin" id="EE1-ag-3g7"/>
@@ -245,10 +255,10 @@ Even testen of dit wel goed werkt</string>
                                 <exclude reference="gKf-af-sax"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="oPn-Ik-y1b"/>
                                 <exclude reference="EE1-ag-3g7"/>
                                 <exclude reference="SMV-oh-1Mp"/>
                                 <exclude reference="aUi-4D-xuC"/>
-                                <exclude reference="oPn-Ik-y1b"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -256,10 +266,10 @@ Even testen of dit wel goed werkt</string>
                                 <include reference="gKf-af-sax"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="oPn-Ik-y1b"/>
                                 <include reference="EE1-ag-3g7"/>
                                 <include reference="SMV-oh-1Mp"/>
                                 <include reference="aUi-4D-xuC"/>
-                                <include reference="oPn-Ik-y1b"/>
                             </mask>
                         </variation>
                     </view>
@@ -279,6 +289,7 @@ Even testen of dit wel goed werkt</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FC0-Ew-kHa" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

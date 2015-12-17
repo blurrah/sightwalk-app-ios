@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    @IBOutlet var endPointSegmentedOutlet: UISegmentedControl!
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
     @IBOutlet var tableView: UITableView!
@@ -19,13 +20,39 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
+        if (SightStore.sharedInstance.origin == "Centrum Breda") {
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda. Wilt u doorgaan?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
+                let storyboard = UIStoryboard(name: "Route", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as UIViewController!
+                self.presentViewController(vc, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
         let storyboard = UIStoryboard(name: "Route", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as UIViewController!
         presentViewController(vc, animated: true, completion: nil)
+        }
     }
+    
+    let locationManager = CLLocationManager()
+    var currentLocation = "Centrum Breda"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
         
         let sqlh = SQLiteHelper.sharedInstance
         
@@ -36,7 +63,17 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.disableButton()
+        endPointSegmentedOutlet.enabled = false
         
+        SightStore.sharedInstance.origin = currentLocation
+        
+        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
+            if (SightStore.sharedInstance.endPoint == SightStore.sharedInstance.origin) {
+                endPointSegmentedOutlet.selectedSegmentIndex = 1
+            } else {
+                endPointSegmentedOutlet.selectedSegmentIndex = 0
+            }
+        }
         
         self.view.userInteractionEnabled = true
         tableView.delegate = self
@@ -173,23 +210,62 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
-        updateDistance()
+        SightStore.sharedInstance.origin = currentLocation
+        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
+            updateDistance()
+        }
     }
     
     func updateDistance() {
+        SightStore.sharedInstance.origin = currentLocation
+        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+            SightStore.sharedInstance.endPoint = getEndPoint()
+        } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
+            SightStore.sharedInstance.endPoint = SightStore.sharedInstance.origin
+        }
+
         if SightStore.sharedInstance.userChosen.count > 0 {
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections("Breda", sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections(SightStore.sharedInstance.origin, destination: SightStore.sharedInstance.endPoint, sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+                let totalDuration = RouteStore.sharedInstance.calculateTotalDuration()
 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand"
+                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r" +
+                                                "\(totalDuration)"
+                self.endPointSegmentedOutlet.enabled = true
                 self.startRouteButtonOutlet.enableButton()
 
             })
         } else {
             self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
         }
+    }
+    
+    @IBAction func endPointSegmentedAction(sender: AnyObject) {
+        switch endPointSegmentedOutlet.selectedSegmentIndex {
+        case 0:
+            updateDistance()
+        case 1:
+            updateDistance()
+        default:
+            break;
+        }
+    }
+    
+    func getEndPoint() -> String {
+        let location = SightStore.sharedInstance.userChosen.last!.location
+        let lon = String(location.longitude)
+        let lat = String(location.latitude)
+    
+        return "\(lat), \(lon)"
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let lat = String(locValue.latitude)
+        let lon = String(locValue.longitude)
+        currentLocation = "\(lat), \(lon)"
     }
 
     /*

@@ -20,13 +20,13 @@ class GoogleDirectionsAPIHelper {
     
     let key = GoogleConstants.webKey
     
-    func getDirections(origin: String, sights: [Sight], onCompletion: JSON -> ()) {
+    func getDirections(origin: String, destination: String, sights: [Sight], onCompletion: JSON -> ()) {
         let waypointsString = self.generateSightParameters(sights)
         
         let urlParameters = [
             "origin": origin,
             "waypoints": waypointsString,
-            "destination": origin,
+            "destination": destination,
             "mode": "walking",
             "language": "nl-NL",
             "key": key
