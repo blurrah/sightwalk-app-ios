@@ -20,13 +20,26 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
+        if (SightStore.sharedInstance.origin == "Centrum Breda") {
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda. Wilt u doorgaan?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
+                let storyboard = UIStoryboard(name: "Route", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as UIViewController!
+                self.presentViewController(vc, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
         let storyboard = UIStoryboard(name: "Route", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as UIViewController!
         presentViewController(vc, animated: true, completion: nil)
+        }
     }
     
     let locationManager = CLLocationManager()
-    var currentLocation = "Breda"
+    var currentLocation = "Centrum Breda"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,13 +211,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
         
         SightStore.sharedInstance.origin = currentLocation
-        
         if (SightStore.sharedInstance.userChosen.isEmpty == false) {
             updateDistance()
         }
     }
     
     func updateDistance() {
+        SightStore.sharedInstance.origin = currentLocation
         if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
             SightStore.sharedInstance.endPoint = getEndPoint()
         } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
