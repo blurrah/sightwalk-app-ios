@@ -21,6 +21,7 @@
 		2F7D44961C204096002DE5DC /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44951C204096002DE5DC /* RouteMapViewController.swift */; };
 		2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */; };
 		2F7D449A1C204E33002DE5DC /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44991C204E33002DE5DC /* RouteStore.swift */; };
+		2F7D449C1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */; };
 		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
@@ -92,6 +93,7 @@
 		2F7D44951C204096002DE5DC /* RouteMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
 		2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDirectionsViewController.swift; sourceTree = "<group>"; };
 		2F7D44991C204E33002DE5DC /* RouteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
+		2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailDirectionsViewController.swift; sourceTree = "<group>"; };
 		2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Sightwalk-Bridging-Header.h"; path = "Sightwalk/Sightwalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		2FFA3D7F1BF352C600B758D5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */,
 				2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */,
 				2F7D44951C204096002DE5DC /* RouteMapViewController.swift */,
 				2F526E8B1C20325E0024DAFE /* RouteViewController.swift */,
@@ -542,6 +545,7 @@
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
 				F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
+				2F7D449C1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift in Sources */,
 				2FFD437D1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift in Sources */,
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
 				2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */,

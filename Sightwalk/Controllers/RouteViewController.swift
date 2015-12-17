@@ -8,10 +8,11 @@
 
 import UIKit
 
-class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate {
+class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate, RouteDetailDirectionsViewControllerDelegate {
 
     var mapView: RouteMapViewController?
     var directionsView: RouteDirectionsViewController?
+    var detailView: RouteDetailDirectionsViewController?
     
     @IBAction func tapStopRoute(sender: AnyObject) {
         let alertView = UIAlertController(title: "Stoppen", message: "Weet u zeker dat u wilt stoppen?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -35,6 +36,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         let sb = UIStoryboard.init(name: "Route", bundle: nil)
         mapView = sb.instantiateViewControllerWithIdentifier("mapViewController") as? RouteMapViewController
         directionsView = sb.instantiateViewControllerWithIdentifier("directionsViewController") as? RouteDirectionsViewController
+        detailView = sb.instantiateViewControllerWithIdentifier("detailViewController") as? RouteDetailDirectionsViewController
         
         self.addChildViewController(mapView!)
         mapView!.didMoveToParentViewController(self)
@@ -44,16 +46,32 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         directionsView!.didMoveToParentViewController(self)
         self.view.addSubview(directionsView!.view)
         
+        self.addChildViewController(detailView!)
+        detailView!.didMoveToParentViewController(self)
+        self.view.addSubview(detailView!.view)
+        detailView!.view.alpha = 0
+        
+        
         let width = self.view.frame.width
         let height = self.view.frame.height
         
         mapView!.view.frame = CGRectMake(0, 0, width, height/1.66667)
         directionsView!.view.frame = CGRectMake(0, height/1.5, width, height)
+        detailView!.view.frame = CGRectMake(0, height/1.5, width, height)
         
         directionsView!.delegate = self
+        detailView!.delegate = self
+    }
+    
+    func routeDetailDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
+        changeViewState()
     }
     
     func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
+        changeViewState()
+    }
+    
+    func changeViewState() {
         let width : CGFloat = self.view.frame.size.width;
         let height : CGFloat = self.view.frame.size.height;
         
@@ -62,17 +80,19 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         if !state {
             UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseInOut, animations: {
                 self.mapView!.view.frame = CGRectMake(0, 0-offset, width, height);
-                self.directionsView!.view.frame = CGRectMake(0, height/1.5-offset, width, height);
+                self.directionsView!.view.alpha = 0
+                self.detailView!.view.frame = CGRectMake(0, height/1.6-offset, width, height/1.6-offset);
+                self.detailView!.view.alpha = 1
                 }, completion: nil )
         } else {
             UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseInOut, animations: {
                 self.mapView!.view.frame = CGRectMake(0, 0, width, height/1.66667);
+                self.detailView!.view.alpha = 0
                 self.directionsView!.view.frame = CGRectMake(0, height/1.5, width, height);
+                self.directionsView!.view.alpha = 1
                 }, completion: nil )
         }
-        
         state = !state
-        
     }
 
     override func didReceiveMemoryWarning() {
