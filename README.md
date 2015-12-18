@@ -7,6 +7,10 @@ Uses Cocoapods for dependencies.
 ## Current dependencies
 - Alamofire
 - SwiftyJSON
+- Locksmith
+- JLToast
+- GoogleMaps
+- SwiftCop
 
 
 ## Instructions
