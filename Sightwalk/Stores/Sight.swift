@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class Sight: Comparable {
+class Sight: Comparable, Hashable {
     
     let id: Int
     let type: String
@@ -19,6 +19,12 @@ class Sight: Comparable {
     let text: String
     let imgurl: String
     let shortdesc: String
+    
+    var hashValue : Int {
+        get {
+            return id
+        }
+    }
     
     var userPriority: Int?
     

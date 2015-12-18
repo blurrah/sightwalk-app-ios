@@ -19,6 +19,7 @@ class UserAPIHelper {
         return Singleton.instance
     }
     
+    
     let userIdentifier: String = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
     func loginUser(username: String, password: String, onCompletion: (token: String?, error: NSError?) -> ()) {

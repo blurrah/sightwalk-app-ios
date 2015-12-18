@@ -44,6 +44,8 @@
 		2FFA3D8B1BF4AF5600B758D5 /* GenericNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */; };
 		2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA3D8C1BF4B2A900B758D5 /* LoginViewController.swift */; };
 		2FFD437D1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD437C1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift */; };
+		92EF00F21C2300F2001EF35C /* SightSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EF00F11C2300F2001EF35C /* SightSyncer.swift */; };
+		92EF00F41C23450A001EF35C /* SightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EF00F31C23450A001EF35C /* SightManager.swift */; };
 		F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */; };
 		F33DC9271BFB3D8F003C69F6 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */; };
 		F33DC9291BFB42BE003C69F6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC9281BFB42BE003C69F6 /* FavoriteViewController.swift */; };
@@ -125,6 +127,8 @@
 		2FFD437C1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPIHelper.swift; sourceTree = "<group>"; };
 		548FAF2767844AE51A9B3294 /* Pods_Sightwalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sightwalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A482CD35DF74AD2BA9E6E0 /* Pods-Sightwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.debug.xcconfig"; sourceTree = "<group>"; };
+		92EF00F11C2300F2001EF35C /* SightSyncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightSyncer.swift; sourceTree = "<group>"; };
+		92EF00F31C23450A001EF35C /* SightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightManager.swift; sourceTree = "<group>"; };
 		B7BD346EAFAE86D397454D56 /* Pods-Sightwalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.release.xcconfig"; sourceTree = "<group>"; };
 		F33DC9241BFB3A12003C69F6 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F33DC9261BFB3D8F003C69F6 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				F3E44E731C1056530017F1DD /* SQLiteHelper.swift */,
 				2F489E9D1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift */,
 				2FFD437C1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift */,
+				92EF00F11C2300F2001EF35C /* SightSyncer.swift */,
+				92EF00F31C23450A001EF35C /* SightManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
+				92EF00F41C23450A001EF35C /* SightManager.swift in Sources */,
 				F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */,
 				2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */,
 				2F7D449C1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift in Sources */,
@@ -558,6 +565,7 @@
 				2F71D02B1C1966A8009D6193 /* SightStore.swift in Sources */,
 				2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */,
 				2F54714A1C05CD6700C292F9 /* DatepickerTextField.swift in Sources */,
+				92EF00F21C2300F2001EF35C /* SightSyncer.swift in Sources */,
 				2FFA3D851BF4970F00B758D5 /* GenericViewButton.swift in Sources */,
 				2F25B9051C08AEB6001B9037 /* CreateRouteViewController.swift in Sources */,
 				2FFA3D891BF4A54800B758D5 /* GenericTextField.swift in Sources */,

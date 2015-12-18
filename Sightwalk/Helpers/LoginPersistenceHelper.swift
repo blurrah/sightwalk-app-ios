@@ -36,10 +36,17 @@ class LoginPersistenceHelper {
     }
     
     func accessToken(onCompletion: String -> Void) {
+        //{
+        // todo remove this codeblock
+        onCompletion("nxaj3ung9qw7b96o76fp1dj603sorqot45vohf2sm7viu2m164")
+        return
+        //}
+        
         guard let name = userDefaults.stringForKey("usernameKey") else {
             print("Could not get user key")
             return
         }
+        
         
         let dictionary = Locksmith.loadDataForUserAccount(name)!
         
