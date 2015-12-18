@@ -69,6 +69,24 @@ class SightStore : SightSyncInterface {
         return sights
     }
     
+    func markSightAsFavorite(sight : Sight) {
+        markSightAsFavorite(sight, favorite: true)
+    }
+    
+    func markSightAsFavorite(sight : Sight, favorite : Bool) {
+        if favorite && !favorites.contains(sight) {
+            favorites.append(sight)
+        }
+        
+        if !favorite && favorites.contains(sight) {
+            favorites.removeAtIndex(favorites.indexOf(sight)!)
+        }
+    }
+    
+    func isFavorite(sight : Sight) -> Bool {
+        return favorites.contains(sight)
+    }
+    
     func triggerRemoveSight(sight : Sight) {
         print("trigger remove")
     }
@@ -78,6 +96,7 @@ class SightStore : SightSyncInterface {
     
     var sights = [Sight]()
     var userChosen = [Sight]()
+    var favorites = [Sight]()
     var endPoint = String()
     var origin = String()
 }

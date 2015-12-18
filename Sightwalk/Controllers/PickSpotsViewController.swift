@@ -15,6 +15,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     var markers = [Sight: GMSMarker]()
     
+    @IBOutlet var favoriteButton: AddSightButton!
     @IBOutlet var infoButton: GenericViewButton!
     @IBOutlet var infoText: UILabel!
     @IBOutlet var infoImage: UIImageView!
@@ -131,6 +132,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         })
     }
     
+    @IBAction func addFavorite(sender: AnyObject) {
+        let sight = getSightByMarker(chosenMarker)
+        let newFavorite : Bool = !sightStore.isFavorite(sight)
+        sightStore.markSightAsFavorite(sight, favorite: newFavorite)
+    }
     private func getSightByMarker(marker : GMSMarker) -> Sight {
         let (sight, _) = markers.filter() { $0.1 == marker }.first!
         return sight

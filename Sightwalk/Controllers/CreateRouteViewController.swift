@@ -217,14 +217,17 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func updateDistance() {
-        SightStore.sharedInstance.origin = currentLocation
-        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
-            SightStore.sharedInstance.endPoint = getEndPoint()
-        } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
-            SightStore.sharedInstance.endPoint = SightStore.sharedInstance.origin
+        for fav in SightStore.sharedInstance.favorites {
+            print(fav.title)
         }
-
+        
         if SightStore.sharedInstance.userChosen.count > 0 {
+            SightStore.sharedInstance.origin = currentLocation
+            if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+                SightStore.sharedInstance.endPoint = getEndPoint()
+            } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
+                SightStore.sharedInstance.endPoint = SightStore.sharedInstance.origin
+            }
             GoogleDirectionsAPIHelper.sharedInstance.getDirections(SightStore.sharedInstance.origin, destination: SightStore.sharedInstance.endPoint, sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
                 let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
