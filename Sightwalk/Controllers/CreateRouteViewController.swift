@@ -160,16 +160,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                
-                // todo
-                
-                // sight one 
-                // &SightStore.sharedInstance.userChosen[indexPath!.row] 
-                
-                // sight two
-                // &SightStore.sharedInstance.userChosen[Path.initialIndexPath!.row]
-                
-                
+                sightStore.switchPosition(sightStore.userChosen[indexPath!.row], sightTwo: sightStore.userChosen[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
             }
