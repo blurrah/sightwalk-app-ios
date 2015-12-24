@@ -17,6 +17,10 @@ struct ServerConstants {
         static let register = "user/"
         static let passwordreset = "auth/password-reset"
     }
+    
+    struct Sight {
+        static let getInRange = "/sight/"
+    }
 }
 
 struct GoogleConstants {

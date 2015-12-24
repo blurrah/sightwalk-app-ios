@@ -9,11 +9,11 @@
 import UIKit
 import Alamofire
 
-class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, SightManager {
     let imageDownloader = ImageDownloadHelper()
     let sightStore = SightStore.sharedInstance
     
-    var sights = SightStore.sharedInstance.sights
+    var markers = [Sight: GMSMarker]()
     
     @IBOutlet var infoButton: GenericViewButton!
     @IBOutlet var infoText: UILabel!
@@ -23,9 +23,14 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     @IBOutlet var mapView: GMSMapView!
     var chosenMarker: GMSMarker!
     let locationManager: CLLocationManager = CLLocationManager()
+    
+    let colorGreen : UIColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sightStore.subscribe(self, slot: "spotpicker")
+        
         infoView.alpha = 0
 
         // Do any additional setup after loading the view.
@@ -37,23 +42,34 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
-            for sight in sights {
-                let marker = GMSMarker(position: sight.location)
-                marker.title = sight.title
-                marker.snippet = String(sight.id)
-                marker.userData = sight.shortdesc
-                marker.map = mapView
-                if SightStore.sharedInstance.userChosen.contains(sight) {
-                    marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
-                }
-            }
+            sightStore.getAll(self)
             
             mapView.delegate = self
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
             mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2DMake(51.571915, 4.768323), zoom: 11.5, bearing: 0, viewingAngle: 0)
         }
-    }	
+    }
+    
+    func addSight(sight : Sight) {
+        let marker = GMSMarker(position: sight.location)
+        marker.title = sight.title
+        marker.snippet = String(sight.id)
+        marker.userData = sight.shortdesc
+        marker.map = mapView
+        if sightStore.isSelected(sight) {
+            marker.icon = GMSMarker.markerImageWithColor(colorGreen)
+        }
+        
+        markers[sight] = marker
+    }
+    
+    func removeSight(sight : Sight) {
+        if let marker : GMSMarker = markers[sight] {
+            marker.map = nil
+            markers.removeValueForKey(sight)
+        }
+    }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let _ = locations.first {
@@ -61,14 +77,15 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         }
     }
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        let sightId = sights.indexOf() { $0.id == Int(marker.snippet) }
 
-        if ((SightStore.sharedInstance.userChosen.filter() { $0.id != Int(marker.snippet) }.count) != SightStore.sharedInstance.userChosen.count) {
+        let sight = getSightByMarker(marker)
+ 
+        if (sightStore.isSelected(sight)) {
             infoButton.setTitle("-", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         } else {
             infoButton.setTitle("+", forState: .Normal)
-            infoButton.backgroundColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
+            infoButton.backgroundColor = colorGreen
         }
         
         infoButton.layer.borderColor = infoButton.backgroundColor!.CGColor
@@ -76,12 +93,12 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         chosenMarker = marker
        
         infoName.text = marker.title
-        infoText.text = sights[sightId!].shortdesc
+        infoText.text = sight.shortdesc
 
         let camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
         
-        imageDownloader.downloadImage(sights[sightId!].imgurl, onCompletion: { response in
+        imageDownloader.downloadImage(sight.imgurl, onCompletion: { response in
             self.infoImage.image = UIImage(data: response)
         })
         
@@ -99,23 +116,27 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }
     
     @IBAction func addSight(sender: AnyObject) {
+        let sight = getSightByMarker(chosenMarker)
         
-        let sightId = sights.indexOf() { $0.id == Int(chosenMarker.snippet) }
+        // toggle selection of sight
+        let newSelected : Bool = !sightStore.isSelected(sight)
+        sightStore.markSightSelected(sight, selected: newSelected)
+        chosenMarker.icon = (newSelected) ? GMSMarker.markerImageWithColor(colorGreen) : nil
         
-        if ((SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }.count) != SightStore.sharedInstance.userChosen.count) {
-            chosenMarker.icon = nil
-            SightStore.sharedInstance.userChosen = SightStore.sharedInstance.userChosen.filter() { $0.id != Int(chosenMarker.snippet) }
-            UIView.animateWithDuration(0.2, animations: {
-                self.infoView.alpha = 0
-            })
-        } else {
-            SightStore.sharedInstance.userChosen.append(sights[sightId!])
-            
-            chosenMarker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
-            UIView.animateWithDuration(0.2, animations: {
-                self.infoView.alpha = 0
-            })
-        }
+        // fade out bottom bar
+        UIView.animateWithDuration(0.2, animations: {
+            self.infoView.alpha = 0
+        })
+    }
+    
+    func updateSight(oldSight: Sight, newSight: Sight) {
+        removeSight(oldSight)
+        addSight(newSight)
+    }
+    
+    private func getSightByMarker(marker : GMSMarker) -> Sight {
+        let (sight, _) = markers.filter() { $0.1 == marker }.first!
+        return sight
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,15 +144,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
 
+    
+    
 }

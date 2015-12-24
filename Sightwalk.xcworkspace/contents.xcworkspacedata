@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../../Desktop/breda.gpx">
+      location = "group:../../../../Downloads/default.gpx">
    </FileRef>
    <FileRef
       location = "group:Sightwalk.xcodeproj">

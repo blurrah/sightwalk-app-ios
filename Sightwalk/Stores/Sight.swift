@@ -8,17 +8,24 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
-class Sight: Comparable {
+class Sight: Comparable, Hashable {
     
     let id: Int
-    let type: String
-    let location: CLLocationCoordinate2D
-    let name: String
-    let title:String
-    let text: String
-    let imgurl: String
-    let shortdesc: String
+    var type: String
+    var location: CLLocationCoordinate2D
+    var name: String
+    var title:String
+    var text: String
+    var imgurl: String
+    var shortdesc: String
+    
+    var hashValue : Int {
+        get {
+            return id
+        }
+    }
     
     var userPriority: Int?
     
@@ -33,8 +40,45 @@ class Sight: Comparable {
         self.shortdesc = shortdesc
     }
     
+    convenience init(data : JSON) {
+        self.init(
+            id: data["id"].int!,
+            type: data["type"].string!,
+            location: CLLocationCoordinate2D(latitude: data["latitude"].double!, longitude: data["longitude"].double!),
+            name: data["name"].string!,
+            title: data["title"].string!,
+            text: data["description"].string!,
+            imgurl: "",
+            shortdesc: "short"
+        )
+    }
+    
     func changePriority(newPriority: Int) {
         self.userPriority = newPriority
+    }
+    
+    func isFurtherThan(point : CLLocation, distance : Int) -> Bool {
+        return Int(point.distanceFromLocation(CLLocation(latitude: location.latitude, longitude: location.longitude))) < distance
+    }
+    
+    func dataEquals(sight : Sight) -> Bool {
+        return
+            type == sight.type
+            && name == sight.name
+            && title == sight.title
+            && text == sight.text
+            && imgurl == sight.imgurl
+            && shortdesc == sight.shortdesc
+    }
+    
+    func commit(sight : Sight) {
+        type = sight.type
+        location = sight.location
+        name = sight.name
+        title = sight.title
+        text = sight.text
+        imgurl = sight.imgurl
+        shortdesc = sight.shortdesc
     }
 }
 

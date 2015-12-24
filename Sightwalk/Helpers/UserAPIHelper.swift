@@ -19,6 +19,7 @@ class UserAPIHelper {
         return Singleton.instance
     }
     
+    
     let userIdentifier: String = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
     func loginUser(username: String, password: String, onCompletion: (token: String?, error: NSError?) -> ()) {
@@ -122,6 +123,42 @@ class UserAPIHelper {
                     onCompletion(success: false, error: error)
                 }
             })
+    }
+    
+    func getAuthenticatedCall(path : String, method : Alamofire.Method, success: (response : JSON) -> (), failure: (errorCode : Int) -> ()) {
+
+        let URL = NSURL(string: ServerConstants.address)!
+        let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        
+        LoginPersistenceHelper.SharedInstance.accessToken({ token in
+            let headers = [
+                "AuthToken": token
+            ]
+            
+            Alamofire.request(method, URLRequest, headers: headers)
+                .validate(statusCode: 200..<300)
+                .validate(contentType: ["application/json"])
+                .responseJSON(completionHandler: { response in
+                    switch response.result {
+                    case .Success:
+                        let jsonResponse = JSON(response.result.value!)
+                        
+                        if(!jsonResponse["success"].bool!) {
+                            // call not successfull
+                            let error = jsonResponse["error"].int!
+                            failure(errorCode : error)
+                            break
+                        }
+                        
+                        success(response: jsonResponse)
+                        
+                        break
+                    case .Failure(let error):
+                        failure(errorCode: error.code)
+                        break
+                    }
+            })
+        })
     }
     
     private func createErrorObject(code: Int) -> NSError {

@@ -41,6 +41,7 @@ class LoginPersistenceHelper {
             return
         }
         
+        
         let dictionary = Locksmith.loadDataForUserAccount(name)!
         
         // Do something with the data here
