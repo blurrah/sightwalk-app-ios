@@ -157,8 +157,6 @@ class SightStore : SightSyncInterface {
     }
     
     
-    var sights = [Sight]()
+    private var sights = [Sight]()
     var userChosen = [Sight]()
-    var endPoint = String()
-    var origin = String()
 }
