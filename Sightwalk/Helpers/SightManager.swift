@@ -11,4 +11,5 @@ import UIKit
 protocol SightManager {
     func addSight(sight : Sight)
     func removeSight(sight : Sight)
+    func updateSight(oldSight : Sight, newSight: Sight)
 }

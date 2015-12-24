@@ -27,10 +27,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     let colorGreen : UIColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
 
     override func viewDidLoad() {
-        
-        
-        
         super.viewDidLoad()
+        
+        sightStore.subscribe(self, slot: "spotpicker")
+        
         infoView.alpha = 0
 
         // Do any additional setup after loading the view.
@@ -39,8 +39,6 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        sightStore.subscribe(self, slot: "spotpicker")
-        
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             locationManager.startUpdatingLocation()
             
@@ -131,6 +129,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         })
     }
     
+    func updateSight(oldSight: Sight, newSight: Sight) {
+        removeSight(oldSight)
+        addSight(newSight)
+    }
+    
     private func getSightByMarker(marker : GMSMarker) -> Sight {
         let (sight, _) = markers.filter() { $0.1 == marker }.first!
         return sight
@@ -145,4 +148,6 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         
     }
 
+    
+    
 }
