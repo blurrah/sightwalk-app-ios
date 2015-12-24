@@ -9,7 +9,7 @@
 import Foundation
 
 struct ServerConstants {
-    static let address = "http://sightwalk.net/"
+    static let address = "https://sightwalk.net/"
     
     struct User {
         static let login = "auth/login/"
