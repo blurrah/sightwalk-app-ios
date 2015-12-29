@@ -11,15 +11,15 @@ import CoreData
 import Alamofire
 import Foundation
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    var tableData = [Sight]();
     let imageDownloader = ImageDownloadHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableData = SightStore.sharedInstance.favorites
+        tableView.delegate = self
+        tableView.dataSource = self
         self.tableView.reloadData()
     }
     
@@ -32,31 +32,42 @@ class FavoriteViewController: UIViewController {
         return 1
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.tableData = SightStore.sharedInstance.favorites
-        self.tableView.reloadData()
-    }
-    
     override func viewDidAppear(animated: Bool) {
+        SightStore.sharedInstance.getAllFavorites()
+        print(SightStore.sharedInstance.favorites.count)
+        self.tableView.reloadData()
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        return SightStore.sharedInstance.favorites.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteTableViewCell
         let row = indexPath.row
+        let sights = SightStore.sharedInstance.favorites
         
-        cell.sightTitleLabel.text = tableData[row].title
-        cell.sightDescriptionLabel.text = tableData[row].shortdesc
+        cell.sightTitleLabel.text = sights[row].title
+        cell.sightDescriptionLabel.text = sights[row].shortdesc
         
-        imageDownloader.downloadImage(tableData[row].imgurl, onCompletion: { response in
+        imageDownloader.downloadImage(sights[row].imgurl, onCompletion: { response in
             cell.imageView!.image = UIImage(data: response)
         })
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            SightStore.sharedInstance.removeFavorite(SightStore.sharedInstance.favorites[indexPath.row].id)
+            SightStore.sharedInstance.favorites.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Verwijderen"
     }
 }
 

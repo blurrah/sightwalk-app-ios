@@ -82,6 +82,7 @@ class SightStore : SightSyncInterface {
         
         if !favorite && favorites.contains(sight) {
             favorites.removeAtIndex(favorites.indexOf(sight)!)
+            removeFavorite(sight.id)
         }
     }
     
@@ -104,6 +105,23 @@ class SightStore : SightSyncInterface {
         if let entry = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: context) as? Favorite {
             entry.id = id
             appDelegate.saveContext()
+        }
+    }
+    
+    func removeFavorite(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Favorite");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Favorite]
+            if let i = fetchResults!.indexOf({$0.id == id}) {
+                context.deleteObject(fetchResults![i])
+                appDelegate.saveContext()
+            }
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
     
