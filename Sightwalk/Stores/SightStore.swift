@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import CoreData
 
 class SightStore : SightSyncInterface {
     class var sharedInstance: SightStore {
@@ -76,6 +77,7 @@ class SightStore : SightSyncInterface {
     func markSightAsFavorite(sight : Sight, favorite : Bool) {
         if favorite && !favorites.contains(sight) {
             favorites.append(sight)
+            storeFavorite(sight.id)
         }
         
         if !favorite && favorites.contains(sight) {
@@ -92,6 +94,37 @@ class SightStore : SightSyncInterface {
     }
     func triggerAddSight(sight : Sight) {
         print("trigger add")
+    }
+    
+    
+    func storeFavorite(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: context) as? Favorite {
+            entry.id = id
+            appDelegate.saveContext()
+        }
+    }
+    
+    func getAllFavorites() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Favorite");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Favorite]
+            for fav in fetchResults! {
+                if let i = sights.indexOf({$0.id == fav.id!}) {
+                    if !favorites.contains(sights[i]) {
+                        favorites.append(sights[i])
+                    }
+                }
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     
     var sights = [Sight]()

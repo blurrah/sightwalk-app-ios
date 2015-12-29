@@ -33,12 +33,11 @@ class FavoriteViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.tableData = SightStore.sharedInstance.favorites
         self.tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.tableData = SightStore.sharedInstance.favorites
-        self.tableView.reloadData()
     }
     
     
@@ -47,16 +46,15 @@ class FavoriteViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteTableViewCell
         let row = indexPath.row
         
-        imageDownloader.downloadImage(tableData[row].imgurl, onCompletion: { response in
-            cell.imageView?.image = UIImage(data: response)
-        })
-        
         cell.sightTitleLabel.text = tableData[row].title
         cell.sightDescriptionLabel.text = tableData[row].shortdesc
+        
+        imageDownloader.downloadImage(tableData[row].imgurl, onCompletion: { response in
+            cell.imageView!.image = UIImage(data: response)
+        })
         
         return cell
     }
