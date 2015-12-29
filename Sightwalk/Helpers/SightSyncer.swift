@@ -16,6 +16,13 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
     
+    private var lastSyncTime : NSDate?
+    private var lastSyncPosition : CLLocation?
+    
+    private let deltaSyncTime : Int = 600 // ten minutes
+    private let deltaSyncPosition : Int = 1000 // one kilometer
+    private let syncDistance : Int = 10 // ten kilometers
+    
     init(client : SightSyncInterface) {
         self.client = client
         
@@ -35,7 +42,17 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location : CLLocation = locations.first!
+        let now = NSDate()
 
+        if lastSyncTime != nil {
+            if Int(location.distanceFromLocation(lastSyncPosition!)) < deltaSyncPosition && Int(lastSyncTime!.timeIntervalSinceDate(now)) < deltaSyncTime {
+                return
+            }
+        }
+        
+        lastSyncTime = now
+        lastSyncPosition = location
+        
         getSightsFromServer(location.coordinate)
     }
     
@@ -48,50 +65,49 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
     }
 
     private func getSightsFromServer(latitude : String, longitude : String) {
-        print("http://kuipers.solutions:3000\(ServerConstants.Sight.getInRange)\(latitude)/\(longitude)/10")
+        let geoPath : String = latitude + "/" + longitude + "/" + String(self.syncDistance)
+        let path : String = ServerConstants.Sight.getInRange + "/" + geoPath
         
-        
-        LoginPersistenceHelper.SharedInstance.accessToken({ token in
+        UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .GET, success: { json in
+            var sights = [Int : Sight]()
+            for node in json["sights"].arrayValue {
+                sights[node["id"].intValue] = (Sight(data: node))
+            }
             
-            let URL = NSURL(string: "http://kuipers.solutions:3000")!
-            let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(ServerConstants.Sight.getInRange + "/" + latitude + "/" + longitude + "/10"))
-            
-            let manager = Manager.sharedInstance
-            
-            manager.session.configuration.HTTPAdditionalHeaders = [
-            "AuthToken": token
-            ]
-            
-            
-            print(token)
-            Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authtoken": token]
-            
-            
-            //Alamofire.request(.GET, "\(ServerConstants.address)\(ServerConstants.Sight.getInRange)")
-            Alamofire.request(.GET, URLRequest)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .responseJSON(completionHandler: { response in
-                    switch response.result {
-                    case .Success:
-                        let jsonResponse = JSON(response.result.value!)
-                        
-                        let success = jsonResponse["success"].bool!
-                        
-                        guard success == true else {
-                            
-                            return
-                        }
-                        
-                        let token = jsonResponse["token"].string!
-                        
-                    case .Failure(let error):
-                        print("Could not read sights from server")
-                    }
-                })
+            self.sync(sights)
+        }, failure: { error in
+            print("Could not read sights from server")
+            print(error)
         })
+    }
+    
+    private func sync(var sights : [Int : Sight]) {
+        let oldSights : [Sight] = client.getAllSights()
         
+        // convert array to dictionary
+        for sight : Sight in oldSights {
+            if sight.isFurtherThan(lastSyncPosition!, distance: syncDistance) {
+                continue
+            }
+            
+            if sights[sight.id] == nil {
+                // remove sight
+                client.triggerRemoveSight(sight)
+                continue
+            }
+            
+            if !sights[sight.id]!.dataEquals(sight) {
+                // update sight
+                client.triggerUpdateSight(sight, newSight: sights[sight.id]!)
+            }
+            
+            sights.removeValueForKey(sight.id)
+        }
         
+        for (_, sight) in sights {
+            // add sight
+            client.triggerAddSight(sight)
+        }
     }
 
 }
@@ -100,4 +116,5 @@ protocol SightSyncInterface {
     func getAllSights() -> [Sight]
     func triggerRemoveSight(sight : Sight)
     func triggerAddSight(sight : Sight)
+    func triggerUpdateSight(oldSight : Sight, newSight : Sight)
 }

@@ -19,7 +19,7 @@ struct ServerConstants {
     }
     
     struct Sight {
-        static let getInRange = "/sight/"
+        static let getInRange = "sight/"
     }
 }
 

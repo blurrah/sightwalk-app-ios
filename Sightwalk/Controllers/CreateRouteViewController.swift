@@ -8,19 +8,25 @@
 
 import UIKit
 
-class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, SightManager {
+    
+    let locationManager = CLLocationManager()
+    private var currentGeoPosition : CLLocation?
+    private let sightStore : SightStore = SightStore.sharedInstance
+    
     @IBOutlet var endPointSegmentedOutlet: UISegmentedControl!
     @IBOutlet var startRouteButtonOutlet: StateDependantButton!
     @IBOutlet var pickItemButtonOutlet: PickItemButtonView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
     @IBOutlet var totalsTextOutlet: UILabel!
+    
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
-        if (SightStore.sharedInstance.origin == "Centrum Breda") {
+        if (currentGeoPosition == nil) {
             let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda. Wilt u doorgaan?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
                 let storyboard = UIStoryboard(name: "Route", bundle: nil)
@@ -38,11 +44,21 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }
     }
     
-    let locationManager = CLLocationManager()
-    var currentLocation = "Centrum Breda"
-
+    @IBAction func endPointSegmentedAction(sender: AnyObject) {
+        switch endPointSegmentedOutlet.selectedSegmentIndex {
+        case 0:
+            updateDistance()
+        case 1:
+            updateDistance()
+        default:
+            break;
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sightStore.subscribe(self, slot: "createrouteview")
         
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestAlwaysAuthorization()
@@ -53,27 +69,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             locationManager.startUpdatingLocation()
         }
         
-        
-        let sqlh = SQLiteHelper.sharedInstance
-        
-        if SightStore.sharedInstance.sights.count == 0 {
-            let sights = sqlh.getSights()
-            SightStore.sharedInstance.sights = sights!
-        }
-        
         // Do any additional setup after loading the view.
         startRouteButtonOutlet.disableButton()
-        endPointSegmentedOutlet.enabled = false
-        
-        SightStore.sharedInstance.origin = currentLocation
-        
-        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
-            if (SightStore.sharedInstance.endPoint == SightStore.sharedInstance.origin) {
-                endPointSegmentedOutlet.selectedSegmentIndex = 1
-            } else {
-                endPointSegmentedOutlet.selectedSegmentIndex = 0
-            }
-        }
+        updateSegmentedControl()
+
         
         self.view.userInteractionEnabled = true
         tableView.delegate = self
@@ -86,6 +85,30 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressSights:"))
         self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    func addSight(sight : Sight) {
+        // not interesting, sight is not selected
+    }
+    
+    func updateSight(oldSight: Sight, newSight: Sight) {
+        // only interesting if sight is selected
+        if sightStore.isSelected(newSight) {
+            // update the column
+        }
+    }
+    
+    func removeSight(sight: Sight) {
+        // only interesting if sight is selected
+        if sightStore.isSelected(sight) {
+            // remove sight from table
+            sightStore.markSightSelected(sight, selected: false)
+            
+            bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.userChosen.count) * 44
+            
+            tableView.reloadData()
+            updateDistance()
+        }
     }
     
     func handleLongPressSights(gestureRecognizer: UIGestureRecognizer) {
@@ -137,7 +160,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                swap(&SightStore.sharedInstance.userChosen[indexPath!.row], &SightStore.sharedInstance.userChosen[Path.initialIndexPath!.row])
+                sightStore.switchPosition(sightStore.userChosen[indexPath!.row], sightTwo: sightStore.userChosen[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
             }
@@ -161,10 +184,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     func handlePickSpotsTap(sender: UITapGestureRecognizer? = nil) {
         self.performSegueWithIdentifier("displayPickSpots", sender: nil)
@@ -175,28 +195,23 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SightStore.sharedInstance.userChosen.count
+        return sightStore.getSelectedCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
-        let sights = SightStore.sharedInstance.userChosen
 
         let row = indexPath.row
         cell.contentView.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1)
         cell.textLabel?.textColor = UIColor(red:0.12, green:0.81, blue:0.43, alpha:1)
-        cell.textLabel?.text = sights[row].name
+        cell.textLabel?.text = sightStore.userChosen[row].name
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            SightStore.sharedInstance.userChosen.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
-            tableView.reloadData()
-            updateDistance()
+            removeSight(sightStore.userChosen[indexPath.item])
         }
     }
     
@@ -208,35 +223,24 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         super.viewDidAppear(animated)
         self.tableView.reloadData()
         
-        self.bottomTableViewConstraintOutlet.constant = CGFloat(SightStore.sharedInstance.userChosen.count) * 44
+        self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
         
-        SightStore.sharedInstance.origin = currentLocation
-        if (SightStore.sharedInstance.userChosen.isEmpty == false) {
+        updateSegmentedControl()
+        if sightStore.hasSelectedSights() {
             updateDistance()
         }
     }
     
     func updateDistance() {
-        for fav in SightStore.sharedInstance.favorites {
-            print(fav.title)
-        }
-        
-        if SightStore.sharedInstance.userChosen.count > 0 {
-            SightStore.sharedInstance.origin = currentLocation
-            if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
-                SightStore.sharedInstance.endPoint = getEndPoint()
-            } else if endPointSegmentedOutlet.selectedSegmentIndex == 1 {
-                SightStore.sharedInstance.endPoint = SightStore.sharedInstance.origin
-            }
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections(SightStore.sharedInstance.origin, destination: SightStore.sharedInstance.endPoint, sights: SightStore.sharedInstance.userChosen, onCompletion: { results in
+        if sightStore.hasSelectedSights() {
+            GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
                 let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(SightStore.sharedInstance.userChosen.count) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
+                self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
                 
-                self.endPointSegmentedOutlet.enabled = true
                 self.startRouteButtonOutlet.enableButton()
 
             })
@@ -244,31 +248,42 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
         }
     }
-    
-    @IBAction func endPointSegmentedAction(sender: AnyObject) {
-        switch endPointSegmentedOutlet.selectedSegmentIndex {
-        case 0:
-            updateDistance()
-        case 1:
-            updateDistance()
-        default:
-            break;
+
+    func getStartPoint() -> String {
+        if let pos : CLLocation = currentGeoPosition {
+            let lon = String(pos.coordinate.longitude)
+            let lat = String(pos.coordinate.latitude)
+            
+            return "\(lat), \(lon)"
         }
+        
+        return "0, 0"
     }
     
     func getEndPoint() -> String {
-        let location = SightStore.sharedInstance.userChosen.last!.location
-        let lon = String(location.longitude)
-        let lat = String(location.latitude)
-    
-        return "\(lat), \(lon)"
+        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+            // end on last sight
+            let location = sightStore.userChosen.last!.location
+            let lon = String(location.longitude)
+            let lat = String(location.latitude)
+            
+            return "\(lat), \(lon)"
+        }
+        
+        // end on startposition
+        return getStartPoint()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        let lat = String(locValue.latitude)
-        let lon = String(locValue.longitude)
-        currentLocation = "\(lat), \(lon)"
+        currentGeoPosition = manager.location!
+    }
+    
+    private func updateSegmentedControl() {
+        let hasSights : Bool = sightStore.hasSelectedSights()
+        
+        // enable or disable segmentedcontrol
+        endPointSegmentedOutlet.selectedSegmentIndex = hasSights ? 1 : 0
+        endPointSegmentedOutlet.enabled = hasSights
     }
 
     /*
@@ -296,6 +311,11 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         cellSnapshot.layer.shadowOpacity = 0.4
         
         return cellSnapshot
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
