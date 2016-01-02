@@ -15,7 +15,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     var markers = [Sight: GMSMarker]()
     
-    @IBOutlet var favoriteButton: AddSightButton!
+    @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var infoButton: GenericViewButton!
     @IBOutlet var infoText: UILabel!
     @IBOutlet var infoImage: UIImageView!
@@ -26,6 +26,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     let locationManager: CLLocationManager = CLLocationManager()
     
     let colorGreen : UIColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
+    let colorYellow : UIColor = UIColor(red:1, green:1, blue:0, alpha:1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         marker.snippet = String(sight.id)
         marker.userData = sight.shortdesc
         marker.map = mapView
+        
+        if (sightStore.isFavorite(sight) && !sightStore.isSelected(sight)) {
+            marker.icon = GMSMarker.markerImageWithColor(colorYellow)
+        }
         if sightStore.isSelected(sight) {
             marker.icon = GMSMarker.markerImageWithColor(colorGreen)
         }
@@ -80,6 +85,14 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
 
         let sight = getSightByMarker(marker)
+        
+        if (sightStore.isFavorite(sight)) {
+            //TODO: Set button image as FILLED STAR. Below is temp color set
+            favoriteButton.titleLabel?.textColor = UIColor.yellowColor()
+        } else {
+            //TODO: Set button image as EMPTY STAR. Below is temp color set
+            favoriteButton.titleLabel?.textColor = UIColor.grayColor()
+        }
  
         if (sightStore.isSelected(sight)) {
             infoButton.setTitle("-", forState: .Normal)
@@ -134,6 +147,19 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(chosenMarker)
         let newFavorite : Bool = !sightStore.isFavorite(sight)
         sightStore.markSightAsFavorite(sight, favorite: newFavorite)
+        if (!sightStore.isSelected(sight)) {
+            chosenMarker.icon = (newFavorite) ? GMSMarker.markerImageWithColor(colorYellow) : nil
+        }
+        print(newFavorite)
+        if newFavorite {
+            //TODO: Set button image as FILLED STAR. Below is temp color set
+            favoriteButton.backgroundColor = colorYellow
+        } else {
+            //TODO: Set button image as EMPTY STAR. Below is temp color set
+            favoriteButton.backgroundColor = UIColor.grayColor()
+        }
+        
+        
     }
 
     func updateSight(oldSight: Sight, newSight: Sight) {
