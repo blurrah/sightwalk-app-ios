@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,10 +21,8 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Screen" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-jx-OKV">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <animations/>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OmE-jx-OKV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1b1-DR-4Iy"/>
@@ -38,12 +37,12 @@
                                 <exclude reference="OmE-jx-OKV"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="eAS-wL-LOO"/>
                                 <exclude reference="1b1-DR-4Iy"/>
                                 <exclude reference="2PS-Gx-YW7"/>
                                 <exclude reference="51a-h8-IIh"/>
                                 <exclude reference="Oxb-Ew-UEC"/>
                                 <exclude reference="uIB-lW-7v4"/>
-                                <exclude reference="eAS-wL-LOO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -51,12 +50,12 @@
                                 <include reference="OmE-jx-OKV"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="eAS-wL-LOO"/>
                                 <include reference="1b1-DR-4Iy"/>
                                 <include reference="2PS-Gx-YW7"/>
                                 <include reference="51a-h8-IIh"/>
                                 <include reference="Oxb-Ew-UEC"/>
                                 <include reference="uIB-lW-7v4"/>
-                                <include reference="eAS-wL-LOO"/>
                             </mask>
                         </variation>
                     </view>
