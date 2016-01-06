@@ -257,7 +257,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             return "\(lat), \(lon)"
         }
         
-        return "0, 0"
+        return "51.588270, 4.776338"
     }
     
     func getEndPoint() -> String {
