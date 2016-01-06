@@ -44,6 +44,7 @@ enum WalkthroughAnimationType:String{
 class BWWalkthroughPageViewController: UIViewController, BWWalkthroughPage {
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey:"kAppPreviousLaunchKey")
         self.performSegueWithIdentifier("closeWalktrough", sender: self)
     }
     

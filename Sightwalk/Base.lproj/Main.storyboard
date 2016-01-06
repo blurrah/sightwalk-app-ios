@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t3q-fP-BJI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t3q-fP-BJI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -10,7 +10,7 @@
         <!--SightWalk-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,6 +21,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="vQJ-xh-5Jk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="-312" y="0.0" width="1024" height="800"/>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-q0-mNG" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1585,6 +1588,28 @@ om de boel op te vullen.</string>
                                             </mask>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99N-bh-r5y" customClass="InvertedGenericViewButton" customModule="Sightwalk" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="XHp-Bf-8NF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Ik ben er klaar voor!"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="XHp-Bf-8NF"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="20" y="737" width="360" height="43"/>
+                                            <mask key="constraints">
+                                                <include reference="XHp-Bf-8NF"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="hTH-nf-Qcl" eventType="touchUpInside" id="3qQ-nJ-J7T"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1602,6 +1627,7 @@ om de boel op te vullen.</string>
                                     <mask key="subviews">
                                         <exclude reference="2jX-VN-Okr"/>
                                         <exclude reference="Wah-T5-xqz"/>
+                                        <exclude reference="99N-bh-r5y"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="21g-Pm-PtT"/>
@@ -1613,10 +1639,12 @@ om de boel op te vullen.</string>
                                         <exclude reference="j5F-ak-zWN"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                                     <mask key="subviews">
                                         <include reference="2jX-VN-Okr"/>
                                         <include reference="Wah-T5-xqz"/>
+                                        <include reference="99N-bh-r5y"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="21g-Pm-PtT"/>
@@ -1629,50 +1657,18 @@ om de boel op te vullen.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99N-bh-r5y" customClass="InvertedGenericViewButton" customModule="Sightwalk" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="XHp-Bf-8NF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Ik ben er klaar voor!"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="XHp-Bf-8NF"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="XHp-Bf-8NF"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="closeButtonPressed:" destination="hTH-nf-Qcl" eventType="touchUpInside" id="3qQ-nJ-J7T"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="99N-bh-r5y" firstAttribute="leading" secondItem="EVP-Mg-rfj" secondAttribute="leadingMargin" id="1CZ-td-zbn"/>
                             <constraint firstItem="UuG-lF-ZTA" firstAttribute="top" secondItem="EVP-Mg-rfj" secondAttribute="topMargin" id="5iR-Y4-8yP"/>
-                            <constraint firstItem="99N-bh-r5y" firstAttribute="trailing" secondItem="EVP-Mg-rfj" secondAttribute="trailingMargin" id="EHS-KM-day"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UuG-lF-ZTA" secondAttribute="trailing" constant="-20" id="Im1-iP-rp8"/>
                             <constraint firstItem="UuG-lF-ZTA" firstAttribute="leading" secondItem="EVP-Mg-rfj" secondAttribute="leadingMargin" constant="-20" id="LM3-4g-TGD"/>
-                            <constraint firstItem="KVR-fM-zMH" firstAttribute="top" secondItem="99N-bh-r5y" secondAttribute="bottom" constant="20" id="XQj-gW-E04"/>
-                            <constraint firstItem="99N-bh-r5y" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="bottom" constant="20" id="z6B-8F-qWD">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-63"/>
-                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="UuG-lF-ZTA"/>
-                                <exclude reference="99N-bh-r5y"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="XQj-gW-E04"/>
-                                <exclude reference="1CZ-td-zbn"/>
-                                <exclude reference="EHS-KM-day"/>
-                                <exclude reference="z6B-8F-qWD"/>
                                 <exclude reference="5iR-Y4-8yP"/>
                                 <exclude reference="Im1-iP-rp8"/>
                                 <exclude reference="LM3-4g-TGD"/>
@@ -1681,13 +1677,8 @@ om de boel op te vullen.</string>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="UuG-lF-ZTA"/>
-                                <include reference="99N-bh-r5y"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="XQj-gW-E04"/>
-                                <include reference="1CZ-td-zbn"/>
-                                <include reference="EHS-KM-day"/>
-                                <include reference="z6B-8F-qWD"/>
                                 <include reference="5iR-Y4-8yP"/>
                                 <include reference="Im1-iP-rp8"/>
                                 <include reference="LM3-4g-TGD"/>
