@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import CoreData
 
 class SightStore : SightSyncInterface {
     class var sharedInstance: SightStore {
@@ -23,6 +24,10 @@ class SightStore : SightSyncInterface {
     
     
     init() {
+        
+        
+        print(" loaded sightstore")
+        
         sqlh = SQLiteHelper.sharedInstance
         
         sightSyncer = SightSyncer(client: self)
@@ -126,6 +131,26 @@ class SightStore : SightSyncInterface {
     func hasSelectedSights() -> Bool {
         return !userChosen.isEmpty
     }
+
+    func markSightAsFavorite(sight : Sight) {
+        markSightAsFavorite(sight, favorite: true)
+    }
+    
+    func markSightAsFavorite(sight : Sight, favorite : Bool) {
+        if favorite && !favorites.contains(sight) {
+            favorites.append(sight)
+            storeFavorite(sight.id)
+        }
+        
+        if !favorite && favorites.contains(sight) {
+            favorites.removeAtIndex(favorites.indexOf(sight)!)
+            removeFavorite(sight.id)
+        }
+    }
+    
+    func isFavorite(sight : Sight) -> Bool {
+        return favorites.contains(sight)
+    }
     
     func getSelectedCount() -> Int {
         return userChosen.count
@@ -156,7 +181,54 @@ class SightStore : SightSyncInterface {
         return userChosen.indexOf(sight)
     }
     
+    func storeFavorite(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: context) as? Favorite {
+            entry.id = id
+            appDelegate.saveContext()
+        }
+    }
     
-    private var sights = [Sight]()
+    func removeFavorite(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Favorite");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Favorite]
+            if let i = fetchResults!.indexOf({$0.id == id}) {
+                context.deleteObject(fetchResults![i])
+                appDelegate.saveContext()
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func getAllFavorites() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Favorite");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Favorite]
+            for fav in fetchResults! {
+                if let i = sights.indexOf({$0.id == fav.id!}) {
+                    if !favorites.contains(sights[i]) {
+                        favorites.append(sights[i])
+                    }
+                }
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+
     var userChosen = [Sight]()
+    var favorites = [Sight]()
+    private var sights = [Sight]()
 }
