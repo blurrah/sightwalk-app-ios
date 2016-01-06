@@ -236,6 +236,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
                 let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
                 let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
+                
+                RouteStore.sharedInstance.setPolylines()
 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
