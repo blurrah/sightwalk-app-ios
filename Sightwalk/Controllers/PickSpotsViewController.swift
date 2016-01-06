@@ -27,6 +27,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     let colorGreen : UIColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
     let colorYellow : UIColor = UIColor(red:1, green:1, blue:0, alpha:1)
+    
+    let star_unchecked = UIImage(named: "favorite_star_unchecked")! as UIImage
+    let star_checked = UIImage(named: "favorite_star")! as UIImage
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,11 +90,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(marker)
         
         if (sightStore.isFavorite(sight)) {
-            //TODO: Set button image as FILLED STAR. Below is temp color set
-            favoriteButton.titleLabel?.textColor = UIColor.yellowColor()
+            favoriteButton.setImage(star_checked, forState: .Normal)
         } else {
-            //TODO: Set button image as EMPTY STAR. Below is temp color set
-            favoriteButton.titleLabel?.textColor = UIColor.grayColor()
+            favoriteButton.setImage(star_unchecked, forState: .Normal)
         }
  
         if (sightStore.isSelected(sight)) {
@@ -152,14 +153,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         }
         
         if newFavorite {
-            //TODO: Set button image as FILLED STAR. Below is temp color set
-            favoriteButton.backgroundColor = colorYellow
+            favoriteButton.setImage(star_checked, forState: .Normal)
         } else {
             //TODO: Set button image as EMPTY STAR. Below is temp color set
-            favoriteButton.backgroundColor = UIColor.grayColor()
+            favoriteButton.setImage(star_unchecked, forState: .Normal)
         }
-        
-        
     }
 
     func updateSight(oldSight: Sight, newSight: Sight) {
