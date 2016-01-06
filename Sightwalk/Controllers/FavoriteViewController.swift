@@ -34,7 +34,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(animated: Bool) {
         SightStore.sharedInstance.getAllFavorites()
-        print(SightStore.sharedInstance.favorites.count)
         self.tableView.reloadData()
     }
     

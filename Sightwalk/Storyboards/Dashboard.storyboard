@@ -279,6 +279,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sightwalk-logo" translatesAutoresizingMaskIntoConstraints="NO" id="2Bj-OG-gZp">
+                                                    <rect key="frame" x="19" y="8" width="96" height="96"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="Xf3-L3-s08"/>
+                                                        <constraint firstAttribute="height" constant="96" id="dM8-Vi-Rx0"/>
+                                                    </constraints>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <exclude reference="dM8-Vi-Rx0"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5Q-Kx-uMi">
                                                     <rect key="frame" x="123" y="8" width="469" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -294,31 +306,23 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sightwalk-logo" translatesAutoresizingMaskIntoConstraints="NO" id="2Bj-OG-gZp">
-                                                    <rect key="frame" x="19" y="8" width="96" height="96"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="96" id="Xf3-L3-s08"/>
-                                                        <constraint firstAttribute="height" constant="96" id="dM8-Vi-Rx0"/>
-                                                    </constraints>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <exclude reference="dM8-Vi-Rx0"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="topMargin" secondItem="i5Q-Kx-uMi" secondAttribute="top" id="0Tl-yV-0Cn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pCP-FT-yJs" secondAttribute="trailing" id="3kP-qM-Dlm"/>
                                                 <constraint firstItem="2Bj-OG-gZp" firstAttribute="leading" secondItem="wac-Cn-ZVS" secondAttribute="leadingMargin" constant="11" id="Br4-gp-IhU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="i5Q-Kx-uMi" secondAttribute="trailing" id="GGI-fj-lyL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="i5Q-Kx-uMi" secondAttribute="trailing" id="GGI-fj-lyL">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="12"/>
+                                                </constraint>
                                                 <constraint firstAttribute="topMargin" secondItem="2Bj-OG-gZp" secondAttribute="top" id="Iy9-cl-IR1">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="-3"/>
                                                 </constraint>
                                                 <constraint firstItem="pCP-FT-yJs" firstAttribute="leading" secondItem="2Bj-OG-gZp" secondAttribute="trailing" constant="8" id="Z8r-8K-M2q"/>
                                                 <constraint firstItem="pCP-FT-yJs" firstAttribute="top" secondItem="i5Q-Kx-uMi" secondAttribute="bottom" constant="8" id="ldp-dU-neh"/>
                                                 <constraint firstItem="i5Q-Kx-uMi" firstAttribute="leading" secondItem="2Bj-OG-gZp" secondAttribute="trailing" constant="8" id="ngk-jh-60Y"/>
-                                                <constraint firstItem="pCP-FT-yJs" firstAttribute="trailing" secondItem="wac-Cn-ZVS" secondAttribute="trailingMargin" id="qsr-EP-oHn"/>
+                                                <constraint firstItem="pCP-FT-yJs" firstAttribute="trailing" secondItem="wac-Cn-ZVS" secondAttribute="trailingMargin" id="qsr-EP-oHn">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="-12"/>
+                                                </constraint>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2Bj-OG-gZp" secondAttribute="bottom" constant="6" id="v8a-xa-ccT">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="3"/>
                                                 </constraint>

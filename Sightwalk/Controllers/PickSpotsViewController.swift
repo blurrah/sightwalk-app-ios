@@ -150,7 +150,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if (!sightStore.isSelected(sight)) {
             chosenMarker.icon = (newFavorite) ? GMSMarker.markerImageWithColor(colorYellow) : nil
         }
-        print(newFavorite)
+        
         if newFavorite {
             //TODO: Set button image as FILLED STAR. Below is temp color set
             favoriteButton.backgroundColor = colorYellow
