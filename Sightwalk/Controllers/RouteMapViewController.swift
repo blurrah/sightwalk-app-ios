@@ -12,7 +12,11 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
 
     @IBOutlet var mapView: GMSMapView!
     let chosenSights = SightStore.sharedInstance.userChosen
+    let routeSteps = RouteStore.sharedInstance.polylines
     let locationManager = CLLocationManager()
+    
+    private var currentStep : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,20 +54,23 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             marker.map = mapView
         }
         
-        let path = GMSPath(fromEncodedPath: RouteStore.sharedInstance.chosenRoute!)
+        for (index, steps) in routeSteps {
+            for step in steps {
+                let path = GMSPath(fromEncodedPath: step)
+                let polyline = GMSPolyline(path: path)
+                
+                if index == 0 {
+                    polyline.strokeColor = UIColor.blueColor()
+                } else {
+                    polyline.strokeColor = UIColor.grayColor()
+                }
+                
+                polyline.strokeWidth = 4.0
+                polyline.map = mapView
+                mapView.camera = GMSCameraPosition(target: path.coordinateAtIndex(0), zoom: 15, bearing: 0, viewingAngle: 0)
+            }
+        }
         
-        let polyline = GMSPolyline(path: path)
-        polyline.strokeWidth = 4.0
-        let startGreen = UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
-        let redYellow = GMSStrokeStyle.gradientFromColor(startGreen, toColor:UIColor.redColor())
-        polyline.spans = [GMSStyleSpan(style: GMSStrokeStyle.solidColor(startGreen)),
-            GMSStyleSpan(style: GMSStrokeStyle.solidColor(UIColor.yellowColor())),
-            GMSStyleSpan(style: redYellow)]
-        
-        polyline.map = mapView
-        
-        mapView.camera = GMSCameraPosition(target: path.coordinateAtIndex(0), zoom: 15, bearing: 0, viewingAngle: 0)
-
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
