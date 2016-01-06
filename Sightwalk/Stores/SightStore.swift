@@ -24,6 +24,10 @@ class SightStore : SightSyncInterface {
     
     
     init() {
+        
+        
+        print(" loaded sightstore")
+        
         sqlh = SQLiteHelper.sharedInstance
         
         sightSyncer = SightSyncer(client: self)
