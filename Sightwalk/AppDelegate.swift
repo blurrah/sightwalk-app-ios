@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         let isFirstRun = !NSUserDefaults.standardUserDefaults().boolForKey("kAppPreviousLaunchKey")
         if !isFirstRun {
             self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
@@ -28,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }
-        
         
         // TODO: Auth saved token and go to dashboard on cold boot with persistence
         LoginPersistenceHelper.SharedInstance.accessToken({ result in

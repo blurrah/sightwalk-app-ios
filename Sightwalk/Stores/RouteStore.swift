@@ -21,6 +21,8 @@ class RouteStore {
     
     var chosenRoute: String?
     
+    var polylines: [Int: [String]] = [:]
+    
     func calculateTotalDistance() -> String {
         var distance: Double = 0
         for (_, subJson) in apiResponse!["routes"][0]["legs"] {
@@ -45,4 +47,22 @@ class RouteStore {
         
         return (time / 3600, (time % 3600) / 60, (time % 3600) % 60)
     }
+    
+    func setPolylines() {
+        let length = apiResponse!["routes"][0]["legs"].count
+        
+        for (var i = 0; i <= length; i++) {
+            for (_, subJson) in apiResponse!["routes"][0]["legs"][i]["steps"] {
+                let polyline = subJson["polyline"]["points"].string!
+                if var arr = polylines[i] {
+                    arr.append(polyline)
+                    polylines[i] = arr
+                } else {
+                    polylines[i] = [polyline]
+                }
+            }
+        }
+        print(polylines)
+    }
+    
 }
