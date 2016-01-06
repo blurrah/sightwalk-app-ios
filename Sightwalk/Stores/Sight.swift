@@ -48,8 +48,8 @@ class Sight: Comparable, Hashable {
             name: data["name"].string!,
             title: data["title"].string!,
             text: data["description"].string!,
-            imgurl: "",
-            shortdesc: "short"
+            imgurl: data["image_url"].string!,
+            shortdesc: data["short_description"].string!
         )
     }
     
