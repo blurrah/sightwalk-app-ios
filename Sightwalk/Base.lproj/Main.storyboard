@@ -113,8 +113,11 @@ Kies hieronder een optie.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vQJ-xh-5Jk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="5Vi-m7-6Ps"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQJ-xh-5Jk" secondAttribute="bottom" id="6hB-3a-Rdd"/>
                             <constraint firstItem="IWU-q0-mNG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7RJ-mv-L5I"/>
+                            <constraint firstItem="vQJ-xh-5Jk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="8kY-iS-JED"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vQJ-xh-5Jk" secondAttribute="trailing" constant="-20" id="8on-E2-NTX"/>
                             <constraint firstItem="STu-WN-BTc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8uN-nO-8lZ"/>
                             <constraint firstItem="Ksy-Ap-iE6" firstAttribute="top" secondItem="qgE-R6-WBp" secondAttribute="bottom" constant="17" id="AY4-S2-PbW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="STu-WN-BTc" secondAttribute="bottom" constant="20" id="GRY-dm-5Cn">
@@ -122,13 +125,14 @@ Kies hieronder een optie.</string>
                             </constraint>
                             <constraint firstItem="Ksy-Ap-iE6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="IKX-T8-cuI"/>
                             <constraint firstItem="Ksy-Ap-iE6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="NVu-bm-CGE"/>
-                            <constraint firstItem="vQJ-xh-5Jk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dRd-yr-fcM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQJ-xh-5Jk" secondAttribute="bottom" id="Xxq-XK-yAg"/>
                             <constraint firstItem="Ksy-Ap-iE6" firstAttribute="top" secondItem="qgE-R6-WBp" secondAttribute="bottom" constant="20" id="dVG-UK-sSB"/>
                             <constraint firstItem="STu-WN-BTc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="erW-pa-Vsm"/>
                             <constraint firstItem="STu-WN-BTc" firstAttribute="top" secondItem="IWU-q0-mNG" secondAttribute="bottom" constant="20" id="fCZ-kq-PbR">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="vQJ-xh-5Jk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="pRd-VT-hHa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vQJ-xh-5Jk" secondAttribute="trailing" constant="-20" id="h8B-qK-L73"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQJ-xh-5Jk" secondAttribute="bottom" id="lH0-vO-PjH"/>
                             <constraint firstItem="qgE-R6-WBp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t9z-az-19H"/>
                             <constraint firstItem="qgE-R6-WBp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="tQy-Hh-j48"/>
                             <constraint firstItem="IWU-q0-mNG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z9Z-kz-ZYR"/>
@@ -142,21 +146,25 @@ Kies hieronder een optie.</string>
                                 <exclude reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6hB-3a-Rdd"/>
-                                <exclude reference="GRY-dm-5Cn"/>
+                                <exclude reference="5Vi-m7-6Ps"/>
+                                <exclude reference="8kY-iS-JED"/>
+                                <exclude reference="8on-E2-NTX"/>
+                                <exclude reference="h8B-qK-L73"/>
+                                <exclude reference="t9z-az-19H"/>
+                                <exclude reference="tQy-Hh-j48"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <exclude reference="IKX-T8-cuI"/>
+                                <exclude reference="NVu-bm-CGE"/>
+                                <exclude reference="dVG-UK-sSB"/>
                                 <exclude reference="7RJ-mv-L5I"/>
                                 <exclude reference="z9Z-kz-ZYR"/>
                                 <exclude reference="8uN-nO-8lZ"/>
                                 <exclude reference="erW-pa-Vsm"/>
                                 <exclude reference="fCZ-kq-PbR"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <exclude reference="IKX-T8-cuI"/>
-                                <exclude reference="NVu-bm-CGE"/>
-                                <exclude reference="dVG-UK-sSB"/>
-                                <exclude reference="t9z-az-19H"/>
-                                <exclude reference="tQy-Hh-j48"/>
-                                <exclude reference="dRd-yr-fcM"/>
-                                <exclude reference="pRd-VT-hHa"/>
+                                <exclude reference="6hB-3a-Rdd"/>
+                                <exclude reference="GRY-dm-5Cn"/>
+                                <exclude reference="Xxq-XK-yAg"/>
+                                <exclude reference="lH0-vO-PjH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -168,21 +176,25 @@ Kies hieronder een optie.</string>
                                 <include reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6hB-3a-Rdd"/>
-                                <include reference="GRY-dm-5Cn"/>
+                                <include reference="5Vi-m7-6Ps"/>
+                                <include reference="8kY-iS-JED"/>
+                                <include reference="8on-E2-NTX"/>
+                                <exclude reference="h8B-qK-L73"/>
+                                <include reference="t9z-az-19H"/>
+                                <include reference="tQy-Hh-j48"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <include reference="IKX-T8-cuI"/>
+                                <include reference="NVu-bm-CGE"/>
+                                <include reference="dVG-UK-sSB"/>
                                 <include reference="7RJ-mv-L5I"/>
                                 <include reference="z9Z-kz-ZYR"/>
                                 <include reference="8uN-nO-8lZ"/>
                                 <include reference="erW-pa-Vsm"/>
                                 <include reference="fCZ-kq-PbR"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <include reference="IKX-T8-cuI"/>
-                                <include reference="NVu-bm-CGE"/>
-                                <include reference="dVG-UK-sSB"/>
-                                <include reference="t9z-az-19H"/>
-                                <include reference="tQy-Hh-j48"/>
-                                <include reference="dRd-yr-fcM"/>
-                                <include reference="pRd-VT-hHa"/>
+                                <exclude reference="6hB-3a-Rdd"/>
+                                <include reference="GRY-dm-5Cn"/>
+                                <include reference="Xxq-XK-yAg"/>
+                                <exclude reference="lH0-vO-PjH"/>
                             </mask>
                         </variation>
                     </view>
@@ -229,36 +241,6 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mailadres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVN-YH-Bym" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
-                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Jg6-Zc-sKf"/>
-                                                    <constraint firstAttribute="height" constant="60" id="OX0-zc-bUE"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Wzu-R1-QZt"/>
-                                                    <constraint firstAttribute="width" constant="400" id="w32-wj-E5b"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Jg6-Zc-sKf"/>
-                                                        <exclude reference="OX0-zc-bUE"/>
-                                                        <exclude reference="Wzu-R1-QZt"/>
-                                                        <exclude reference="w32-wj-E5b"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Jg6-Zc-sKf"/>
-                                                        <include reference="OX0-zc-bUE"/>
-                                                        <exclude reference="Wzu-R1-QZt"/>
-                                                        <include reference="w32-wj-E5b"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
-                                                </connections>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="701-L7-wwM">
                                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                 <constraints>
@@ -595,6 +577,36 @@ Kies hieronder een optie.</string>
                                                     <action selector="validateAge:" destination="Mql-4Z-w7B" eventType="editingChanged" id="wYU-lH-ej5"/>
                                                 </connections>
                                             </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mailadres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVN-YH-Bym" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Jg6-Zc-sKf"/>
+                                                    <constraint firstAttribute="height" constant="60" id="OX0-zc-bUE"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Wzu-R1-QZt"/>
+                                                    <constraint firstAttribute="width" constant="400" id="w32-wj-E5b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Jg6-Zc-sKf"/>
+                                                        <exclude reference="OX0-zc-bUE"/>
+                                                        <exclude reference="Wzu-R1-QZt"/>
+                                                        <exclude reference="w32-wj-E5b"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Jg6-Zc-sKf"/>
+                                                        <include reference="OX0-zc-bUE"/>
+                                                        <exclude reference="Wzu-R1-QZt"/>
+                                                        <include reference="w32-wj-E5b"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -648,7 +660,6 @@ Kies hieronder een optie.</string>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="bbd-Jw-bKa"/>
-                                                <exclude reference="AVN-YH-Bym"/>
                                                 <exclude reference="701-L7-wwM"/>
                                                 <exclude reference="s1d-yp-8E4"/>
                                                 <exclude reference="ZWf-tv-HLt"/>
@@ -663,6 +674,7 @@ Kies hieronder een optie.</string>
                                                 <exclude reference="gAV-dy-4jW"/>
                                                 <exclude reference="KbG-u7-cSz"/>
                                                 <exclude reference="E2w-17-FRK"/>
+                                                <exclude reference="AVN-YH-Bym"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="AJP-il-3pg"/>
@@ -710,7 +722,6 @@ Kies hieronder een optie.</string>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="bbd-Jw-bKa"/>
-                                                <include reference="AVN-YH-Bym"/>
                                                 <include reference="701-L7-wwM"/>
                                                 <include reference="s1d-yp-8E4"/>
                                                 <include reference="ZWf-tv-HLt"/>
@@ -725,6 +736,7 @@ Kies hieronder een optie.</string>
                                                 <include reference="gAV-dy-4jW"/>
                                                 <include reference="KbG-u7-cSz"/>
                                                 <include reference="E2w-17-FRK"/>
+                                                <include reference="AVN-YH-Bym"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="AJP-il-3pg"/>

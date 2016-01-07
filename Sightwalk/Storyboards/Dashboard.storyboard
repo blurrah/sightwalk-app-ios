@@ -31,12 +31,6 @@
                                     <segue destination="C44-54-0Po" kind="embed" id="elD-M4-fB7"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-Mt-Az2">
-                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
-                                <connections>
-                                    <segue destination="XiL-1O-gTc" kind="embed" id="UkA-mX-Wd5"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou0-Yn-MRQ" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -58,6 +52,12 @@
                                     <action selector="tapCreateRouteAction:" destination="Rb4-0v-lXR" eventType="touchUpInside" id="AUD-Ru-XWk"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-Mt-Az2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
+                                <connections>
+                                    <segue destination="XiL-1O-gTc" kind="embed" id="UkA-mX-Wd5"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
