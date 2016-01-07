@@ -31,18 +31,18 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         if (currentGeoPosition == nil) {
             let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Weet u zeker dat u wilt doorgaan met de startlocatie Breda?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
-                self.launchRouteLoopFunctieDingesDoeiBorisIsMatig()
+                self.launchRouteLoop()
             }))
             alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            launchRouteLoopFunctieDingesDoeiBorisIsMatig()
+            launchRouteLoop()
         }
     }
     
-    private func launchRouteLoopFunctieDingesDoeiBorisIsMatig() {
+    private func launchRouteLoop() {
         let storyboard = UIStoryboard(name: "Route", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
         
