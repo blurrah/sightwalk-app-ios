@@ -308,7 +308,7 @@
             </objects>
             <point key="canvasLocation" x="1378.5" y="402"/>
         </scene>
-        <!--Pick Spots View Controller-->
+        <!--Kies bestemmingen-->
         <scene sceneID="usK-hZ-Tey">
             <objects>
                 <viewController id="kqk-r8-Ub5" customClass="PickSpotsViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -541,6 +541,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Kies bestemmingen" id="qne-yT-liD">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="hi8-wn-rqM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vFT-1W-3Bh">
+                            <connections>
+                                <action selector="tapAddSight:" destination="kqk-r8-Ub5" id="US7-2M-syG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="tEU-Vu-KZ3" id="ywh-dw-6lb"/>
                         <outlet property="infoButton" destination="Baq-0k-dx2" id="1FZ-2W-vSw"/>
@@ -549,11 +557,101 @@
                         <outlet property="infoText" destination="9ey-dr-a2w" id="f9e-hB-HTf"/>
                         <outlet property="infoView" destination="vAH-Vo-Kum" id="Frn-v6-CdR"/>
                         <outlet property="mapView" destination="The-Dl-Tub" id="Pik-Ha-gAV"/>
+                        <segue destination="csB-cR-QKR" kind="show" identifier="gotoAddSight" id="3Hp-kO-US3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gv3-Xs-JYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2176.5" y="402"/>
+        </scene>
+        <!--Voeg Sight toe-->
+        <scene sceneID="A4c-zA-V0c">
+            <objects>
+                <viewController id="csB-cR-QKR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mV7-i4-Vfl"/>
+                        <viewControllerLayoutGuide type="bottom" id="IO7-Rr-1KQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ESV-n9-wVD">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4o0-Kk-Y5g" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="409" id="OWZ-xG-vID"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OWZ-xG-vID"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OWZ-xG-vID"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veel plezier Frank!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-XZ-qfL">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="69T-Mv-H1q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="69T-Mv-H1q"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="69T-Mv-H1q"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="4o0-Kk-Y5g" secondAttribute="trailing" constant="-20" id="86f-BU-Jhk"/>
+                            <constraint firstItem="4o0-Kk-Y5g" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" constant="-20" id="LBG-CX-zMn"/>
+                            <constraint firstItem="rO7-XZ-qfL" firstAttribute="centerX" secondItem="ESV-n9-wVD" secondAttribute="centerX" id="Sct-zU-BBy"/>
+                            <constraint firstItem="rO7-XZ-qfL" firstAttribute="top" secondItem="4o0-Kk-Y5g" secondAttribute="bottom" constant="42" id="jwy-qG-Axu"/>
+                            <constraint firstItem="4o0-Kk-Y5g" firstAttribute="top" secondItem="mV7-i4-Vfl" secondAttribute="bottom" id="ot0-4E-NhI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4o0-Kk-Y5g"/>
+                                <exclude reference="rO7-XZ-qfL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="86f-BU-Jhk"/>
+                                <exclude reference="LBG-CX-zMn"/>
+                                <exclude reference="ot0-4E-NhI"/>
+                                <exclude reference="Sct-zU-BBy"/>
+                                <exclude reference="jwy-qG-Axu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="4o0-Kk-Y5g"/>
+                                <include reference="rO7-XZ-qfL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="86f-BU-Jhk"/>
+                                <include reference="LBG-CX-zMn"/>
+                                <include reference="ot0-4E-NhI"/>
+                                <include reference="Sct-zU-BBy"/>
+                                <include reference="jwy-qG-Axu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Voeg Sight toe" id="lo3-FZ-fUt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIC-0I-BiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890.5" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ePL-QW-wb1">

@@ -21,9 +21,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="vQJ-xh-5Jk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-312" y="0.0" width="1024" height="800"/>
-                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-q0-mNG" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1604,8 +1601,7 @@ om de boel op te vullen.</string>
                                                 <exclude reference="XHp-Bf-8NF"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="20" y="749" width="360" height="43"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="XHp-Bf-8NF"/>
                                             </mask>
@@ -1641,6 +1637,11 @@ om de boel op te vullen.</string>
                                         <exclude reference="99N-bh-r5y"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="2ea-s4-pzf"/>
+                                        <exclude reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <exclude reference="x8F-zU-8wB"/>
                                         <exclude reference="21g-Pm-PtT"/>
                                         <exclude reference="aCH-aJ-KxQ"/>
                                         <exclude reference="qj0-kH-48h"/>
@@ -1648,11 +1649,6 @@ om de boel op te vullen.</string>
                                         <exclude reference="UMQ-hj-Cee"/>
                                         <exclude reference="ZBA-3b-e6m"/>
                                         <exclude reference="j5F-ak-zWN"/>
-                                        <exclude reference="2ea-s4-pzf"/>
-                                        <exclude reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <exclude reference="x8F-zU-8wB"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1662,6 +1658,11 @@ om de boel op te vullen.</string>
                                         <include reference="99N-bh-r5y"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="2ea-s4-pzf"/>
+                                        <include reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <include reference="x8F-zU-8wB"/>
                                         <include reference="21g-Pm-PtT"/>
                                         <include reference="aCH-aJ-KxQ"/>
                                         <include reference="qj0-kH-48h"/>
@@ -1669,11 +1670,6 @@ om de boel op te vullen.</string>
                                         <include reference="UMQ-hj-Cee"/>
                                         <include reference="ZBA-3b-e6m"/>
                                         <include reference="j5F-ak-zWN"/>
-                                        <include reference="2ea-s4-pzf"/>
-                                        <include reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <include reference="x8F-zU-8wB"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1690,10 +1686,10 @@ om de boel op te vullen.</string>
                                 <exclude reference="UuG-lF-ZTA"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="riX-CW-Z2l"/>
                                 <exclude reference="5iR-Y4-8yP"/>
                                 <exclude reference="Im1-iP-rp8"/>
                                 <exclude reference="LM3-4g-TGD"/>
-                                <exclude reference="riX-CW-Z2l"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1701,10 +1697,10 @@ om de boel op te vullen.</string>
                                 <include reference="UuG-lF-ZTA"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="riX-CW-Z2l"/>
                                 <include reference="5iR-Y4-8yP"/>
                                 <include reference="Im1-iP-rp8"/>
                                 <include reference="LM3-4g-TGD"/>
-                                <include reference="riX-CW-Z2l"/>
                             </mask>
                         </variation>
                     </view>
