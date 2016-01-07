@@ -50,7 +50,7 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             marker.title = sight.title
             marker.snippet = String(sight.id)
             marker.userData = sight.shortdesc
-            marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1))
+            marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.102, green:0.788, blue:0.341, alpha:1))
             marker.map = mapView
         }
         

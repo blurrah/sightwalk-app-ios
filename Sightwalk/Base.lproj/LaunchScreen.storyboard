@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,43 +18,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Screen" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-jx-OKV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="ZRa-Is-ndC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Px0-Ls-fTs"/>
+                                    <constraint firstAttribute="height" constant="184" id="jTW-7H-X7a"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Px0-Ls-fTs"/>
+                                        <exclude reference="jTW-7H-X7a"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Px0-Ls-fTs"/>
+                                        <include reference="jTW-7H-X7a"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OmE-jx-OKV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1b1-DR-4Iy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OmE-jx-OKV" secondAttribute="trailing" constant="-20" id="2PS-Gx-YW7"/>
-                            <constraint firstItem="OmE-jx-OKV" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="51a-h8-IIh"/>
-                            <constraint firstItem="OmE-jx-OKV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Oxb-Ew-UEC"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OmE-jx-OKV" secondAttribute="bottom" id="eAS-wL-LOO"/>
-                            <constraint firstItem="OmE-jx-OKV" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="uIB-lW-7v4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZRa-Is-ndC" secondAttribute="trailing" constant="60" id="Avp-HD-2Cg"/>
+                            <constraint firstItem="ZRa-Is-ndC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ESl-fQ-kbF"/>
+                            <constraint firstItem="ZRa-Is-ndC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Uuj-Yv-1AW"/>
+                            <constraint firstItem="ZRa-Is-ndC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="h16-FR-vNs"/>
+                            <constraint firstItem="ZRa-Is-ndC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rf6-je-xIE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="OmE-jx-OKV"/>
+                                <exclude reference="ZRa-Is-ndC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="eAS-wL-LOO"/>
-                                <exclude reference="1b1-DR-4Iy"/>
-                                <exclude reference="2PS-Gx-YW7"/>
-                                <exclude reference="51a-h8-IIh"/>
-                                <exclude reference="Oxb-Ew-UEC"/>
-                                <exclude reference="uIB-lW-7v4"/>
+                                <exclude reference="Avp-HD-2Cg"/>
+                                <exclude reference="ESl-fQ-kbF"/>
+                                <exclude reference="Uuj-Yv-1AW"/>
+                                <exclude reference="h16-FR-vNs"/>
+                                <exclude reference="rf6-je-xIE"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="OmE-jx-OKV"/>
+                                <include reference="ZRa-Is-ndC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="eAS-wL-LOO"/>
-                                <include reference="1b1-DR-4Iy"/>
-                                <include reference="2PS-Gx-YW7"/>
-                                <include reference="51a-h8-IIh"/>
-                                <include reference="Oxb-Ew-UEC"/>
-                                <include reference="uIB-lW-7v4"/>
+                                <exclude reference="Avp-HD-2Cg"/>
+                                <exclude reference="ESl-fQ-kbF"/>
+                                <include reference="Uuj-Yv-1AW"/>
+                                <exclude reference="h16-FR-vNs"/>
+                                <include reference="rf6-je-xIE"/>
                             </mask>
                         </variation>
                     </view>
@@ -66,6 +78,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Loading Screen" width="375" height="667"/>
+        <image name="logo_white" width="158" height="81"/>
     </resources>
 </document>

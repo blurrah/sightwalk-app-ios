@@ -29,7 +29,7 @@ class RouteDetailDirectionsViewController: UIViewController {
         var spacer: CGFloat = 50
         for sight in chosenSights {
             let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-            label.textColor = UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
+            label.textColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
             label.center = CGPointMake(160, 50 + spacer)
             label.text = sight.title
             self.view.addSubview(label)
