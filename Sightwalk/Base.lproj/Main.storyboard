@@ -142,21 +142,21 @@ Kies hieronder een optie.</string>
                                 <exclude reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="dRd-yr-fcM"/>
-                                <exclude reference="pRd-VT-hHa"/>
-                                <exclude reference="t9z-az-19H"/>
-                                <exclude reference="tQy-Hh-j48"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <exclude reference="IKX-T8-cuI"/>
-                                <exclude reference="NVu-bm-CGE"/>
-                                <exclude reference="dVG-UK-sSB"/>
+                                <exclude reference="6hB-3a-Rdd"/>
+                                <exclude reference="GRY-dm-5Cn"/>
                                 <exclude reference="7RJ-mv-L5I"/>
                                 <exclude reference="z9Z-kz-ZYR"/>
                                 <exclude reference="8uN-nO-8lZ"/>
                                 <exclude reference="erW-pa-Vsm"/>
                                 <exclude reference="fCZ-kq-PbR"/>
-                                <exclude reference="6hB-3a-Rdd"/>
-                                <exclude reference="GRY-dm-5Cn"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <exclude reference="IKX-T8-cuI"/>
+                                <exclude reference="NVu-bm-CGE"/>
+                                <exclude reference="dVG-UK-sSB"/>
+                                <exclude reference="t9z-az-19H"/>
+                                <exclude reference="tQy-Hh-j48"/>
+                                <exclude reference="dRd-yr-fcM"/>
+                                <exclude reference="pRd-VT-hHa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -168,21 +168,21 @@ Kies hieronder een optie.</string>
                                 <include reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="dRd-yr-fcM"/>
-                                <include reference="pRd-VT-hHa"/>
-                                <include reference="t9z-az-19H"/>
-                                <include reference="tQy-Hh-j48"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <include reference="IKX-T8-cuI"/>
-                                <include reference="NVu-bm-CGE"/>
-                                <include reference="dVG-UK-sSB"/>
+                                <include reference="6hB-3a-Rdd"/>
+                                <include reference="GRY-dm-5Cn"/>
                                 <include reference="7RJ-mv-L5I"/>
                                 <include reference="z9Z-kz-ZYR"/>
                                 <include reference="8uN-nO-8lZ"/>
                                 <include reference="erW-pa-Vsm"/>
                                 <include reference="fCZ-kq-PbR"/>
-                                <include reference="6hB-3a-Rdd"/>
-                                <include reference="GRY-dm-5Cn"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <include reference="IKX-T8-cuI"/>
+                                <include reference="NVu-bm-CGE"/>
+                                <include reference="dVG-UK-sSB"/>
+                                <include reference="t9z-az-19H"/>
+                                <include reference="tQy-Hh-j48"/>
+                                <include reference="dRd-yr-fcM"/>
+                                <include reference="pRd-VT-hHa"/>
                             </mask>
                         </variation>
                     </view>
