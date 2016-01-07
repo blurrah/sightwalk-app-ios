@@ -859,9 +859,11 @@ Kies hieronder een optie.</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pU3-8N-g9K" firstAttribute="leading" secondItem="8WD-Uj-i2G" secondAttribute="leadingMargin" constant="-40" id="IJz-Fm-mLe"/>
-                            <constraint firstItem="Vzj-bb-Kjf" firstAttribute="top" secondItem="c1z-Ce-6DP" secondAttribute="bottom" constant="20" id="MZQ-d0-Cn3"/>
+                            <constraint firstItem="Vzj-bb-Kjf" firstAttribute="top" secondItem="c1z-Ce-6DP" secondAttribute="bottom" constant="20" id="MZQ-d0-Cn3">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="c1z-Ce-6DP" firstAttribute="top" secondItem="pU3-8N-g9K" secondAttribute="bottom" constant="8" id="RCF-89-NpL">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="c1z-Ce-6DP" firstAttribute="top" secondItem="pU3-8N-g9K" secondAttribute="bottom" constant="8" id="Xd6-e6-iA5"/>
                             <constraint firstItem="c1z-Ce-6DP" firstAttribute="leading" secondItem="8WD-Uj-i2G" secondAttribute="leadingMargin" id="ckP-wn-l7k"/>
