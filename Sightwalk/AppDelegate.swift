@@ -18,7 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        let notification = UILocalNotification()
+        notification.alertBody = "Tijd om te SightWalken!"
+        notification.alertAction = "SightWalk te starten."
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.repeatInterval = NSCalendarUnit.Day
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
         let isFirstRun = !NSUserDefaults.standardUserDefaults().boolForKey("kAppPreviousLaunchKey")
         if !isFirstRun {
             self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
