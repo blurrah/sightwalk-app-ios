@@ -13,6 +13,7 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     @IBOutlet var mapView: GMSMapView!
     let chosenSights = SightStore.sharedInstance.userChosen
     let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -29,19 +29,27 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         if (currentGeoPosition == nil) {
             let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda. Wilt u doorgaan?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
-                let storyboard = UIStoryboard(name: "Route", bundle: nil)
-                let vc = storyboard.instantiateInitialViewController() as UIViewController!
-                self.presentViewController(vc, animated: true, completion: nil)
+                self.launchRouteLoopFunctieDingesDoeiBorisIsMatig()
             }))
             alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-        let storyboard = UIStoryboard(name: "Route", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as UIViewController!
-        presentViewController(vc, animated: true, completion: nil)
+            launchRouteLoopFunctieDingesDoeiBorisIsMatig()
         }
+    }
+    
+    private func launchRouteLoopFunctieDingesDoeiBorisIsMatig() {
+        let storyboard = UIStoryboard(name: "Route", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
+        
+        if currentGeoPosition !== nil {
+            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
+        }
+        
+        
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func endPointSegmentedAction(sender: AnyObject) {
