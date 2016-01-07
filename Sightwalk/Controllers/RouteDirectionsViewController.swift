@@ -10,6 +10,7 @@ import UIKit
 
 protocol RouteDirectionsViewControllerDelegate {
     func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?)
+    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?)
 }
 
 class RouteDirectionsViewController: UIViewController {
@@ -25,6 +26,10 @@ class RouteDirectionsViewController: UIViewController {
     
     @IBAction func tapButton(sender: AnyObject) {
         delegate!.routeDirectionsViewControllerButtonPressed(self, info: nil)
+    }
+    
+    @IBAction func tapSightDetail(sender: AnyObject) {
+        delegate!.routeDirectionsViewControllerSightDetailPressed(self, info: nil)
     }
     
     override func viewDidLoad() {
