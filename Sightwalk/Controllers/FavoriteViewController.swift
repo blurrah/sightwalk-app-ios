@@ -50,7 +50,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         cell.sightTitleLabel.text = sights[row].title
         cell.sightDescriptionLabel.text = sights[row].shortdesc
         
-        imageDownloader.downloadImage(sights[row].imgurl, onCompletion: { response in
+        ImageDownloadHelper.downloadImage(sights[row].imgurl, onCompletion: { response in
             cell.favoriteImageView.image = UIImage(data: response)
         })
         

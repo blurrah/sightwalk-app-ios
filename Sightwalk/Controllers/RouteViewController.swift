@@ -17,11 +17,13 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     private var currentIndex = 0
     let locationManager = CLLocationManager()
     private var atSight : Bool = false
-    private var sightShowController : SightShowViewController?
+    private var sightShowController : SightDetailViewController?
     private var startLocation : CLLocation?
     private var returnToStart : Bool = true
     private var walking : Bool = true
     private var returningHome : Bool = false
+    
+    var currentSight: Int = 0
     
     @IBAction func tapStopRoute(sender: AnyObject) {
         let alertView = UIAlertController(title: "Stoppen", message: "Weet u zeker dat u wilt stoppen?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -82,6 +84,10 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     
     func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
         changeViewState()
+    }
+    
+    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?) {
+        self.performSegueWithIdentifier("showSightDetail", sender: nil)
     }
     
     func changeViewState() {
@@ -169,7 +175,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     }
     
     private func enteringSight(sight : Sight) {
-        //performSegueWithIdentifier("SightShowSegue", sender: self)
+        performSegueWithIdentifier("showSightDetail", sender: self)
         
         if (chosenSights.indexOf(sight)! + 1) >= chosenSights.count {
             // this is the last sight
@@ -206,16 +212,19 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         return chosenSights[currentIndex]
     }
     
+    // TODO: Add change sight logic
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SightShowSegue" {
-            let showController = segue.destinationViewController as! SightShowViewController
-            showController.setSight(getNextSight()!)
-            sightShowController = showController
+        if segue.identifier == "showSightDetail" {
+            if let destination = segue.destinationViewController as? SightDetailViewController {
+                destination.setSight(getNextSight()!)
+                sightShowController = destination
+            }
         }
     }
 

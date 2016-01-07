@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, SightManager {
-    let imageDownloader = ImageDownloadHelper()
     let sightStore = SightStore.sharedInstance
     
     var markers = [Sight: GMSMarker]()
@@ -113,7 +112,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
         
-        imageDownloader.downloadImage(sight.imgurl, onCompletion: { response in
+        ImageDownloadHelper.downloadImage(sight.imgurl, onCompletion: { response in
             self.infoImage.image = UIImage(data: response)
         })
         
