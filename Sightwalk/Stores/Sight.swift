@@ -58,7 +58,11 @@ class Sight: Comparable, Hashable {
     }
     
     func isFurtherThan(point : CLLocation, distance : Int) -> Bool {
-        return Int(point.distanceFromLocation(CLLocation(latitude: location.latitude, longitude: location.longitude))) < distance
+        return Int(distanceTo(point)) < distance
+    }
+    
+    func distanceTo(point : CLLocation) -> Double {
+        return Double(point.distanceFromLocation(CLLocation(latitude: location.latitude, longitude: location.longitude)))
     }
     
     func dataEquals(sight : Sight) -> Bool {

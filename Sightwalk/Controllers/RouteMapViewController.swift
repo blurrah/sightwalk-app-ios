@@ -14,9 +14,8 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     let chosenSights = SightStore.sharedInstance.userChosen
     let routeSteps = RouteStore.sharedInstance.polylines
     let locationManager = CLLocationManager()
-    
     private var currentStep : Int = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

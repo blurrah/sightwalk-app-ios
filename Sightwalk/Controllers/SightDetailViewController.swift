@@ -13,18 +13,10 @@ class SightDetailViewController: UIViewController {
     var sightId: Int?
     @IBOutlet var titleBarOutlet: UINavigationItem!
     @IBOutlet var imageView: UIImageView!
+    private var currentSight : Sight?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let chosenSight = SightStore.sharedInstance.userChosen[sightId!]
-        
-        self.titleBarOutlet.title = chosenSight.title
-        
-        ImageDownloadHelper.downloadImage(chosenSight.imgurl, onCompletion: { response in
-            self.imageView.image = UIImage(data: response)
-        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +24,23 @@ class SightDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setSight(sight : Sight) {
+        currentSight = sight
+        updateView()
+    }
+    
+    func triggerLeaveSight() {
+        print("leaving sight")
+    }
+    
+    private func updateView() {
+        self.titleBarOutlet.title = currentSight!.title
+        
+        ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
+            self.imageView.image = UIImage(data: response)
+        })
+    }
+
 
     /*
     // MARK: - Navigation
