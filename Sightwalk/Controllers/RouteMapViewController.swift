@@ -83,5 +83,10 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         return true
     }
+    
+    func center(coordinates : CLLocationCoordinate2D) {
+        let camera = GMSCameraPosition.cameraWithTarget(coordinates, zoom: mapView.camera.zoom)
+        mapView.animateToCameraPosition(camera)
+    }
 
 }
