@@ -120,23 +120,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJF-IZ-1MI">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Nm6-MB-d7X"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Nm6-MB-d7X"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Nm6-MB-d7X"/>
-                                    </mask>
-                                </variation>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totaal 0 sights / 0 km afstand" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-ls-b96">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -186,6 +169,23 @@
                                     <action selector="endPointSegmentedAction:" destination="oNl-G7-xol" eventType="valueChanged" id="NTs-aK-kuh"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJF-IZ-1MI">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Nm6-MB-d7X"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nm6-MB-d7X"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Nm6-MB-d7X"/>
+                                    </mask>
+                                </variation>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -221,10 +221,10 @@
                                 <exclude reference="qaA-KF-YSc"/>
                                 <exclude reference="niJ-2C-Bqb"/>
                                 <exclude reference="8sn-WU-C0y"/>
-                                <exclude reference="AJF-IZ-1MI"/>
                                 <exclude reference="MG5-ls-b96"/>
                                 <exclude reference="hz5-il-JWe"/>
                                 <exclude reference="f2k-VM-se9"/>
+                                <exclude reference="AJF-IZ-1MI"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="nZT-LT-9rt"/>
@@ -256,10 +256,10 @@
                                 <include reference="qaA-KF-YSc"/>
                                 <include reference="niJ-2C-Bqb"/>
                                 <include reference="8sn-WU-C0y"/>
-                                <include reference="AJF-IZ-1MI"/>
                                 <include reference="MG5-ls-b96"/>
                                 <include reference="hz5-il-JWe"/>
                                 <include reference="f2k-VM-se9"/>
+                                <include reference="AJF-IZ-1MI"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="nZT-LT-9rt"/>
