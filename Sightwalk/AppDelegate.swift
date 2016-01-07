@@ -18,7 +18,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        let settings = NSUserDefaults.standardUserDefaults().valueForKey("nfreq") as? NSString
+        var frequency = NSCalendarUnit.Day
+        
+        if (settings == "monthly") {
+            frequency = NSCalendarUnit.Month
+        } else if (settings == "weekly") {
+            frequency = NSCalendarUnit.WeekOfYear
+        }
+        
+        if UIApplication.sharedApplication().scheduledLocalNotifications!.isEmpty {
+            let notification = UILocalNotification()
+            notification.fireDate = NSDate(timeIntervalSinceNow: 3600)
+            notification.alertBody = "Tijd om te SightWalken!"
+            notification.alertAction = "SightWalk te starten."
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.repeatInterval = frequency
+            NSUserDefaults.standardUserDefaults().valueForKey("nfreq")
 
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        } else {
+            UIApplication.sharedApplication().scheduledLocalNotifications!.first!.repeatInterval = frequency
+        }
+        
+        print (UIApplication.sharedApplication().scheduledLocalNotifications!.count)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged", name: NSUserDefaultsDidChangeNotification, object: nil)
+        
         let isFirstRun = !NSUserDefaults.standardUserDefaults().boolForKey("kAppPreviousLaunchKey")
         if !isFirstRun {
             self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
@@ -125,6 +155,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func settingsChanged() {
+        let settings = NSUserDefaults.standardUserDefaults().valueForKey("nfreq") as? NSString
+        var frequency = NSCalendarUnit.Day
+        
+        if (settings == "monthly") {
+            frequency = NSCalendarUnit.Month
+        } else if (settings == "weekly") {
+            frequency = NSCalendarUnit.WeekOfYear
+        }
+        UIApplication.sharedApplication().scheduledLocalNotifications!.first!.repeatInterval = frequency
     }
 
 }
