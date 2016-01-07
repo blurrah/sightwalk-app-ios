@@ -14,6 +14,8 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     var directionsView: RouteDirectionsViewController?
     var detailView: RouteDetailDirectionsViewController?
     
+    var currentSight: Int = 0
+    
     @IBAction func tapStopRoute(sender: AnyObject) {
         let alertView = UIAlertController(title: "Stoppen", message: "Weet u zeker dat u wilt stoppen?", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -71,6 +73,10 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         changeViewState()
     }
     
+    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?) {
+        self.performSegueWithIdentifier("showSightDetail", sender: nil)
+    }
+    
     func changeViewState() {
         let width : CGFloat = self.view.frame.size.width;
         let height : CGFloat = self.view.frame.size.height;
@@ -92,22 +98,25 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
                 self.directionsView!.view.alpha = 1
                 }, completion: nil )
         }
+        
         state = !state
     }
+    
+    // TODO: Add change sight logic
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Send sight ID to sight detail view
+        
+        if segue.identifier == "showSightDetail" {
+            if let destination = segue.destinationViewController as? SightDetailViewController {
+                destination.sightId = currentSight
+            }
+        }
     }
-    */
 
 }

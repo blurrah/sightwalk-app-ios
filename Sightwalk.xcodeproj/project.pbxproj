@@ -21,6 +21,7 @@
 		2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */; };
 		2F7D449A1C204E33002DE5DC /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44991C204E33002DE5DC /* RouteStore.swift */; };
 		2F7D449C1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */; };
+		2F9E0B001C3EA5F200D23066 /* SightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */; };
 		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
@@ -101,6 +102,7 @@
 		2F7D44991C204E33002DE5DC /* RouteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
 		2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailDirectionsViewController.swift; sourceTree = "<group>"; };
 		2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Sightwalk-Bridging-Header.h"; path = "Sightwalk/Sightwalk-Bridging-Header.h"; sourceTree = "<group>"; };
+		2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightDetailViewController.swift; sourceTree = "<group>"; };
 		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
 		2FDE68011C0F04F000287286 /* PickItemButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItemButtonView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */,
 				2F7D44951C204096002DE5DC /* RouteMapViewController.swift */,
 				2F526E8B1C20325E0024DAFE /* RouteViewController.swift */,
+				2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */,
 				2F25B9041C08AEB6001B9037 /* CreateRouteViewController.swift */,
 				2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */,
 				F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */,
@@ -565,6 +568,7 @@
 				2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */,
 				2F7D44961C204096002DE5DC /* RouteMapViewController.swift in Sources */,
 				2F7D449A1C204E33002DE5DC /* RouteStore.swift in Sources */,
+				2F9E0B001C3EA5F200D23066 /* SightDetailViewController.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
 				F3C482941C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				F3A1D2D11C329EE000ADA300 /* Favorite.swift in Sources */,
