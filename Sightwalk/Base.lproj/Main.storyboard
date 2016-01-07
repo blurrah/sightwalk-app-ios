@@ -1325,7 +1325,7 @@ om de boel op te vullen.</string>
                                         </variation>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7Ja-Fl-sm8" secondAttribute="trailing" constant="8" id="3h6-UX-rBM"/>
                                     <constraint firstAttribute="trailing" secondItem="UvW-Ss-qJ5" secondAttribute="trailing" constant="8" id="IGk-Uj-0A2"/>
@@ -1465,7 +1465,7 @@ om de boel op te vullen.</string>
                                         </variation>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="L45-5X-rdM" secondAttribute="trailing" constant="8" id="0g4-qS-nI6"/>
                                     <constraint firstAttribute="trailing" secondItem="myF-tv-QXe" secondAttribute="trailing" constant="8" id="5pf-6n-hLE"/>
@@ -1626,7 +1626,7 @@ om de boel op te vullen.</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16862745100000001" green="0.7725490196" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="2jX-VN-Okr" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="top" constant="158" id="21g-Pm-PtT">
                                         <variation key="heightClass=regular-widthClass=compact" constant="160"/>
@@ -1729,7 +1729,7 @@ om de boel op te vullen.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="intro_background" width="640" height="960"/>
+        <image name="intro_background" width="1024" height="1024"/>
         <image name="logo_white" width="158" height="81"/>
         <image name="sightwalk-logo" width="1024" height="1024"/>
     </resources>

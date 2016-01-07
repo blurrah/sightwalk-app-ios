@@ -25,7 +25,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     var chosenMarker: GMSMarker!
     let locationManager: CLLocationManager = CLLocationManager()
     
-    let colorGreen : UIColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
+    let colorGreen : UIColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
     let colorYellow : UIColor = UIColor(red:1, green:1, blue:0, alpha:1)
     
     let star_unchecked = UIImage(named: "favorite_star_unchecked")! as UIImage
