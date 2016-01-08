@@ -143,6 +143,11 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         })
     }
     
+    @IBAction func tapAddSight(sender: AnyObject) {
+        // Start een segue hier
+        self.performSegueWithIdentifier("gotoAddSight", sender: nil)
+    }
+    
     @IBAction func addFavorite(sender: AnyObject) {
         let sight = getSightByMarker(chosenMarker)
         let newFavorite : Bool = !sightStore.isFavorite(sight)
@@ -176,6 +181,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+    }
+    
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
     }
 
     

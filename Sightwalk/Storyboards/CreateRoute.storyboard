@@ -308,7 +308,7 @@
             </objects>
             <point key="canvasLocation" x="1378.5" y="402"/>
         </scene>
-        <!--Pick Spots View Controller-->
+        <!--Kies bestemmingen-->
         <scene sceneID="usK-hZ-Tey">
             <objects>
                 <viewController id="kqk-r8-Ub5" customClass="PickSpotsViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -541,6 +541,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Kies bestemmingen" id="qne-yT-liD">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="hi8-wn-rqM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vFT-1W-3Bh">
+                            <connections>
+                                <action selector="tapAddSight:" destination="kqk-r8-Ub5" id="US7-2M-syG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="tEU-Vu-KZ3" id="ywh-dw-6lb"/>
                         <outlet property="infoButton" destination="Baq-0k-dx2" id="1FZ-2W-vSw"/>
@@ -549,11 +557,136 @@
                         <outlet property="infoText" destination="9ey-dr-a2w" id="f9e-hB-HTf"/>
                         <outlet property="infoView" destination="vAH-Vo-Kum" id="Frn-v6-CdR"/>
                         <outlet property="mapView" destination="The-Dl-Tub" id="Pik-Ha-gAV"/>
+                        <segue destination="csB-cR-QKR" kind="show" identifier="gotoAddSight" id="3Hp-kO-US3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gv3-Xs-JYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2176.5" y="402"/>
+        </scene>
+        <!--Voeg Sight toe-->
+        <scene sceneID="A4c-zA-V0c">
+            <objects>
+                <viewController id="csB-cR-QKR" customClass="SightCreateViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mV7-i4-Vfl"/>
+                        <viewControllerLayoutGuide type="bottom" id="IO7-Rr-1KQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ESV-n9-wVD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sight naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsd-2n-AJU">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tfName"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4o0-Kk-Y5g" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="409" id="OWZ-xG-vID"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OWZ-xG-vID"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OWZ-xG-vID"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQG-w9-7gF">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tvDescription">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IO7-Rr-1KQ" firstAttribute="top" secondItem="UQG-w9-7gF" secondAttribute="bottom" constant="20" id="1Rn-pk-OGw"/>
+                            <constraint firstItem="wsd-2n-AJU" firstAttribute="top" secondItem="4o0-Kk-Y5g" secondAttribute="bottom" constant="8" id="5ME-07-Ttu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wsd-2n-AJU" secondAttribute="trailing" id="5vU-1Z-pkP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4o0-Kk-Y5g" secondAttribute="trailing" constant="-20" id="86f-BU-Jhk"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="top" secondItem="wsd-2n-AJU" secondAttribute="bottom" constant="8" id="E84-vq-Ot3"/>
+                            <constraint firstItem="IO7-Rr-1KQ" firstAttribute="top" secondItem="wsd-2n-AJU" secondAttribute="bottom" constant="8" id="Iy3-eJ-XjO"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="trailing" secondItem="ESV-n9-wVD" secondAttribute="trailingMargin" id="KXT-NA-8cQ"/>
+                            <constraint firstItem="4o0-Kk-Y5g" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" constant="-20" id="LBG-CX-zMn"/>
+                            <constraint firstItem="4o0-Kk-Y5g" firstAttribute="top" secondItem="mV7-i4-Vfl" secondAttribute="bottom" id="ot0-4E-NhI"/>
+                            <constraint firstItem="wsd-2n-AJU" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" id="rvt-Mk-gr5"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" id="wp9-wF-abh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wsd-2n-AJU"/>
+                                <exclude reference="4o0-Kk-Y5g"/>
+                                <exclude reference="UQG-w9-7gF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
+                                <exclude reference="5ME-07-Ttu"/>
+                                <exclude reference="5vU-1Z-pkP"/>
+                                <exclude reference="rvt-Mk-gr5"/>
+                                <exclude reference="86f-BU-Jhk"/>
+                                <exclude reference="LBG-CX-zMn"/>
+                                <exclude reference="ot0-4E-NhI"/>
+                                <exclude reference="E84-vq-Ot3"/>
+                                <exclude reference="KXT-NA-8cQ"/>
+                                <exclude reference="wp9-wF-abh"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="wsd-2n-AJU"/>
+                                <include reference="4o0-Kk-Y5g"/>
+                                <include reference="UQG-w9-7gF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
+                                <include reference="5ME-07-Ttu"/>
+                                <include reference="5vU-1Z-pkP"/>
+                                <include reference="rvt-Mk-gr5"/>
+                                <include reference="86f-BU-Jhk"/>
+                                <include reference="LBG-CX-zMn"/>
+                                <include reference="ot0-4E-NhI"/>
+                                <include reference="E84-vq-Ot3"/>
+                                <include reference="KXT-NA-8cQ"/>
+                                <include reference="wp9-wF-abh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Voeg Sight toe" id="lo3-FZ-fUt">
+                        <barButtonItem key="leftBarButtonItem" title="Sluiten" id="n0W-T6-hDM">
+                            <connections>
+                                <action selector="btnCloseClick:" destination="csB-cR-QKR" id="Nl9-FK-ubG"/>
+                                <segue destination="3aV-e4-3YJ" kind="unwind" identifier="unwindToAddSights" unwindAction="unwindToThisViewController:" id="TrT-sx-pYR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Opslaan" id="kul-Bd-Qyn">
+                            <connections>
+                                <action selector="btnSave:" destination="csB-cR-QKR" id="Xd3-TQ-Uz9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mvCoordinateSelect" destination="4o0-Kk-Y5g" id="ANY-47-jLO"/>
+                        <outlet property="tfName" destination="wsd-2n-AJU" id="x1R-rW-o3n"/>
+                        <outlet property="tvDescription" destination="UQG-w9-7gF" id="PZz-Sz-Lle"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIC-0I-BiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3aV-e4-3YJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2890.5" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ePL-QW-wb1">

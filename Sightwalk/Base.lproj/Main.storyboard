@@ -146,25 +146,25 @@ Kies hieronder een optie.</string>
                                 <exclude reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5Vi-m7-6Ps"/>
-                                <exclude reference="8kY-iS-JED"/>
-                                <exclude reference="8on-E2-NTX"/>
-                                <exclude reference="h8B-qK-L73"/>
-                                <exclude reference="t9z-az-19H"/>
-                                <exclude reference="tQy-Hh-j48"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <exclude reference="IKX-T8-cuI"/>
-                                <exclude reference="NVu-bm-CGE"/>
-                                <exclude reference="dVG-UK-sSB"/>
+                                <exclude reference="6hB-3a-Rdd"/>
+                                <exclude reference="GRY-dm-5Cn"/>
+                                <exclude reference="Xxq-XK-yAg"/>
+                                <exclude reference="lH0-vO-PjH"/>
                                 <exclude reference="7RJ-mv-L5I"/>
                                 <exclude reference="z9Z-kz-ZYR"/>
                                 <exclude reference="8uN-nO-8lZ"/>
                                 <exclude reference="erW-pa-Vsm"/>
                                 <exclude reference="fCZ-kq-PbR"/>
-                                <exclude reference="6hB-3a-Rdd"/>
-                                <exclude reference="GRY-dm-5Cn"/>
-                                <exclude reference="Xxq-XK-yAg"/>
-                                <exclude reference="lH0-vO-PjH"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <exclude reference="IKX-T8-cuI"/>
+                                <exclude reference="NVu-bm-CGE"/>
+                                <exclude reference="dVG-UK-sSB"/>
+                                <exclude reference="t9z-az-19H"/>
+                                <exclude reference="tQy-Hh-j48"/>
+                                <exclude reference="5Vi-m7-6Ps"/>
+                                <exclude reference="8kY-iS-JED"/>
+                                <exclude reference="8on-E2-NTX"/>
+                                <exclude reference="h8B-qK-L73"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -176,25 +176,25 @@ Kies hieronder een optie.</string>
                                 <include reference="Ksy-Ap-iE6"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5Vi-m7-6Ps"/>
-                                <include reference="8kY-iS-JED"/>
-                                <include reference="8on-E2-NTX"/>
-                                <exclude reference="h8B-qK-L73"/>
-                                <include reference="t9z-az-19H"/>
-                                <include reference="tQy-Hh-j48"/>
-                                <exclude reference="AY4-S2-PbW"/>
-                                <include reference="IKX-T8-cuI"/>
-                                <include reference="NVu-bm-CGE"/>
-                                <include reference="dVG-UK-sSB"/>
+                                <exclude reference="6hB-3a-Rdd"/>
+                                <include reference="GRY-dm-5Cn"/>
+                                <include reference="Xxq-XK-yAg"/>
+                                <exclude reference="lH0-vO-PjH"/>
                                 <include reference="7RJ-mv-L5I"/>
                                 <include reference="z9Z-kz-ZYR"/>
                                 <include reference="8uN-nO-8lZ"/>
                                 <include reference="erW-pa-Vsm"/>
                                 <include reference="fCZ-kq-PbR"/>
-                                <exclude reference="6hB-3a-Rdd"/>
-                                <include reference="GRY-dm-5Cn"/>
-                                <include reference="Xxq-XK-yAg"/>
-                                <exclude reference="lH0-vO-PjH"/>
+                                <exclude reference="AY4-S2-PbW"/>
+                                <include reference="IKX-T8-cuI"/>
+                                <include reference="NVu-bm-CGE"/>
+                                <include reference="dVG-UK-sSB"/>
+                                <include reference="t9z-az-19H"/>
+                                <include reference="tQy-Hh-j48"/>
+                                <include reference="5Vi-m7-6Ps"/>
+                                <include reference="8kY-iS-JED"/>
+                                <include reference="8on-E2-NTX"/>
+                                <exclude reference="h8B-qK-L73"/>
                             </mask>
                         </variation>
                     </view>
@@ -950,13 +950,13 @@ Kies hieronder een optie.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7Y-o4-s0c" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7Y-o4-s0c" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="-20" y="66" width="440" height="344"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XM0-JQ-dqp">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XM0-JQ-dqp">
                                         <rect key="frame" x="0.0" y="0.0" width="440" height="344"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALGEMENE GEGEVENS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-y5-dkE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ALGEMENE GEGEVENS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-y5-dkE">
                                                 <rect key="frame" x="40" y="183" width="158" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="158" id="Bza-zB-V7b"/>
@@ -978,7 +978,7 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voer uw gegevens in om in te loggen." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwg-eC-wsJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Voer uw gegevens in om in te loggen." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwg-eC-wsJ">
                                                 <rect key="frame" x="77" y="144" width="286" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="JvQ-4j-8XE"/>
@@ -997,7 +997,7 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sightwalk-logo" translatesAutoresizingMaskIntoConstraints="NO" id="H3Y-Zr-rvR">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="sightwalk-logo" translatesAutoresizingMaskIntoConstraints="NO" id="H3Y-Zr-rvR">
                                                 <rect key="frame" x="168" y="20" width="104" height="104"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="104" id="E6X-jS-aGH"/>
@@ -1016,7 +1016,7 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="204" width="400" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="XIr-Cv-neU"/>
@@ -1034,7 +1034,7 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-nC-sNL" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-nC-sNL" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="264" width="400" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="N3i-d7-z90"/>
@@ -1074,11 +1074,11 @@ Kies hieronder een optie.</string>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="nhe-Ev-oFm"/>
+                                                <exclude reference="eOv-wB-NxW"/>
+                                                <exclude reference="jLT-S1-KpA"/>
                                                 <exclude reference="YRq-ip-VP7"/>
                                                 <exclude reference="dkU-9n-Ypa"/>
                                                 <exclude reference="wtB-w8-UWg"/>
-                                                <exclude reference="eOv-wB-NxW"/>
-                                                <exclude reference="jLT-S1-KpA"/>
                                                 <exclude reference="CfW-fS-4Ad"/>
                                                 <exclude reference="kww-f8-kKC"/>
                                                 <exclude reference="9T4-oB-n3N"/>
@@ -1092,11 +1092,11 @@ Kies hieronder een optie.</string>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <exclude reference="nhe-Ev-oFm"/>
+                                                <include reference="eOv-wB-NxW"/>
+                                                <include reference="jLT-S1-KpA"/>
                                                 <include reference="YRq-ip-VP7"/>
                                                 <include reference="dkU-9n-Ypa"/>
                                                 <exclude reference="wtB-w8-UWg"/>
-                                                <include reference="eOv-wB-NxW"/>
-                                                <include reference="jLT-S1-KpA"/>
                                                 <include reference="CfW-fS-4Ad"/>
                                                 <include reference="kww-f8-kKC"/>
                                                 <include reference="9T4-oB-n3N"/>
@@ -1210,6 +1210,11 @@ Kies hieronder een optie.</string>
                                 <exclude reference="mi6-KM-Gnl"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ABi-rg-yZs"/>
+                                <exclude reference="tto-Of-xTO"/>
+                                <exclude reference="Dbx-nD-GIs"/>
+                                <exclude reference="fme-1y-xP1"/>
+                                <exclude reference="uIA-ML-1Nv"/>
                                 <exclude reference="IHb-Bv-Lv1"/>
                                 <exclude reference="Zsy-rL-xXd"/>
                                 <exclude reference="lEp-yc-bM1"/>
@@ -1217,11 +1222,6 @@ Kies hieronder een optie.</string>
                                 <exclude reference="pJE-BN-bXd"/>
                                 <exclude reference="uPI-8F-SKQ"/>
                                 <exclude reference="Wgx-No-lL3"/>
-                                <exclude reference="ABi-rg-yZs"/>
-                                <exclude reference="tto-Of-xTO"/>
-                                <exclude reference="Dbx-nD-GIs"/>
-                                <exclude reference="fme-1y-xP1"/>
-                                <exclude reference="uIA-ML-1Nv"/>
                                 <exclude reference="INk-Ew-60O"/>
                             </mask>
                         </variation>
@@ -1231,6 +1231,11 @@ Kies hieronder een optie.</string>
                                 <include reference="mi6-KM-Gnl"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ABi-rg-yZs"/>
+                                <include reference="tto-Of-xTO"/>
+                                <include reference="Dbx-nD-GIs"/>
+                                <include reference="fme-1y-xP1"/>
+                                <include reference="uIA-ML-1Nv"/>
                                 <include reference="IHb-Bv-Lv1"/>
                                 <exclude reference="Zsy-rL-xXd"/>
                                 <exclude reference="lEp-yc-bM1"/>
@@ -1238,11 +1243,6 @@ Kies hieronder een optie.</string>
                                 <include reference="pJE-BN-bXd"/>
                                 <include reference="uPI-8F-SKQ"/>
                                 <include reference="Wgx-No-lL3"/>
-                                <exclude reference="ABi-rg-yZs"/>
-                                <include reference="tto-Of-xTO"/>
-                                <include reference="Dbx-nD-GIs"/>
-                                <include reference="fme-1y-xP1"/>
-                                <include reference="uIA-ML-1Nv"/>
                                 <include reference="INk-Ew-60O"/>
                             </mask>
                         </variation>
@@ -1814,7 +1814,7 @@ om de boel op te vullen.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="intro_background" width="1024" height="1024"/>
+        <image name="intro_background" width="640" height="960"/>
         <image name="logo_white" width="158" height="81"/>
         <image name="sightwalk-logo" width="1024" height="1024"/>
     </resources>

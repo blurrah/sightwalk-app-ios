@@ -38,13 +38,8 @@ class RouteDirectionsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let sightStore = SightStore.sharedInstance
-        let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-        let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
         
-        self.sightTitleOutlet.text = sightStore.userChosen[0].title
-        self.sightDescriptionOutlet.text = sightStore.userChosen[0].shortdesc
-        self.timeOutlet.text = "\(h) uur, \(m) min"
-        self.distanceOutlet.text = "\(totalDistance) km"
+        setSight(sightStore.userChosen[0])
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +48,16 @@ class RouteDirectionsViewController: UIViewController {
     }
     
 
+    func setSight(sight : Sight) {
+        let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+        let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
+        
+        self.sightTitleOutlet.text = sight.title
+        self.sightDescriptionOutlet.text = sight.shortdesc
+        self.timeOutlet.text = "\(h) uur, \(m) min"
+        self.distanceOutlet.text = "\(totalDistance) km"
+    }
+    
     /*
     // MARK: - Navigation
 

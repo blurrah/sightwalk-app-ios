@@ -22,6 +22,7 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
     private let deltaSyncTime : Int = 600 // ten minutes
     private let deltaSyncPosition : Int = 1000 // one kilometer
     private let syncDistance : Int = 10 // ten kilometers
+    private var force : Bool = false
     
     init(client : SightSyncInterface) {
         self.client = client
@@ -40,11 +41,15 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func forceUpdating() {
+        force = true
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location : CLLocation = locations.first!
         let now = NSDate()
 
-        if lastSyncTime != nil {
+        if lastSyncTime != nil && !force {
             if Int(location.distanceFromLocation(lastSyncPosition!)) < deltaSyncPosition && Int(lastSyncTime!.timeIntervalSinceDate(now)) < deltaSyncTime {
                 return
             }
