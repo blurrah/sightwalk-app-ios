@@ -63,6 +63,7 @@
 		F3C482941C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C482911C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m */; };
 		F3C482951C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		F3C482991C3EB57C007164C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3C482981C3EB57C007164C5 /* Settings.bundle */; };
+		F3C4829B1C402A97007164C5 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */; };
 		F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */; };
 		F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E711C1055BA0017F1DD /* Sight.swift */; };
 		F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E731C1056530017F1DD /* SQLiteHelper.swift */; };
@@ -158,6 +159,7 @@
 		F3C482921C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		F3C482981C3EB57C007164C5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
 		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
 		F3E44E711C1055BA0017F1DD /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sight.swift; path = ../Stores/Sight.swift; sourceTree = "<group>"; };
 		F3E44E731C1056530017F1DD /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				2FFD437C1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift */,
 				92EF00F11C2300F2001EF35C /* SightSyncer.swift */,
 				92EF00F31C23450A001EF35C /* SightManager.swift */,
+				F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				F3A1D2D31C329F1500ADA300 /* Favorite+CoreDataProperties.swift in Sources */,
 				2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */,
 				2F526E8C1C20325E0024DAFE /* RouteViewController.swift in Sources */,
+				F3C4829B1C402A97007164C5 /* ReachabilityHelper.swift in Sources */,
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
 				F3C4828F1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */,
