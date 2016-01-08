@@ -39,7 +39,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    var state = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,24 +78,15 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     }
     
     func routeDetailDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
-        changeViewState()
+        showDirectionsView()
     }
     
     func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
-        changeViewState()
+        showDetailView()
     }
     
     func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?) {
         self.performSegueWithIdentifier("showSightDetail", sender: nil)
-    }
-    
-    func changeViewState() {
-        if !state {
-            showDetailView()
-        } else {
-            showDirectionsView()
-        }
-        state = !state
     }
     
     func setStartPosition(position : CLLocation, returnHere : Bool) {
@@ -141,9 +131,22 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
             return
         }
         
+        // grab data
+        var coordinate : CLLocationCoordinate2D
+        var location : CLLocation
+        if let location1: CLLocation! = manager.location {
+            location = location1!
+            coordinate = location1!.coordinate
+        } else {
+            return
+        }
+        
+        // update map
+        mapView!.center(coordinate)
+        
+        // apply tracking
         if let nextSight : Sight = getNextSight() {
-            let distance : Double = nextSight.distanceTo(manager.location!)
-            print(distance)
+            let distance : Double = nextSight.distanceTo(location)
             if distance < 50 {
                 // within 50 meters distance
                 
@@ -191,11 +194,12 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     }
     
     private func leavingSight(sight : Sight) {
-        if let sightShowC = sightShowController {
-            sightShowC.triggerLeaveSight()
+        if !returningHome {
+            // there are more sights
+            let nextSight : Sight = chosenSights[currentIndex + 1]
+            directionsView!.setSight(nextSight)
         }
         print("leaving")
-        showDetailView()
     }
     
     private func returnedHome() {
@@ -226,6 +230,10 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
                 sightShowController = destination
             }
         }
+    }
+    
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        
     }
 
 }

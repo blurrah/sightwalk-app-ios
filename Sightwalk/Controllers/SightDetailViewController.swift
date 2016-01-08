@@ -10,13 +10,22 @@ import UIKit
 
 class SightDetailViewController: UIViewController {
     
-    var sightId: Int?
-    @IBOutlet var titleBarOutlet: UINavigationItem!
-    @IBOutlet var imageView: UIImageView!
+    @IBAction func btnDoneClick(sender: AnyObject) {
+        performSegueWithIdentifier("unwindSightDetails", sender: self)
+    }
+    
+    
+    @IBOutlet var nbHeading: UINavigationBar!
+    @IBOutlet var ivImage: UIImageView!
+    @IBOutlet var lblDescription: UILabel!
+    
     private var currentSight : Sight?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if currentSight != nil {
+            updateView()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,30 +35,24 @@ class SightDetailViewController: UIViewController {
     
     func setSight(sight : Sight) {
         currentSight = sight
-        updateView()
-    }
-    
-    func triggerLeaveSight() {
-        print("leaving sight")
     }
     
     private func updateView() {
-        self.titleBarOutlet.title = currentSight!.title
-        
+        nbHeading.topItem!.title = currentSight!.title
+        lblDescription.text = currentSight!.text
+
         ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
-            self.imageView.image = UIImage(data: response)
+            self.ivImage.image = UIImage(data: response)
         })
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        if let id : String = segue.identifier {
+//            if id == "unwindSightDetails" {
+//                let rvc = segue.destinationViewController as! RouteViewController
+//                rvc.leavingSight(currentSight!)
+//            }
+//        }
     }
-    */
 
 }
