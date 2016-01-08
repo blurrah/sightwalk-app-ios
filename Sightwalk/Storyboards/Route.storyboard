@@ -29,7 +29,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="6De-KR-SEN" kind="show" identifier="showSightDetail" id="OEO-Gm-MzZ"/>
+                        <segue destination="Dx9-1C-B8L" kind="show" identifier="showSightDetail" id="et5-xM-S9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcu-Zk-Sjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,6 +219,112 @@
             </objects>
             <point key="canvasLocation" x="1188" y="1239.75"/>
         </scene>
+        <!--Naam van Sight-->
+        <scene sceneID="5IH-V0-AO3">
+            <objects>
+                <viewController id="Dx9-1C-B8L" customClass="SightDetailViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4cJ-Qj-f2n"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bu5-Si-ASL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9IV-KT-9FG">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-eo-kOs">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="YVD-wf-KSU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="niH-1g-EY5"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YVD-wf-KSU"/>
+                                        <exclude reference="niH-1g-EY5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="YVD-wf-KSU"/>
+                                        <exclude reference="niH-1g-EY5"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-un-RW3">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="lblDescription"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="KrE-Hi-K38"/>
+                                    <constraint firstAttribute="height" constant="150" id="MGf-Fb-5Vs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KrE-Hi-K38"/>
+                                        <exclude reference="MGf-Fb-5Vs"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="KrE-Hi-K38"/>
+                                        <include reference="MGf-Fb-5Vs"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="trailing" secondItem="9IV-KT-9FG" secondAttribute="trailingMargin" id="5P8-h0-ce0"/>
+                            <constraint firstItem="YNM-eo-kOs" firstAttribute="top" secondItem="4cJ-Qj-f2n" secondAttribute="bottom" id="CZk-Uk-Alb"/>
+                            <constraint firstItem="YNM-eo-kOs" firstAttribute="top" secondItem="4cJ-Qj-f2n" secondAttribute="bottom" id="EgJ-h7-HiP"/>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="top" secondItem="YNM-eo-kOs" secondAttribute="bottom" constant="23" id="h0R-As-8bG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YNM-eo-kOs" secondAttribute="trailing" constant="-20" id="pio-CO-c6o"/>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="leading" secondItem="9IV-KT-9FG" secondAttribute="leadingMargin" id="qzO-RH-ejM"/>
+                            <constraint firstItem="YNM-eo-kOs" firstAttribute="leading" secondItem="9IV-KT-9FG" secondAttribute="leadingMargin" constant="-20" id="ujw-2x-SvN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="YNM-eo-kOs"/>
+                                <exclude reference="CVF-un-RW3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="CZk-Uk-Alb"/>
+                                <exclude reference="EgJ-h7-HiP"/>
+                                <exclude reference="pio-CO-c6o"/>
+                                <exclude reference="ujw-2x-SvN"/>
+                                <exclude reference="5P8-h0-ce0"/>
+                                <exclude reference="h0R-As-8bG"/>
+                                <exclude reference="qzO-RH-ejM"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="YNM-eo-kOs"/>
+                                <include reference="CVF-un-RW3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="CZk-Uk-Alb"/>
+                                <exclude reference="EgJ-h7-HiP"/>
+                                <include reference="pio-CO-c6o"/>
+                                <include reference="ujw-2x-SvN"/>
+                                <include reference="5P8-h0-ce0"/>
+                                <include reference="h0R-As-8bG"/>
+                                <include reference="qzO-RH-ejM"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Naam van Sight" id="59G-VZ-DIx"/>
+                    <connections>
+                        <outlet property="sightImageView" destination="YNM-eo-kOs" id="Djj-vn-36w"/>
+                        <outlet property="sightTextLabel" destination="CVF-un-RW3" id="YVD-km-csr"/>
+                        <outlet property="titleBar" destination="59G-VZ-DIx" id="fSd-G6-4up"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvN-Rh-wnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2944.5" y="429.75"/>
+        </scene>
         <!--Sight Detail View Controller-->
         <scene sceneID="Ei1-k4-cX8">
             <objects>
@@ -231,42 +337,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-un-RW3">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <accessibility key="accessibilityConfiguration" identifier="lblDescription"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="MGf-Fb-5Vs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MGf-Fb-5Vs"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="MGf-Fb-5Vs"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-eo-kOs">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="YVD-wf-KSU"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YVD-wf-KSU"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="YVD-wf-KSU"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-oK-mCo">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -275,38 +345,14 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="CVF-un-RW3" firstAttribute="top" secondItem="YNM-eo-kOs" secondAttribute="bottom" constant="20" id="3ZL-AM-CHS"/>
-                            <constraint firstItem="CVF-un-RW3" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" id="Ddf-yv-Sya"/>
-                            <constraint firstItem="YNM-eo-kOs" firstAttribute="top" secondItem="vj6-ZM-bEO" secondAttribute="bottom" constant="24" id="FiQ-bW-e6i"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YNM-eo-kOs" secondAttribute="trailing" constant="-20" id="YdX-eo-Knp"/>
-                            <constraint firstItem="YNM-eo-kOs" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" constant="-20" id="i7t-vh-q7z"/>
-                            <constraint firstItem="CVF-un-RW3" firstAttribute="trailing" secondItem="eFv-5d-rQs" secondAttribute="trailingMargin" id="rtZ-rj-5mL"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="sl8-oK-mCo"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="FiQ-bW-e6i"/>
-                                <exclude reference="YdX-eo-Knp"/>
-                                <exclude reference="i7t-vh-q7z"/>
-                                <exclude reference="3ZL-AM-CHS"/>
-                                <exclude reference="Ddf-yv-Sya"/>
-                                <exclude reference="rtZ-rj-5mL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="sl8-oK-mCo"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="FiQ-bW-e6i"/>
-                                <include reference="YdX-eo-Knp"/>
-                                <include reference="i7t-vh-q7z"/>
-                                <include reference="3ZL-AM-CHS"/>
-                                <include reference="Ddf-yv-Sya"/>
-                                <include reference="rtZ-rj-5mL"/>
                             </mask>
                         </variation>
                     </view>
@@ -317,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9n0-O6-KA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2856" y="429.75"/>
+            <point key="canvasLocation" x="3862.5" y="452.25"/>
         </scene>
         <!--Route Directions View Controller-->
         <scene sceneID="4Bc-rA-060">
@@ -630,7 +676,7 @@ Even testen of dit wel goed werkt</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AwT-eC-dM9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Zk-0JF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Zk-0JF" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

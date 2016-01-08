@@ -10,25 +10,20 @@ import UIKit
 
 class SightDetailViewController: UIViewController {
     
-    @IBAction func btnDoneClick(sender: AnyObject) {
-        performSegueWithIdentifier("unwindSightDetails", sender: self)
-    }
-    
-    @IBOutlet var ivImage: UIImageView!
-    @IBOutlet var lblDescription: UILabel!
+    @IBOutlet var titleBar: UINavigationItem!
+    @IBOutlet var sightImageView: UIImageView!
+    @IBOutlet var sightTextLabel: UILabel!
     
     private var currentSight : Sight?
-    @IBOutlet var sightTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = currentSight!.title
-        
+        self.titleBar.title = currentSight!.title
         self.sightTextLabel.text = currentSight!.text
         
         ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
-            self.ivImage.image = UIImage(data: response)
+            self.sightImageView.image = UIImage(data: response)
         })
     }
 
