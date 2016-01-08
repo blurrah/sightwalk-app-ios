@@ -18,12 +18,18 @@ class SightDetailViewController: UIViewController {
     @IBOutlet var lblDescription: UILabel!
     
     private var currentSight : Sight?
+    @IBOutlet var sightTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if currentSight != nil {
-            updateView()
-        }
+        
+        title = currentSight!.title
+        
+        self.sightTextLabel.text = currentSight!.text
+        
+        ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
+            self.ivImage.image = UIImage(data: response)
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,16 +41,14 @@ class SightDetailViewController: UIViewController {
         currentSight = sight
     }
     
-    private func updateView() {
-        
-        title = currentSight!.title
-        lblDescription.text = currentSight!.text
-
-        ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
-            self.ivImage.image = UIImage(data: response)
-        })
+    func triggerLeaveSight() {
+        print("leaving sight")
     }
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        if let id : String = segue.identifier {
 //            if id == "unwindSightDetails" {
@@ -53,5 +57,6 @@ class SightDetailViewController: UIViewController {
 //            }
 //        }
     }
+*/
 
 }

@@ -41,6 +41,8 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        RouteStore.sharedInstance.setDirections()
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
@@ -230,7 +232,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
                 if nextSight != nil {
                     destination.setSight(nextSight!)
                 }
-                sightShowController = destination
             }
         }
     }

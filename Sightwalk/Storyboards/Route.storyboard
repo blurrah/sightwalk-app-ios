@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4y0-WN-zFu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AwT-eC-dM9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -29,12 +29,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="6De-KR-SEN" kind="showDetail" identifier="showSightDetail" action="showViewController:sender:" id="gUY-WH-lOa"/>
+                        <segue destination="6De-KR-SEN" kind="show" identifier="showSightDetail" id="OEO-Gm-MzZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcu-Zk-Sjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="429.75"/>
+            <point key="canvasLocation" x="2106" y="429.75"/>
         </scene>
         <!--Route Map View Controller-->
         <scene sceneID="Ois-nU-z8Y">
@@ -231,96 +231,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-un-RW3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-un-RW3">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <accessibility key="accessibilityConfiguration" identifier="lblDescription"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="oRT-at-Fh9"/>
+                                    <constraint firstAttribute="height" constant="150" id="MGf-Fb-5Vs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="oRT-at-Fh9"/>
+                                        <exclude reference="MGf-Fb-5Vs"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="314" width="360" height="150"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="oRT-at-Fh9"/>
+                                        <include reference="MGf-Fb-5Vs"/>
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-eo-kOs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-eo-kOs">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="2dh-NV-nIS"/>
+                                    <constraint firstAttribute="height" constant="250" id="YVD-wf-KSU"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="2dh-NV-nIS"/>
+                                        <exclude reference="YVD-wf-KSU"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="44" width="400" height="250"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="2dh-NV-nIS"/>
+                                        <include reference="YVD-wf-KSU"/>
                                     </mask>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-oK-mCo">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="CVF-un-RW3" secondAttribute="trailing" id="22x-X3-NXq"/>
-                            <constraint firstItem="YNM-eo-kOs" firstAttribute="top" secondItem="vj6-ZM-bEO" secondAttribute="bottom" id="6lr-n8-pDI"/>
-                            <constraint firstItem="YNM-eo-kOs" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" id="AMa-3I-TVF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
-                            </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="YNM-eo-kOs" secondAttribute="trailing" id="F5l-Bn-Im1">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
-                            </constraint>
-                            <constraint firstItem="CVF-un-RW3" firstAttribute="top" secondItem="YNM-eo-kOs" secondAttribute="bottom" constant="20" id="Qip-Y0-GUX"/>
-                            <constraint firstItem="CVF-un-RW3" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" id="mId-A4-oUP"/>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="top" secondItem="YNM-eo-kOs" secondAttribute="bottom" constant="20" id="3ZL-AM-CHS"/>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" id="Ddf-yv-Sya"/>
+                            <constraint firstItem="YNM-eo-kOs" firstAttribute="top" secondItem="vj6-ZM-bEO" secondAttribute="bottom" constant="24" id="FiQ-bW-e6i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YNM-eo-kOs" secondAttribute="trailing" constant="-20" id="YdX-eo-Knp"/>
+                            <constraint firstItem="YNM-eo-kOs" firstAttribute="leading" secondItem="eFv-5d-rQs" secondAttribute="leadingMargin" constant="-20" id="i7t-vh-q7z"/>
+                            <constraint firstItem="CVF-un-RW3" firstAttribute="trailing" secondItem="eFv-5d-rQs" secondAttribute="trailingMargin" id="rtZ-rj-5mL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="CVF-un-RW3"/>
-                                <exclude reference="YNM-eo-kOs"/>
+                                <exclude reference="sl8-oK-mCo"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6lr-n8-pDI"/>
-                                <exclude reference="AMa-3I-TVF"/>
-                                <exclude reference="F5l-Bn-Im1"/>
-                                <exclude reference="22x-X3-NXq"/>
-                                <exclude reference="Qip-Y0-GUX"/>
-                                <exclude reference="mId-A4-oUP"/>
+                                <exclude reference="FiQ-bW-e6i"/>
+                                <exclude reference="YdX-eo-Knp"/>
+                                <exclude reference="i7t-vh-q7z"/>
+                                <exclude reference="3ZL-AM-CHS"/>
+                                <exclude reference="Ddf-yv-Sya"/>
+                                <exclude reference="rtZ-rj-5mL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="CVF-un-RW3"/>
-                                <include reference="YNM-eo-kOs"/>
+                                <include reference="sl8-oK-mCo"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6lr-n8-pDI"/>
-                                <include reference="AMa-3I-TVF"/>
-                                <include reference="F5l-Bn-Im1"/>
-                                <include reference="22x-X3-NXq"/>
-                                <include reference="Qip-Y0-GUX"/>
-                                <include reference="mId-A4-oUP"/>
+                                <include reference="FiQ-bW-e6i"/>
+                                <include reference="YdX-eo-Knp"/>
+                                <include reference="i7t-vh-q7z"/>
+                                <include reference="3ZL-AM-CHS"/>
+                                <include reference="Ddf-yv-Sya"/>
+                                <include reference="rtZ-rj-5mL"/>
                             </mask>
                         </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="ivImage" destination="YNM-eo-kOs" id="0Ue-Q6-8L1"/>
-                        <outlet property="lblDescription" destination="CVF-un-RW3" id="Q38-Dt-gHq"/>
+                        <outlet property="sightTextLabel" destination="sl8-oK-mCo" id="Qub-Ea-MLM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9n0-O6-KA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1938" y="429.75"/>
+            <point key="canvasLocation" x="2856" y="429.75"/>
         </scene>
         <!--Route Directions View Controller-->
         <scene sceneID="4Bc-rA-060">
@@ -629,11 +626,11 @@ Even testen of dit wel goed werkt</string>
             <point key="canvasLocation" x="1188" y="900"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Mse-1p-Gve">
+        <scene sceneID="7qH-1g-N82">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4y0-WN-zFu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AwT-eC-dM9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FC0-Ew-kHa" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Zk-0JF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -642,12 +639,12 @@ Even testen of dit wel goed werkt</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Cih-OB-ZXV" kind="relationship" relationship="rootViewController" id="5vk-JW-HWS"/>
+                        <segue destination="Cih-OB-ZXV" kind="relationship" relationship="rootViewController" id="FXX-Cf-jd4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oC9-0r-INE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jRd-yx-pcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363" y="429.75"/>
+            <point key="canvasLocation" x="1188" y="429.75"/>
         </scene>
     </scenes>
 </document>
