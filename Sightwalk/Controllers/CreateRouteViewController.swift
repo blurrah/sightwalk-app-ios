@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JLToast
 
 class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, SightManager {
     
@@ -31,7 +32,11 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
-        print(currentGeoPosition)
+        if (ReachabilityHelper.isConnectedToNetwork() == false) {
+            JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
+            JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
+            return
+        }
         if (currentGeoPosition == nil) {
             let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. De eerste Sight is ingesteld als startpunt", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
@@ -78,6 +83,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
+        JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         availableHeight = screenSize.height * CGFloat(0.25)
@@ -272,26 +280,30 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func updateDistance() {
-        if sightStore.hasSelectedSights() {
-            GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
-                let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-                let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
+        if ReachabilityHelper.isConnectedToNetwork() == true {
+            if sightStore.hasSelectedSights() {
+                GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
+                    let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
+                    let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
                 
-                RouteStore.sharedInstance.setPolylines()
+                    RouteStore.sharedInstance.setPolylines()
 
-                RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
+                    RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
-                self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
-                if (self.startPointSwitchOutlet.on && self.sightStore.userChosen.count >= 2) || (self.startPointSwitchOutlet.on == false) {
-                    self.startRouteButtonOutlet.enableButton()
-                } else {
-                    self.startRouteButtonOutlet.disableButton()
-                }
-            })
+                    self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
+                    if (self.startPointSwitchOutlet.on && self.sightStore.userChosen.count >= 2) || (self.startPointSwitchOutlet.on == false) {
+                        self.startRouteButtonOutlet.enableButton()
+                    } else {
+                        self.startRouteButtonOutlet.disableButton()
+                    }
+                })
+            } else {
+                self.startRouteButtonOutlet.disableButton()
+                self.updateSegmentedControl()
+                self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
+            }
         } else {
-            self.startRouteButtonOutlet.disableButton()
-            self.updateSegmentedControl()
-            self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
+            JLToast.makeText("U heeft geen verbinding met internet. Controleer uw verbinding en probeer het opnieuw.", delay: 0, duration: 2).show()
         }
     }
 
