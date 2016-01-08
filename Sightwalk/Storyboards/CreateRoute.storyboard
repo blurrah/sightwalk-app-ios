@@ -630,17 +630,17 @@
                                 <exclude reference="UQG-w9-7gF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="86f-BU-Jhk"/>
-                                <exclude reference="LBG-CX-zMn"/>
-                                <exclude reference="ot0-4E-NhI"/>
+                                <exclude reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
                                 <exclude reference="5ME-07-Ttu"/>
                                 <exclude reference="5vU-1Z-pkP"/>
                                 <exclude reference="rvt-Mk-gr5"/>
+                                <exclude reference="86f-BU-Jhk"/>
+                                <exclude reference="LBG-CX-zMn"/>
+                                <exclude reference="ot0-4E-NhI"/>
                                 <exclude reference="E84-vq-Ot3"/>
                                 <exclude reference="KXT-NA-8cQ"/>
                                 <exclude reference="wp9-wF-abh"/>
-                                <exclude reference="1Rn-pk-OGw"/>
-                                <exclude reference="Iy3-eJ-XjO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -650,17 +650,17 @@
                                 <include reference="UQG-w9-7gF"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="86f-BU-Jhk"/>
-                                <include reference="LBG-CX-zMn"/>
-                                <include reference="ot0-4E-NhI"/>
+                                <include reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
                                 <include reference="5ME-07-Ttu"/>
                                 <include reference="5vU-1Z-pkP"/>
                                 <include reference="rvt-Mk-gr5"/>
+                                <include reference="86f-BU-Jhk"/>
+                                <include reference="LBG-CX-zMn"/>
+                                <include reference="ot0-4E-NhI"/>
                                 <include reference="E84-vq-Ot3"/>
                                 <include reference="KXT-NA-8cQ"/>
                                 <include reference="wp9-wF-abh"/>
-                                <include reference="1Rn-pk-OGw"/>
-                                <exclude reference="Iy3-eJ-XjO"/>
                             </mask>
                         </variation>
                     </view>

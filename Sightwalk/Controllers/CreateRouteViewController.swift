@@ -21,6 +21,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
     @IBOutlet var totalsTextOutlet: UILabel!
     
+    private var gpsEnabled : Bool = false
+    
     var availableHeight : CGFloat = 0.0
     
     @IBAction func closeButtonAction(sender: AnyObject) {
@@ -131,6 +133,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             } else {
                 self.bottomTableViewConstraintOutlet.constant = CGFloat(availableHeight)
                 tableView.scrollEnabled = true
+            }
+            
+            if (sightStore.getSelectedCount() == 0) {
+                
             }
             
             tableView.reloadData()
@@ -280,6 +286,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
 
             })
         } else {
+            self.startRouteButtonOutlet.disableButton()
+            self.updateSegmentedControl()
             self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
         }
     }
@@ -311,6 +319,14 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentGeoPosition = manager.location!
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+            locationManager.startUpdatingLocation()
+            
+            gpsEnabled = true
+        }
     }
     
     private func updateSegmentedControl() {

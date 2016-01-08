@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cih-OB-ZXV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4y0-WN-zFu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -308,15 +308,15 @@
                                 <exclude reference="CVF-un-RW3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="22x-X3-NXq"/>
+                                <exclude reference="Qip-Y0-GUX"/>
+                                <exclude reference="mId-A4-oUP"/>
                                 <exclude reference="2fg-NU-5hf"/>
                                 <exclude reference="3YU-7P-FgO"/>
                                 <exclude reference="NZE-Aj-sd4"/>
                                 <exclude reference="8HY-hq-fPx"/>
                                 <exclude reference="AMa-3I-TVF"/>
                                 <exclude reference="F5l-Bn-Im1"/>
-                                <exclude reference="22x-X3-NXq"/>
-                                <exclude reference="Qip-Y0-GUX"/>
-                                <exclude reference="mId-A4-oUP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -326,15 +326,15 @@
                                 <include reference="CVF-un-RW3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="22x-X3-NXq"/>
+                                <include reference="Qip-Y0-GUX"/>
+                                <include reference="mId-A4-oUP"/>
                                 <include reference="2fg-NU-5hf"/>
                                 <include reference="3YU-7P-FgO"/>
                                 <include reference="NZE-Aj-sd4"/>
                                 <include reference="8HY-hq-fPx"/>
                                 <include reference="AMa-3I-TVF"/>
                                 <include reference="F5l-Bn-Im1"/>
-                                <include reference="22x-X3-NXq"/>
-                                <include reference="Qip-Y0-GUX"/>
-                                <include reference="mId-A4-oUP"/>
                             </mask>
                         </variation>
                     </view>
