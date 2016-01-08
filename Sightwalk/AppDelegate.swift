@@ -41,12 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSUserDefaults.standardUserDefaults().valueForKey("nfreq")
 
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        } else {
-            UIApplication.sharedApplication().scheduledLocalNotifications!.first!.repeatInterval = frequency
         }
         
-        print (UIApplication.sharedApplication().scheduledLocalNotifications!.count)
-
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged", name: NSUserDefaultsDidChangeNotification, object: nil)
         
         let isFirstRun = !NSUserDefaults.standardUserDefaults().boolForKey("kAppPreviousLaunchKey")
