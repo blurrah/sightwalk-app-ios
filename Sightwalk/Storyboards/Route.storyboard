@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyI-bo-cjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="-119.25"/>
+            <point key="canvasLocation" x="2106" y="-304"/>
         </scene>
         <!--Route Detail Directions View Controller-->
         <scene sceneID="lbG-NW-82M">
@@ -90,25 +90,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startlocatie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seO-TY-v7p">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="rpM-r8-R2Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <color key="textColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="rpM-r8-R2Y"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="rpM-r8-R2Y"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-b4-X0W">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -167,18 +148,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="seO-TY-v7p" firstAttribute="top" secondItem="h5O-No-VJs" secondAttribute="bottom" constant="3" id="5Fz-em-xP7"/>
                             <constraint firstItem="h5O-No-VJs" firstAttribute="trailing" secondItem="8Ox-IB-Qr0" secondAttribute="trailingMargin" id="N5l-8f-grQ"/>
-                            <constraint firstItem="seO-TY-v7p" firstAttribute="top" secondItem="UYe-6r-rBn" secondAttribute="bottom" constant="10" id="RyI-SJ-8AW"/>
-                            <constraint firstItem="seO-TY-v7p" firstAttribute="leading" secondItem="8Ox-IB-Qr0" secondAttribute="leadingMargin" constant="40" id="gOe-xI-NfD"/>
-                            <constraint firstItem="seO-TY-v7p" firstAttribute="trailing" secondItem="8Ox-IB-Qr0" secondAttribute="trailingMargin" id="gYo-s6-qgp"/>
                             <constraint firstItem="h5O-No-VJs" firstAttribute="top" secondItem="UYe-6r-rBn" secondAttribute="bottom" id="m85-lH-hVH"/>
                             <constraint firstItem="Rix-b4-X0W" firstAttribute="top" secondItem="UYe-6r-rBn" secondAttribute="bottom" constant="6" id="x8O-UY-fks"/>
                             <constraint firstItem="Rix-b4-X0W" firstAttribute="centerX" secondItem="8Ox-IB-Qr0" secondAttribute="centerX" id="zmv-kF-S1o"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="seO-TY-v7p"/>
                                 <exclude reference="Rix-b4-X0W"/>
                                 <exclude reference="h5O-No-VJs"/>
                             </mask>
@@ -187,15 +163,10 @@
                                 <exclude reference="m85-lH-hVH"/>
                                 <exclude reference="x8O-UY-fks"/>
                                 <exclude reference="zmv-kF-S1o"/>
-                                <exclude reference="5Fz-em-xP7"/>
-                                <exclude reference="RyI-SJ-8AW"/>
-                                <exclude reference="gOe-xI-NfD"/>
-                                <exclude reference="gYo-s6-qgp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="seO-TY-v7p"/>
                                 <include reference="Rix-b4-X0W"/>
                                 <include reference="h5O-No-VJs"/>
                             </mask>
@@ -204,10 +175,6 @@
                                 <include reference="m85-lH-hVH"/>
                                 <include reference="x8O-UY-fks"/>
                                 <include reference="zmv-kF-S1o"/>
-                                <include reference="5Fz-em-xP7"/>
-                                <exclude reference="RyI-SJ-8AW"/>
-                                <include reference="gOe-xI-NfD"/>
-                                <include reference="gYo-s6-qgp"/>
                             </mask>
                         </variation>
                     </view>
@@ -217,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="054-N1-3dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="1239.75"/>
+            <point key="canvasLocation" x="2106" y="1457"/>
         </scene>
         <!--Naam van Sight-->
         <scene sceneID="5IH-V0-AO3">
@@ -324,46 +291,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvN-Rh-wnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2944.5" y="429.75"/>
-        </scene>
-        <!--Sight Detail View Controller-->
-        <scene sceneID="Ei1-k4-cX8">
-            <objects>
-                <viewController id="6De-KR-SEN" customClass="SightDetailViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vj6-ZM-bEO"/>
-                        <viewControllerLayoutGuide type="bottom" id="3U9-rw-gLI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eFv-5d-rQs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-oK-mCo">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="sl8-oK-mCo"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="sl8-oK-mCo"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="sightTextLabel" destination="sl8-oK-mCo" id="Qub-Ea-MLM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9n0-O6-KA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3862.5" y="452.25"/>
         </scene>
         <!--Route Directions View Controller-->
         <scene sceneID="4Bc-rA-060">
@@ -669,7 +596,7 @@ Even testen of dit wel goed werkt</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Re-ev-DqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="900"/>
+            <point key="canvasLocation" x="2106" y="1014"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7qH-1g-N82">

@@ -44,6 +44,12 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
         
+        let startLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        startLabel.textColor = UIColor.grayColor()
+        startLabel.center = CGPointMake(160, 50)
+        startLabel.text = "Uw locatie"
+        self.containerView.addSubview(startLabel)
+        
         // Loop and add sight names + directions
         for (var i = 0; i < chosenSights.count; i++) {
             
