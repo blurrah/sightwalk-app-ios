@@ -13,8 +13,12 @@ class GenericNavigationBar: UINavigationBar {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.barTintColor = UIColor(red:0.16862745100000001, green:0.7725490196, blue:0.36862745099999999, alpha:1)
-        
+        self.barStyle = UIBarStyle.Black
+        self.tintColor = UIColor.whiteColor()
+        self.translucent = false
+        self.backgroundColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
+        self.barTintColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
+
         self.tintColor = UIColor.whiteColor()
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]

@@ -21,27 +21,37 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
     @IBOutlet var totalsTextOutlet: UILabel!
     
+    var availableHeight : CGFloat = 0.0
+    
     @IBAction func closeButtonAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
         if (currentGeoPosition == nil) {
-            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda. Wilt u doorgaan?", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Weet u zeker dat u wilt doorgaan met de startlocatie Breda?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
-                let storyboard = UIStoryboard(name: "Route", bundle: nil)
-                let vc = storyboard.instantiateInitialViewController() as UIViewController!
-                self.presentViewController(vc, animated: true, completion: nil)
+                self.launchRouteLoop()
             }))
             alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-        let storyboard = UIStoryboard(name: "Route", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as UIViewController!
-        presentViewController(vc, animated: true, completion: nil)
+            launchRouteLoop()
         }
+    }
+    
+    private func launchRouteLoop() {
+        let storyboard = UIStoryboard(name: "Route", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
+        
+        if currentGeoPosition !== nil {
+            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
+        }
+        
+        
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func endPointSegmentedAction(sender: AnyObject) {
@@ -57,6 +67,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        availableHeight = screenSize.height * CGFloat(0.3)
         
         sightStore.subscribe(self, slot: "createrouteview")
         
@@ -77,7 +90,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         self.view.userInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.scrollEnabled = false
         
         let touchGesture = UITapGestureRecognizer(target: self, action: Selector("handlePickSpotsTap:"))
         touchGesture.delegate = self
@@ -85,6 +97,15 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressSights:"))
         self.tableView.addGestureRecognizer(longPressGesture)
+        
+        print(currentGeoPosition)
+        if (currentGeoPosition == nil) {
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda, uw route zal mogelijk niet kloppen!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func addSight(sight : Sight) {
@@ -104,7 +125,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             // remove sight from table
             sightStore.markSightSelected(sight, selected: false)
             
-            bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.userChosen.count) * 44
+            if (CGFloat(sightStore.getSelectedCount()) < CGFloat((availableHeight / 44))) {
+                self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
+                tableView.scrollEnabled = false
+            } else {
+                self.bottomTableViewConstraintOutlet.constant = CGFloat(availableHeight)
+                tableView.scrollEnabled = true
+            }
             
             tableView.reloadData()
             updateDistance()
@@ -223,7 +250,13 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         super.viewDidAppear(animated)
         self.tableView.reloadData()
         
-        self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
+        if (CGFloat(sightStore.getSelectedCount()) < CGFloat((availableHeight / 44))) {
+            self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
+            tableView.scrollEnabled = false
+        } else {
+            self.bottomTableViewConstraintOutlet.constant = CGFloat(availableHeight)
+            tableView.scrollEnabled = true
+        }
         
         updateSegmentedControl()
         if sightStore.hasSelectedSights() {

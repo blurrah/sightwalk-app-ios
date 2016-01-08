@@ -16,7 +16,7 @@ import Alamofire
 */
 
 class ImageDownloadHelper {
-    func downloadImage(url: String, onCompletion: (NSData) -> ()) {
+    static func downloadImage(url: String, onCompletion: (NSData) -> ()) {
         Alamofire.request(.GET, url)
         .responseData({ request in
             onCompletion(request.data!)

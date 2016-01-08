@@ -18,7 +18,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        let settings = NSUserDefaults.standardUserDefaults().valueForKey("nfreq") as? NSString
+        var frequency = NSCalendarUnit.Day
+        
+        if (settings == "monthly") {
+            frequency = NSCalendarUnit.Month
+        } else if (settings == "weekly") {
+            frequency = NSCalendarUnit.WeekOfYear
+        }
+        
+        if UIApplication.sharedApplication().scheduledLocalNotifications!.isEmpty {
+            let notification = UILocalNotification()
+            notification.fireDate = NSDate(timeIntervalSinceNow: 3600)
+            notification.alertBody = "Tijd om te SightWalken!"
+            notification.alertAction = "SightWalk te starten."
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.repeatInterval = frequency
+            NSUserDefaults.standardUserDefaults().valueForKey("nfreq")
 
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        } else {
+            UIApplication.sharedApplication().scheduledLocalNotifications!.first!.repeatInterval = frequency
+        }
+        
+        print (UIApplication.sharedApplication().scheduledLocalNotifications!.count)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged", name: NSUserDefaultsDidChangeNotification, object: nil)
+        
         let isFirstRun = !NSUserDefaults.standardUserDefaults().boolForKey("kAppPreviousLaunchKey")
         if !isFirstRun {
             self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
@@ -33,6 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: Auth saved token and go to dashboard on cold boot with persistence
         LoginPersistenceHelper.SharedInstance.accessToken({ result in
             print("login persistence met token: \(result)")
+            
+            // Temp code om Dashboard storyboard als main storyboard te setten.
+            self.window = UIWindow(frame : UIScreen.mainScreen().bounds)
+            
+            let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+            let initialViewController = storyboard.instantiateInitialViewController()
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
         })
         
         GMSServices.provideAPIKey(googleMapsApiKey)
@@ -125,6 +165,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func settingsChanged() {
+        let settings = NSUserDefaults.standardUserDefaults().valueForKey("nfreq") as? NSString
+        var frequency = NSCalendarUnit.Day
+        
+        if (settings == "monthly") {
+            frequency = NSCalendarUnit.Month
+        } else if (settings == "weekly") {
+            frequency = NSCalendarUnit.WeekOfYear
+        }
+        UIApplication.sharedApplication().scheduledLocalNotifications!.first!.repeatInterval = frequency
     }
 
 }

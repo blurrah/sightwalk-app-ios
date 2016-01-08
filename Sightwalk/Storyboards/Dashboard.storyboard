@@ -31,12 +31,6 @@
                                     <segue destination="C44-54-0Po" kind="embed" id="elD-M4-fB7"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-Mt-Az2">
-                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
-                                <connections>
-                                    <segue destination="XiL-1O-gTc" kind="embed" id="UkA-mX-Wd5"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou0-Yn-MRQ" customClass="GenericViewButton" customModule="Sightwalk" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -58,6 +52,12 @@
                                     <action selector="tapCreateRouteAction:" destination="Rb4-0v-lXR" eventType="touchUpInside" id="AUD-Ru-XWk"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-Mt-Az2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
+                                <connections>
+                                    <segue destination="XiL-1O-gTc" kind="embed" id="UkA-mX-Wd5"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -152,13 +152,13 @@
                         <segmentedControl key="titleView" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="cPd-Ij-Q1E">
                             <rect key="frame" x="170" y="7" width="260" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Activiteiten"/>
                                 <segment title="Statistieken"/>
                                 <segment title="Favorieten"/>
                             </segments>
-                            <color key="tintColor" red="0.16078431372549021" green="0.73333333333333328" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="indexChangedAction:" destination="Rb4-0v-lXR" eventType="valueChanged" id="bf7-tq-jx7"/>
                             </connections>
@@ -322,9 +322,6 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="123" y="8" width="257" height="17"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCP-FT-yJs">
                                                     <rect key="frame" x="123" y="37" width="469" height="67"/>
@@ -334,9 +331,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="123" y="33" width="257" height="67"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>

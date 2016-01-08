@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */; };
 		2F25B9031C08AB56001B9037 /* CreateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */; };
 		2F25B9051C08AEB6001B9037 /* CreateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F25B9041C08AEB6001B9037 /* CreateRouteViewController.swift */; };
 		2F25B9071C08B0BB001B9037 /* PickItemButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F25B9061C08B0BB001B9037 /* PickItemButtonView.xib */; };
@@ -22,6 +21,7 @@
 		2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */; };
 		2F7D449A1C204E33002DE5DC /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D44991C204E33002DE5DC /* RouteStore.swift */; };
 		2F7D449C1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */; };
+		2F9E0B001C3EA5F200D23066 /* SightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */; };
 		2FA810281C047CDE00BE7E6C /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */; };
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
@@ -59,6 +59,10 @@
 		F3A1D2D31C329F1500ADA300 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
 		F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7A9161BFA231600420352 /* DashboardViewController.swift */; };
+		F3C4828F1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4828E1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m */; };
+		F3C482941C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C482911C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m */; };
+		F3C482951C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		F3C482991C3EB57C007164C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3C482981C3EB57C007164C5 /* Settings.bundle */; };
 		F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */; };
 		F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E711C1055BA0017F1DD /* Sight.swift */; };
 		F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E731C1056530017F1DD /* SQLiteHelper.swift */; };
@@ -85,7 +89,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		2F25B9021C08AB56001B9037 /* CreateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateRoute.storyboard; path = Sightwalk/Storyboards/CreateRoute.storyboard; sourceTree = SOURCE_ROOT; };
 		2F25B9041C08AEB6001B9037 /* CreateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRouteViewController.swift; sourceTree = "<group>"; };
 		2F25B9061C08B0BB001B9037 /* PickItemButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PickItemButtonView.xib; path = Views/PickItemButtonView.xib; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		2F7D44991C204E33002DE5DC /* RouteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
 		2F7D449B1C22F3DE002DE5DC /* RouteDetailDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailDirectionsViewController.swift; sourceTree = "<group>"; };
 		2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Sightwalk-Bridging-Header.h"; path = "Sightwalk/Sightwalk-Bridging-Header.h"; sourceTree = "<group>"; };
+		2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightDetailViewController.swift; sourceTree = "<group>"; };
 		2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
 		2FDE68011C0F04F000287286 /* PickItemButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItemButtonView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,13 @@
 		F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		F3C4828D1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		F3C4828E1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		F3C482901C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		F3C482911C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		F3C482921C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		F3C482981C3EB57C007164C5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
 		F3E44E711C1055BA0017F1DD /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sight.swift; path = ../Stores/Sight.swift; sourceTree = "<group>"; };
 		F3E44E731C1056530017F1DD /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
@@ -193,6 +204,7 @@
 		2FFA3D3F1BF34EFE00B758D5 = {
 			isa = PBXGroup;
 			children = (
+				F3C482981C3EB57C007164C5 /* Settings.bundle */,
 				2F8A9BE91C0860AB00B0FCE8 /* Sightwalk-Bridging-Header.h */,
 				F3436C241C201D9000D121FA /* sights.sqlite */,
 				2FFA3D4A1BF34EFE00B758D5 /* Sightwalk */,
@@ -285,6 +297,7 @@
 				2F7D44971C2040BE002DE5DC /* RouteDirectionsViewController.swift */,
 				2F7D44951C204096002DE5DC /* RouteMapViewController.swift */,
 				2F526E8B1C20325E0024DAFE /* RouteViewController.swift */,
+				2F9E0AFF1C3EA5F200D23066 /* SightDetailViewController.swift */,
 				2F25B9041C08AEB6001B9037 /* CreateRouteViewController.swift */,
 				2FFA3D4D1BF34EFE00B758D5 /* ViewController.swift */,
 				F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */,
@@ -305,9 +318,14 @@
 		2FFA3D801BF352C600B758D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F3C482901C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.h */,
+				F3C482911C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m */,
+				F3C482921C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				F3C4828D1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.h */,
+				F3C4828E1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m */,
 				2F5471491C05CD6700C292F9 /* DatepickerTextField.swift */,
 				2FA810271C047CDE00BE7E6C /* LoadingOverlayView.swift */,
-				2F08513B1BF5F497003FF994 /* KeyboardLayoutConstraint.swift */,
 				2FFA3D8A1BF4AF5600B758D5 /* GenericNavigationBar.swift */,
 				2FFA3D881BF4A54800B758D5 /* GenericTextField.swift */,
 				2FFA3D861BF49C7600B758D5 /* FacebookButton.swift */,
@@ -474,6 +492,7 @@
 				2F25B9031C08AB56001B9037 /* CreateRoute.storyboard in Resources */,
 				2FFA3D511BF34EFE00B758D5 /* Main.storyboard in Resources */,
 				2F526E8A1C202F630024DAFE /* Route.storyboard in Resources */,
+				F3C482991C3EB57C007164C5 /* Settings.bundle in Resources */,
 				F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,11 +571,13 @@
 				2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */,
 				2F526E8C1C20325E0024DAFE /* RouteViewController.swift in Sources */,
 				2FFA3D4E1BF34EFE00B758D5 /* ViewController.swift in Sources */,
+				F3C4828F1C3E95B6007164C5 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2F7D44981C2040BE002DE5DC /* RouteDirectionsViewController.swift in Sources */,
 				2F7D44961C204096002DE5DC /* RouteMapViewController.swift in Sources */,
-				2F08513C1BF5F497003FF994 /* KeyboardLayoutConstraint.swift in Sources */,
 				2F7D449A1C204E33002DE5DC /* RouteStore.swift in Sources */,
+				2F9E0B001C3EA5F200D23066 /* SightDetailViewController.swift in Sources */,
 				2FFA3D541BF34EFE00B758D5 /* Sightwalk.xcdatamodeld in Sources */,
+				F3C482941C3E95F3007164C5 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				F3A1D2D11C329EE000ADA300 /* Favorite.swift in Sources */,
 				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
 				925A4FDC1C3F11B300B6EDB7 /* SightCreateViewController.swift in Sources */,
@@ -576,6 +597,7 @@
 				F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */,
 				2F489E9E1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift in Sources */,
 				2FFA3D871BF49C7600B758D5 /* FacebookButton.swift in Sources */,
+				F3C482951C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */,
 				F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */,
 				2F25B9091C08B49D001B9037 /* StateDependantButton.swift in Sources */,
