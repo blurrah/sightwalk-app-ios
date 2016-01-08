@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import CoreData
+import JLToast
 
 class SightStore : SightSyncInterface {
     class var sharedInstance: SightStore {
@@ -21,11 +22,9 @@ class SightStore : SightSyncInterface {
     private var subscribers : [String : SightManager] = [:]
     private var sightSyncer : SightSyncer?
     private let sqlh : SQLiteHelper
-    
+    private var hasShown : Bool = false
     
     init() {
-        
-        
         print(" loaded sightstore")
         
         sqlh = SQLiteHelper.sharedInstance
@@ -77,6 +76,16 @@ class SightStore : SightSyncInterface {
         for (_, subscriber) in subscribers {
             subscriber.addSight(sight)
         }
+        
+        if hasShown == false {
+            JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
+            JLToastView.setDefaultValue(UIColor(red:0.102, green:0.788, blue:0.341, alpha:1),
+                forAttributeName: JLToastViewBackgroundColorAttributeName,
+                userInterfaceIdiom: .Phone)
+            JLToast.makeText("Er zijn nieuwe Sights toegevoegd in uw omgeving!", delay: 0, duration: 2).show()
+            hasShown = true
+        }
+        
     }
     func triggerUpdateSight(oldSight: Sight, newSight: Sight) {
         // force update in store
