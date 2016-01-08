@@ -1814,7 +1814,7 @@ om de boel op te vullen.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="intro_background" width="640" height="960"/>
+        <image name="intro_background" width="1024" height="1024"/>
         <image name="logo_white" width="158" height="81"/>
         <image name="sightwalk-logo" width="1024" height="1024"/>
     </resources>

@@ -136,6 +136,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let newSelected : Bool = !sightStore.isSelected(sight)
         sightStore.markSightSelected(sight, selected: newSelected)
         chosenMarker.icon = (newSelected) ? GMSMarker.markerImageWithColor(colorGreen) : nil
+        if (sightStore.isFavorite(sight) && !newSelected) {
+            chosenMarker.icon = GMSMarker.markerImageWithColor(colorYellow)
+        }
         
         // fade out bottom bar
         UIView.animateWithDuration(0.2, animations: {

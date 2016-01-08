@@ -109,16 +109,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressSights:"))
         self.tableView.addGestureRecognizer(longPressGesture)
         
-        if (currentGeoPosition == nil) {
-            startPointSwitchOutlet.on = true
-            startPointSwitchOutlet.enabled = false
-            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. De eerste gekozen Sight wordt ingesteld als startlocatie", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                alert.dismissViewControllerAnimated(true, completion: nil)
-            }))
-        self.presentViewController(alert, animated: true, completion: nil)
         }
-    }
     
     func addSight(sight : Sight) {
         // not interesting, sight is not selected

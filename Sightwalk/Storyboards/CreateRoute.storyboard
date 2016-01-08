@@ -169,30 +169,6 @@
                                     <action selector="endPointSegmentedAction:" destination="oNl-G7-xol" eventType="valueChanged" id="NTs-aK-kuh"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJF-IZ-1MI">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Nm6-MB-d7X"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Nm6-MB-d7X"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Nm6-MB-d7X"/>
-                                    </mask>
-                                </variation>
-                            </tableView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQo-vG-cgP">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <color key="onTintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="startPointSwitchSwitched:" destination="oNl-G7-xol" eventType="valueChanged" id="Cuu-Jv-JVx"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eerste Sight als startpunt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-Nh-ao0">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -212,6 +188,38 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQo-vG-cgP">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <color key="onTintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="startPointSwitchSwitched:" destination="oNl-G7-xol" eventType="valueChanged" id="Cuu-Jv-JVx"/>
+                                </connections>
+                            </switch>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJF-IZ-1MI">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Nm6-MB-d7X"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mZb-DP-5ze">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mZb-DP-5ze" id="F49-B6-694">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nm6-MB-d7X"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Nm6-MB-d7X"/>
+                                    </mask>
+                                </variation>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -254,9 +262,9 @@
                                 <exclude reference="MG5-ls-b96"/>
                                 <exclude reference="hz5-il-JWe"/>
                                 <exclude reference="f2k-VM-se9"/>
-                                <exclude reference="AJF-IZ-1MI"/>
-                                <exclude reference="tQo-vG-cgP"/>
                                 <exclude reference="U8r-Nh-ao0"/>
+                                <exclude reference="tQo-vG-cgP"/>
+                                <exclude reference="AJF-IZ-1MI"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="nZT-LT-9rt"/>
@@ -295,9 +303,9 @@
                                 <include reference="MG5-ls-b96"/>
                                 <include reference="hz5-il-JWe"/>
                                 <include reference="f2k-VM-se9"/>
-                                <include reference="AJF-IZ-1MI"/>
-                                <include reference="tQo-vG-cgP"/>
                                 <include reference="U8r-Nh-ao0"/>
+                                <include reference="tQo-vG-cgP"/>
+                                <include reference="AJF-IZ-1MI"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="nZT-LT-9rt"/>
