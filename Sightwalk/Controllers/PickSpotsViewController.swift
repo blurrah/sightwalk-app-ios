@@ -183,6 +183,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
+    
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+    }
 
     
     

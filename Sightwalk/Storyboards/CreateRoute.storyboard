@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YgS-nc-OzR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YgS-nc-OzR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -567,14 +567,21 @@
         <!--Voeg Sight toe-->
         <scene sceneID="A4c-zA-V0c">
             <objects>
-                <viewController id="csB-cR-QKR" sceneMemberID="viewController">
+                <viewController id="csB-cR-QKR" customClass="SightCreateViewController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mV7-i4-Vfl"/>
                         <viewControllerLayoutGuide type="bottom" id="IO7-Rr-1KQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ESV-n9-wVD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sight naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsd-2n-AJU">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tfName"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4o0-Kk-Y5g" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -592,64 +599,92 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veel plezier Frank!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-XZ-qfL">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="69T-Mv-H1q"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="69T-Mv-H1q"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="69T-Mv-H1q"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQG-w9-7gF">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tvDescription">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IO7-Rr-1KQ" firstAttribute="top" secondItem="UQG-w9-7gF" secondAttribute="bottom" constant="20" id="1Rn-pk-OGw"/>
+                            <constraint firstItem="wsd-2n-AJU" firstAttribute="top" secondItem="4o0-Kk-Y5g" secondAttribute="bottom" constant="8" id="5ME-07-Ttu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wsd-2n-AJU" secondAttribute="trailing" id="5vU-1Z-pkP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4o0-Kk-Y5g" secondAttribute="trailing" constant="-20" id="86f-BU-Jhk"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="top" secondItem="wsd-2n-AJU" secondAttribute="bottom" constant="8" id="E84-vq-Ot3"/>
+                            <constraint firstItem="IO7-Rr-1KQ" firstAttribute="top" secondItem="wsd-2n-AJU" secondAttribute="bottom" constant="8" id="Iy3-eJ-XjO"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="trailing" secondItem="ESV-n9-wVD" secondAttribute="trailingMargin" id="KXT-NA-8cQ"/>
                             <constraint firstItem="4o0-Kk-Y5g" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" constant="-20" id="LBG-CX-zMn"/>
-                            <constraint firstItem="rO7-XZ-qfL" firstAttribute="centerX" secondItem="ESV-n9-wVD" secondAttribute="centerX" id="Sct-zU-BBy"/>
-                            <constraint firstItem="rO7-XZ-qfL" firstAttribute="top" secondItem="4o0-Kk-Y5g" secondAttribute="bottom" constant="42" id="jwy-qG-Axu"/>
                             <constraint firstItem="4o0-Kk-Y5g" firstAttribute="top" secondItem="mV7-i4-Vfl" secondAttribute="bottom" id="ot0-4E-NhI"/>
+                            <constraint firstItem="wsd-2n-AJU" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" id="rvt-Mk-gr5"/>
+                            <constraint firstItem="UQG-w9-7gF" firstAttribute="leading" secondItem="ESV-n9-wVD" secondAttribute="leadingMargin" id="wp9-wF-abh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="wsd-2n-AJU"/>
                                 <exclude reference="4o0-Kk-Y5g"/>
-                                <exclude reference="rO7-XZ-qfL"/>
+                                <exclude reference="UQG-w9-7gF"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="86f-BU-Jhk"/>
                                 <exclude reference="LBG-CX-zMn"/>
                                 <exclude reference="ot0-4E-NhI"/>
-                                <exclude reference="Sct-zU-BBy"/>
-                                <exclude reference="jwy-qG-Axu"/>
+                                <exclude reference="5ME-07-Ttu"/>
+                                <exclude reference="5vU-1Z-pkP"/>
+                                <exclude reference="rvt-Mk-gr5"/>
+                                <exclude reference="E84-vq-Ot3"/>
+                                <exclude reference="KXT-NA-8cQ"/>
+                                <exclude reference="wp9-wF-abh"/>
+                                <exclude reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
+                                <include reference="wsd-2n-AJU"/>
                                 <include reference="4o0-Kk-Y5g"/>
-                                <include reference="rO7-XZ-qfL"/>
+                                <include reference="UQG-w9-7gF"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="86f-BU-Jhk"/>
                                 <include reference="LBG-CX-zMn"/>
                                 <include reference="ot0-4E-NhI"/>
-                                <include reference="Sct-zU-BBy"/>
-                                <include reference="jwy-qG-Axu"/>
+                                <include reference="5ME-07-Ttu"/>
+                                <include reference="5vU-1Z-pkP"/>
+                                <include reference="rvt-Mk-gr5"/>
+                                <include reference="E84-vq-Ot3"/>
+                                <include reference="KXT-NA-8cQ"/>
+                                <include reference="wp9-wF-abh"/>
+                                <include reference="1Rn-pk-OGw"/>
+                                <exclude reference="Iy3-eJ-XjO"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Voeg Sight toe" id="lo3-FZ-fUt"/>
+                    <navigationItem key="navigationItem" title="Voeg Sight toe" id="lo3-FZ-fUt">
+                        <barButtonItem key="leftBarButtonItem" title="Sluiten" id="n0W-T6-hDM">
+                            <connections>
+                                <action selector="btnCloseClick:" destination="csB-cR-QKR" id="Nl9-FK-ubG"/>
+                                <segue destination="3aV-e4-3YJ" kind="unwind" identifier="unwindToAddSights" unwindAction="unwindToThisViewController:" id="TrT-sx-pYR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Opslaan" id="kul-Bd-Qyn">
+                            <connections>
+                                <action selector="btnSave:" destination="csB-cR-QKR" id="Xd3-TQ-Uz9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mvCoordinateSelect" destination="4o0-Kk-Y5g" id="ANY-47-jLO"/>
+                        <outlet property="tfName" destination="wsd-2n-AJU" id="x1R-rW-o3n"/>
+                        <outlet property="tvDescription" destination="UQG-w9-7gF" id="PZz-Sz-Lle"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIC-0I-BiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3aV-e4-3YJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2890.5" y="402"/>
         </scene>

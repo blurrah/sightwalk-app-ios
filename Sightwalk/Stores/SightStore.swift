@@ -19,7 +19,7 @@ class SightStore : SightSyncInterface {
     }
     
     private var subscribers : [String : SightManager] = [:]
-    private var sightSyncer : SightSyncer? = nil
+    private var sightSyncer : SightSyncer?
     private let sqlh : SQLiteHelper
     
     
@@ -94,6 +94,10 @@ class SightStore : SightSyncInterface {
         for(_, subscriber) in subscribers {
             subscriber.updateSight(oldSight, newSight: newSight)
         }
+    }
+    
+    func forceSynchronisation() {
+        sightSyncer!.forceUpdating()
     }
     
     private func loadSights() {
