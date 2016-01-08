@@ -226,7 +226,10 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSightDetail" {
             if let destination = segue.destinationViewController as? SightDetailViewController {
-                destination.setSight(getNextSight()!)
+                let nextSight : Sight? = getNextSight()
+                if nextSight != nil {
+                    destination.setSight(nextSight!)
+                }
                 sightShowController = destination
             }
         }
