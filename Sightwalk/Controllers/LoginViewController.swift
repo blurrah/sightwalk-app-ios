@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                JLToastView.setDefaultValue(UIColor.greenColor(),
+                JLToastView.setDefaultValue(UIColor(red:0.102, green:0.788, blue:0.341, alpha:1),
                     forAttributeName: JLToastViewBackgroundColorAttributeName,
                     userInterfaceIdiom: .Phone)
                 JLToast.makeText("Check uw e-mail om uw wachtwoord te resetten!", delay: 0, duration: 2).show()

@@ -101,7 +101,7 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     }
     
     private func toastSuccess(text : String) {
-        toastColor(text, color : UIColor.greenColor())
+        toastColor(text, color : UIColor(red:0.102, green:0.788, blue:0.341, alpha:1))
     }
     
     private func toastColor(text : String, color : UIColor) {

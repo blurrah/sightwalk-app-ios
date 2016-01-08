@@ -67,7 +67,6 @@ class DashboardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //TODO: Eventueel animaties toevoegen? Fade in/out is mogelijk, schuif animatie wordt lastig aangezien de views worden gehide/showt en er geeen gebruik wordt gemaakt van een segue.
     func swipeLeft(sender: UISwipeGestureRecognizer) {
         segmentedControlOutlet.selectedSegmentIndex = (segmentedControlOutlet.selectedSegmentIndex + 1) % segmentedControlOutlet.numberOfSegments
         indexChangedAction(segmentedControlOutlet)
