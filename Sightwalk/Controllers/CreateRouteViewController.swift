@@ -20,6 +20,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var bottomTableViewConstraintOutlet: NSLayoutConstraint!
     @IBOutlet var totalsTextOutlet: UILabel!
+    @IBOutlet var startPointSwitchOutlet: UISwitch!
     
     private var gpsEnabled : Bool = false
     
@@ -30,8 +31,9 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
 
     @IBAction func tapStartButton(sender: AnyObject) {
+        print(currentGeoPosition)
         if (currentGeoPosition == nil) {
-            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Weet u zeker dat u wilt doorgaan met de startlocatie Breda?", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. De eerste Sight is ingesteld als startpunt", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Doorgaan", style: UIAlertActionStyle.Default, handler: { action in
                 self.launchRouteLoop()
             }))
@@ -44,9 +46,11 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }
     }
     
+    @IBAction func startPointSwitchSwitched(sender: AnyObject) {
+        updateDistance()
+    }
     private func launchRouteLoop() {
         let storyboard = UIStoryboard(name: "Route", bundle: nil)
-        
         
         let vc = storyboard.instantiateInitialViewController() as UIViewController!
         //presentViewController(vc, animated: true, completion: nil)
@@ -76,7 +80,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         super.viewDidLoad()
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        availableHeight = screenSize.height * CGFloat(0.3)
+        availableHeight = screenSize.height * CGFloat(0.25)
         
         sightStore.subscribe(self, slot: "createrouteview")
         
@@ -105,9 +109,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressSights:"))
         self.tableView.addGestureRecognizer(longPressGesture)
         
-        print(currentGeoPosition)
         if (currentGeoPosition == nil) {
-            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. Uw startlocatie wordt gezet op het centrum van Breda, uw route zal mogelijk niet kloppen!", preferredStyle: UIAlertControllerStyle.Alert)
+            startPointSwitchOutlet.on = true
+            startPointSwitchOutlet.enabled = false
+            let alert = UIAlertController(title: "Geen locatie gevonden", message: "We hebben uw locatie niet kunnen vaststellen. De eerste gekozen Sight wordt ingesteld als startlocatie", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
@@ -286,9 +291,11 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
                 
                 self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
-                
-                self.startRouteButtonOutlet.enableButton()
-
+                if (self.startPointSwitchOutlet.on && self.sightStore.userChosen.count >= 2) || (self.startPointSwitchOutlet.on == false) {
+                    self.startRouteButtonOutlet.enableButton()
+                } else {
+                    self.startRouteButtonOutlet.disableButton()
+                }
             })
         } else {
             self.startRouteButtonOutlet.disableButton()
@@ -299,13 +306,18 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
 
     func getStartPoint() -> String {
         if let pos : CLLocation = currentGeoPosition {
-            let lon = String(pos.coordinate.longitude)
-            let lat = String(pos.coordinate.latitude)
+            if startPointSwitchOutlet.on == false {
+                let lon = String(pos.coordinate.longitude)
+                let lat = String(pos.coordinate.latitude)
             
-            return "\(lat), \(lon)"
+                return "\(lat), \(lon)"
+            }
         }
-        
-        return "51.588270, 4.776338"
+        let location = sightStore.userChosen.first!.location
+        let lon = String(location.longitude)
+        let lat = String(location.latitude)
+            
+        return "\(lat), \(lon)"
     }
     
     func getEndPoint() -> String {
@@ -324,6 +336,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentGeoPosition = manager.location!
+        startPointSwitchOutlet.enabled = true
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
