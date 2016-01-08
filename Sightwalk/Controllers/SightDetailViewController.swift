@@ -14,8 +14,6 @@ class SightDetailViewController: UIViewController {
         performSegueWithIdentifier("unwindSightDetails", sender: self)
     }
     
-    
-    @IBOutlet var nbHeading: UINavigationBar!
     @IBOutlet var ivImage: UIImageView!
     @IBOutlet var lblDescription: UILabel!
     
@@ -38,7 +36,8 @@ class SightDetailViewController: UIViewController {
     }
     
     private func updateView() {
-        nbHeading.topItem!.title = currentSight!.title
+        
+        title = currentSight!.title
         lblDescription.text = currentSight!.text
 
         ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in

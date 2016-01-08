@@ -46,11 +46,16 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     private func launchRouteLoop() {
         let storyboard = UIStoryboard(name: "Route", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
         
-        if currentGeoPosition !== nil {
-            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
-        }
+        
+        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        //presentViewController(vc, animated: true, completion: nil)
+        
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
+//        
+//        if currentGeoPosition !== nil {
+//            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
+//        }
         
         
         presentViewController(vc, animated: true, completion: nil)

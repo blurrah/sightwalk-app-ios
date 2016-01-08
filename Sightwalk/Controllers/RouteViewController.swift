@@ -169,7 +169,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
             }
         } else {
             // not heading to a sight, heading home?
-            if returningHome {
+            if returningHome && startLocation != nil {
                 if Double(startLocation!.distanceFromLocation(manager.location!)) <= 50 {
                     returnedHome()
                 }
