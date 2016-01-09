@@ -32,7 +32,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
             self.dismissViewControllerAnimated(true, completion: {})
         }))
         
-        alertView.addAction(UIAlertAction(title: "Doorgaan", style: .Default, handler: { (action: UIAlertAction!) in
+        alertView.addAction(UIAlertAction(title: "Annuleren", style: .Cancel, handler: { (action: UIAlertAction!) in
             print("Continue pushed")
         }))
         

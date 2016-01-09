@@ -44,10 +44,11 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
         
-        let startLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        let startLabel = UILabel(frame: CGRectMake(0, 0, 300, 21))
+        startLabel.textAlignment = .Left
         startLabel.textColor = UIColor.grayColor()
-        startLabel.center = CGPointMake(160, 50)
-        startLabel.text = "Uw locatie"
+        startLabel.center = CGPointMake(180, 50)
+        startLabel.text = "Begin locatie"
         self.containerView.addSubview(startLabel)
         
         // Loop and add sight names + directions
@@ -55,8 +56,9 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
             
             for direction in directions[i]! {
                 let label = UILabel(frame: CGRectMake(0, 0, 300, 21))
+                label.textAlignment = .Left
                 label.textColor = UIColor.blackColor()
-                label.center = CGPointMake(160, 50 + self.spacer)
+                label.center = CGPointMake(180, 50 + self.spacer)
                 label.font = UIFont(name: label.font.fontName, size: 12)
                 label.text = direction.htmlToString
                 
@@ -64,9 +66,10 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
                 
                 self.spacer += 30
             }
-            let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+            let label = UILabel(frame: CGRectMake(0, 0, 300, 21))
+            label.textAlignment = .Left
             label.textColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
-            label.center = CGPointMake(160, 50 + self.spacer)
+            label.center = CGPointMake(180, 50 + self.spacer)
             label.text = chosenSights[i].title
             
             self.containerView.addSubview(label)

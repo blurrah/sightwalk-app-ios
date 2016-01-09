@@ -13,6 +13,7 @@ class SightDetailViewController: UIViewController {
     @IBOutlet var titleBar: UINavigationItem!
     @IBOutlet var sightImageView: UIImageView!
     @IBOutlet var sightTextLabel: UILabel!
+    @IBOutlet var sightNameLabel: UILabel!
     
     private var currentSight : Sight?
     
@@ -20,6 +21,7 @@ class SightDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.titleBar.title = currentSight!.title
+        self.sightNameLabel.text = currentSight!.title
         self.sightTextLabel.text = currentSight!.text
         
         ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
