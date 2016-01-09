@@ -32,7 +32,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
             self.dismissViewControllerAnimated(true, completion: {})
         }))
         
-        alertView.addAction(UIAlertAction(title: "Doorgaan", style: .Default, handler: { (action: UIAlertAction!) in
+        alertView.addAction(UIAlertAction(title: "Annuleren", style: .Cancel, handler: { (action: UIAlertAction!) in
             print("Continue pushed")
         }))
         
@@ -41,6 +41,8 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        RouteStore.sharedInstance.setDirections()
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
@@ -230,7 +232,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
                 if nextSight != nil {
                     destination.setSight(nextSight!)
                 }
-                sightShowController = destination
             }
         }
     }

@@ -24,6 +24,14 @@ class SightwalkTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+    }
+    
+    func testHtmlToString() {
+        let htmlString = "<b>Boris<b> is de <i>coolste</i> jongen in de hele wereld."
+        
+        XCTAssertEqual(htmlString.htmlToString, "Boris is de coolste jongen in de hele wereld")
     }
     
     func testPerformanceExample() {

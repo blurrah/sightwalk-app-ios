@@ -12,11 +12,14 @@ protocol RouteDetailDirectionsViewControllerDelegate {
     func routeDetailDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?)
 }
 
-class RouteDetailDirectionsViewController: UIViewController {
+class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegate {
     
     var delegate: RouteDetailDirectionsViewControllerDelegate?
     
     let chosenSights = SightStore.sharedInstance.userChosen
+    var scrollView: UIScrollView!
+    var containerView: UIView!
+    var spacer: CGFloat = 30
 
     @IBAction func tapSightsButton(sender: AnyObject) {
         delegate!.routeDetailDirectionsViewControllerButtonPressed(self, info: nil)
@@ -26,20 +29,64 @@ class RouteDetailDirectionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var spacer: CGFloat = 50
-        for sight in chosenSights {
-            let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        let directions = RouteStore.sharedInstance.directions
+        
+        // Set up scroll and container view
+        self.scrollView = UIScrollView(frame: view.bounds)
+        self.containerView = UIView()
+        
+        self.scrollView.delegate = self
+        self.scrollView.contentSize = self.containerView.bounds.size
+        self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        
+        
+        
+        self.scrollView.addSubview(self.containerView)
+        self.view.addSubview(scrollView)
+        
+        let startLabel = UILabel(frame: CGRectMake(0, 0, 300, 21))
+        startLabel.textAlignment = .Left
+        startLabel.textColor = UIColor.grayColor()
+        startLabel.center = CGPointMake(180, 50)
+        startLabel.text = "Begin locatie"
+        self.containerView.addSubview(startLabel)
+        
+        // Loop and add sight names + directions
+        for (var i = 0; i < chosenSights.count; i++) {
+            
+            for direction in directions[i]! {
+                let label = UILabel(frame: CGRectMake(0, 0, 300, 21))
+                label.textAlignment = .Left
+                label.textColor = UIColor.blackColor()
+                label.center = CGPointMake(180, 50 + self.spacer)
+                label.font = UIFont(name: label.font.fontName, size: 12)
+                label.text = direction.htmlToString
+                
+                self.containerView.addSubview(label)
+                
+                self.spacer += 30
+            }
+            let label = UILabel(frame: CGRectMake(0, 0, 300, 21))
+            label.textAlignment = .Left
             label.textColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
-            label.center = CGPointMake(160, 50 + spacer)
-            label.text = sight.title
-            self.view.addSubview(label)
-            spacer = spacer + 50
+            label.center = CGPointMake(180, 50 + self.spacer)
+            label.text = chosenSights[i].title
+            
+            self.containerView.addSubview(label)
+            
+            self.spacer += 30
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = self.spacer + 80
+        self.scrollView.contentSize = CGSize(width: 0, height: height)
     }
     
 
@@ -53,4 +100,22 @@ class RouteDetailDirectionsViewController: UIViewController {
     }
     */
 
+}
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = dataUsingEncoding(NSUTF8StringEncoding) else {
+            return nil
+        }
+        
+        do {
+            return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
 }
