@@ -48,9 +48,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
         let activities = RouteStore.sharedInstance.activities
         
         cell.activityLabel.text = "De route '" + activities[row].name + "' is gestart om " + activities[row].dateTime
-        
-        print(activities[row].dateTime)
-        
+            
         return cell
     }
     

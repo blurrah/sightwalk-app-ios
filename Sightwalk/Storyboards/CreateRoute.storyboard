@@ -219,6 +219,8 @@
                                 <color key="onTintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="startPointSwitchSwitched:" destination="oNl-G7-xol" eventType="valueChanged" id="Cuu-Jv-JVx"/>
+                                    <action selector="tapSwitchAction:" destination="oNl-G7-xol" eventType="touchUpInside" id="2gu-mV-s8u"/>
+                                    <action selector="tapSwitchAction:" destination="oNl-G7-xol" eventType="valueChanged" id="O1U-l2-LRT"/>
                                 </connections>
                             </switch>
                         </subviews>

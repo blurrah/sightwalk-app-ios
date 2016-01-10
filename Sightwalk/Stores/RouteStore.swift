@@ -147,7 +147,6 @@ class RouteStore {
             for act in fetchResults! {
                 if !activities.contains(act) {
                     activities.append(act)
-                    print(act.id)
                 }
             }
             activities = activities.sort({ $0.id!.intValue > $1.id!.intValue })
