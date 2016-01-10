@@ -269,19 +269,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="472"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-2g-kRZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-2g-kRZ">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityPrototypeCell" id="CN8-iF-oFt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" id="CN8-iF-oFt" customClass="ActivityTableViewCell" customModule="Sightwalk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CN8-iF-oFt" id="5Qs-WW-PBR">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyS-bL-iv6">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="15" y="8" width="339" height="43"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PyS-bL-iv6" firstAttribute="leading" secondItem="5Qs-WW-PBR" secondAttribute="leadingMargin" constant="7" id="H7y-xV-GiP"/>
+                                                <constraint firstItem="PyS-bL-iv6" firstAttribute="top" secondItem="5Qs-WW-PBR" secondAttribute="topMargin" constant="-4" id="O00-hU-1pn">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                </constraint>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PyS-bL-iv6" secondAttribute="trailing" id="W9j-xB-ql6">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="111"/>
+                                                </constraint>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PyS-bL-iv6" secondAttribute="trailing" constant="6" id="X29-SM-8at"/>
+                                                <constraint firstAttribute="topMargin" secondItem="PyS-bL-iv6" secondAttribute="top" id="t0I-zP-Ma2">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="12"/>
+                                                </constraint>
+                                                <constraint firstAttribute="leadingMargin" secondItem="PyS-bL-iv6" secondAttribute="leading" id="uwZ-lF-VWM"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="PyS-bL-iv6"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="H7y-xV-GiP"/>
+                                                    <exclude reference="O00-hU-1pn"/>
+                                                    <exclude reference="W9j-xB-ql6"/>
+                                                    <exclude reference="X29-SM-8at"/>
+                                                    <exclude reference="t0I-zP-Ma2"/>
+                                                    <exclude reference="uwZ-lF-VWM"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="PyS-bL-iv6"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="H7y-xV-GiP"/>
+                                                    <include reference="O00-hU-1pn"/>
+                                                    <exclude reference="W9j-xB-ql6"/>
+                                                    <include reference="X29-SM-8at"/>
+                                                    <exclude reference="t0I-zP-Ma2"/>
+                                                    <exclude reference="uwZ-lF-VWM"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityLabel" destination="PyS-bL-iv6" id="dcg-1p-yBa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="C44-54-0Po" id="Omg-cR-LGs"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,6 +371,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="2ti-2g-kRZ" id="UVA-dh-Euj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05d-RX-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

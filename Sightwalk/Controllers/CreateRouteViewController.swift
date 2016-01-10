@@ -55,9 +55,31 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         updateDistance()
     }
     private func launchRouteLoop() {
-        let storyboard = UIStoryboard(name: "Route", bundle: nil)
+        let alert : UIAlertController = UIAlertController(title: "Naam kiezen", message: "Vul hieronder een naam in voor de route.", preferredStyle: UIAlertControllerStyle.Alert)
         
-        let vc = storyboard.instantiateInitialViewController() as UIViewController!
+        alert.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Naam"
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:  { action in
+            let textField = alert.textFields![0] as UITextField
+            if textField.text!.isEmpty == false {
+                RouteStore.sharedInstance.routeName = textField.text
+                let storyboard = UIStoryboard(name: "Route", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController() as UIViewController!
+                self.presentViewController(vc, animated: true, completion: nil)
+                RouteStore.sharedInstance.storeActivity(RouteStore.sharedInstance.activities.count + 1)
+            } else {
+                JLToast.makeText("U dient een naam in te voeren voor de route.", delay: 0, duration: 2).show()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Cancel, handler: { action in
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
         //presentViewController(vc, animated: true, completion: nil)
         
 //        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
@@ -65,9 +87,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
 //        if currentGeoPosition !== nil {
 //            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
 //        }
-        
-        
-        presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func endPointSegmentedAction(sender: AnyObject) {

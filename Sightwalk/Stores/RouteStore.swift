@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
 
 class RouteStore {
     class var sharedInstance: RouteStore {
@@ -17,12 +18,17 @@ class RouteStore {
         return Singleton.instance
     }
     
+    var activities = [Activity]()
     var apiResponse: JSON?
-    
+    var routeName: String?
     var chosenRoute: String?
     
     var polylines: [Int: [String]] = [:]
     var directions: [Int: [String]] = [:]
+    
+    init() {
+        print(" loaded routestore")
+    }
     
     func calculateTotalDistance() -> String {
         var distance: Double = 0
@@ -88,5 +94,56 @@ class RouteStore {
         print(directions)
     }
     
+    func storeActivity(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: context) as? Activity {
+            entry.name = self.routeName!
+            
+            let date = NSDate()
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "HH:mm dd/MM/yyyy"
+            let dateString = dateFormatter.stringFromDate(date)
+            
+            entry.dateTime = dateString
+            entry.jsonResponse = self.apiResponse!.rawString()!
+            appDelegate.saveContext()
+        }
+    }
     
+    func removeActivity(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Activity");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
+            if let i = fetchResults!.indexOf({$0.id == id}) {
+                context.deleteObject(fetchResults![i])
+                appDelegate.saveContext()
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func getAllActivities() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Activity");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
+            for act in fetchResults! {
+                if !activities.contains(act) {
+                    activities.append(act)
+                }
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
 }
