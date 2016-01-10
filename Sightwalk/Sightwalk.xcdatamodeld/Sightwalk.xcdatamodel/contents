@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="Activity" syncable="YES">
+        <attribute name="dateTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jsonResponse" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Favorite" representedClassName=".Favorite" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Favorite" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Activity" positionX="-63" positionY="-9" width="128" height="75"/>
     </elements>
 </model>

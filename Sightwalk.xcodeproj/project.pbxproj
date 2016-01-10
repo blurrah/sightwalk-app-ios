@@ -64,6 +64,8 @@
 		F3C482951C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		F3C482991C3EB57C007164C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3C482981C3EB57C007164C5 /* Settings.bundle */; };
 		F3C4829B1C402A97007164C5 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */; };
+		F3C4829D1C426148007164C5 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4829C1C426148007164C5 /* Activity.swift */; };
+		F3C4829F1C426171007164C5 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4829E1C426171007164C5 /* Activity+CoreDataProperties.swift */; };
 		F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */; };
 		F3E44E721C1055BA0017F1DD /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E711C1055BA0017F1DD /* Sight.swift */; };
 		F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E44E731C1056530017F1DD /* SQLiteHelper.swift */; };
@@ -160,6 +162,8 @@
 		F3C482931C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		F3C482981C3EB57C007164C5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
+		F3C4829C1C426148007164C5 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = Views/Activity.swift; sourceTree = "<group>"; };
+		F3C4829E1C426171007164C5 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3E44E691C05F0000017F1DD /* InvertedGenericViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedGenericViewButton.swift; sourceTree = "<group>"; };
 		F3E44E711C1055BA0017F1DD /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sight.swift; path = ../Stores/Sight.swift; sourceTree = "<group>"; };
 		F3E44E731C1056530017F1DD /* SQLiteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				2FFA3D571BF34EFE00B758D5 /* LaunchScreen.storyboard */,
 				2FFA3D5A1BF34EFE00B758D5 /* Info.plist */,
 				2FFA3D521BF34EFE00B758D5 /* Sightwalk.xcdatamodeld */,
+				F3C4829C1C426148007164C5 /* Activity.swift */,
+				F3C4829E1C426171007164C5 /* Activity+CoreDataProperties.swift */,
 				F3A1D2D01C329EE000ADA300 /* Favorite.swift */,
 				F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */,
 			);
@@ -599,10 +605,12 @@
 				2F385FEE1BF4B7FA0036DCCC /* RegistrationViewController.swift in Sources */,
 				2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */,
 				F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */,
+				F3C4829D1C426148007164C5 /* Activity.swift in Sources */,
 				2F489E9E1C1AA2A6005BC8B6 /* ImageDownloadHelper.swift in Sources */,
 				2FFA3D871BF49C7600B758D5 /* FacebookButton.swift in Sources */,
 				F3C482951C3E95F3007164C5 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */,
+				F3C4829F1C426171007164C5 /* Activity+CoreDataProperties.swift in Sources */,
 				F3B7A9171BFA231600420352 /* DashboardViewController.swift in Sources */,
 				2F25B9091C08B49D001B9037 /* StateDependantButton.swift in Sources */,
 				2F71D02B1C1966A8009D6193 /* SightStore.swift in Sources */,
