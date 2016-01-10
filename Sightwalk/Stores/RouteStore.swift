@@ -108,6 +108,12 @@ class RouteStore {
             
             entry.dateTime = dateString
             entry.jsonResponse = self.apiResponse!.rawString()!
+            var array = [String]()
+
+            for uc in SightStore.sharedInstance.userChosen {
+                array.append(String(uc.id))
+            }
+            entry.userChosen = array.joinWithSeparator("-")
             appDelegate.saveContext()
         }
     }
@@ -141,6 +147,7 @@ class RouteStore {
                 if !activities.contains(act) {
                     activities.append(act)
                 }
+                activities = activities.reverse()
             }
         } catch let error as NSError {
             debugPrint(error)

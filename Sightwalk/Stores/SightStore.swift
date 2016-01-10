@@ -240,6 +240,17 @@ class SightStore : SightSyncInterface {
             debugPrint(error)
         }
     }
+    
+    func getUserChosenForActivity(ucid: [String]) {
+        userChosen.removeAll()
+        for uc in ucid {
+            if let i = sights.indexOf({$0.id == Int(uc)}) {
+                if !userChosen.contains(sights[i]) {
+                    userChosen.append(sights[i])
+                }
+            }
+        }
+    }
 
     var userChosen = [Sight]()
     var favorites = [Sight]()

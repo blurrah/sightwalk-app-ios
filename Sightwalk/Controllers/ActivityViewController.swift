@@ -74,6 +74,12 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
         let alert = UIAlertController(title: "Route starten", message: "Wilt u de route '" + activities[row].name + "' starten?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
             RouteStore.sharedInstance.apiResponse = JSON.parse(activities[row].jsonResponse)
+            
+            let userChosenId = activities[row].userChosen.characters.split{$0 == "-"}.map(String.init)
+            SightStore.sharedInstance.getUserChosenForActivity(userChosenId)
+            
+            RouteStore.sharedInstance.storeActivity(activities.count)
+            
             let storyboard = UIStoryboard(name: "Route", bundle: nil)
             let vc = storyboard.instantiateInitialViewController() as UIViewController!
             self.presentViewController(vc, animated: true, completion: nil)

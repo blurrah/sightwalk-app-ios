@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 extension Activity {
+    @NSManaged var userChosen: String
     @NSManaged var jsonResponse: String
     @NSManaged var dateTime: String
     @NSManaged var name: String
