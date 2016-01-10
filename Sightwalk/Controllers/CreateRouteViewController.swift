@@ -68,6 +68,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 let storyboard = UIStoryboard(name: "Route", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController() as UIViewController!
                 self.presentViewController(vc, animated: true, completion: nil)
+                print(RouteStore.sharedInstance.activities.count + 1)
                 RouteStore.sharedInstance.storeActivity(RouteStore.sharedInstance.activities.count + 1)
             } else {
                 JLToast.makeText("U dient een naam in te voeren voor de route.", delay: 0, duration: 2).show()

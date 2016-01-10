@@ -77,6 +77,7 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
             
             let userChosenId = activities[row].userChosen.characters.split{$0 == "-"}.map(String.init)
             SightStore.sharedInstance.getUserChosenForActivity(userChosenId)
+            RouteStore.sharedInstance.routeName = activities[row].name
             
             RouteStore.sharedInstance.storeActivity(activities.count)
             

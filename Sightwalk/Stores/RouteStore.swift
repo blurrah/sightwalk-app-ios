@@ -100,6 +100,7 @@ class RouteStore {
         
         if let entry = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: context) as? Activity {
             entry.name = self.routeName!
+            entry.id = id
             
             let date = NSDate()
             let dateFormatter = NSDateFormatter()
@@ -146,9 +147,10 @@ class RouteStore {
             for act in fetchResults! {
                 if !activities.contains(act) {
                     activities.append(act)
+                    print(act.id)
                 }
-                activities = activities.reverse()
             }
+            activities = activities.sort({ $0.id!.intValue > $1.id!.intValue })
         } catch let error as NSError {
             debugPrint(error)
         }
