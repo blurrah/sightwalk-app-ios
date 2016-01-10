@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 import Foundation
+import SwiftyJSON
 
 class ActivityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -63,6 +64,24 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "Verwijderen"
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let row = indexPath.row
+        let activities = RouteStore.sharedInstance.activities
+
+        let alert = UIAlertController(title: "Route starten", message: "Wilt u de route '" + activities[row].name + "' starten?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
+            RouteStore.sharedInstance.apiResponse = JSON.parse(activities[row].jsonResponse)
+            let storyboard = UIStoryboard(name: "Route", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController() as UIViewController!
+            self.presentViewController(vc, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Nee", style: UIAlertActionStyle.Cancel, handler: { action in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 
