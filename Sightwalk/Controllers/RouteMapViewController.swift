@@ -11,10 +11,9 @@ import UIKit
 class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var mapView: GMSMapView!
-    let chosenSights = SightStore.sharedInstance.userChosen
-    let routeSteps = RouteStore.sharedInstance.polylines
     let locationManager = CLLocationManager()
     private var currentStep : Int = 0
+    private var activity : Activity?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +26,10 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setActivity(activity : Activity) {
+        self.activity = activity
     }
 
     /*
@@ -44,7 +47,7 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         
         mapView.delegate = self
         
-        for sight in chosenSights {
+        for sight in activity!.getSights() {
             let marker = GMSMarker(position: sight.location)
             marker.title = sight.title
             marker.snippet = String(sight.id)
@@ -53,7 +56,7 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             marker.map = mapView
         }
         
-        for (index, steps) in routeSteps {
+        for (index, steps) in activity!.getPolylines() {
             for step in steps {
                 let path = GMSPath(fromEncodedPath: step)
                 let polyline = GMSPolyline(path: path)

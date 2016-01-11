@@ -17,7 +17,8 @@ class RouteDirectionsViewController: UIViewController {
     
     var delegate: RouteDirectionsViewControllerDelegate?
     
-    let sights = SightStore.sharedInstance.userChosen
+    private var activity : Activity?
+    private var sight : Sight?
 
     @IBOutlet var sightTitleOutlet: UILabel!
     @IBOutlet var sightDescriptionOutlet: UILabel!
@@ -34,12 +35,10 @@ class RouteDirectionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        let sightStore = SightStore.sharedInstance
-        
-        setSight(sightStore.userChosen[0])
+        if sight != nil {
+            setSight(sight!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,15 +46,21 @@ class RouteDirectionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func setActivity(activity : Activity) {
+        self.activity = activity
+        setSight(activity.getSights().first!)
+    }
+    
     func setSight(sight : Sight) {
-        let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-        let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
+        self.sight = sight
         
-        self.sightTitleOutlet.text = sight.title
-        self.sightDescriptionOutlet.text = sight.shortdesc
-        self.timeOutlet.text = "\(h) uur, \(m) min"
-        self.distanceOutlet.text = "\(totalDistance) km"
+        let totalDistance = activity!.getTotalDistance()
+        let (h, m, _) = activity!.getTotalTime()
+        
+        self.sightTitleOutlet?.text = sight.title
+        self.sightDescriptionOutlet?.text = sight.shortdesc
+        self.timeOutlet?.text = "\(h) uur, \(m) min"
+        self.distanceOutlet?.text = "\(totalDistance) km"
     }
     
     /*

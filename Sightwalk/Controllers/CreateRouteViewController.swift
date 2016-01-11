@@ -24,6 +24,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var startPointSwitchOutlet: UISwitch!
     
     private var gpsEnabled : Bool = false
+    private var currentActivity : Activity = RouteStore.sharedInstance.newDummyActivity()
     
     var availableHeight : CGFloat = 0.0
     
@@ -64,11 +65,17 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:  { action in
             let textField = alert.textFields![0] as UITextField
             if textField.text!.isEmpty == false {
-                RouteStore.sharedInstance.routeName = textField.text
-                let storyboard = UIStoryboard(name: "Route", bundle: nil)
-                let vc = storyboard.instantiateInitialViewController() as UIViewController!
-                self.presentViewController(vc, animated: true, completion: nil)
-                RouteStore.sharedInstance.storeActivity(RouteStore.sharedInstance.activities.count + 1)
+                self.currentActivity.name = textField.text!
+                
+                // launch
+                let vc = RouteNavigationController.startRoute(self.currentActivity, returnAtStart: true)
+                if vc != nil {
+                    self.presentViewController(vc!, animated: true, completion: nil)
+                    self.currentActivity = RouteStore.sharedInstance.newDummyActivity()
+                } else {
+                    print("cant start route")
+                }
+                
             } else {
                 JLToast.makeText("U dient een naam in te voeren voor de route.", delay: 0, duration: 2).show()
             }
@@ -78,15 +85,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }))
         
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
-        //presentViewController(vc, animated: true, completion: nil)
-        
-//        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
-//        
-//        if currentGeoPosition !== nil {
-//            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
-//        }
     }
     
     @IBAction func endPointSegmentedAction(sender: AnyObject) {
@@ -299,16 +297,14 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func updateDistance() {
+        currentActivity.setSights(sightStore.userChosen)
         if ReachabilityHelper.isConnectedToNetwork() == true {
             if sightStore.hasSelectedSights() {
                 GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
-                    let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-                    let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
-                
-                    RouteStore.sharedInstance.setPolylines()
+                    self.currentActivity.setRouteInfo(results)
+                    let totalDistance = self.currentActivity.getTotalDistance()
+                    let (h, m, _) = self.currentActivity.getTotalTime()
 
-                    RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
-                
                     self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
                     if (self.startPointSwitchOutlet.on && self.sightStore.userChosen.count >= 2) || (self.startPointSwitchOutlet.on == false) {
                         self.startRouteButtonOutlet.enableButton()
@@ -343,7 +339,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func getEndPoint() -> String {
-        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+        if !returnAtStartPoint() {
             // end on last sight
             let location = sightStore.userChosen.last!.location
             let lon = String(location.longitude)
@@ -354,6 +350,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         // end on startposition
         return getStartPoint()
+    }
+    
+    func returnAtStartPoint() -> Bool {
+        return endPointSegmentedOutlet.selectedSegmentIndex != 0
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -11,6 +11,10 @@ import SwiftyJSON
 import CoreData
 
 class RouteStore {
+    
+    private let context : NSManagedObjectContext
+    private let appDelegate : AppDelegate
+    
     class var sharedInstance: RouteStore {
         struct Singleton {
             static let instance = RouteStore()
@@ -18,108 +22,38 @@ class RouteStore {
         return Singleton.instance
     }
     
-    var activities = [Activity]()
-    var apiResponse: JSON?
-    var routeName: String?
-    var chosenRoute: String?
-    
-    var polylines: [Int: [String]] = [:]
-    var directions: [Int: [String]] = [:]
+    var activities = [NSManagedObjectID : Activity]()
     
     init() {
         print(" loaded routestore")
+        
+        // get context
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        context = appDelegate.managedObjectContext
     }
     
-    func calculateTotalDistance() -> String {
-        var distance: Double = 0
-        for (_, subJson) in apiResponse!["routes"][0]["legs"] {
-            if let currentDistance = subJson["distance"]["value"].double {
-                distance = distance + currentDistance
-            }
-        }
-        
-        distance = distance / 1000
-        
-        return String(format: "%.1f", distance)
+    func saveContext() {
+        activities = [:]
+        appDelegate.saveContext()
     }
     
-    func calculateTotalTime() -> (Int, Int, Int) {
-        var time: Int = 0
-        
-        for (_, subJson) in apiResponse!["routes"][0]["legs"] {
-            if let currentTime = subJson["duration"]["value"].int {
-                time = time + currentTime
-            }
-        }
-        
-        return (time / 3600, (time % 3600) / 60, (time % 3600) % 60)
+    func newActivity() -> Activity {
+        return NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: context) as! Activity
     }
     
-    func setPolylines() {
-        polylines = [:]
-        
-        let length = apiResponse!["routes"][0]["legs"].count
-        
-        for (var i = 0; i <= length; i++) {
-            for (_, subJson) in apiResponse!["routes"][0]["legs"][i]["steps"] {
-                let polyline = subJson["polyline"]["points"].string!
-                if var arr = polylines[i] {
-                    arr.append(polyline)
-                    polylines[i] = arr
-                } else {
-                    polylines[i] = [polyline]
-                }
-            }
-        }
-        print(polylines)
+    func newDummyActivity() -> Activity {
+        let newActivity = NSEntityDescription.entityForName("Activity", inManagedObjectContext: context)
+        let dummyActivity = NSManagedObject(entity: newActivity!, insertIntoManagedObjectContext: appDelegate.tmpContext) as! Activity
+        return dummyActivity
     }
     
-    func setDirections() {
-        directions = [:]
-        
-        let length = apiResponse!["routes"][0]["legs"].count
-        
-        for (var i = 0; i <= length; i++) {
-            for (_, subJson) in apiResponse!["routes"][0]["legs"][i]["steps"] {
-                let direction = subJson["html_instructions"].string!
-                if var arr = directions[i] {
-                    arr.append(direction)
-                    
-                    directions[i] = arr
-                } else {
-                    directions[i] = [direction]
-                }
-            }
-        }
-        print(directions)
+    func removeActivity(activity : Activity) {
+        removeActivity(activity.getId())
     }
     
-    func storeActivity(id: Int) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
+    func removeActivity(id: NSManagedObjectID) {
+        activities = [:]
         
-        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: context) as? Activity {
-            entry.name = self.routeName!
-            entry.id = id
-            
-            let date = NSDate()
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "HH:mm dd/MM/yyyy"
-            let dateString = dateFormatter.stringFromDate(date)
-            
-            entry.dateTime = dateString
-            entry.jsonResponse = self.apiResponse!.rawString()!
-            var array = [String]()
-
-            for uc in SightStore.sharedInstance.userChosen {
-                array.append(String(uc.id))
-            }
-            entry.userChosen = array.joinWithSeparator("-")
-            appDelegate.saveContext()
-        }
-    }
-    
-    func removeActivity(id: Int) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDelegate.managedObjectContext
         
@@ -127,31 +61,34 @@ class RouteStore {
         
         do {
             let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
-            if let i = fetchResults!.indexOf({$0.id == id}) {
+            if let i = fetchResults!.indexOf({$0.getId() == id}) {
                 context.deleteObject(fetchResults![i])
                 appDelegate.saveContext()
             }
         } catch let error as NSError {
             debugPrint(error)
         }
+        
+        activities.removeValueForKey(id)
     }
     
-    func getAllActivities() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
+    func getAllActivities() -> [Activity] {
+        if activities.count == 0 {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Activity");
+            let fetchRequest = NSFetchRequest(entityName: "Activity");
         
-        do {
+            do {
             let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
-            for act in fetchResults! {
-                if !activities.contains(act) {
-                    activities.append(act)
+                for act in fetchResults! {
+                    activities[act.getId()] = act
                 }
+            } catch let error as NSError {
+                debugPrint(error)
             }
-            activities = activities.sort({ $0.id!.intValue > $1.id!.intValue })
-        } catch let error as NSError {
-            debugPrint(error)
         }
+    
+        return Array(activities.values)
     }
 }

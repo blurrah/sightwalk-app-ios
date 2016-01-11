@@ -23,6 +23,9 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     private var walking : Bool = true
     private var returningHome : Bool = false
     
+    private var activity : Activity?
+    
+    
     var currentSight: Int = 0
     
     @IBAction func tapStopRoute(sender: AnyObject) {
@@ -41,8 +44,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        RouteStore.sharedInstance.setDirections()
 
         // Do any additional setup after loading the view.
         locationManager.delegate = self
@@ -53,6 +54,14 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         mapView = sb.instantiateViewControllerWithIdentifier("mapViewController") as? RouteMapViewController
         directionsView = sb.instantiateViewControllerWithIdentifier("directionsViewController") as? RouteDirectionsViewController
         detailView = sb.instantiateViewControllerWithIdentifier("detailViewController") as? RouteDetailDirectionsViewController
+        
+        // update activity
+        if self.activity != nil {
+            mapView!.setActivity(activity!)
+            directionsView!.setActivity(activity!)
+            detailView!.setActivity(activity!)
+        }
+        
         
         self.addChildViewController(mapView!)
         mapView!.didMoveToParentViewController(self)
@@ -77,6 +86,18 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         
         directionsView!.delegate = self
         detailView!.delegate = self
+        
+        if activity != nil {
+            directionsView!.setActivity(activity!)
+            mapView!.setActivity(activity!)
+        }
+    }
+    
+    func setActivity(activity : Activity) {
+        self.activity = activity
+        directionsView?.setActivity(activity)
+        mapView?.setActivity(activity)
+        detailView?.setActivity(activity)
     }
     
     func routeDetailDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {

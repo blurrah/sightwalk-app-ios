@@ -15,6 +15,8 @@ import SwiftyJSON
 class ActivityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    private var activities : [Activity]! = []
+    private let activityStore : RouteStore = RouteStore.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +35,18 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(animated: Bool) {
-        RouteStore.sharedInstance.getAllActivities()
+        activities = RouteStore.sharedInstance.getAllActivities().sort({ $0.getDate() > $1.getDate() })
         self.tableView.reloadData()
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RouteStore.sharedInstance.activities.count
+        return activities.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("activityCell", forIndexPath: indexPath) as! ActivityTableViewCell
         let row = indexPath.row
-        let activities = RouteStore.sharedInstance.activities
         
         cell.activityLabel.text = "De route '" + activities[row].name + "' is gestart om " + activities[row].dateTime
             
@@ -54,8 +55,8 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            RouteStore.sharedInstance.removeActivity(Int(RouteStore.sharedInstance.activities[indexPath.row].id!))
-            RouteStore.sharedInstance.activities.removeAtIndex(indexPath.row)
+            activityStore.removeActivity(activities[indexPath.row])
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -66,22 +67,20 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let row = indexPath.row
-        let activities = RouteStore.sharedInstance.activities
 
-        let alert = UIAlertController(title: "Route starten", message: "Wilt u de route '" + activities[row].name + "' starten?", preferredStyle: UIAlertControllerStyle.Alert)
+        let selected : Activity = activities[indexPath.row]
+        
+        // prompt user to confirm starting route
+        let alert = UIAlertController(title: "Route starten", message: "Wilt u de route '" + selected.name + "' starten?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: { action in
-            RouteStore.sharedInstance.apiResponse = JSON.parse(activities[row].jsonResponse)
             
-            let userChosenId = activities[row].userChosen.characters.split{$0 == "-"}.map(String.init)
-            SightStore.sharedInstance.getUserChosenForActivity(userChosenId)
-            RouteStore.sharedInstance.routeName = activities[row].name
-            
-            RouteStore.sharedInstance.storeActivity(activities.count)
-            
-            let storyboard = UIStoryboard(name: "Route", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController() as UIViewController!
-            self.presentViewController(vc, animated: true, completion: nil)
+            // start route
+            if let vc = RouteNavigationController.startRoute(selected, returnAtStart: true) {
+                self.presentViewController(vc, animated: true, completion: nil)
+            } else {
+                print("cant start route")
+            }
+
         }))
         alert.addAction(UIAlertAction(title: "Nee", style: UIAlertActionStyle.Cancel, handler: { action in
             alert.dismissViewControllerAnimated(true, completion: nil)

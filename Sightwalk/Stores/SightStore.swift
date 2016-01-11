@@ -120,7 +120,7 @@ class SightStore : SightSyncInterface {
      * functions which handle the selectionstate of a sight
      *
      **/
-     
+    
     func markSightSelected(sight : Sight) {
         markSightSelected(sight, selected: true)
     }
@@ -241,15 +241,8 @@ class SightStore : SightSyncInterface {
         }
     }
     
-    func getUserChosenForActivity(ucid: [String]) {
-        userChosen.removeAll()
-        for uc in ucid {
-            if let i = sights.indexOf({$0.id == Int(uc)}) {
-                if !userChosen.contains(sights[i]) {
-                    userChosen.append(sights[i])
-                }
-            }
-        }
+    func getSelection(identities : [Int]) -> [Sight] {
+        return sights.filter({identities.contains($0.id)})
     }
 
     var userChosen = [Sight]()

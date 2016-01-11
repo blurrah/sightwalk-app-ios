@@ -14,5 +14,4 @@ extension Activity {
     @NSManaged var jsonResponse: String
     @NSManaged var dateTime: String
     @NSManaged var name: String
-    @NSManaged var id: NSNumber?
 }
