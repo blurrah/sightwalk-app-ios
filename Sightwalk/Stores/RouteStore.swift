@@ -48,28 +48,9 @@ class RouteStore {
     }
     
     func removeActivity(activity : Activity) {
-        removeActivity(activity.getId())
-    }
-    
-    func removeActivity(id: NSManagedObjectID) {
         activities = [:]
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Activity");
-        
-        do {
-            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
-            if let i = fetchResults!.indexOf({$0.getId() == id}) {
-                context.deleteObject(fetchResults![i])
-                appDelegate.saveContext()
-            }
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-        
-        activities.removeValueForKey(id)
+        context.deleteObject(activity as NSManagedObject)
+        appDelegate.saveContext()
     }
     
     func getAllActivities() -> [Activity] {

@@ -35,7 +35,10 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(animated: Bool) {
-        activities = RouteStore.sharedInstance.getAllActivities().sort({ $0.getDate() > $1.getDate() })
+        activities = RouteStore.sharedInstance.getAllActivities()
+        if activities.count >= 2 {
+           activities.sortInPlace({ $0.getDate() > $1.getDate() })
+        }
         self.tableView.reloadData()
     }
     
@@ -55,7 +58,9 @@ class ActivityViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            activityStore.removeActivity(activities[indexPath.row])
+            let activity = activities[indexPath.row]
+            activityStore.removeActivity(activity)
+            activities = activities.filter({$0.objectID != activity.objectID})
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
