@@ -68,5 +68,17 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "Verwijderen"
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showFavoriteDetail" {
+            if let destination = segue.destinationViewController as? SightDetailViewController {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let selected = SightStore.sharedInstance.favorites[indexPath.row]
+                    destination.setSight(selected)
+                }
+            }
+        }
+    }
 }
 
