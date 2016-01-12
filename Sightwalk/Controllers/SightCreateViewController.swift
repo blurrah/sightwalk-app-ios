@@ -8,8 +8,12 @@
 
 import UIKit
 import JLToast
+import Photos
 
-class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private let imagePicker : UIImagePickerController = UIImagePickerController()
+    private var image : UIImage?
     
     @IBAction func btnSave(sender: AnyObject) {
         if coordinates == nil {
@@ -50,8 +54,39 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         mvCoordinateSelect.delegate = self
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        
+        //takePicture()
     }
-
+    
+    private func takePicture() {
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        let imageData = NSData(data: UIImagePNGRepresentation(image!)!)
+        
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let docs : String = paths[0]
+        
+        var error:NSError?
+        let manager = NSFileManager.defaultManager()
+        let directoryURL = manager.URLForDirectory(.DocumentDirectory, inDomain:.UserDomainMask, appropriateForURL:nil, create:true, error:&error)
+        let docURL = directoryURL.URLByAppendingPathComponent("/RicFile.txt")
+        
+        let fullPath = docs.stringByAppendingPathComponent("yourNameImg.png")
+        let result = imageData.writeToFile(fullPath, atomically: true)
+        
+        print(result ? "y" : "n")
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -130,21 +165,21 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .POST, parameters: params, success: { json in
             self.toastSuccess("De sight is aangemaakt!")
             self.performSegueWithIdentifier("unwindToAddSights", sender: self)
-        }, failure: { error in
-            print("failed")
-            print(error)
-            self.toastError("Er trad een fout op")
+            }, failure: { error in
+                print("failed")
+                print(error)
+                self.toastError("Er trad een fout op")
         })
     }
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
