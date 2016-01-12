@@ -10,23 +10,35 @@ import UIKit
 
 class SightDetailViewController: UIViewController {
     
+    let sightStore = SightStore.sharedInstance
+    
     @IBOutlet var titleBar: UINavigationItem!
     @IBOutlet var sightImageView: UIImageView!
-    @IBOutlet var sightTextLabel: UILabel!
     @IBOutlet var sightNameLabel: UILabel!
+    @IBOutlet var sightTextView: UITextView!
+    @IBOutlet var addFavoriteButton: GenericViewButton!
     
     private var currentSight : Sight?
+
     
+    @IBAction func addAsFavorite(sender: AnyObject) {
+        sightStore.markSightAsFavorite(currentSight!, favorite: true)
+        
+        changeFavoriteButtonText()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.titleBar.title = currentSight!.title
         self.sightNameLabel.text = currentSight!.title
-        self.sightTextLabel.text = currentSight!.text
+        self.sightTextView.text = currentSight!.text
+        self.sightTextView.editable = false
         
         ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
             self.sightImageView.image = UIImage(data: response)
         })
+        
+        changeFavoriteButtonText()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,19 +53,12 @@ class SightDetailViewController: UIViewController {
     func triggerLeaveSight() {
         print("leaving sight")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let id : String = segue.identifier {
-//            if id == "unwindSightDetails" {
-//                let rvc = segue.destinationViewController as! RouteViewController
-//                rvc.leavingSight(currentSight!)
-//            }
-//        }
+    
+    func changeFavoriteButtonText() {
+        if sightStore.isFavorite(currentSight!) {
+            self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
+        } else {
+            self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
+        }
     }
-*/
-
 }

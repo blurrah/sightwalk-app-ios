@@ -39,8 +39,6 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         self.scrollView.contentSize = self.containerView.bounds.size
         self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         
-        
-        
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
         

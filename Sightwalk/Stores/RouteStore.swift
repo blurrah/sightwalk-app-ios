@@ -50,6 +50,8 @@ class RouteStore {
     }
     
     func setPolylines() {
+        polylines = [:]
+        
         let length = apiResponse!["routes"][0]["legs"].count
         
         for (var i = 0; i <= length; i++) {
@@ -67,6 +69,8 @@ class RouteStore {
     }
     
     func setDirections() {
+        directions = [:]
+        
         let length = apiResponse!["routes"][0]["legs"].count
         
         for (var i = 0; i <= length; i++) {
