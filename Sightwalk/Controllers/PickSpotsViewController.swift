@@ -29,6 +29,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     let star_unchecked = UIImage(named: "favorite_star_unchecked")! as UIImage
     let star_checked = UIImage(named: "favorite_star")! as UIImage
+    
+    private var activity : Activity?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Do any additional setup after loading the view.
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func setActivity(activity : Activity) {
+        self.activity = activity
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -62,10 +68,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         marker.userData = sight.shortdesc
         marker.map = mapView
         
-        if (sightStore.isFavorite(sight) && !sightStore.isSelected(sight)) {
+        if (sightStore.isFavorite(sight) && !activity!.isSelected(sight)) {
             marker.icon = GMSMarker.markerImageWithColor(colorYellow)
         }
-        if sightStore.isSelected(sight) {
+        if activity!.isSelected(sight) {
             marker.icon = GMSMarker.markerImageWithColor(colorGreen)
         }
         
@@ -84,6 +90,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             locationManager.stopUpdatingLocation()
         }
     }
+    
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
 
         let sight = getSightByMarker(marker)
@@ -94,7 +101,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             favoriteButton.setImage(star_unchecked, forState: .Normal)
         }
  
-        if (sightStore.isSelected(sight)) {
+        if (activity!.isSelected(sight)) {
             infoButton.setTitle("-", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         } else {
@@ -133,8 +140,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(chosenMarker)
         
         // toggle selection of sight
-        let newSelected : Bool = !sightStore.isSelected(sight)
-        sightStore.markSightSelected(sight, selected: newSelected)
+        let newSelected : Bool = !activity!.isSelected(sight)
+        activity!.markSightSelected(sight, selected: newSelected)
         chosenMarker.icon = (newSelected) ? GMSMarker.markerImageWithColor(colorGreen) : nil
         if (sightStore.isFavorite(sight) && !newSelected) {
             chosenMarker.icon = GMSMarker.markerImageWithColor(colorYellow)
@@ -155,7 +162,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(chosenMarker)
         let newFavorite : Bool = !sightStore.isFavorite(sight)
         sightStore.markSightAsFavorite(sight, favorite: newFavorite)
-        if (!sightStore.isSelected(sight)) {
+        if (!activity!.isSelected(sight)) {
             chosenMarker.icon = (newFavorite) ? GMSMarker.markerImageWithColor(colorYellow) : nil
         }
         

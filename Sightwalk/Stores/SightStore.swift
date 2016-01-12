@@ -91,13 +91,8 @@ class SightStore : SightSyncInterface {
         // force update in store
         sqlh.updateSight(oldSight, newSight: newSight)
         
-        let selected : Bool = isSelected(oldSight)
-        if selected {
-            markSightSelected(oldSight, selected: false)
-        }
         sights.removeAtIndex(sights.indexOf(oldSight)!)
         sights.append(newSight)
-        markSightSelected(newSight, selected: selected)
         
         // update subscribers
         for(_, subscriber) in subscribers {
@@ -113,36 +108,6 @@ class SightStore : SightSyncInterface {
         if let newSights : [Sight] = sqlh.getSights() {
             sights = newSights
         }
-    }
-    
-    /**
-     *
-     * functions which handle the selectionstate of a sight
-     *
-     **/
-    
-    func markSightSelected(sight : Sight) {
-        markSightSelected(sight, selected: true)
-    }
-    
-    func markSightSelected(sight : Sight, selected : Bool) {
-        // add marker
-        if selected && !userChosen.contains(sight) {
-            userChosen.append(sight)
-        }
-        
-        // remove marker
-        if !selected && userChosen.contains(sight) {
-            userChosen.removeAtIndex(userChosen.indexOf(sight)!)
-        }
-    }
-    
-    func isSelected(sight : Sight) -> Bool {
-        return userChosen.contains(sight)
-    }
-    
-    func hasSelectedSights() -> Bool {
-        return !userChosen.isEmpty
     }
 
     func markSightAsFavorite(sight : Sight) {
@@ -179,21 +144,7 @@ class SightStore : SightSyncInterface {
      * functions which handle the position of a selected sight
      *
      **/
-    
-    func switchPosition(sightOne : Sight, sightTwo : Sight) {
-        if isSelected(sightOne) && isSelected(sightTwo) {
-            let posOne : Int = getSelectedIndex(sightOne)!
-            let posTwo : Int = getSelectedIndex(sightTwo)!
-            
-            userChosen[posOne] = sightTwo
-            userChosen[posTwo] = sightOne
-        }
-    }
-    
-    func getSelectedIndex(sight : Sight) -> Int? {
-        return userChosen.indexOf(sight)
-    }
-    
+
     func storeFavorite(id: Int) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDelegate.managedObjectContext
@@ -242,7 +193,17 @@ class SightStore : SightSyncInterface {
     }
     
     func getSelection(identities : [Int]) -> [Sight] {
-        return sights.filter({identities.contains($0.id)})
+        let selection = sights.filter({identities.contains($0.id)})
+        var ordered : [Int : Sight] = [Int : Sight]()
+        
+        for (var index = 0; index < identities.count; index++) {
+            if let item = selection.filter({ $0.id == identities[index] }).first {
+                ordered[index] = item
+            }
+        }
+
+        return ordered.sort({ $0.0 < $1.0 }).map({ return $0.1 })
+        
     }
 
     var userChosen = [Sight]()
