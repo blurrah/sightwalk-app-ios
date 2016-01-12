@@ -139,6 +139,7 @@ class RouteNavigationController: UINavigationController, CLLocationManagerDelega
     }
     
     func enteringSight(sight : Sight) {
+        fireEnteredSightNotification(sight)
         let sights : [Sight] = activity!.getSights()
         if (sights.indexOf(sight)! + 1) >= sights.count {
             // this is the last sight
@@ -171,6 +172,15 @@ class RouteNavigationController: UINavigationController, CLLocationManagerDelega
     
     func returnedHome() {
         showEndOfRouteAlert()
+    }
+    
+    func fireEnteredSightNotification(sight : Sight) {
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        notification.alertBody = "U heeft de Sight '" + sight.name + "' bereikt!"
+        notification.alertAction = "SightWalk te starten."
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
     func showEndOfRouteAlert() {
