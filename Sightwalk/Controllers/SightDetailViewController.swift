@@ -19,15 +19,18 @@ class SightDetailViewController: UIViewController {
     @IBOutlet var addFavoriteButton: GenericViewButton!
     
     private var currentSight : Sight?
-
+    let colorGreen : UIColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
     
     @IBAction func addAsFavorite(sender: AnyObject) {
-        sightStore.markSightAsFavorite(currentSight!)
+        let newFavorite : Bool = !sightStore.isFavorite(currentSight!)
+        sightStore.markSightAsFavorite(currentSight!, favorite: newFavorite)
         
-        if (sightStore.isFavorite(currentSight!)) {
-            self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
+        if newFavorite {
+            self.addFavoriteButton.backgroundColor = UIColor.redColor()
+            self.addFavoriteButton.setTitle("Verwijder van favorieten", forState: .Normal)
         } else {
-            self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
+            self.addFavoriteButton.backgroundColor =  colorGreen
+            self.addFavoriteButton.setTitle("Voeg toe aan favorieten", forState: .Normal)
         }
     }
     
@@ -45,9 +48,11 @@ class SightDetailViewController: UIViewController {
             })
             
             if (sightStore.isFavorite(currentSight!)) {
-                self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
+                self.addFavoriteButton.backgroundColor = UIColor.redColor()
+                self.addFavoriteButton.setTitle("Verwijder van favorieten", forState: .Normal)
             } else {
-                self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
+                self.addFavoriteButton.backgroundColor =  colorGreen
+                self.addFavoriteButton.setTitle("Voeg toe aan favorieten", forState: .Normal)
             }
         } else {
             print("current sight is nil, there might be something wrong")
