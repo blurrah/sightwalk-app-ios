@@ -43,7 +43,6 @@ class SightDetailViewController: UIViewController {
         } else {
             print("current sight is nil, there might be something wrong")
         }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +51,6 @@ class SightDetailViewController: UIViewController {
     }
     
     func setSight(sight : Sight) {
-        print("set sight")
         currentSight = sight
     }
     
@@ -67,4 +65,19 @@ class SightDetailViewController: UIViewController {
             self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
         }
     }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if let id : String = segue.identifier {
+//            if id == "unwindSightDetails" {
+//                let rvc = segue.destinationViewController as! RouteViewController
+//                rvc.leavingSight(currentSight!)
+//            }
+//        }
+
+    }
+*/
 }

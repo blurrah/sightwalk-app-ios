@@ -22,6 +22,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     
     private var activity : Activity?
     private var nextSight : Sight?
+    private var sightToView : Sight?
     
     var currentSight: Int = 0
     
@@ -99,11 +100,12 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         showDirectionsView()
     }
     
-    func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?) {
+    func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: Sight?) {
         showDetailView()
     }
     
-    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?) {
+    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: Sight?) {
+        sightToView = info
         self.performSegueWithIdentifier("showSightDetail", sender: nil)
     }
     
@@ -132,6 +134,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     
     func enteringSight(sight : Sight) {
         //detailView?.set
+        sightToView = sight
         performSegueWithIdentifier("showSightDetail", sender: self)
     }
     
@@ -160,8 +163,8 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSightDetail" {
             if let destination = segue.destinationViewController as? SightDetailViewController {
-                if nextSight != nil {
-                    destination.setSight(nextSight!)
+                if sightToView != nil {
+                    destination.setSight(sightToView!)
                 }
             }
         }

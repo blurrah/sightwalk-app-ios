@@ -9,8 +9,8 @@
 import UIKit
 
 protocol RouteDirectionsViewControllerDelegate {
-    func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: AnyObject?)
-    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: AnyObject?)
+    func routeDirectionsViewControllerButtonPressed(controller: UIViewController, info: Sight?)
+    func routeDirectionsViewControllerSightDetailPressed(controller: UIViewController, info: Sight?)
 }
 
 class RouteDirectionsViewController: UIViewController {
@@ -26,11 +26,11 @@ class RouteDirectionsViewController: UIViewController {
     @IBOutlet var distanceOutlet: UILabel!
     
     @IBAction func tapButton(sender: AnyObject) {
-        delegate!.routeDirectionsViewControllerButtonPressed(self, info: nil)
+        delegate!.routeDirectionsViewControllerButtonPressed(self, info: sight)
     }
     
     @IBAction func tapSightDetail(sender: AnyObject) {
-        delegate!.routeDirectionsViewControllerSightDetailPressed(self, info: nil)
+        delegate!.routeDirectionsViewControllerSightDetailPressed(self, info: sight)
     }
     
     override func viewDidLoad() {
