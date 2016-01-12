@@ -109,6 +109,27 @@ class SightStore : SightSyncInterface {
             sights = newSights
         }
     }
+    
+    /**
+     *
+     * functions which handle the selectionstate of a sight
+     *
+     **/
+    
+    func markSightAsVisited(sight : Sight) {
+        markSightAsVisited(sight, visited: true)
+    }
+    
+    func markSightAsVisited(sight : Sight, visited : Bool) {
+        if visited && !visitedA.contains(sight) {
+            visitedA.append(sight)
+            storeVisited(sight.id)
+        }
+    }
+    
+    func isVisited(sight : Sight) -> Bool {
+        return visitedA.contains(sight)
+    }
 
     func markSightAsFavorite(sight : Sight) {
         markSightAsFavorite(sight, favorite: true)
@@ -144,7 +165,38 @@ class SightStore : SightSyncInterface {
      * functions which handle the position of a selected sight
      *
      **/
-
+    
+    func storeVisited(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Visited", inManagedObjectContext: context) as? Visited {
+            entry.id = id
+            appDelegate.saveContext()
+        }
+    }
+    
+    func getAllVisited() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Visited");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Visited]
+            for vis in fetchResults! {
+                if let i = sights.indexOf({$0.id == vis.id!}) {
+                    if !visitedA.contains(sights[i]) {
+                        visitedA.append(sights[i])
+                        print(visitedA.first?.id)
+                    }
+                }
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
     func storeFavorite(id: Int) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDelegate.managedObjectContext
@@ -208,5 +260,6 @@ class SightStore : SightSyncInterface {
 
     var userChosen = [Sight]()
     var favorites = [Sight]()
+    var visitedA = [Sight]()
     private var sights = [Sight]()
 }

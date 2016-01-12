@@ -9,7 +9,7 @@
 import UIKit
 
 class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate, RouteDetailDirectionsViewControllerDelegate {
-
+    
     var mapView: RouteMapViewController?
     var directionsView: RouteDirectionsViewController?
     var detailView: RouteDetailDirectionsViewController?
@@ -42,7 +42,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         // Do any additional setup after loading the view.
@@ -135,6 +135,8 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     func enteringSight(sight : Sight) {
         //detailView?.set
         sightToView = sight
+        fireEnteredSightNotification(sight)
+        SightStore.sharedInstance.markSightAsVisited(sight)
         performSegueWithIdentifier("showSightDetail", sender: self)
     }
     
@@ -153,8 +155,17 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         mapView!.center(location.coordinate)
     }
     
+    func fireEnteredSightNotification(sight : Sight) {
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        notification.alertBody = "U heeft de Sight '" + sight.name + "' bereikt!"
+        notification.alertAction = "SightWalk te starten."
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
     // TODO: Add change sight logic
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -173,5 +184,5 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         
     }
-
+    
 }
