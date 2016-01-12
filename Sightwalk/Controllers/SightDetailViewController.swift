@@ -22,10 +22,15 @@ class SightDetailViewController: UIViewController {
 
     
     @IBAction func addAsFavorite(sender: AnyObject) {
-        sightStore.markSightAsFavorite(currentSight!, favorite: true)
+        sightStore.markSightAsFavorite(currentSight!)
         
-        changeFavoriteButtonText()
+        if (sightStore.isFavorite(currentSight!)) {
+            self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
+        } else {
+            self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
+        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +44,11 @@ class SightDetailViewController: UIViewController {
                 self.sightImageView.image = UIImage(data: response)
             })
             
-            changeFavoriteButtonText()
+            if (sightStore.isFavorite(currentSight!)) {
+                self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
+            } else {
+                self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
+            }
         } else {
             print("current sight is nil, there might be something wrong")
         }
@@ -56,14 +65,6 @@ class SightDetailViewController: UIViewController {
     
     func triggerLeaveSight() {
         print("leaving sight")
-    }
-    
-    func changeFavoriteButtonText() {
-        if sightStore.isFavorite(currentSight!) {
-            self.addFavoriteButton.titleLabel!.text = "Verwijder van favorieten"
-        } else {
-            self.addFavoriteButton.titleLabel!.text = "Voeg toe aan favorieten"
-        }
     }
 
     /*
