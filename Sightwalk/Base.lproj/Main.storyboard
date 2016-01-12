@@ -541,37 +541,6 @@ Kies hieronder een optie.</string>
                                                     <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gewicht" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QvD-6j-em8" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
-                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="IQ7-F6-eGm"/>
-                                                    <constraint firstAttribute="height" constant="60" id="Lzg-bJ-KK4"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Sfz-Vf-FqT"/>
-                                                    <constraint firstAttribute="width" constant="400" id="bHV-1o-fdS"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="IQ7-F6-eGm"/>
-                                                        <exclude reference="Lzg-bJ-KK4"/>
-                                                        <exclude reference="Sfz-Vf-FqT"/>
-                                                        <exclude reference="bHV-1o-fdS"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="IQ7-F6-eGm"/>
-                                                        <include reference="Lzg-bJ-KK4"/>
-                                                        <include reference="Sfz-Vf-FqT"/>
-                                                        <include reference="bHV-1o-fdS"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="validateWeight:" destination="Mql-4Z-w7B" eventType="editingChanged" id="D1r-0u-uHI"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lengte" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-yp-8E4" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                 <constraints>
@@ -605,6 +574,37 @@ Kies hieronder een optie.</string>
                                                 </variation>
                                                 <connections>
                                                     <action selector="validateLength:" destination="Mql-4Z-w7B" eventType="editingChanged" id="bfA-0m-RxB"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gewicht" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QvD-6j-em8" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="IQ7-F6-eGm"/>
+                                                    <constraint firstAttribute="height" constant="60" id="Lzg-bJ-KK4"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Sfz-Vf-FqT"/>
+                                                    <constraint firstAttribute="width" constant="400" id="bHV-1o-fdS"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="IQ7-F6-eGm"/>
+                                                        <exclude reference="Lzg-bJ-KK4"/>
+                                                        <exclude reference="Sfz-Vf-FqT"/>
+                                                        <exclude reference="bHV-1o-fdS"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="IQ7-F6-eGm"/>
+                                                        <include reference="Lzg-bJ-KK4"/>
+                                                        <include reference="Sfz-Vf-FqT"/>
+                                                        <include reference="bHV-1o-fdS"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="validateWeight:" destination="Mql-4Z-w7B" eventType="editingChanged" id="D1r-0u-uHI"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -673,8 +673,8 @@ Kies hieronder een optie.</string>
                                                 <exclude reference="KbG-u7-cSz"/>
                                                 <exclude reference="E2w-17-FRK"/>
                                                 <exclude reference="AVN-YH-Bym"/>
-                                                <exclude reference="QvD-6j-em8"/>
                                                 <exclude reference="s1d-yp-8E4"/>
+                                                <exclude reference="QvD-6j-em8"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="AJP-il-3pg"/>
@@ -735,8 +735,8 @@ Kies hieronder een optie.</string>
                                                 <include reference="KbG-u7-cSz"/>
                                                 <include reference="E2w-17-FRK"/>
                                                 <include reference="AVN-YH-Bym"/>
-                                                <include reference="QvD-6j-em8"/>
                                                 <include reference="s1d-yp-8E4"/>
+                                                <include reference="QvD-6j-em8"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="AJP-il-3pg"/>

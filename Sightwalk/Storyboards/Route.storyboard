@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AwT-eC-dM9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AwT-eC-dM9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -348,21 +348,17 @@
                                 <exclude reference="BRZ-89-xie"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="CZk-Uk-Alb"/>
-                                <exclude reference="EgJ-h7-HiP"/>
-                                <exclude reference="pio-CO-c6o"/>
-                                <exclude reference="ujw-2x-SvN"/>
+                                <exclude reference="EQT-4H-4iq"/>
+                                <exclude reference="tlb-bO-lZk"/>
                                 <exclude reference="39K-EI-fF6"/>
                                 <exclude reference="EW0-Sw-rja"/>
-                                <exclude reference="Cw6-cA-yJu"/>
-                                <exclude reference="bxu-Dl-uRX"/>
-                                <exclude reference="nYV-t8-stn"/>
                                 <exclude reference="2km-Gr-XqD"/>
                                 <exclude reference="969-0d-GPt"/>
                                 <exclude reference="TOL-Ox-v6b"/>
                                 <exclude reference="dhT-hm-QsF"/>
-                                <exclude reference="EQT-4H-4iq"/>
-                                <exclude reference="tlb-bO-lZk"/>
+                                <exclude reference="Cw6-cA-yJu"/>
+                                <exclude reference="bxu-Dl-uRX"/>
+                                <exclude reference="nYV-t8-stn"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -373,21 +369,17 @@
                                 <include reference="BRZ-89-xie"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="CZk-Uk-Alb"/>
-                                <exclude reference="EgJ-h7-HiP"/>
-                                <include reference="pio-CO-c6o"/>
-                                <include reference="ujw-2x-SvN"/>
+                                <include reference="EQT-4H-4iq"/>
+                                <exclude reference="tlb-bO-lZk"/>
                                 <include reference="39K-EI-fF6"/>
                                 <include reference="EW0-Sw-rja"/>
-                                <include reference="Cw6-cA-yJu"/>
-                                <include reference="bxu-Dl-uRX"/>
-                                <include reference="nYV-t8-stn"/>
                                 <include reference="2km-Gr-XqD"/>
                                 <exclude reference="969-0d-GPt"/>
                                 <include reference="TOL-Ox-v6b"/>
                                 <include reference="dhT-hm-QsF"/>
-                                <include reference="EQT-4H-4iq"/>
-                                <exclude reference="tlb-bO-lZk"/>
+                                <include reference="Cw6-cA-yJu"/>
+                                <include reference="bxu-Dl-uRX"/>
+                                <include reference="nYV-t8-stn"/>
                             </mask>
                         </variation>
                     </view>
@@ -710,10 +702,10 @@ Even testen of dit wel goed werkt</string>
             </objects>
             <point key="canvasLocation" x="2106" y="1014"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Route Navigation Controller-->
         <scene sceneID="7qH-1g-N82">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AwT-eC-dM9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AwT-eC-dM9" customClass="RouteNavigationController" customModule="Sightwalk" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Zk-0JF" customClass="GenericNavigationBar" customModule="Sightwalk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

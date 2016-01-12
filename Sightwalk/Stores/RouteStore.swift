@@ -8,8 +8,13 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
 
 class RouteStore {
+    
+    private let context : NSManagedObjectContext
+    private let appDelegate : AppDelegate
+    
     class var sharedInstance: RouteStore {
         struct Singleton {
             static let instance = RouteStore()
@@ -17,74 +22,54 @@ class RouteStore {
         return Singleton.instance
     }
     
-    var apiResponse: JSON?
+    var activities = [NSManagedObjectID : Activity]()
     
-    var chosenRoute: String?
-    
-    var polylines: [Int: [String]] = [:]
-    var directions: [Int: [String]] = [:]
-    
-    func calculateTotalDistance() -> String {
-        var distance: Double = 0
-        for (_, subJson) in apiResponse!["routes"][0]["legs"] {
-            if let currentDistance = subJson["distance"]["value"].double {
-                distance = distance + currentDistance
-            }
-        }
+    init() {
+        print(" loaded routestore")
         
-        distance = distance / 1000
-        
-        return String(format: "%.1f", distance)
+        // get context
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        context = appDelegate.managedObjectContext
     }
     
-    func calculateTotalTime() -> (Int, Int, Int) {
-        var time: Int = 0
-        
-        for (_, subJson) in apiResponse!["routes"][0]["legs"] {
-            if let currentTime = subJson["duration"]["value"].int {
-                time = time + currentTime
-            }
-        }
-        
-        return (time / 3600, (time % 3600) / 60, (time % 3600) % 60)
+    func saveContext() {
+        activities = [:]
+        appDelegate.saveContext()
     }
     
-    func setPolylines() {
-        polylines = [:]
+    func newActivity() -> Activity {
+        return NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: context) as! Activity
+    }
+    
+    func newDummyActivity() -> Activity {
+        let newActivity = NSEntityDescription.entityForName("Activity", inManagedObjectContext: context)
+        let dummyActivity = NSManagedObject(entity: newActivity!, insertIntoManagedObjectContext: appDelegate.tmpContext) as! Activity
+        return dummyActivity
+    }
+    
+    func removeActivity(activity : Activity) {
+        activities = [:]
+        context.deleteObject(activity as NSManagedObject)
+        appDelegate.saveContext()
+    }
+    
+    func getAllActivities() -> [Activity] {
+        if activities.count == 0 {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.managedObjectContext
         
-        let length = apiResponse!["routes"][0]["legs"].count
+            let fetchRequest = NSFetchRequest(entityName: "Activity");
         
-        for (var i = 0; i <= length; i++) {
-            for (_, subJson) in apiResponse!["routes"][0]["legs"][i]["steps"] {
-                let polyline = subJson["polyline"]["points"].string!
-                if var arr = polylines[i] {
-                    arr.append(polyline)
-                    polylines[i] = arr
-                } else {
-                    polylines[i] = [polyline]
+            do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Activity]
+                for act in fetchResults! {
+                    activities[act.getId()] = act
                 }
+            } catch let error as NSError {
+                debugPrint(error)
             }
         }
-        print(polylines)
-    }
     
-    func setDirections() {
-        directions = [:]
-        
-        let length = apiResponse!["routes"][0]["legs"].count
-        
-        for (var i = 0; i <= length; i++) {
-            for (_, subJson) in apiResponse!["routes"][0]["legs"][i]["steps"] {
-                let direction = subJson["html_instructions"].string!
-                if var arr = directions[i] {
-                    arr.append(direction)
-                    
-                    directions[i] = arr
-                } else {
-                    directions[i] = [direction]
-                }
-            }
-        }
-        print(directions)
+        return Array(activities.values)
     }
 }
