@@ -135,6 +135,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     func enteringSight(sight : Sight) {
         //detailView?.set
         sightToView = sight
+        fireEnteredSightNotification(sight)
         SightStore.sharedInstance.markSightAsVisited(sight)
         performSegueWithIdentifier("showSightDetail", sender: self)
     }
@@ -152,6 +153,15 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         // update map
         print("gps location manager")
         mapView!.center(location.coordinate)
+    }
+    
+    func fireEnteredSightNotification(sight : Sight) {
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        notification.alertBody = "U heeft de Sight '" + sight.name + "' bereikt!"
+        notification.alertAction = "SightWalk te starten."
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
     // TODO: Add change sight logic
