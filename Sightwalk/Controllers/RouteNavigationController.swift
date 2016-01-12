@@ -144,7 +144,9 @@ class RouteNavigationController: UINavigationController, CLLocationManagerDelega
             // this is the last sight
             if !returnToStart && startLocation != nil {
                 // stop walking
+                showEndOfRouteAlert()
                 walking = false
+                
             } else {
                 // go home
                 returningHome = true
@@ -168,6 +170,19 @@ class RouteNavigationController: UINavigationController, CLLocationManagerDelega
     }
     
     func returnedHome() {
-        // okay, do nothing
+        showEndOfRouteAlert()
+    }
+    
+    func showEndOfRouteAlert() {
+        let sights : [Sight] = activity!.getSights()
+
+        let alert = UIAlertController(title: "U heeft de route afgerond", message: "Gefeliciteerd! U heeft de route afgemaakt en het einde behaald. Hopelijk heeft u veel leuke Sights gezien.\n\n Afstand gelopen: " + (activity!.getTotalDistance()) + " km.\nAantal Sights bezocht: " + String(sights.count), preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Route stoppen", style: UIAlertActionStyle.Default, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: {})
+        }))
+        alert.addAction(UIAlertAction(title: "Annuleren", style: UIAlertActionStyle.Cancel, handler: { action in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
