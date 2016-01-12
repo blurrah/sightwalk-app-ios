@@ -9,7 +9,7 @@
 import UIKit
 
 class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate, RouteDetailDirectionsViewControllerDelegate {
-
+    
     var mapView: RouteMapViewController?
     var directionsView: RouteDirectionsViewController?
     var detailView: RouteDetailDirectionsViewController?
@@ -42,7 +42,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         // Do any additional setup after loading the view.
@@ -135,6 +135,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     func enteringSight(sight : Sight) {
         //detailView?.set
         sightToView = sight
+        SightStore.sharedInstance.markSightAsVisited(sight)
         performSegueWithIdentifier("showSightDetail", sender: self)
     }
     
@@ -154,7 +155,7 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     }
     
     // TODO: Add change sight logic
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -173,5 +174,5 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         
     }
-
+    
 }
