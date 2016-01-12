@@ -10,7 +10,7 @@ import UIKit
 
 class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
-    @IBOutlet var mapView: GMSMapView!
+    @IBOutlet private var mapView: GMSMapView!
     let locationManager = CLLocationManager()
     private var currentStep : Int = 0
     private var activity : Activity?
@@ -32,16 +32,6 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         self.activity = activity
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         

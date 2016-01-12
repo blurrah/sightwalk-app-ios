@@ -8,23 +8,20 @@
 
 import UIKit
 
-class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate, RouteDetailDirectionsViewControllerDelegate {
+class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteDirectionsViewControllerDelegate, RouteDetailDirectionsViewControllerDelegate {
 
     var mapView: RouteMapViewController?
     var directionsView: RouteDirectionsViewController?
     var detailView: RouteDetailDirectionsViewController?
     let chosenSights = SightStore.sharedInstance.userChosen
-    private var currentIndex = 0
-    let locationManager = CLLocationManager()
-    private var atSight : Bool = false
+    
+    
     private var sightShowController : SightDetailViewController?
-    private var startLocation : CLLocation?
     private var returnToStart : Bool = true
-    private var walking : Bool = true
-    private var returningHome : Bool = false
+    
     
     private var activity : Activity?
-    
+    private var nextSight : Sight?
     
     var currentSight: Int = 0
     
@@ -46,8 +43,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
         
         // Do any additional setup after loading the view.
         let sb = UIStoryboard.init(name: "Route", bundle: nil)
@@ -112,11 +107,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
         self.performSegueWithIdentifier("showSightDetail", sender: nil)
     }
     
-    func setStartPosition(position : CLLocation, returnHere : Bool) {
-        startLocation = position
-        returnToStart = returnHere
-    }
-
     private func showDetailView() {
         let width : CGFloat = self.view.frame.size.width;
         let height : CGFloat = self.view.frame.size.height;
@@ -140,103 +130,24 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
             }, completion: nil )
     }
     
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if !walking {
-            manager.stopUpdatingLocation()
-            return
-        }
-        
-        // grab data
-        var coordinate : CLLocationCoordinate2D
-        var location : CLLocation
-        if let location1: CLLocation! = manager.location {
-            location = location1!
-            coordinate = location1!.coordinate
-        } else {
-            return
-        }
-        
-        // update map
-        mapView!.center(coordinate)
-        
-        // apply tracking
-        if let nextSight : Sight = getNextSight() {
-            let distance : Double = nextSight.distanceTo(location)
-            if distance < 50 {
-                // within 50 meters distance
-                
-                if !atSight {
-                    // trigger opening sight
-                    enteringSight(nextSight)
-                }
-                
-                atSight = true
-            }
-            
-            if distance >= 50 {
-                if atSight {
-                    // trigger opening directions
-                    leavingSight(nextSight)
-                    currentIndex++
-                }
-                
-                atSight = false
-            }
-        } else {
-            // not heading to a sight, heading home?
-            if returningHome && startLocation != nil {
-                if Double(startLocation!.distanceFromLocation(manager.location!)) <= 50 {
-                    returnedHome()
-                }
-            }
-        }
-    }
-    
-    private func enteringSight(sight : Sight) {
+    func enteringSight(sight : Sight) {
+        //detailView?.set
         performSegueWithIdentifier("showSightDetail", sender: self)
-        
-        if (chosenSights.indexOf(sight)! + 1) >= chosenSights.count {
-            // this is the last sight
-            if !returnToStart && startLocation != nil {
-                // stop walking
-                walking = false
-            } else {
-                // go home
-                returningHome = true
-            }
-        }
-        print("entering")
     }
     
-    private func leavingSight(sight : Sight) {
-        if !returningHome {
-            // there are more sights
-            let nextSight : Sight = chosenSights[currentIndex + 1]
-            directionsView!.setSight(nextSight)
-        }
-        print("leaving")
+    func leavingSight(leftSight : Sight, headingHome : Bool) {
+        // do nothing (yet)
     }
     
-    private func returnedHome() {
-        // stop walking instantly
-        walking = false
-        print("stop!!! bitch")
+    func setNextSight(nextSight : Sight) {
+        directionsView!.setSight(nextSight)
+        self.nextSight = nextSight
     }
     
-    private func getNextSight() -> Sight? {
-        if currentIndex >= chosenSights.count {
-            return nil
-        }
-        
-        return chosenSights[currentIndex]
+    func setLocation(location : CLLocation) {
+        // update map
+        print("gps location manager")
+        mapView!.center(location.coordinate)
     }
     
     // TODO: Add change sight logic
@@ -249,7 +160,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSightDetail" {
             if let destination = segue.destinationViewController as? SightDetailViewController {
-                let nextSight : Sight? = getNextSight()
                 if nextSight != nil {
                     destination.setSight(nextSight!)
                 }

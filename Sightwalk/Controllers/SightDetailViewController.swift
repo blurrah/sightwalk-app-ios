@@ -29,16 +29,21 @@ class SightDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.titleBar.title = currentSight!.title
-        self.sightNameLabel.text = currentSight!.title
-        self.sightTextView.text = currentSight!.text
-        self.sightTextView.editable = false
-        
-        ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
-            self.sightImageView.image = UIImage(data: response)
-        })
-        
-        changeFavoriteButtonText()
+        if currentSight != nil {
+            self.titleBar.title = currentSight!.title
+            self.sightNameLabel.text = currentSight!.title
+            self.sightTextView.text = currentSight!.text
+            self.sightTextView.editable = false
+            
+            ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
+                self.sightImageView.image = UIImage(data: response)
+            })
+            
+            changeFavoriteButtonText()
+        } else {
+            print("current sight is nil, there might be something wrong")
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +52,7 @@ class SightDetailViewController: UIViewController {
     }
     
     func setSight(sight : Sight) {
+        print("set sight")
         currentSight = sight
     }
     
