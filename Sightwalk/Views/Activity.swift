@@ -32,8 +32,9 @@ class Activity: NSManagedObject {
     }
     
     func setSights(sights : [Sight]) {
-        self.sights = nil
+        self.sights = sights
         self.userChosen = sights.map({ String($0.id) }).joinWithSeparator("-")
+        print(self.userChosen)
     }
     
     func getRouteInfo() -> JSON {
@@ -120,7 +121,7 @@ class Activity: NSManagedObject {
         }
         
         distance = distance / 1000
-        
+
         return String(format: "%.1f", distance)
     }
     
@@ -168,6 +169,54 @@ class Activity: NSManagedObject {
     func readyForWalking() -> Bool {
         print(userChosen)
         return userChosen.characters.count > 0
+    }
+    
+    func switchPosition(sightOne : Sight, sightTwo : Sight) {
+        if isSelected(sightOne) && isSelected(sightTwo) {
+            let posOne : Int = getSelectedIndex(sightOne)!
+            let posTwo : Int = getSelectedIndex(sightTwo)!
+            
+            var sights : [Sight] = getSights()
+            sights[posOne] = sightTwo
+            sights[posTwo] = sightOne
+            setSights(sights)
+        }
+    }
+    
+    func isSelected(sight : Sight) -> Bool {
+        return getSights().contains(sight)
+    }
+    
+    func getSelectedIndex(sight : Sight) -> Int? {
+        return getSights().indexOf(sight)
+    }
+    
+    func getSelectedCount() -> Int {
+        return getSights().count
+    }
+    
+    func hasSelectedSights() -> Bool {
+        return !getSights().isEmpty
+    }
+    
+    func markSightSelected(sight : Sight) {
+        markSightSelected(sight, selected: true)
+    }
+    
+    func markSightSelected(sight : Sight, selected : Bool) {
+        var sights : [Sight] = getSights()
+        
+        // add marker
+        if selected && !sights.contains(sight) {
+            sights.append(sight)
+        }
+        
+        // remove marker
+        if !selected && sights.contains(sight) {
+            sights.removeAtIndex(sights.indexOf(sight)!)
+        }
+        
+        setSights(sights)
     }
 }
 
