@@ -84,6 +84,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sightStore.getAllVisited()
+
         JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
         JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         

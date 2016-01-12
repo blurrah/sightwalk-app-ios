@@ -55,6 +55,8 @@
 		F3436C2B1C242B6D00D121FA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3436C2A1C242B6D00D121FA /* FavoriteTableViewCell.swift */; };
 		F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */; };
 		F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */; };
+		F38B94B41C451046003555CD /* Visited+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B94B31C451046003555CD /* Visited+CoreDataProperties.swift */; };
+		F38B94B61C45113D003555CD /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B94B51C45113D003555CD /* Visited.swift */; };
 		F3A1D2D11C329EE000ADA300 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2D01C329EE000ADA300 /* Favorite.swift */; };
 		F3A1D2D31C329F1500ADA300 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
@@ -148,7 +150,9 @@
 		F3436C2A1C242B6D00D121FA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
-		F3A1D2D01C329EE000ADA300 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		F38B94B31C451046003555CD /* Visited+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Visited+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F38B94B51C45113D003555CD /* Visited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
+		F3A1D2D01C329EE000ADA300 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorite.swift; path = ../../Favorite.swift; sourceTree = "<group>"; };
 		F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
 		F3B7A9161BFA231600420352 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +248,7 @@
 				2FFA3D571BF34EFE00B758D5 /* LaunchScreen.storyboard */,
 				2FFA3D5A1BF34EFE00B758D5 /* Info.plist */,
 				2FFA3D521BF34EFE00B758D5 /* Sightwalk.xcdatamodeld */,
-				F3A1D2D01C329EE000ADA300 /* Favorite.swift */,
+				F38B94B31C451046003555CD /* Visited+CoreDataProperties.swift */,
 				F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */,
 			);
 			path = Sightwalk;
@@ -346,6 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				F3E44E711C1055BA0017F1DD /* Sight.swift */,
+				F3A1D2D01C329EE000ADA300 /* Favorite.swift */,
+				F38B94B51C45113D003555CD /* Visited.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F38B94B41C451046003555CD /* Visited+CoreDataProperties.swift in Sources */,
 				2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */,
 				F3A1D2D31C329F1500ADA300 /* Favorite+CoreDataProperties.swift in Sources */,
 				2FFA3D8D1BF4B2A900B758D5 /* LoginViewController.swift in Sources */,
@@ -586,6 +593,7 @@
 				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
 				925A4FDC1C3F11B300B6EDB7 /* SightCreateViewController.swift in Sources */,
 				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
+				F38B94B61C45113D003555CD /* Visited.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */,

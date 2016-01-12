@@ -181,7 +181,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate, UIGestur
     
     private func enteringSight(sight : Sight) {
         performSegueWithIdentifier("showSightDetail", sender: self)
-        
+        SightStore.sharedInstance.markSightAsVisited(sight)
         if (chosenSights.indexOf(sight)! + 1) >= chosenSights.count {
             // this is the last sight
             if !returnToStart && startLocation != nil {
