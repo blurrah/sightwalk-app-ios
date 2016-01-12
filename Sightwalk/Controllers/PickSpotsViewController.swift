@@ -162,7 +162,6 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         if newFavorite {
             favoriteButton.setImage(star_checked, forState: .Normal)
         } else {
-            //TODO: Set button image as EMPTY STAR. Below is temp color set
             favoriteButton.setImage(star_unchecked, forState: .Normal)
         }
     }
