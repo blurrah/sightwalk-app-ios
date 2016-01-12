@@ -10,6 +10,7 @@ target 'Sightwalk' do
 	pod 'Locksmith', '~> 2.0'
 	pod 'SwiftCop'
     pod 'GoogleMaps'
+    pod 'Charts'
 end
 
 target 'SightwalkTests' do
