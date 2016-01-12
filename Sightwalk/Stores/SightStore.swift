@@ -120,7 +120,7 @@ class SightStore : SightSyncInterface {
      * functions which handle the selectionstate of a sight
      *
      **/
-     
+    
     func markSightSelected(sight : Sight) {
         markSightSelected(sight, selected: true)
     }
@@ -285,6 +285,10 @@ class SightStore : SightSyncInterface {
         } catch let error as NSError {
             debugPrint(error)
         }
+    }
+    
+    func getSelection(identities : [Int]) -> [Sight] {
+        return sights.filter({identities.contains($0.id)})
     }
 
     var userChosen = [Sight]()

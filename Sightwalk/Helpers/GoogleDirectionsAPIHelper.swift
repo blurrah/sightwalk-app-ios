@@ -41,8 +41,17 @@ class GoogleDirectionsAPIHelper {
                 print("GoogleDirections API Request: success!")
                 let jsonResponse = JSON(response.result.value!)
                 
-                RouteStore.sharedInstance.apiResponse = jsonResponse
+                print(response.result.value!)
+                print(jsonResponse.rawString()!)
+ 
                 
+                let string = jsonResponse.rawString()!
+                let trimmed = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                print(trimmed)
+                
+                let oj = JSON(jsonResponse.rawString()!)
+                print(oj.rawString()!)
+
                 onCompletion(jsonResponse)
                 break
             case .Failure:

@@ -16,10 +16,11 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
     
     var delegate: RouteDetailDirectionsViewControllerDelegate?
     
-    let chosenSights = SightStore.sharedInstance.userChosen
     var scrollView: UIScrollView!
     var containerView: UIView!
     var spacer: CGFloat = 30
+    
+    private var activity : Activity?
 
     @IBAction func tapSightsButton(sender: AnyObject) {
         delegate!.routeDetailDirectionsViewControllerButtonPressed(self, info: nil)
@@ -29,7 +30,7 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let directions = RouteStore.sharedInstance.directions
+        let directions = activity!.getDirections()
         
         // Set up scroll and container view
         self.scrollView = UIScrollView(frame: view.bounds)
@@ -38,6 +39,9 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         self.scrollView.delegate = self
         self.scrollView.contentSize = self.containerView.bounds.size
         self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+
+        print("x")
+        print(activity!.jsonResponse)
         
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
@@ -50,7 +54,8 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
         self.containerView.addSubview(startLabel)
         
         // Loop and add sight names + directions
-        for (var i = 0; i < chosenSights.count; i++) {
+        let sights = activity!.getSights()
+        for (var i = 0; i < sights.count; i++) {
             
             for direction in directions[i]! {
                 let label = UILabel(frame: CGRectMake(0, 0, 300, 21))
@@ -68,12 +73,16 @@ class RouteDetailDirectionsViewController: UIViewController, UIScrollViewDelegat
             label.textAlignment = .Left
             label.textColor = UIColor(red:0.102, green:0.788, blue:0.341, alpha:1)
             label.center = CGPointMake(180, 50 + self.spacer)
-            label.text = chosenSights[i].title
+            label.text = sights[i].title
             
             self.containerView.addSubview(label)
             
             self.spacer += 30
         }
+    }
+    
+    func setActivity(activity : Activity) {
+        self.activity = activity
     }
 
     override func didReceiveMemoryWarning() {

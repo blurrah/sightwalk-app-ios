@@ -10,11 +10,10 @@ import UIKit
 
 class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
-    @IBOutlet var mapView: GMSMapView!
-    let chosenSights = SightStore.sharedInstance.userChosen
-    let routeSteps = RouteStore.sharedInstance.polylines
+    @IBOutlet private var mapView: GMSMapView!
     let locationManager = CLLocationManager()
     private var currentStep : Int = 0
+    private var activity : Activity?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +27,17 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    func setActivity(activity : Activity) {
+        self.activity = activity
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
         mapView.delegate = self
         
-        for sight in chosenSights {
+        for sight in activity!.getSights() {
             let marker = GMSMarker(position: sight.location)
             marker.title = sight.title
             marker.snippet = String(sight.id)
@@ -53,7 +46,7 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             marker.map = mapView
         }
         
-        for (index, steps) in routeSteps {
+        for (index, steps) in activity!.getPolylines() {
             for step in steps {
                 let path = GMSPath(fromEncodedPath: step)
                 let polyline = GMSPolyline(path: path)
