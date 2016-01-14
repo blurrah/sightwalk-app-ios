@@ -16,6 +16,11 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     private var image : UIImage?
     private let imageHelper = ImageHelper()
     
+    @IBAction func disableKeyboardTapGestureRecognizer(sender: AnyObject) {
+        tfName.resignFirstResponder()
+        tvDescription.resignFirstResponder()
+    }
+    
     @IBAction func btnSave(sender: AnyObject) {
         if coordinates == nil {
             toastError("Selecteer een punt op de kaart")
@@ -55,16 +60,10 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         mvCoordinateSelect.delegate = self
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
-            // don't take picture, just use a koala
-            let koalapath = NSBundle.mainBundle().URLForResource("koala", withExtension: "jpg")
-            image = UIImage(named: koalapath!.path!)
-            imageHelper.setImage(image!)
-        #else
-            // take picture with camera
-           takePicture()
-        #endif
+
+        // take picture with camera
+        takePicture()
+                                                  
     }
     
     private func takePicture() {
@@ -77,9 +76,10 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
-        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageHelper.setImage(pickedImage)
+        }
         
-        imageHelper.setImage(image!)
     }
     
     private func uploadImage() {
@@ -157,7 +157,7 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         params["name"] = tfName.text!
         params["type"] = "monument" // todo
         let desc : NSString = tvDescription.text!
-        params["short_description"] = (desc.length > 100) ? desc.substringWithRange(NSRange(location: 0, length: 100)) : desc
+        params["short_description"] = desc
         params["image_url"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
         params["description"] = desc
         params["external_photo"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
@@ -165,7 +165,7 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         
         UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .POST, parameters: params, success: { json in
             self.toastSuccess("De sight is aangemaakt!")
-            self.performSegueWithIdentifier("unwindToAddSights", sender: self)
+            // self.performSegueWithIdentifier("unwindToAddSights", sender: self)
             self.storeImage(json["sight_id"].intValue)
         }, failure: { error in
             print("failed")

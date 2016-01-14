@@ -13,11 +13,12 @@ import Alamofire
 class ImageHelper: NSObject {
 
     private var image : UIImage?
+    private var imageData: NSData?
     private var path : NSURL?
     
     func setImage(image : UIImage) {
         self.image = image
-        storeTemporarily()
+        self.imageData = NSData(data: UIImagePNGRepresentation(image)!)
     }
     
     private func storeTemporarily() {
@@ -50,8 +51,8 @@ class ImageHelper: NSObject {
             let fm = NSFileManager.defaultManager()
             do {
                 print(path!.fileURL ? "file" : "nofile")
-                try fm.moveItemAtPath(path!.path!, toPath: newPath!.path!)
-                path = newPath
+                // try fm.moveItemAtPath(path!.path!, toPath: newPath!.path!)
+                // path = newPath
                 doUploadFor(sightId, success: success, failure: failure)
             } catch {
                 print("cannot move file")
@@ -69,10 +70,10 @@ class ImageHelper: NSObject {
             ]
             
             //todo remove
-            self.path = NSBundle.mainBundle().URLForResource("koala", withExtension: "jpg")
+            // self.path = NSBundle.mainBundle().URLForResource("koala", withExtension: "jpg")
             
             Alamofire.upload(Method.POST, URLRequest, headers: headers, multipartFormData: { multipartFormData in
-                multipartFormData.appendBodyPart(fileURL: self.path!, name: "sightImage")
+                multipartFormData.appendBodyPart(data: self.imageData!, name: "sightImage")
             }, encodingCompletion: { encodingResult in
                     switch encodingResult {
                     case .Success(let upload, _, _):
@@ -94,7 +95,7 @@ class ImageHelper: NSObject {
     private func getSightPathFor(name : String) -> NSURL? {
         let manager = NSFileManager.defaultManager()
         do {
-            let directoryURL = try manager.URLForDirectory(.PicturesDirectory, inDomain:.UserDomainMask, appropriateForURL:nil, create:true)
+            let directoryURL = try manager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL:nil, create:true)
             return directoryURL.URLByAppendingPathComponent("sight/" + name + ".png")
         } catch {
             print("could not store image")

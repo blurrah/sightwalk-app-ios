@@ -1451,16 +1451,16 @@ Wij laten u zien hoe het werkt.</string>
                                         <exclude reference="2FG-Tu-HqT"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="XPZ-4q-uim"/>
-                                        <exclude reference="zP1-76-N9w"/>
+                                        <exclude reference="3h6-UX-rBM"/>
+                                        <exclude reference="O7O-qL-x4d"/>
+                                        <exclude reference="WZF-mx-nhk"/>
                                         <exclude reference="IGk-Uj-0A2"/>
                                         <exclude reference="LWc-co-Rpm"/>
                                         <exclude reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
                                         <exclude reference="sCD-z3-YSF"/>
-                                        <exclude reference="3h6-UX-rBM"/>
-                                        <exclude reference="O7O-qL-x4d"/>
-                                        <exclude reference="WZF-mx-nhk"/>
+                                        <exclude reference="XPZ-4q-uim"/>
+                                        <exclude reference="zP1-76-N9w"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1470,16 +1470,16 @@ Wij laten u zien hoe het werkt.</string>
                                         <include reference="2FG-Tu-HqT"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="XPZ-4q-uim"/>
-                                        <include reference="zP1-76-N9w"/>
+                                        <include reference="3h6-UX-rBM"/>
+                                        <include reference="O7O-qL-x4d"/>
+                                        <include reference="WZF-mx-nhk"/>
                                         <include reference="IGk-Uj-0A2"/>
                                         <include reference="LWc-co-Rpm"/>
                                         <include reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
                                         <include reference="sCD-z3-YSF"/>
-                                        <include reference="3h6-UX-rBM"/>
-                                        <include reference="O7O-qL-x4d"/>
-                                        <include reference="WZF-mx-nhk"/>
+                                        <include reference="XPZ-4q-uim"/>
+                                        <include reference="zP1-76-N9w"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1621,16 +1621,16 @@ wilt beginnen.</string>
                                         <exclude reference="MmA-5F-Ayo"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="0g4-qS-nI6"/>
+                                        <exclude reference="fBQ-kf-2zx"/>
+                                        <exclude reference="pmQ-ON-O8R"/>
+                                        <exclude reference="qV7-V7-YIA"/>
                                         <exclude reference="5pf-6n-hLE"/>
                                         <exclude reference="BqA-AU-Mru"/>
                                         <exclude reference="Hdx-Lc-2gk"/>
                                         <exclude reference="WDZ-AH-9wN"/>
                                         <exclude reference="Xat-4L-L4i"/>
                                         <exclude reference="tHr-ed-o35"/>
-                                        <exclude reference="0g4-qS-nI6"/>
-                                        <exclude reference="fBQ-kf-2zx"/>
-                                        <exclude reference="pmQ-ON-O8R"/>
-                                        <exclude reference="qV7-V7-YIA"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1640,16 +1640,16 @@ wilt beginnen.</string>
                                         <include reference="MmA-5F-Ayo"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="0g4-qS-nI6"/>
+                                        <include reference="fBQ-kf-2zx"/>
+                                        <include reference="pmQ-ON-O8R"/>
+                                        <include reference="qV7-V7-YIA"/>
                                         <include reference="5pf-6n-hLE"/>
                                         <include reference="BqA-AU-Mru"/>
                                         <include reference="Hdx-Lc-2gk"/>
                                         <include reference="WDZ-AH-9wN"/>
                                         <include reference="Xat-4L-L4i"/>
                                         <include reference="tHr-ed-o35"/>
-                                        <include reference="0g4-qS-nI6"/>
-                                        <include reference="fBQ-kf-2zx"/>
-                                        <include reference="pmQ-ON-O8R"/>
-                                        <include reference="qV7-V7-YIA"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1821,8 +1821,11 @@ Tijd om de mooie Sights te gaan bekijken! </string>
                                         <exclude reference="Pcd-F3-Lih"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="0PX-nt-Tf4"/>
-                                        <exclude reference="vce-dn-9YY"/>
+                                        <exclude reference="2ea-s4-pzf"/>
+                                        <exclude reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <exclude reference="x8F-zU-8wB"/>
                                         <exclude reference="21g-Pm-PtT"/>
                                         <exclude reference="YBl-DC-ZZn"/>
                                         <exclude reference="aCH-aJ-KxQ"/>
@@ -1831,11 +1834,8 @@ Tijd om de mooie Sights te gaan bekijken! </string>
                                         <exclude reference="UMQ-hj-Cee"/>
                                         <exclude reference="ZBA-3b-e6m"/>
                                         <exclude reference="j5F-ak-zWN"/>
-                                        <exclude reference="2ea-s4-pzf"/>
-                                        <exclude reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <exclude reference="x8F-zU-8wB"/>
+                                        <exclude reference="0PX-nt-Tf4"/>
+                                        <exclude reference="vce-dn-9YY"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1846,8 +1846,11 @@ Tijd om de mooie Sights te gaan bekijken! </string>
                                         <include reference="Pcd-F3-Lih"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="0PX-nt-Tf4"/>
-                                        <include reference="vce-dn-9YY"/>
+                                        <include reference="2ea-s4-pzf"/>
+                                        <include reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <include reference="x8F-zU-8wB"/>
                                         <include reference="21g-Pm-PtT"/>
                                         <include reference="YBl-DC-ZZn"/>
                                         <include reference="aCH-aJ-KxQ"/>
@@ -1856,11 +1859,8 @@ Tijd om de mooie Sights te gaan bekijken! </string>
                                         <include reference="UMQ-hj-Cee"/>
                                         <include reference="ZBA-3b-e6m"/>
                                         <include reference="j5F-ak-zWN"/>
-                                        <include reference="2ea-s4-pzf"/>
-                                        <include reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <include reference="x8F-zU-8wB"/>
+                                        <include reference="0PX-nt-Tf4"/>
+                                        <include reference="vce-dn-9YY"/>
                                     </mask>
                                 </variation>
                             </view>
