@@ -24,6 +24,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     @IBOutlet var startPointSwitchOutlet: UISwitch!
     
     private var gpsEnabled : Bool = false
+    private var currentActivity : Activity = RouteStore.sharedInstance.newDummyActivity()
     
     var availableHeight : CGFloat = 0.0
     
@@ -55,19 +56,35 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         updateDistance()
     }
     private func launchRouteLoop() {
-        let storyboard = UIStoryboard(name: "Route", bundle: nil)
+        let alert : UIAlertController = UIAlertController(title: "Naam kiezen", message: "Vul hieronder een naam in voor de route.", preferredStyle: UIAlertControllerStyle.Alert)
         
-        let vc = storyboard.instantiateInitialViewController() as UIViewController!
-        //presentViewController(vc, animated: true, completion: nil)
+        alert.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Naam"
+        }
         
-//        let vc = storyboard.instantiateViewControllerWithIdentifier("RouteView") as! RouteViewController
-//        
-//        if currentGeoPosition !== nil {
-//            vc.setStartPosition(currentGeoPosition!, returnHere: endPointSegmentedOutlet.selectedSegmentIndex == 0)
-//        }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:  { action in
+            let textField = alert.textFields![0] as UITextField
+            if textField.text!.isEmpty == false {
+                self.currentActivity.name = textField.text!
+                
+                // launch
+                let vc = RouteNavigationController.startRoute(self.currentActivity, returnAtStart: true)
+                if vc != nil {
+                    self.presentViewController(vc!, animated: true, completion: nil)
+                    self.currentActivity = RouteStore.sharedInstance.newDummyActivity()
+                } else {
+                    print("cant start route")
+                }
+                
+            } else {
+                JLToast.makeText("U dient een naam in te voeren voor de route.", delay: 0, duration: 2).show()
+            }
+        }))
         
+        alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Cancel, handler: { action in
+        }))
         
-        presentViewController(vc, animated: true, completion: nil)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func endPointSegmentedAction(sender: AnyObject) {
@@ -84,6 +101,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sightStore.getAllVisited()
+
         JLToastView.setDefaultValue(UIColor.redColor(), forAttributeName:JLToastViewBackgroundColorAttributeName, userInterfaceIdiom: .Phone)
         JLToastView.setDefaultValue(80, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: .Phone)
         
@@ -93,8 +112,6 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         sightStore.subscribe(self, slot: "createrouteview")
         
         self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestAlwaysAuthorization()
-        
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -124,27 +141,30 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func updateSight(oldSight: Sight, newSight: Sight) {
-        // only interesting if sight is selected
-        if sightStore.isSelected(newSight) {
-            // update the column
+        // not interesting
+        
+        let selected : Bool = currentActivity.isSelected(oldSight)
+        if selected {
+            currentActivity.markSightSelected(oldSight, selected: false)
         }
+        currentActivity.markSightSelected(newSight, selected: selected)
     }
     
     func removeSight(sight: Sight) {
         // only interesting if sight is selected
-        if sightStore.isSelected(sight) {
+        if currentActivity.isSelected(sight) {
             // remove sight from table
-            sightStore.markSightSelected(sight, selected: false)
+            currentActivity.markSightSelected(sight, selected: false)
             
-            if (CGFloat(sightStore.getSelectedCount()) < CGFloat((availableHeight / 44))) {
-                self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
+            if (CGFloat(currentActivity.getSelectedCount()) < CGFloat((availableHeight / 44))) {
+                self.bottomTableViewConstraintOutlet.constant = CGFloat(currentActivity.getSelectedCount()) * 44
                 tableView.scrollEnabled = false
             } else {
                 self.bottomTableViewConstraintOutlet.constant = CGFloat(availableHeight)
                 tableView.scrollEnabled = true
             }
             
-            if (sightStore.getSelectedCount() == 0) {
+            if (currentActivity.getSelectedCount() == 0) {
                 
             }
             
@@ -202,7 +222,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
             center.y = locationInView.y
             My.cellSnapshot!.center = center
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                sightStore.switchPosition(sightStore.userChosen[indexPath!.row], sightTwo: sightStore.userChosen[Path.initialIndexPath!.row])
+                let sights = currentActivity.getSights()
+                currentActivity.switchPosition(sights[indexPath!.row], sightTwo: sights[Path.initialIndexPath!.row])
                 tableView.moveRowAtIndexPath(Path.initialIndexPath!, toIndexPath: indexPath!)
                 Path.initialIndexPath = indexPath
             }
@@ -237,7 +258,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sightStore.getSelectedCount()
+        return currentActivity.getSelectedCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -246,14 +267,14 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         let row = indexPath.row
         cell.contentView.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1)
         cell.textLabel?.textColor = UIColor(red:0.12, green:0.81, blue:0.43, alpha:1)
-        cell.textLabel?.text = sightStore.userChosen[row].name
+        cell.textLabel?.text = currentActivity.getSights()[row].name
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            removeSight(sightStore.userChosen[indexPath.item])
+            removeSight(currentActivity.getSights()[indexPath.item])
         }
     }
     
@@ -265,8 +286,8 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         super.viewDidAppear(animated)
         self.tableView.reloadData()
         
-        if (CGFloat(sightStore.getSelectedCount()) < CGFloat((availableHeight / 44))) {
-            self.bottomTableViewConstraintOutlet.constant = CGFloat(sightStore.getSelectedCount()) * 44
+        if (CGFloat(currentActivity.getSelectedCount()) < CGFloat((availableHeight / 44))) {
+            self.bottomTableViewConstraintOutlet.constant = CGFloat(currentActivity.getSelectedCount()) * 44
             tableView.scrollEnabled = false
         } else {
             self.bottomTableViewConstraintOutlet.constant = CGFloat(availableHeight)
@@ -274,24 +295,21 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         }
         
         updateSegmentedControl()
-        if sightStore.hasSelectedSights() {
+        if currentActivity.hasSelectedSights() {
             updateDistance()
         }
     }
     
     func updateDistance() {
         if ReachabilityHelper.isConnectedToNetwork() == true {
-            if sightStore.hasSelectedSights() {
-                GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: sightStore.userChosen, onCompletion: { results in
-                    let totalDistance = RouteStore.sharedInstance.calculateTotalDistance()
-                    let (h, m, _) = RouteStore.sharedInstance.calculateTotalTime()
-                
-                    RouteStore.sharedInstance.setPolylines()
+            if currentActivity.hasSelectedSights() {
+                GoogleDirectionsAPIHelper.sharedInstance.getDirections(getStartPoint(), destination: getEndPoint(), sights: currentActivity.getSights(), onCompletion: { results in
+                    self.currentActivity.setRouteInfo(results)
+                    let totalDistance = self.currentActivity.getTotalDistance()
+                    let (h, m, _) = self.currentActivity.getTotalTime()
 
-                    RouteStore.sharedInstance.chosenRoute = results["routes"][0]["overview_polyline"]["points"].string
-                
-                    self.totalsTextOutlet.text = "Totaal \(self.sightStore.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
-                    if (self.startPointSwitchOutlet.on && self.sightStore.userChosen.count >= 2) || (self.startPointSwitchOutlet.on == false) {
+                    self.totalsTextOutlet.text = "Totaal \(self.currentActivity.getSelectedCount()) sights / \(totalDistance) km afstand\r \(h) uur, \(m) min"
+                    if (self.startPointSwitchOutlet.on && self.currentActivity.getSelectedCount() >= 2) || (self.startPointSwitchOutlet.on == false) {
                         self.startRouteButtonOutlet.enableButton()
                     } else {
                         self.startRouteButtonOutlet.disableButton()
@@ -316,17 +334,22 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 return "\(lat), \(lon)"
             }
         }
-        let location = sightStore.userChosen.first!.location
-        let lon = String(location.longitude)
-        let lat = String(location.latitude)
+        
+        if let firstSight = currentActivity.getSights().first {
+            let location = firstSight.location
+            let lon = String(location.longitude)
+            let lat = String(location.latitude)
             
-        return "\(lat), \(lon)"
+            return "\(lat), \(lon)"
+        }
+        
+        return "(0), (0)"
     }
     
     func getEndPoint() -> String {
-        if endPointSegmentedOutlet.selectedSegmentIndex == 0 {
+        if !returnAtStartPoint() {
             // end on last sight
-            let location = sightStore.userChosen.last!.location
+            let location = currentActivity.getSights().last!.location
             let lon = String(location.longitude)
             let lat = String(location.latitude)
             
@@ -335,6 +358,10 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
         
         // end on startposition
         return getStartPoint()
+    }
+    
+    func returnAtStartPoint() -> Bool {
+        return endPointSegmentedOutlet.selectedSegmentIndex != 0
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -351,22 +378,20 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     private func updateSegmentedControl() {
-        let hasSights : Bool = sightStore.hasSelectedSights()
+        let hasSights : Bool = currentActivity.hasSelectedSights()
         
         // enable or disable segmentedcontrol
         endPointSegmentedOutlet.selectedSegmentIndex = hasSights ? 1 : 0
         endPointSegmentedOutlet.enabled = hasSights
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "displayPickSpots" {
+            if let controller = segue.destinationViewController as? PickSpotsViewController {
+                controller.setActivity(currentActivity)
+            }
+        }
     }
-    */
     
     
     func snapshotOfCell(inputView: UIView) -> UIView {

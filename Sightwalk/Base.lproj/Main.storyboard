@@ -511,67 +511,6 @@ Kies hieronder een optie.</string>
                                                     <action selector="validateAge:" destination="Mql-4Z-w7B" eventType="editingChanged" id="wYU-lH-ej5"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mailadres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVN-YH-Bym" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
-                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Jg6-Zc-sKf"/>
-                                                    <constraint firstAttribute="height" constant="60" id="OX0-zc-bUE"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Wzu-R1-QZt"/>
-                                                    <constraint firstAttribute="width" constant="400" id="w32-wj-E5b"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Jg6-Zc-sKf"/>
-                                                        <exclude reference="OX0-zc-bUE"/>
-                                                        <exclude reference="Wzu-R1-QZt"/>
-                                                        <exclude reference="w32-wj-E5b"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Jg6-Zc-sKf"/>
-                                                        <include reference="OX0-zc-bUE"/>
-                                                        <exclude reference="Wzu-R1-QZt"/>
-                                                        <include reference="w32-wj-E5b"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gewicht" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QvD-6j-em8" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
-                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="IQ7-F6-eGm"/>
-                                                    <constraint firstAttribute="height" constant="60" id="Lzg-bJ-KK4"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Sfz-Vf-FqT"/>
-                                                    <constraint firstAttribute="width" constant="400" id="bHV-1o-fdS"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="IQ7-F6-eGm"/>
-                                                        <exclude reference="Lzg-bJ-KK4"/>
-                                                        <exclude reference="Sfz-Vf-FqT"/>
-                                                        <exclude reference="bHV-1o-fdS"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="IQ7-F6-eGm"/>
-                                                        <include reference="Lzg-bJ-KK4"/>
-                                                        <include reference="Sfz-Vf-FqT"/>
-                                                        <include reference="bHV-1o-fdS"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="validateWeight:" destination="Mql-4Z-w7B" eventType="editingChanged" id="D1r-0u-uHI"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lengte" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-yp-8E4" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                 <constraints>
@@ -605,6 +544,67 @@ Kies hieronder een optie.</string>
                                                 </variation>
                                                 <connections>
                                                     <action selector="validateLength:" destination="Mql-4Z-w7B" eventType="editingChanged" id="bfA-0m-RxB"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gewicht" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QvD-6j-em8" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="IQ7-F6-eGm"/>
+                                                    <constraint firstAttribute="height" constant="60" id="Lzg-bJ-KK4"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Sfz-Vf-FqT"/>
+                                                    <constraint firstAttribute="width" constant="400" id="bHV-1o-fdS"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="IQ7-F6-eGm"/>
+                                                        <exclude reference="Lzg-bJ-KK4"/>
+                                                        <exclude reference="Sfz-Vf-FqT"/>
+                                                        <exclude reference="bHV-1o-fdS"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="IQ7-F6-eGm"/>
+                                                        <include reference="Lzg-bJ-KK4"/>
+                                                        <include reference="Sfz-Vf-FqT"/>
+                                                        <include reference="bHV-1o-fdS"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="validateWeight:" destination="Mql-4Z-w7B" eventType="editingChanged" id="D1r-0u-uHI"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mailadres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVN-YH-Bym" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Jg6-Zc-sKf"/>
+                                                    <constraint firstAttribute="height" constant="60" id="OX0-zc-bUE"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Wzu-R1-QZt"/>
+                                                    <constraint firstAttribute="width" constant="400" id="w32-wj-E5b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Jg6-Zc-sKf"/>
+                                                        <exclude reference="OX0-zc-bUE"/>
+                                                        <exclude reference="Wzu-R1-QZt"/>
+                                                        <exclude reference="w32-wj-E5b"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Jg6-Zc-sKf"/>
+                                                        <include reference="OX0-zc-bUE"/>
+                                                        <exclude reference="Wzu-R1-QZt"/>
+                                                        <include reference="w32-wj-E5b"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="validateEmail:" destination="Mql-4Z-w7B" eventType="editingChanged" id="XYD-sf-KeW"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -672,9 +672,9 @@ Kies hieronder een optie.</string>
                                                 <exclude reference="gAV-dy-4jW"/>
                                                 <exclude reference="KbG-u7-cSz"/>
                                                 <exclude reference="E2w-17-FRK"/>
-                                                <exclude reference="AVN-YH-Bym"/>
-                                                <exclude reference="QvD-6j-em8"/>
                                                 <exclude reference="s1d-yp-8E4"/>
+                                                <exclude reference="QvD-6j-em8"/>
+                                                <exclude reference="AVN-YH-Bym"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="AJP-il-3pg"/>
@@ -734,9 +734,9 @@ Kies hieronder een optie.</string>
                                                 <include reference="gAV-dy-4jW"/>
                                                 <include reference="KbG-u7-cSz"/>
                                                 <include reference="E2w-17-FRK"/>
-                                                <include reference="AVN-YH-Bym"/>
-                                                <include reference="QvD-6j-em8"/>
                                                 <include reference="s1d-yp-8E4"/>
+                                                <include reference="QvD-6j-em8"/>
+                                                <include reference="AVN-YH-Bym"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="AJP-il-3pg"/>
@@ -1016,24 +1016,6 @@ Kies hieronder een optie.</string>
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="204" width="400" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="XIr-Cv-neU"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="XIr-Cv-neU"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="XIr-Cv-neU"/>
-                                                    </mask>
-                                                </variation>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-nC-sNL" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="264" width="400" height="60"/>
                                                 <constraints>
@@ -1050,6 +1032,24 @@ Kies hieronder een optie.</string>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="N3i-d7-z90"/>
+                                                    </mask>
+                                                </variation>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gebruikersnaam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-xU-SfR" customClass="GenericTextField" customModule="Sightwalk" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="204" width="400" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="XIr-Cv-neU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="XIr-Cv-neU"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="XIr-Cv-neU"/>
                                                     </mask>
                                                 </variation>
                                             </textField>

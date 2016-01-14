@@ -29,6 +29,8 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     let star_unchecked = UIImage(named: "favorite_star_unchecked")! as UIImage
     let star_checked = UIImage(named: "favorite_star")! as UIImage
+    
+    private var activity : Activity?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Do any additional setup after loading the view.
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func setActivity(activity : Activity) {
+        self.activity = activity
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -61,14 +67,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         marker.snippet = String(sight.id)
         marker.userData = sight.shortdesc
         marker.map = mapView
-        
-        if (sightStore.isFavorite(sight) && !sightStore.isSelected(sight)) {
-            marker.icon = GMSMarker.markerImageWithColor(colorYellow)
-        }
-        if sightStore.isSelected(sight) {
-            marker.icon = GMSMarker.markerImageWithColor(colorGreen)
-        }
-        
+        marker.icon = getSightColor(sight)
         markers[sight] = marker
     }
     
@@ -84,6 +83,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             locationManager.stopUpdatingLocation()
         }
     }
+    
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
 
         let sight = getSightByMarker(marker)
@@ -94,7 +94,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
             favoriteButton.setImage(star_unchecked, forState: .Normal)
         }
  
-        if (sightStore.isSelected(sight)) {
+        if (activity!.isSelected(sight)) {
             infoButton.setTitle("-", forState: .Normal)
             infoButton.backgroundColor = UIColor.redColor()
         } else {
@@ -133,12 +133,9 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(chosenMarker)
         
         // toggle selection of sight
-        let newSelected : Bool = !sightStore.isSelected(sight)
-        sightStore.markSightSelected(sight, selected: newSelected)
-        chosenMarker.icon = (newSelected) ? GMSMarker.markerImageWithColor(colorGreen) : nil
-        if (sightStore.isFavorite(sight) && !newSelected) {
-            chosenMarker.icon = GMSMarker.markerImageWithColor(colorYellow)
-        }
+        let newSelected : Bool = !activity!.isSelected(sight)
+        activity!.markSightSelected(sight, selected: newSelected)
+        chosenMarker.icon = getSightColor(sight)
         
         // fade out bottom bar
         UIView.animateWithDuration(0.2, animations: {
@@ -155,9 +152,7 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let sight = getSightByMarker(chosenMarker)
         let newFavorite : Bool = !sightStore.isFavorite(sight)
         sightStore.markSightAsFavorite(sight, favorite: newFavorite)
-        if (!sightStore.isSelected(sight)) {
-            chosenMarker.icon = (newFavorite) ? GMSMarker.markerImageWithColor(colorYellow) : nil
-        }
+        chosenMarker.icon = getSightColor(sight)
         
         if newFavorite {
             favoriteButton.setImage(star_checked, forState: .Normal)
@@ -181,13 +176,22 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Dispose of any resources that can be recreated.
     }
     
+    func getSightColor(sight: Sight) -> UIImage {
+        if (activity!.isSelected(sight)) {
+            return GMSMarker.markerImageWithColor(colorGreen)
+        } else if (sightStore.isFavorite(sight)) {
+            return GMSMarker.markerImageWithColor(colorYellow)
+        } else if (sightStore.isVisited(sight)) {
+            return GMSMarker.markerImageWithColor(UIColor.blueColor())
+        } else {
+            return GMSMarker.markerImageWithColor(nil)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
     
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
     }
-
-    
-    
 }

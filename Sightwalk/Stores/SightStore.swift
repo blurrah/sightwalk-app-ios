@@ -91,13 +91,8 @@ class SightStore : SightSyncInterface {
         // force update in store
         sqlh.updateSight(oldSight, newSight: newSight)
         
-        let selected : Bool = isSelected(oldSight)
-        if selected {
-            markSightSelected(oldSight, selected: false)
-        }
         sights.removeAtIndex(sights.indexOf(oldSight)!)
         sights.append(newSight)
-        markSightSelected(newSight, selected: selected)
         
         // update subscribers
         for(_, subscriber) in subscribers {
@@ -120,29 +115,20 @@ class SightStore : SightSyncInterface {
      * functions which handle the selectionstate of a sight
      *
      **/
-     
-    func markSightSelected(sight : Sight) {
-        markSightSelected(sight, selected: true)
+    
+    func markSightAsVisited(sight : Sight) {
+        markSightAsVisited(sight, visited: true)
     }
     
-    func markSightSelected(sight : Sight, selected : Bool) {
-        // add marker
-        if selected && !userChosen.contains(sight) {
-            userChosen.append(sight)
-        }
-        
-        // remove marker
-        if !selected && userChosen.contains(sight) {
-            userChosen.removeAtIndex(userChosen.indexOf(sight)!)
+    func markSightAsVisited(sight : Sight, visited : Bool) {
+        if visited && !visitedA.contains(sight) {
+            visitedA.append(sight)
+            storeVisited(sight.id)
         }
     }
     
-    func isSelected(sight : Sight) -> Bool {
-        return userChosen.contains(sight)
-    }
-    
-    func hasSelectedSights() -> Bool {
-        return !userChosen.isEmpty
+    func isVisited(sight : Sight) -> Bool {
+        return visitedA.contains(sight)
     }
 
     func markSightAsFavorite(sight : Sight) {
@@ -180,18 +166,35 @@ class SightStore : SightSyncInterface {
      *
      **/
     
-    func switchPosition(sightOne : Sight, sightTwo : Sight) {
-        if isSelected(sightOne) && isSelected(sightTwo) {
-            let posOne : Int = getSelectedIndex(sightOne)!
-            let posTwo : Int = getSelectedIndex(sightTwo)!
-            
-            userChosen[posOne] = sightTwo
-            userChosen[posTwo] = sightOne
+    func storeVisited(id: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        if let entry = NSEntityDescription.insertNewObjectForEntityForName("Visited", inManagedObjectContext: context) as? Visited {
+            entry.id = id
+            appDelegate.saveContext()
         }
     }
     
-    func getSelectedIndex(sight : Sight) -> Int? {
-        return userChosen.indexOf(sight)
+    func getAllVisited() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Visited");
+        
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest) as? [Visited]
+            for vis in fetchResults! {
+                if let i = sights.indexOf({$0.id == vis.id!}) {
+                    if !visitedA.contains(sights[i]) {
+                        visitedA.append(sights[i])
+                        print(visitedA.first?.id)
+                    }
+                }
+            }
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     
     func storeFavorite(id: Int) {
@@ -240,8 +243,23 @@ class SightStore : SightSyncInterface {
             debugPrint(error)
         }
     }
+    
+    func getSelection(identities : [Int]) -> [Sight] {
+        let selection = sights.filter({identities.contains($0.id)})
+        var ordered : [Int : Sight] = [Int : Sight]()
+        
+        for (var index = 0; index < identities.count; index++) {
+            if let item = selection.filter({ $0.id == identities[index] }).first {
+                ordered[index] = item
+            }
+        }
+
+        return ordered.sort({ $0.0 < $1.0 }).map({ return $0.1 })
+        
+    }
 
     var userChosen = [Sight]()
     var favorites = [Sight]()
+    var visitedA = [Sight]()
     private var sights = [Sight]()
 }

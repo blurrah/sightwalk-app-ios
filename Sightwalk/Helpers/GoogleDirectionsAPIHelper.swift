@@ -40,9 +40,7 @@ class GoogleDirectionsAPIHelper {
             case .Success:
                 print("GoogleDirections API Request: success!")
                 let jsonResponse = JSON(response.result.value!)
-                
-                RouteStore.sharedInstance.apiResponse = jsonResponse
-                
+
                 onCompletion(jsonResponse)
                 break
             case .Failure:
