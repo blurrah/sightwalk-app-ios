@@ -29,7 +29,7 @@ class StatisticViewController: UIViewController {
             setChart(days, values: getWeekStatistics())
             break;
         case 1:
-            // setChart(weeks, values: testKilometers)
+            setChart(weeks, values: getMonthStatistics())
             break;
         default:
             break;
@@ -103,6 +103,45 @@ class StatisticViewController: UIViewController {
         }
         
         return activityPerDay
+    }
+    
+    private func getMonthStatistics() -> [Int: Double] {
+        let beginningOfMonth = DatetimeHelper.getBeginDate(.Month)
+        
+        var activityPerWeek: [Int: Double] = [:]
+        
+        activities = activityStore.getAllActivities()
+        
+        var withinTimeframe: [Activity] = []
+        
+        for activity in activities {
+            let activityDate = activity.getDate()
+            if (activityDate >= beginningOfMonth) {
+                withinTimeframe.append(activity)
+            }
+        }
+        
+        var week: NSDate? = beginningOfMonth!
+        
+        for i in 0...3 {
+            if i > 0 {
+                week = (week! + 1.weeks)
+            }
+        
+            for item in withinTimeframe {
+                if (item.getDate() >= week! && item.getDate() <= (week! + 1.weeks)) {
+                    let distance = Double(item.getTotalDistance())
+                
+                    if var currentDistance = activityPerWeek[i] {
+                        currentDistance += distance!
+                        activityPerWeek[i] = currentDistance
+                    } else {
+                        activityPerWeek[i] = distance!
+                    }
+                }
+            }
+        }
+        return activityPerWeek
     }
     
 

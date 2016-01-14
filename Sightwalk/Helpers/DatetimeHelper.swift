@@ -25,7 +25,7 @@ class DatetimeHelper {
             return currentCalendar.dateFromComponents(components!)
         case .Month:
             components = currentCalendar.components(.Month, fromDate: now)
-            return NSDate(timeIntervalSinceNow: -2629743.83)
+            return NSDate(timeIntervalSinceNow: -2419200.83)
         }
     }
 }
