@@ -26,6 +26,7 @@
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
 		2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */; };
+		2FEEF3181C47A16400686169 /* DatetimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEF3171C47A16400686169 /* DatetimeHelper.swift */; };
 		2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */; };
 		2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */; };
 		2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */; };
@@ -118,6 +119,7 @@
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
 		2FDE68011C0F04F000287286 /* PickItemButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItemButtonView.swift; sourceTree = "<group>"; };
 		2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickSpotsViewController.swift; sourceTree = "<group>"; };
+		2FEEF3171C47A16400686169 /* DatetimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatetimeHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPersistenceHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIHelper.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				92EF00F31C23450A001EF35C /* SightManager.swift */,
 				F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */,
 				92B505261C4793D800757E8F /* ImageHelper.swift */,
+				2FEEF3171C47A16400686169 /* DatetimeHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				925A4FDC1C3F11B300B6EDB7 /* SightCreateViewController.swift in Sources */,
 				F38B94B61C45113D003555CD /* Visited.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
+				2FEEF3181C47A16400686169 /* DatetimeHelper.swift in Sources */,
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,

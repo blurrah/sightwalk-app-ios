@@ -219,13 +219,3 @@ class Activity: NSManagedObject {
         setSights(sights)
     }
 }
-
-public func <(a: NSDate, b: NSDate) -> Bool {
-    return a.compare(b) == NSComparisonResult.OrderedAscending
-}
-
-public func ==(a: NSDate, b: NSDate) -> Bool {
-    return a.compare(b) == NSComparisonResult.OrderedSame
-}
-
-extension NSDate: Comparable { }
