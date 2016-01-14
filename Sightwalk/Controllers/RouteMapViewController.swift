@@ -45,13 +45,22 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             marker.icon = GMSMarker.markerImageWithColor(UIColor(red:0.102, green:0.788, blue:0.341, alpha:1))
             marker.map = mapView
         }
+        addPolylines()
         
+    }
+    
+    func updateSight(newStep: Int) {
+        self.currentStep = newStep
+        self.addPolylines()
+    }
+    
+    func addPolylines() {
         for (index, steps) in activity!.getPolylines() {
             for step in steps {
                 let path = GMSPath(fromEncodedPath: step)
                 let polyline = GMSPolyline(path: path)
                 
-                if index == 0 {
+                if index == self.currentStep {
                     polyline.strokeColor = UIColor.blueColor()
                 } else {
                     polyline.strokeColor = UIColor.grayColor()
@@ -62,7 +71,6 @@ class RouteMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
                 mapView.camera = GMSCameraPosition(target: path.coordinateAtIndex(0), zoom: 15, bearing: 0, viewingAngle: 0)
             }
         }
-        
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

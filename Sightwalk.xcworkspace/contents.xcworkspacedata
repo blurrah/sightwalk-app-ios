@@ -5,6 +5,9 @@
       location = "group:../../../../Downloads/default.gpx">
    </FileRef>
    <FileRef
+      location = "group:../../../../Downloads/default.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Sightwalk.xcodeproj">
    </FileRef>
    <FileRef

@@ -15,7 +15,6 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
     var detailView: RouteDetailDirectionsViewController?
     let chosenSights = SightStore.sharedInstance.userChosen
     
-    
     private var sightShowController : SightDetailViewController?
     private var returnToStart : Bool = true
     
@@ -136,6 +135,8 @@ class RouteViewController: UIViewController, UIGestureRecognizerDelegate, RouteD
         //detailView?.set
         sightToView = sight
         SightStore.sharedInstance.markSightAsVisited(sight)
+        currentSight++
+        mapView!.updateSight(currentSight)
         performSegueWithIdentifier("showSightDetail", sender: self)
     }
     
