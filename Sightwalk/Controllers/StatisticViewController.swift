@@ -21,8 +21,6 @@ class StatisticViewController: UIViewController {
     let days = ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]
     let weeks = ["Week 1", "Week 2", "Week 3", "Week 4"]
     
-    let testKilometers = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-    
     @IBAction func changeSegmentedControl(sender: AnyObject) {
         switch sender.selectedSegmentIndex {
         case 0:
