@@ -1390,11 +1390,13 @@ Kies hieronder een optie.</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ja-Fl-sm8">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="78" id="uaj-Lt-vhH"/>
+                                            <constraint firstAttribute="height" constant="78" id="uaj-Lt-vhH">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="89"/>
+                                            </constraint>
                                         </constraints>
-                                        <string key="text">Dit is de eerste tutorial pagina.
-Hier schrijf ik nog even wat tekst
-om de boel op te vullen.</string>
+                                        <string key="text">Met SightWalk kunt u gemakkelijk leuke, inspirerende en interessante
+plekken bezoeken,
+Wij laten u zien hoe het werkt.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1409,6 +1411,25 @@ om de boel op te vullen.</string>
                                             </mask>
                                         </variation>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial-screen-1" translatesAutoresizingMaskIntoConstraints="NO" id="2FG-Tu-HqT">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="185" id="DhD-2G-BoW"/>
+                                            <constraint firstAttribute="height" constant="93" id="VhK-Ff-S96"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="DhD-2G-BoW"/>
+                                                <exclude reference="VhK-Ff-S96"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="DhD-2G-BoW"/>
+                                                <include reference="VhK-Ff-S96"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1417,37 +1438,48 @@ om de boel op te vullen.</string>
                                     <constraint firstItem="UvW-Ss-qJ5" firstAttribute="top" secondItem="IoI-y5-Vem" secondAttribute="top" constant="160" id="LWc-co-Rpm"/>
                                     <constraint firstItem="7Ja-Fl-sm8" firstAttribute="leading" secondItem="IoI-y5-Vem" secondAttribute="leading" constant="8" id="O7O-qL-x4d"/>
                                     <constraint firstItem="7Ja-Fl-sm8" firstAttribute="top" secondItem="UvW-Ss-qJ5" secondAttribute="bottom" constant="8" id="WZF-mx-nhk"/>
+                                    <constraint firstItem="2FG-Tu-HqT" firstAttribute="centerX" secondItem="IoI-y5-Vem" secondAttribute="centerX" id="XPZ-4q-uim"/>
                                     <constraint firstItem="UvW-Ss-qJ5" firstAttribute="leading" secondItem="IoI-y5-Vem" secondAttribute="leading" constant="8" id="cpW-iI-KKm"/>
                                     <constraint firstItem="UvW-Ss-qJ5" firstAttribute="top" secondItem="IoI-y5-Vem" secondAttribute="top" constant="161" id="dV0-eF-evp"/>
+                                    <constraint firstItem="UvW-Ss-qJ5" firstAttribute="top" secondItem="2FG-Tu-HqT" secondAttribute="bottom" constant="8" id="sCD-z3-YSF"/>
+                                    <constraint firstItem="2FG-Tu-HqT" firstAttribute="top" secondItem="IoI-y5-Vem" secondAttribute="top" constant="59" id="zP1-76-N9w"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="UvW-Ss-qJ5"/>
                                         <exclude reference="7Ja-Fl-sm8"/>
+                                        <exclude reference="2FG-Tu-HqT"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="3h6-UX-rBM"/>
-                                        <exclude reference="O7O-qL-x4d"/>
-                                        <exclude reference="WZF-mx-nhk"/>
+                                        <exclude reference="XPZ-4q-uim"/>
+                                        <exclude reference="zP1-76-N9w"/>
                                         <exclude reference="IGk-Uj-0A2"/>
                                         <exclude reference="LWc-co-Rpm"/>
                                         <exclude reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
+                                        <exclude reference="sCD-z3-YSF"/>
+                                        <exclude reference="3h6-UX-rBM"/>
+                                        <exclude reference="O7O-qL-x4d"/>
+                                        <exclude reference="WZF-mx-nhk"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="UvW-Ss-qJ5"/>
                                         <include reference="7Ja-Fl-sm8"/>
+                                        <include reference="2FG-Tu-HqT"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="3h6-UX-rBM"/>
-                                        <include reference="O7O-qL-x4d"/>
-                                        <include reference="WZF-mx-nhk"/>
+                                        <include reference="XPZ-4q-uim"/>
+                                        <include reference="zP1-76-N9w"/>
                                         <include reference="IGk-Uj-0A2"/>
                                         <include reference="LWc-co-Rpm"/>
                                         <include reference="cpW-iI-KKm"/>
                                         <exclude reference="dV0-eF-evp"/>
+                                        <include reference="sCD-z3-YSF"/>
+                                        <include reference="3h6-UX-rBM"/>
+                                        <include reference="O7O-qL-x4d"/>
+                                        <include reference="WZF-mx-nhk"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1505,29 +1537,29 @@ om de boel op te vullen.</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L45-5X-rdM">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="0pn-qj-GWI"/>
-                                            <constraint firstAttribute="height" constant="78" id="V7S-CL-5xt"/>
+                                            <constraint firstAttribute="height" constant="78" id="V7S-CL-5xt">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="89"/>
+                                            </constraint>
                                         </constraints>
-                                        <string key="text">Dit is de tweede tutorial pagina.
-Hier schrijf ik nog even wat tekst
-om de boel op te vullen.</string>
+                                        <string key="text">Kies snel en gemakkelijk interessante
+sights die u zou willen bezoeken.
+Pas de volgorde aan en kies waar u
+wilt beginnen.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="0pn-qj-GWI"/>
                                                 <exclude reference="V7S-CL-5xt"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="0pn-qj-GWI"/>
                                                 <include reference="V7S-CL-5xt"/>
                                             </mask>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welkom bij SightWalk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myF-tv-QXe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kies interessante plekken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myF-tv-QXe">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="8oQ-bo-a9g"/>
@@ -1549,45 +1581,75 @@ om de boel op te vullen.</string>
                                             </mask>
                                         </variation>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial-screen-2" translatesAutoresizingMaskIntoConstraints="NO" id="MmA-5F-Ayo">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="91" id="sZJ-71-KmJ"/>
+                                            <constraint firstAttribute="width" constant="84" id="zU4-i9-lIR"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="sZJ-71-KmJ"/>
+                                                <exclude reference="zU4-i9-lIR"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="sZJ-71-KmJ"/>
+                                                <include reference="zU4-i9-lIR"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="L45-5X-rdM" secondAttribute="trailing" constant="8" id="0g4-qS-nI6"/>
                                     <constraint firstAttribute="trailing" secondItem="myF-tv-QXe" secondAttribute="trailing" constant="8" id="5pf-6n-hLE"/>
                                     <constraint firstItem="myF-tv-QXe" firstAttribute="leading" secondItem="2pV-Zk-MU4" secondAttribute="leading" constant="8" id="BqA-AU-Mru"/>
+                                    <constraint firstItem="myF-tv-QXe" firstAttribute="top" secondItem="MmA-5F-Ayo" secondAttribute="bottom" constant="8" id="Hdx-Lc-2gk"/>
                                     <constraint firstItem="myF-tv-QXe" firstAttribute="top" secondItem="2pV-Zk-MU4" secondAttribute="top" constant="160" id="WDZ-AH-9wN"/>
+                                    <constraint firstItem="MmA-5F-Ayo" firstAttribute="centerX" secondItem="2pV-Zk-MU4" secondAttribute="centerX" id="Xat-4L-L4i"/>
                                     <constraint firstItem="L45-5X-rdM" firstAttribute="top" secondItem="myF-tv-QXe" secondAttribute="bottom" constant="8" id="fBQ-kf-2zx"/>
                                     <constraint firstItem="L45-5X-rdM" firstAttribute="top" secondItem="myF-tv-QXe" secondAttribute="bottom" constant="8" id="pmQ-ON-O8R"/>
                                     <constraint firstItem="L45-5X-rdM" firstAttribute="leading" secondItem="2pV-Zk-MU4" secondAttribute="leading" constant="8" id="qV7-V7-YIA"/>
+                                    <constraint firstItem="MmA-5F-Ayo" firstAttribute="top" secondItem="2pV-Zk-MU4" secondAttribute="top" constant="61" id="tHr-ed-o35"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="L45-5X-rdM"/>
                                         <exclude reference="myF-tv-QXe"/>
+                                        <exclude reference="MmA-5F-Ayo"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="5pf-6n-hLE"/>
+                                        <exclude reference="BqA-AU-Mru"/>
+                                        <exclude reference="Hdx-Lc-2gk"/>
+                                        <exclude reference="WDZ-AH-9wN"/>
+                                        <exclude reference="Xat-4L-L4i"/>
+                                        <exclude reference="tHr-ed-o35"/>
                                         <exclude reference="0g4-qS-nI6"/>
                                         <exclude reference="fBQ-kf-2zx"/>
                                         <exclude reference="pmQ-ON-O8R"/>
                                         <exclude reference="qV7-V7-YIA"/>
-                                        <exclude reference="5pf-6n-hLE"/>
-                                        <exclude reference="BqA-AU-Mru"/>
-                                        <exclude reference="WDZ-AH-9wN"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="L45-5X-rdM"/>
                                         <include reference="myF-tv-QXe"/>
+                                        <include reference="MmA-5F-Ayo"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="5pf-6n-hLE"/>
+                                        <include reference="BqA-AU-Mru"/>
+                                        <include reference="Hdx-Lc-2gk"/>
+                                        <include reference="WDZ-AH-9wN"/>
+                                        <include reference="Xat-4L-L4i"/>
+                                        <include reference="tHr-ed-o35"/>
                                         <include reference="0g4-qS-nI6"/>
                                         <include reference="fBQ-kf-2zx"/>
                                         <include reference="pmQ-ON-O8R"/>
                                         <include reference="qV7-V7-YIA"/>
-                                        <include reference="5pf-6n-hLE"/>
-                                        <include reference="BqA-AU-Mru"/>
-                                        <include reference="WDZ-AH-9wN"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1642,7 +1704,7 @@ om de boel op te vullen.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuG-lF-ZTA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welkom bij SightWalk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-VN-Okr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start met wandelen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-VN-Okr">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="BgJ-ar-ASl"/>
@@ -1667,25 +1729,24 @@ om de boel op te vullen.</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wah-T5-xqz">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="78" id="ePo-JJ-Ur5"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="xSY-hQ-nZh"/>
+                                            <constraint firstAttribute="height" constant="78" id="ePo-JJ-Ur5">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="89"/>
+                                            </constraint>
                                         </constraints>
-                                        <string key="text">Dit is de derde tutorial pagina.
-Hier schrijf ik nog even wat tekst
-om de boel op te vullen.</string>
+                                        <string key="text">De applicatie genereert een route
+voor u om meteen te bewandelen.
+Tijd om de mooie Sights te gaan bekijken! </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="ePo-JJ-Ur5"/>
-                                                <exclude reference="xSY-hQ-nZh"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="ePo-JJ-Ur5"/>
-                                                <include reference="xSY-hQ-nZh"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -1710,9 +1771,29 @@ om de boel op te vullen.</string>
                                             <action selector="closeButtonPressed:" destination="hTH-nf-Qcl" eventType="touchUpInside" id="3qQ-nJ-J7T"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial-screen-3" translatesAutoresizingMaskIntoConstraints="NO" id="Pcd-F3-Lih">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="9yO-pn-h1Q"/>
+                                            <constraint firstAttribute="width" constant="175" id="fuV-Bi-Nkg"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="9yO-pn-h1Q"/>
+                                                <exclude reference="fuV-Bi-Nkg"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="9yO-pn-h1Q"/>
+                                                <include reference="fuV-Bi-Nkg"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Pcd-F3-Lih" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="top" constant="56" id="0PX-nt-Tf4"/>
                                     <constraint firstItem="2jX-VN-Okr" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="top" constant="158" id="21g-Pm-PtT">
                                         <variation key="heightClass=regular-widthClass=compact" constant="160"/>
                                     </constraint>
@@ -1724,10 +1805,12 @@ om de boel op te vullen.</string>
                                     <constraint firstItem="99N-bh-r5y" firstAttribute="top" secondItem="UuG-lF-ZTA" secondAttribute="top" constant="749" id="Bay-Zg-AIY"/>
                                     <constraint firstItem="99N-bh-r5y" firstAttribute="centerX" secondItem="UuG-lF-ZTA" secondAttribute="centerX" id="ONJ-VO-4bT"/>
                                     <constraint firstAttribute="trailing" secondItem="Wah-T5-xqz" secondAttribute="trailing" constant="8" id="UMQ-hj-Cee"/>
+                                    <constraint firstItem="2jX-VN-Okr" firstAttribute="top" secondItem="Pcd-F3-Lih" secondAttribute="bottom" constant="8" id="YBl-DC-ZZn"/>
                                     <constraint firstItem="Wah-T5-xqz" firstAttribute="top" secondItem="2jX-VN-Okr" secondAttribute="bottom" constant="8" id="ZBA-3b-e6m"/>
                                     <constraint firstItem="2jX-VN-Okr" firstAttribute="leading" secondItem="UuG-lF-ZTA" secondAttribute="leading" constant="8" id="aCH-aJ-KxQ"/>
                                     <constraint firstItem="Wah-T5-xqz" firstAttribute="leading" secondItem="UuG-lF-ZTA" secondAttribute="leading" constant="8" id="j5F-ak-zWN"/>
                                     <constraint firstAttribute="trailing" secondItem="2jX-VN-Okr" secondAttribute="trailing" constant="8" id="qj0-kH-48h"/>
+                                    <constraint firstItem="Pcd-F3-Lih" firstAttribute="centerX" secondItem="UuG-lF-ZTA" secondAttribute="centerX" id="vce-dn-9YY"/>
                                     <constraint firstAttribute="trailing" secondItem="99N-bh-r5y" secondAttribute="trailing" constant="20" id="x8F-zU-8wB"/>
                                 </constraints>
                                 <variation key="default">
@@ -1735,20 +1818,24 @@ om de boel op te vullen.</string>
                                         <exclude reference="2jX-VN-Okr"/>
                                         <exclude reference="Wah-T5-xqz"/>
                                         <exclude reference="99N-bh-r5y"/>
+                                        <exclude reference="Pcd-F3-Lih"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="2ea-s4-pzf"/>
-                                        <exclude reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <exclude reference="x8F-zU-8wB"/>
+                                        <exclude reference="0PX-nt-Tf4"/>
+                                        <exclude reference="vce-dn-9YY"/>
                                         <exclude reference="21g-Pm-PtT"/>
+                                        <exclude reference="YBl-DC-ZZn"/>
                                         <exclude reference="aCH-aJ-KxQ"/>
                                         <exclude reference="qj0-kH-48h"/>
                                         <exclude reference="5mA-LQ-z6d"/>
                                         <exclude reference="UMQ-hj-Cee"/>
                                         <exclude reference="ZBA-3b-e6m"/>
                                         <exclude reference="j5F-ak-zWN"/>
+                                        <exclude reference="2ea-s4-pzf"/>
+                                        <exclude reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <exclude reference="x8F-zU-8wB"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1756,20 +1843,24 @@ om de boel op te vullen.</string>
                                         <include reference="2jX-VN-Okr"/>
                                         <include reference="Wah-T5-xqz"/>
                                         <include reference="99N-bh-r5y"/>
+                                        <include reference="Pcd-F3-Lih"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="2ea-s4-pzf"/>
-                                        <include reference="B18-9U-5Wa"/>
-                                        <exclude reference="Bay-Zg-AIY"/>
-                                        <exclude reference="ONJ-VO-4bT"/>
-                                        <include reference="x8F-zU-8wB"/>
+                                        <include reference="0PX-nt-Tf4"/>
+                                        <include reference="vce-dn-9YY"/>
                                         <include reference="21g-Pm-PtT"/>
+                                        <include reference="YBl-DC-ZZn"/>
                                         <include reference="aCH-aJ-KxQ"/>
                                         <include reference="qj0-kH-48h"/>
                                         <exclude reference="5mA-LQ-z6d"/>
                                         <include reference="UMQ-hj-Cee"/>
                                         <include reference="ZBA-3b-e6m"/>
                                         <include reference="j5F-ak-zWN"/>
+                                        <include reference="2ea-s4-pzf"/>
+                                        <include reference="B18-9U-5Wa"/>
+                                        <exclude reference="Bay-Zg-AIY"/>
+                                        <exclude reference="ONJ-VO-4bT"/>
+                                        <include reference="x8F-zU-8wB"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1817,5 +1908,8 @@ om de boel op te vullen.</string>
         <image name="intro_background" width="640" height="960"/>
         <image name="logo_white" width="158" height="81"/>
         <image name="sightwalk-logo" width="1024" height="1024"/>
+        <image name="tutorial-screen-1" width="185" height="93"/>
+        <image name="tutorial-screen-2" width="84" height="91"/>
+        <image name="tutorial-screen-3" width="175" height="96"/>
     </resources>
 </document>
