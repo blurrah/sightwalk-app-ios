@@ -216,12 +216,11 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rUK-uA-Rsd">
                                 <rect key="frame" x="-60" y="-14" width="121" height="29"/>
-                                <color key="backgroundColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Maand"/>
                                 </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1019607843" green="0.78823529410000004" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="changeSegmentedControl:" destination="DsL-aV-rrF" eventType="valueChanged" id="GeG-k2-P7c"/>
                                 </connections>
