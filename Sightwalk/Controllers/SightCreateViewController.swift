@@ -14,6 +14,7 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     
     private let imagePicker : UIImagePickerController = UIImagePickerController()
     private var image : UIImage?
+    private let imageHelper = ImageHelper()
     
     @IBAction func btnSave(sender: AnyObject) {
         if coordinates == nil {
@@ -55,7 +56,15 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        //takePicture()
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            // don't take picture, just use a koala
+            let koalapath = NSBundle.mainBundle().URLForResource("koala", withExtension: "jpg")
+            image = UIImage(named: koalapath!.path!)
+            imageHelper.setImage(image!)
+        #else
+            // take picture with camera
+           takePicture()
+        #endif
     }
     
     private func takePicture() {
@@ -70,21 +79,13 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        let imageData = NSData(data: UIImagePNGRepresentation(image!)!)
-        
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let docs : String = paths[0]
-        
-        var error:NSError?
-        let manager = NSFileManager.defaultManager()
-        let directoryURL = manager.URLForDirectory(.DocumentDirectory, inDomain:.UserDomainMask, appropriateForURL:nil, create:true, error:&error)
-        let docURL = directoryURL.URLByAppendingPathComponent("/RicFile.txt")
-        
-        let fullPath = docs.stringByAppendingPathComponent("yourNameImg.png")
-        let result = imageData.writeToFile(fullPath, atomically: true)
-        
-        print(result ? "y" : "n")
+        imageHelper.setImage(image!)
     }
+    
+    private func uploadImage() {
+        
+    }
+
     
     
     override func didReceiveMemoryWarning() {
@@ -158,17 +159,26 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         let desc : NSString = tvDescription.text!
         params["short_description"] = (desc.length > 100) ? desc.substringWithRange(NSRange(location: 0, length: 100)) : desc
         params["image_url"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
-        params["desription"] = desc
+        params["description"] = desc
         params["external_photo"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
         
         
         UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .POST, parameters: params, success: { json in
             self.toastSuccess("De sight is aangemaakt!")
             self.performSegueWithIdentifier("unwindToAddSights", sender: self)
+            self.storeImage(json["sight_id"].intValue)
+        }, failure: { error in
+            print("failed")
+            print(error)
+            self.toastError("Er trad een fout op")
+        })
+    }
+    
+    private func storeImage(sightId: Int) {
+        imageHelper.uploadFor(sightId, success: { response in
+            print("success")
             }, failure: { error in
-                print("failed")
-                print(error)
-                self.toastError("Er trad een fout op")
+                print("failure")
         })
     }
     
