@@ -26,6 +26,7 @@
 		2FDA706D1BFF55DF00649C08 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */; };
 		2FDE68021C0F04F000287286 /* PickItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68011C0F04F000287286 /* PickItemButtonView.swift */; };
 		2FDE68041C0F203E00287286 /* PickSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */; };
+		2FEEF3181C47A16400686169 /* DatetimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEF3171C47A16400686169 /* DatetimeHelper.swift */; };
 		2FF4DAD11BF9E0A3004E1440 /* LoginPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */; };
 		2FF4DAD31BFA1F4E004E1440 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */; };
 		2FF4DAD51BFA2546004E1440 /* UserAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */; };
@@ -55,9 +56,9 @@
 		F3436C2B1C242B6D00D121FA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3436C2A1C242B6D00D121FA /* FavoriteTableViewCell.swift */; };
 		F34B217A1BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */; };
 		F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */; };
+		F3879E871C42711D003D9DD3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3879E861C42711D003D9DD3 /* ActivityViewController.swift */; };
 		F38B94B41C451046003555CD /* Visited+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B94B31C451046003555CD /* Visited+CoreDataProperties.swift */; };
 		F38B94B61C45113D003555CD /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B94B51C45113D003555CD /* Visited.swift */; };
-		F3879E871C42711D003D9DD3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3879E861C42711D003D9DD3 /* ActivityViewController.swift */; };
 		F3A1D2D11C329EE000ADA300 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2D01C329EE000ADA300 /* Favorite.swift */; };
 		F3A1D2D31C329F1500ADA300 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */; };
 		F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B7A9101BFA19B300420352 /* Dashboard.storyboard */; };
@@ -116,6 +117,7 @@
 		2FDA706B1BFF55DF00649C08 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
 		2FDE68011C0F04F000287286 /* PickItemButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItemButtonView.swift; sourceTree = "<group>"; };
 		2FDE68031C0F203E00287286 /* PickSpotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickSpotsViewController.swift; sourceTree = "<group>"; };
+		2FEEF3171C47A16400686169 /* DatetimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatetimeHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD01BF9E0A3004E1440 /* LoginPersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPersistenceHelper.swift; sourceTree = "<group>"; };
 		2FF4DAD21BFA1F4E004E1440 /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		2FF4DAD41BFA2546004E1440 /* UserAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIHelper.swift; sourceTree = "<group>"; };
@@ -154,10 +156,9 @@
 		F3436C2A1C242B6D00D121FA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		F34B21781BFF41FD00B9ACA3 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		F34B21791BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
+		F3879E861C42711D003D9DD3 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F38B94B31C451046003555CD /* Visited+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Visited+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F38B94B51C45113D003555CD /* Visited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
-		F3A1D2D01C329EE000ADA300 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorite.swift; path = ../../Favorite.swift; sourceTree = "<group>"; };
-		F3879E861C42711D003D9DD3 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F3A1D2D01C329EE000ADA300 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorite.swift; path = ../Favorite.swift; sourceTree = "<group>"; };
 		F3A1D2D21C329F1500ADA300 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3B7A9101BFA19B300420352 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = Storyboards/Dashboard.storyboard; sourceTree = "<group>"; };
@@ -293,6 +294,7 @@
 				92EF00F11C2300F2001EF35C /* SightSyncer.swift */,
 				92EF00F31C23450A001EF35C /* SightManager.swift */,
 				F3C4829A1C402A97007164C5 /* ReachabilityHelper.swift */,
+				2FEEF3171C47A16400686169 /* DatetimeHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -362,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C4829C1C426148007164C5 /* Activity.swift */,
-				F3A1D2D01C329EE000ADA300 /* Favorite.swift */,
 				F3E44E711C1055BA0017F1DD /* Sight.swift */,
 				F3A1D2D01C329EE000ADA300 /* Favorite.swift */,
 				F38B94B51C45113D003555CD /* Visited.swift */,
@@ -607,9 +608,9 @@
 				F3A1D2D11C329EE000ADA300 /* Favorite.swift in Sources */,
 				F3E44E741C1056530017F1DD /* SQLiteHelper.swift in Sources */,
 				925A4FDC1C3F11B300B6EDB7 /* SightCreateViewController.swift in Sources */,
-				F33DC9251BFB3A12003C69F6 /* ActivityViewController.swift in Sources */,
 				F38B94B61C45113D003555CD /* Visited.swift in Sources */,
 				F34B217B1BFF41FD00B9ACA3 /* BWWalkthroughViewController.swift in Sources */,
+				2FEEF3181C47A16400686169 /* DatetimeHelper.swift in Sources */,
 				F3E44E6A1C05F0000017F1DD /* InvertedGenericViewButton.swift in Sources */,
 				F3436C271C203B0B00D121FA /* AddSightButton.swift in Sources */,
 				2FFA3D4C1BF34EFE00B758D5 /* AppDelegate.swift in Sources */,
