@@ -285,6 +285,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
+        updateDistance()
         
         if (CGFloat(currentActivity.getSelectedCount()) < CGFloat((availableHeight / 44))) {
             self.bottomTableViewConstraintOutlet.constant = CGFloat(currentActivity.getSelectedCount()) * 44
@@ -321,6 +322,7 @@ class CreateRouteViewController: UIViewController, UIGestureRecognizerDelegate, 
                 self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
             }
         } else {
+            self.totalsTextOutlet.text = "Totaal 0 sights / 0 km afstand"
             JLToast.makeText("U heeft geen verbinding met internet. Controleer uw verbinding en probeer het opnieuw.", delay: 0, duration: 2).show()
         }
     }
