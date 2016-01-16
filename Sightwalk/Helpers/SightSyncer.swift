@@ -20,7 +20,7 @@ class SightSyncer: NSObject, CLLocationManagerDelegate {
     private var lastSyncPosition : CLLocation?
     
     private let deltaSyncTime : Int = 600 // ten minutes
-    private let deltaSyncPosition : Int = 1000 // one kilometer
+    private let deltaSyncPosition : Int = 10000 // one kilometer
     private let syncDistance : Int = 100 // ten kilometers
     private var force : Bool = false
     
