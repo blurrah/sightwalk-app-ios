@@ -62,29 +62,29 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         locationManager.requestAlwaysAuthorization()
 
         // take picture with camera
-        takePicture()
+        //takePicture()
                                                   
     }
     
-    private func takePicture() {
-        imagePicker.delegate = self
-        imagePicker.sourceType = .Camera
-        
-        presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imagePicker.dismissViewControllerAnimated(true, completion: nil)
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageHelper.setImage(pickedImage)
-        }
-        
-    }
-    
-    private func uploadImage() {
-        
-    }
+//    private func takePicture() {
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .Camera
+//        
+//        presentViewController(imagePicker, animated: true, completion: nil)
+//    }
+//    
+//    
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+//        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            imageHelper.setImage(pickedImage)
+//        }
+//        
+//    }
+//    
+//    private func uploadImage() {
+//        
+//    }
 
     
     
@@ -158,15 +158,15 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         params["type"] = "monument" // todo
         let desc : NSString = tvDescription.text!
         params["short_description"] = desc
-        params["image_url"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
+        params["image_url"] = ""
         params["description"] = desc
-        params["external_photo"] = "https://pbs.twimg.com/profile_images/588458393444167680/jqP97Xwo.jpg"
+        params["external_photo"] = ""
         
         
         UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .POST, parameters: params, success: { json in
             self.toastSuccess("De sight is aangemaakt!")
             // self.performSegueWithIdentifier("unwindToAddSights", sender: self)
-            self.storeImage(json["sight_id"].intValue)
+//            self.storeImage(json["sight_id"].intValue)
         }, failure: { error in
             print("failed")
             print(error)
@@ -174,13 +174,13 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         })
     }
     
-    private func storeImage(sightId: Int) {
-        imageHelper.uploadFor(sightId, success: { response in
-            print("success")
-            }, failure: { error in
-                print("failure")
-        })
-    }
+//    private func storeImage(sightId: Int) {
+//        imageHelper.uploadFor(sightId, success: { response in
+//            print("success")
+//            }, failure: { error in
+//                print("failure")
+//        })
+//    }
     
     /*
     // MARK: - Navigation
