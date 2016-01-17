@@ -47,7 +47,6 @@
 		2FFD437D1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD437C1C105345004AC4DE /* GoogleDirectionsAPIHelper.swift */; };
 		925A4FDC1C3F11B300B6EDB7 /* SightCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925A4FDB1C3F11B300B6EDB7 /* SightCreateViewController.swift */; };
 		92B505141C43C1EB00757E8F /* RouteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B505131C43C1EB00757E8F /* RouteNavigationController.swift */; };
-		92B505251C478E1A00757E8F /* koala.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92B505241C478E1A00757E8F /* koala.jpg */; };
 		92B505271C4793D800757E8F /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B505261C4793D800757E8F /* ImageHelper.swift */; };
 		92EF00F21C2300F2001EF35C /* SightSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EF00F11C2300F2001EF35C /* SightSyncer.swift */; };
 		92EF00F41C23450A001EF35C /* SightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EF00F31C23450A001EF35C /* SightManager.swift */; };
@@ -148,7 +147,6 @@
 		58A482CD35DF74AD2BA9E6E0 /* Pods-Sightwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sightwalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sightwalk/Pods-Sightwalk.debug.xcconfig"; sourceTree = "<group>"; };
 		925A4FDB1C3F11B300B6EDB7 /* SightCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightCreateViewController.swift; sourceTree = "<group>"; };
 		92B505131C43C1EB00757E8F /* RouteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationController.swift; sourceTree = "<group>"; };
-		92B505241C478E1A00757E8F /* koala.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = koala.jpg; sourceTree = "<group>"; };
 		92B505261C4793D800757E8F /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		92EF00F11C2300F2001EF35C /* SightSyncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightSyncer.swift; sourceTree = "<group>"; };
 		92EF00F31C23450A001EF35C /* SightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightManager.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 		2FFA3D4A1BF34EFE00B758D5 /* Sightwalk */ = {
 			isa = PBXGroup;
 			children = (
-				92B505241C478E1A00757E8F /* koala.jpg */,
 				2FFD437B1C104A22004AC4DE /* Storyboards */,
 				2F25B9061C08B0BB001B9037 /* PickItemButtonView.xib */,
 				2FDA70691BFF55DF00649C08 /* Constants */,
@@ -521,7 +518,6 @@
 				F3436C251C201D9E00D121FA /* sights.sqlite in Resources */,
 				2F25B9031C08AB56001B9037 /* CreateRoute.storyboard in Resources */,
 				2FFA3D511BF34EFE00B758D5 /* Main.storyboard in Resources */,
-				92B505251C478E1A00757E8F /* koala.jpg in Resources */,
 				2F526E8A1C202F630024DAFE /* Route.storyboard in Resources */,
 				F3C482991C3EB57C007164C5 /* Settings.bundle in Resources */,
 				F3B7A9111BFA19B300420352 /* Dashboard.storyboard in Resources */,
