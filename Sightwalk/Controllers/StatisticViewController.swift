@@ -40,6 +40,13 @@ class StatisticViewController: UIViewController {
         barChartView.noDataText = "Er is nog geen data beschikbaar!"
         
         setChart(days, values: getWeekStatistics())
+        barChartView.userInteractionEnabled = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        barChartView.noDataText = "Er is nog geen data beschikbaar!"
+        
+        setChart(days, values: getWeekStatistics())
     }
     
     func setChart(dataPoints: [String], values: [Int: Double]) {
