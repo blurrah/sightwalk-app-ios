@@ -85,8 +85,6 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
 //    private func uploadImage() {
 //        
 //    }
-
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -158,14 +156,14 @@ class SightCreateViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         params["type"] = "monument" // todo
         let desc : NSString = tvDescription.text!
         params["short_description"] = desc
-        params["image_url"] = ""
+        params["image_url"] = "-"
         params["description"] = desc
-        params["external_photo"] = ""
+        params["external_photo"] = "-"
         
         
         UserAPIHelper.sharedInstance.getAuthenticatedCall(path, method: .POST, parameters: params, success: { json in
             self.toastSuccess("De sight is aangemaakt!")
-            // self.performSegueWithIdentifier("unwindToAddSights", sender: self)
+            self.performSegueWithIdentifier("unwindToAddSights", sender: self)
 //            self.storeImage(json["sight_id"].intValue)
         }, failure: { error in
             print("failed")

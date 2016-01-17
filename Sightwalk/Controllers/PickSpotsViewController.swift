@@ -112,9 +112,13 @@ class PickSpotsViewController: UIViewController, CLLocationManagerDelegate, GMSM
         let camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
         
-        ImageDownloadHelper.downloadImage(sight.imgurl, onCompletion: { response in
-            self.infoImage.image = UIImage(data: response)
-        })
+        if sight.imgurl.characters.count > 1 {
+            ImageDownloadHelper.downloadImage(sight.imgurl, onCompletion: { response in
+                self.infoImage.image = UIImage(data: response)
+            })
+        } else {
+            self.infoImage.image = UIImage(named: "sightwalk-logo")
+        }
         
         UIView.animateWithDuration(0.2, animations: {
             self.infoView.alpha = 1

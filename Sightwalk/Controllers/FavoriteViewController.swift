@@ -50,9 +50,13 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         cell.sightTitleLabel.text = sights[row].title
         cell.sightDescriptionLabel.text = sights[row].shortdesc
         
-        ImageDownloadHelper.downloadImage(sights[row].imgurl, onCompletion: { response in
-            cell.favoriteImageView.image = UIImage(data: response)
-        })
+        if sights[row].imgurl.characters.count > 1 {
+            ImageDownloadHelper.downloadImage(sights[row].imgurl, onCompletion: { response in
+                cell.favoriteImageView.image = UIImage(data: response)
+            })
+        } else {
+            cell.favoriteImageView.image = UIImage(named: "sightwalk-logo")
+        }
         
         return cell
     }

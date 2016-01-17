@@ -43,9 +43,13 @@ class SightDetailViewController: UIViewController {
             self.sightTextView.text = currentSight!.text
             self.sightTextView.editable = false
             
-            ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
-                self.sightImageView.image = UIImage(data: response)
-            })
+            if currentSight!.imgurl.characters.count > 1 {
+                ImageDownloadHelper.downloadImage(currentSight!.imgurl, onCompletion: { response in
+                    self.sightImageView.image = UIImage(data: response)
+                })
+            } else {
+                self.sightImageView.image = UIImage()
+            }
             
             if (sightStore.isFavorite(currentSight!)) {
                 self.addFavoriteButton.backgroundColor = UIColor.redColor()
