@@ -25,8 +25,8 @@ struct ServerConstants {
 }
 
 struct GoogleConstants {
-    static let key = "***REMOVED***"
-    static let webKey = "***REMOVED***"
+    static let key = "****REMOVED****"
+    static let webKey = "****REMOVED****"
     
     struct Directions {
         static let url = "https://maps.googleapis.com/maps/api/directions/json"
